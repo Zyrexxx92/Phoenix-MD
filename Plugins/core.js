@@ -2,6 +2,15 @@ const fs = require("fs");
 const axios = require("axios");
 const path = require("path");
 const package = require("../package.json");
+const pad = (s) => (s < 10 ? "0" : "") + s;
+const formatTime = (seconds) => {
+  const hours = Math.floor(seconds / (60 * 60));
+  const minutes = Math.floor((seconds % (60 * 60)) / 60);
+  const secs = Math.floor(seconds % 60);
+  return (time = `${pad(hours)}:${pad(minutes)}:${pad(secs)}`);
+};
+const uptime = () => formatTime(process.uptime());
+
 let mergedCommands = [
   "help",
   "h",
@@ -13,12 +22,15 @@ let mergedCommands = [
   "system",
   "info",
   "about",
+  "ping",
+  "runtime",
+  "team"
 ];
 
 module.exports = {
   name: "systemcommands",
   alias: [...mergedCommands],
-  uniquecommands: ["script", "support", "help", "system", "about"],
+  uniquecommands: ["script", "support", "help", "system", "about", "ping", "runtime", "team"],
   description: "All system commands",
   start: async (
     Phoenix,
@@ -113,6 +125,73 @@ module.exports = {
         );
 
         break;
+       
+       
+case 'runtime': {
+  await doReact("👀");
+  let text3 = `🧣 *${botName} Runtime* 🧣\n\n*⏱️ Bot Uptime:* ${runtime(process.uptime())}\n\n*©️ Team Phoenix- 2024*`;
+  Phoenix.sendMessage(m.from, { image: pic, caption: text3 }, { quoted: m });
+   
+  }
+break;
+
+case 'test': case 'p': case 'ping': 
+let timestampe = speed()
+let latensie = speed() - timestampe
+ m.reply(`🧧Test erfolgreich, Bot ist aktiv!\n\n📍 *Ping* ${latensie.toFixed(4)} milisekunden\n\n Tippe ${prefix}menu um meine Befehle zu sehen`)
+break;   
+
+
+      
+case 'team': 
+await doReact("👀");
+
+m.reply(` *━━━〈 🦁ღĹíőͥńͣ BͫØ₸ღ Team🦁 〉━━━*
+
+*High Team* :
+
+-👑 *Ɛ×ͥΐզͣօͫή* (Inhaber)
+-👑 *𝕯𝖆𝖗𝖙𝖍 𝕾𝖎𝖉𝖎𝖔𝖚𝖘* (Inhaber)
+
+*Teamleitung* :
+
+-👀 *GoldtraderJD* (Leitung)
+-👀 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Stv.Leitung)
+
+*Community-Manager* : 
+
+-🤵 *(Name)*
+
+*Tech-Team* :
+
+-💎 *Baron* (Leitung)
+-🕹️ *(Name)* 
+-🕹️ *(Name)*
+
+*Mod-Team* :
+
+-💎 *Cthulhu* (Leitung)
+-👮🏻‍♂️ *Toruto* (Mod)
+-👮🏻‍♂️ *(Name)* (Mod)
+
+
+*Support-Team* :
+
+-💎 *𝕾𝖆𝖒𝖚𝖗𝖆𝖎ᴳᵒᵈ*(Leitung)
+-👷🏻‍♂️ *(Name)* (Supporter)
+-👷🏻‍♂️ *(Name)* (Supporter)
+
+*Hoster-Team*:
+
+-💎 *Ɛ×ͥΐզͣօͫή* (Leitung)
+-💻 *GoldtraderJD* (Hoster)
+-💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
+-💻 *(Name)* (Hoster)
+
+\n📛 Wir bemühen uns, euch zeitnah zu antworten, und bitten höflich darum, kein Spam zu 
+versenden. \n\n Um eine Supportanfrage zu stellen,benutzt bitte ${prefix}support gefolgt von 
+eurem Anliegen.\n\n✨️Danke für eure Unterstützung,euer Phoenix-Bot Team. `)
+break;
        
 
       case "system":
