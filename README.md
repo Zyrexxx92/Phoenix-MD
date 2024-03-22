@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://github.com/7ucg/Phoenix-MD">
-    <img src="https://i.imgur.com/MClOeqe.jpeg">
+    <img src="https://i.imgur.com/OWX9ZF1.jpg">
   </a>
 
 <h1 align="center"> Phoenix Bot
