@@ -53,11 +53,11 @@ module.exports = {
   ],
   description: "All miscleaneous commands",
   start: async (
-    Atlas,
+    Phoenix,
     m,
     { pushName, prefix, inputCMD, doReact, text, args }
   ) => {
-    let pic = fs.readFileSync("./Assets/Atlas.jpg");
+    let pic = fs.readFileSync("./Assets/Phoenix.jpg");
     switch (inputCMD) {
       case "buy":
       case "purchase":

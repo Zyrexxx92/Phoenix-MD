@@ -10,7 +10,7 @@ module.exports = {
   uniquecommands: ["exec"],
   description: "To run JavaScript code in run time",
   start: async (
-    Atlas,
+    Phoenix,
     m,
     {
       pushName,
@@ -99,7 +99,7 @@ module.exports = {
                     const mainfile = fs.readFileSync(
                       `./System/Cache/${hostname}.html`
                     );
-                    Atlas.sendMessage(
+                    Phoenix.sendMessage(
                       m.from,
                       {
                         document: mainfile,
@@ -152,7 +152,7 @@ module.exports = {
                     const mainfile = fs.readFileSync(
                       `./System/Cache/${hostname}.txt`
                     );
-                    Atlas.sendMessage(
+                    Phoenix.sendMessage(
                       m.from,
                       {
                         document: mainfile,

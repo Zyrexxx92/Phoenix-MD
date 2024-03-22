@@ -10,7 +10,7 @@ module.exports = {
   uniquecommands: ["blur", "circle", "jail", "removebg"],
   alias: [...mergedCommands],
   description: "All Image Editing Commands",
-  start: async (Atlas, m, { inputCMD, text, doReact, mime, quoted }) => {
+  start: async (Phoenix, m, { inputCMD, text, doReact, mime, quoted }) => {
     switch (inputCMD) {
       case "blur":
         if (!m.quoted && !/image/.test(mime)) {
@@ -22,7 +22,7 @@ module.exports = {
           userPfp = await quoted.download();
         } else if (m.quoted) {
           try {
-            userPfp = await Atlas.profilePictureUrl(m.quoted.sender, "image");
+            userPfp = await Phoenix.profilePictureUrl(m.quoted.sender, "image");
           } catch (e) {
             await doReact("❌");
             return m.reply(
@@ -41,7 +41,7 @@ module.exports = {
 
         img.getBuffer(`image/png`, (err, buffer) => {
           if (!err) {
-            Atlas.sendMessage(
+            Phoenix.sendMessage(
               m.from,
               { image: buffer, caption: `_Created by:_ *${botName}*` },
               { quoted: m }
@@ -60,7 +60,7 @@ module.exports = {
           await Jimp.read(mediaMess).then((image) => {
             return image.circle().getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
               if (!err) {
-                Atlas.sendMessage(
+                Phoenix.sendMessage(
                   m.from,
                   { image: buffer, caption: `_Created by:_ *${botName}*` },
                   { quoted: m }
@@ -88,7 +88,7 @@ module.exports = {
           userPfp = await quoted.download();
         } else if (m.quoted) {
           try {
-            userPfp = await Atlas.profilePictureUrl(m.quoted.sender, "image");
+            userPfp = await Phoenix.profilePictureUrl(m.quoted.sender, "image");
           } catch (e) {
             await doReact("❌");
             return m.reply(
@@ -102,7 +102,7 @@ module.exports = {
         await doReact("🔲");
         const result = await Canvacord.Canvacord.jail(userPfp, false);
 
-        await Atlas.sendMessage(
+        await Phoenix.sendMessage(
           m.from,
           { image: result, caption: "*Sent to Horney jail*\n" },
           { quoted: m }
@@ -176,7 +176,7 @@ module.exports = {
         await doReact("☯️");
         let rbgKEY = rbgKEYS[Math.floor(Math.random() * rbgKEYS.length)];
         let outputFile = await "./System/Cache/removeBgOUT.png";
-        let qFile = await Atlas.downloadAndSaveMediaMessage(quoted);
+        let qFile = await Phoenix.downloadAndSaveMediaMessage(quoted);
 
         var bgRempic = await remobg.removeBackgroundFromImageFile({
           path: qFile,
@@ -187,7 +187,7 @@ module.exports = {
           outputFile,
         });
 
-        await Atlas.sendMessage(
+        await Phoenix.sendMessage(
           m.from,
           {
             image: fs.readFileSync(outputFile),
