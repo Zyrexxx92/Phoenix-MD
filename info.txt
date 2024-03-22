@@ -19,7 +19,7 @@
     "baileys bot",
     "md bot"
   ],
-  "author": "FantoX",
+  "author": "7ucg",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/7ucg/Phoenix-MD/issues"

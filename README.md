@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center"> 
-Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="https://github.com/FantoX">FantoX</a> and his team "Phoenix" to do everything that's beyond imagination with highest <b>Features</b> and <b>Stability</b> and <b>Compatibility</b> built with Baileys Multi Device support.
+Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="https://github.com/7ucg">Baron</a> and his team "Phoenix" to do everything that's beyond imagination with highest <b>Features</b> and <b>Stability</b> and <b>Compatibility</b> built with Baileys Multi Device support.
 
 <h3 align="center"> Phoenix Bot - The Future Is Here
 </h4>
@@ -29,15 +29,15 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
 
   
 <p align="center">
-<a href="https://github.com/FantoX"><img title="Owner" src="https://img.shields.io/badge/Owner-Team Phoenix-white.svg?style=for-the-badge&logo=github" width="170px"></a>
+<a href="https://github.com/7ucg"><img title="Owner" src="https://img.shields.io/badge/Owner-Team Phoenix-white.svg?style=for-the-badge&logo=github" width="170px"></a>
 
  <a href="https://github.com/7ucg/Phoenix-MD/blob/main/LICENSE.md">
   
 <img src='https://img.shields.io/github/license/7ucg/Phoenix-MD?color=%231e81b0&style=for-the-badge' width="114px">
 
 <p align="center">
-<a href="https://github.com/FantoX"><img title="Open Source" src="https://img.shields.io/badge/Open%20Source-YES-green.svg?style=for-the-badge" width="150px"></a>
-<a href="https://github.com/FantoX"><img title="" src="https://img.shields.io/badge/Maintained-YES-green.svg?style=for-the-badge" width="143px"></a>
+<a href="https://github.com/7ucg"><img title="Open Source" src="https://img.shields.io/badge/Open%20Source-YES-green.svg?style=for-the-badge" width="150px"></a>
+<a href="https://github.com/7ucg"><img title="" src="https://img.shields.io/badge/Maintained-YES-green.svg?style=for-the-badge" width="143px"></a>
 </p>
 <br>
 
@@ -213,7 +213,7 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
       
 KEY | VALUE
 -- | --
-MODS | Phone numbers in this format (`918101187876`,`925897863489`) without `+` or `SPACE`.
+MODS | Phone numbers in this format (`4365022989060`,`49491741711168`) without `+` or `SPACE`.
 MONGODB | Your MongoDB URL
 SESSION_ID | Any random value (`EX: gwfdrte5678`) and `keep it copied`.
 PREFIX | Any single special character except `@` (`Ex: . or / or * or , etc.`)
@@ -244,7 +244,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
       
 KEY | VALUE
 -- | --
-MODS | Phone numbers in this format (`918101187876`,`925897863489`) without `+` or `SPACE`.
+MODS | Phone numbers in this format (`49491741711168`,`4365022989060`) without `+` or `SPACE`.
 MONGODB | Your MongoDB URL
 SESSION_ID | Any random value (`EX: gwfdrte5678`) and `keep it copied`.
 PREFIX | Any single special character except `@` (`Ex: . or / or * or , etc.`)
@@ -274,7 +274,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
       
 KEY | VALUE
 -- | --
-MODS | Phone numbers in this format (`918101187876`,`925897863489`) without `+` or `SPACE`.
+MODS | Phone numbers in this format (`49491741711168`,`4365022989060`) without `+` or `SPACE`.
 MONGODB | Your MongoDB URL
 SESSION_ID | Any random value (`EX: gwfdrte5678`) and `keep it copied`.
 PREFIX | Any single special character except `@` (`Ex: . or / or * or , etc.`)
@@ -303,7 +303,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
       
 KEY | VALUE
 -- | --
-MODS | Phone numbers in this format (`918101187876`,`925897863489`) without `+` or `SPACE`.
+MODS | Phone numbers in this format (`49491741711168`,`4365022989060`) without `+` or `SPACE`.
 MONGODB | Your MongoDB URL
 SESSION_ID | Any random value (`EX: gwfdrte5678`) and `keep it copied`.
 PREFIX | Any single special character except `@` (`Ex: . or / or * or , etc.`)
@@ -539,7 +539,7 @@ https://gist.githubusercontent.com/FantoX/2de67bc72021805417cbd317385ea71a/raw/f
 </h4>
 
 <p align="center" >
-<a href="https://cutt.ly/PhoenixSupportStrict"><img src="https://img.shields.io/badge/Join Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" width="140px">
+<a href="https://chat.whatsapp.com/KSM8yCpBHGUGkb2f3zfGz7"><img src="https://img.shields.io/badge/Join Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" width="140px">
 </a>
 </p>
     
@@ -647,11 +647,3 @@ https://gist.githubusercontent.com/FantoX/2de67bc72021805417cbd317385ea71a/raw/f
 
 ---
 <br>
-
-<h2 align="center">🔰 Meet Team Phoenix 🔰
-</h2>
-
-[![Fantox](https://github.com/FantoX.png)](https://github.com/FantoX)  | [![Ahmii-kun](https://github.com/Ahmii-kun.png)](https://github.com/Ahmii-kun) | [![Pratyush](https://github.com/pratyush4932.png)](https://github.com/pratyush4932) | [![Devime](https://github.com/Devime69.png)](https://github.com/Devime69) | [![Kai](https://github.com/Kai0071.png)](https://github.com/Kai0071) | [![JayJay Ops](https://github.com/jayjay-ops.png)](https://github.com/jayjay-ops)
-----|----|----|----|----|----
-[FantoX](https://github.com/FantoX)  | [Ahmii Kun](https://github.com/Ahmii-kun) | [Pratyush](https://github.com/pratyush4932) | [Devime](https://github.com/Devime69) | [Kai](https://github.com/Kai0071) | [Jayjay Ops](https://github.com/jayjay-ops)
-Owner, Main Developer, Maintainer, Dubugger  | Co-Developer, Co-Maintainer | Support Developer | API Maintainer | Ideas, Testing | Ideas, Testing
