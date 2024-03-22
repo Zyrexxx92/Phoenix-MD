@@ -1,7 +1,10 @@
 const fs = require("fs");
 const axios = require("axios");
+const chalk = require("chalk");
+const prefix = global.prefa;
 const path = require("path");
 const package = require("../package.json");
+
 const pad = (s) => (s < 10 ? "0" : "") + s;
 const formatTime = (seconds) => {
   const hours = Math.floor(seconds / (60 * 60));
@@ -125,28 +128,47 @@ module.exports = {
         );
 
         break;
-       
-       
+       // Define pad function
+function pad(s) {
+  return (s < 10 ? "0" : "") + s;
+}
+
+// Define formatTime function
+function formatTime(seconds) {
+  const hours = Math.floor(seconds / (60 * 60));
+  const minutes = Math.floor((seconds % (60 * 60)) / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
+}
+
+// Define uptime function
+function uptime() {
+  return formatTime(process.uptime());
+}
+
+// Your case 'runtime' block
 case 'runtime': {
   await doReact("👀");
-  let text3 = `🧣 *${botName} Runtime* 🧣\n\n*⏱️ Bot Uptime:* ${runtime(process.uptime())}\n\n*©️ Team Phoenix- 2024*`;
+  let text3 = `🧣 *${botName} Runtime* 🧣\n\n*⏱️ Bot Uptime:* ${uptime()}\n\n*©️ Team Phoenix- 2024*`;
   Phoenix.sendMessage(m.from, { image: pic, caption: text3 }, { quoted: m });
-   
-  }
+}
 break;
 
-case 'test': case 'p': case 'ping': 
-let timestampe = speed()
-let latensie = speed() - timestampe
- m.reply(`🧧Test erfolgreich, Bot ist aktiv!\n\n📍 *Ping* ${latensie.toFixed(4)} milisekunden\n\n Tippe ${prefix}menu um meine Befehle zu sehen`)
-break;   
 
+
+  case 'test':
+  case 'p':
+  case 'ping':
+    await doReact("👀");
+    let text4 = `🧧 Test erfolgreich, Bot ist aktiv!\n\n📍 Ping: ${latency.toFixed(4)} Millisekunden\n\nTippe ${prefix}menu um meine Befehle zu sehen.`;
+    Phoenix.sendMessage(m.from, { image: pic, caption: text4 }, { quoted: m });
+    break;
 
       
 case 'team': 
 await doReact("👀");
 
-m.reply(` *━━━〈 🦁ღĹíőͥńͣ BͫØ₸ღ Team🦁 〉━━━*
+m.reply(` *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━━*
 
 *High Team* :
 
@@ -170,14 +192,15 @@ m.reply(` *━━━〈 🦁ღĹíőͥńͣ BͫØ₸ღ Team🦁 〉━━━*
 
 *Mod-Team* :
 
--💎 *Cthulhu* (Leitung)
--👮🏻‍♂️ *Toruto* (Mod)
--👮🏻‍♂️ *(Name)* (Mod)
+-💎 *𝔜𝔲𝔧𝔦𝔯𝔬* (Leitung)
+-👮🏻‍♂ *(Name)*  (Mod)
+-👮🏻‍♂ *(Name)* (Mod)
 
 
 *Support-Team* :
 
--💎 *𝕾𝖆𝖒𝖚𝖗𝖆𝖎ᴳᵒᵈ*(Leitung)
+-💎 𝕬𝖈𝖍𝖎𝖗𝖆(Leitung)
+-👷🏻‍♂️ *𝕾𝖆𝖒𝖚𝖗𝖆𝖎ᴳᵒᵈ*(Supporter)
 -👷🏻‍♂️ *(Name)* (Supporter)
 -👷🏻‍♂️ *(Name)* (Supporter)
 
@@ -188,7 +211,12 @@ m.reply(` *━━━〈 🦁ღĹíőͥńͣ BͫØ₸ღ Team🦁 〉━━━*
 -💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
 -💻 *(Name)* (Hoster)
 
-\n*📛 Wir bemühen uns,* *euch zeitnah zu antworten,* *und bitten höflich darum,* *kein Spam zu versenden.* \n\n* Um eine Supportanfrage zu stellen,* *benutzt bitte ${prefix}support gefolgt von eurem Anliegen.*\n\n*✨️Danke für eure Unterstützung,euer Phoenix-Bot Team. *`)
+\n* Um eine Supportanfrage zu stellen,* *benutzt bitte /support gefolgt von eurem Anliegen.*
+
+*📛 Wir bemühen uns, euch zeitnah zu antworten,* *und bitten höflich darum, kein Spam zu versenden.*
+
+*✨ Danke für eure Unterstützung,*
+*euer Phoenix-Bot Team.*`)
 break;
        
 
