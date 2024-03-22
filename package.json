@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FantoX/Phoenix-MD.git"
+    "url": "git+https://github.com/7ucg/Phoenix-MD.git"
   },
   "keywords": [
     "bot",
@@ -22,9 +22,9 @@
   "author": "FantoX",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FantoX/Phoenix-MD/issues"
+    "url": "https://github.com/7ucg/Phoenix-MD/issues"
   },
-  "homepage": "https://github.com/FantoX/Phoenix-MD#readme",
+  "homepage": "https://github.com/7ucg/Phoenix-MD#readme",
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
     "@fantox01/lyrics-scraper": "^1.0.1",

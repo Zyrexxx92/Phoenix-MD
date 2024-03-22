@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/FantoX/Phoenix-MD">
+<a href="https://github.com/7ucg/Phoenix-MD">
     <img src="https://i.imgur.com/MClOeqe.jpeg">
   </a>
 
@@ -15,15 +15,15 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
 <br>
 
 <p align="center">
-  <a href="https://github.com/FantoX/Phoenix-MD/fork">
-    <img src="https://img.shields.io/github/forks/FantoX/Phoenix-MD?label=Fork&style=social">
+  <a href="https://github.com/7ucg/Phoenix-MD/fork">
+    <img src="https://img.shields.io/github/forks/7ucg/Phoenix-MD?label=Fork&style=social">
     
     
-  <a href="https://github.com/FantoX/Phoenix-MD/stargazers">
-    <img src="https://img.shields.io/github/stars/FantoX/Phoenix-MD?style=social">
+  <a href="https://github.com/7ucg/Phoenix-MD/stargazers">
+    <img src="https://img.shields.io/github/stars/7ucg/Phoenix-MD?style=social">
   </a>
 <p align="center">
-<a href="https://github.com/FantoX/Phoenix-MD"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFantoX%2FPhoenix-MD&count_bg=%23FFA305&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=People+Visited&edge_flat=false)](https://hits.seeyoufarm.com" width="150px" /></a>
+<a href="https://github.com/7ucg/Phoenix-MD"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFantoX%2FPhoenix-MD&count_bg=%23FFA305&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=People+Visited&edge_flat=false)](https://hits.seeyoufarm.com" width="150px" /></a>
 </p>
 
 
@@ -31,9 +31,9 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
 <p align="center">
 <a href="https://github.com/FantoX"><img title="Owner" src="https://img.shields.io/badge/Owner-Team Phoenix-white.svg?style=for-the-badge&logo=github" width="170px"></a>
 
- <a href="https://github.com/FantoX/Phoenix-MD/blob/main/LICENSE.md">
+ <a href="https://github.com/7ucg/Phoenix-MD/blob/main/LICENSE.md">
   
-<img src='https://img.shields.io/github/license/FantoX/Phoenix-MD?color=%231e81b0&style=for-the-badge' width="114px">
+<img src='https://img.shields.io/github/license/7ucg/Phoenix-MD?color=%231e81b0&style=for-the-badge' width="114px">
 
 <p align="center">
 <a href="https://github.com/FantoX"><img title="Open Source" src="https://img.shields.io/badge/Open%20Source-YES-green.svg?style=for-the-badge" width="150px"></a>
@@ -55,7 +55,7 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
 </h4>
 
 <p align="center" >
-    <a href="https://repl.it/github/FantoX/Phoenix-MD">
+    <a href="https://repl.it/github/7ucg/Phoenix-MD">
     <img src="https://i.ibb.co/zrB5kMh/deploy-on-repl.jpg" width="170px" alt="Deploy on Heroku" >
     </a>
     <br>     
@@ -95,7 +95,7 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
 </h4>
       
 <p align="center">
-    <a href="https://app.koyeb.com/apps/deploy?type=docker&image=quay.io/FantoX/Phoenix-MD:main&env[PORT]=8000&env[PREFIX]=-&&env[MONGODB]=mongodb+srv://fantox001:zjmbvgwr52@cluster0.qh05pl9.mongodb.net/?retryWrites=true&w=majority&&env[SESSION_ID]=enterYourSession&&env[MODS]=918101187835,919735940276&&env[TENOR_API_KEY]=AIzaSyCyouca1_KKy4W_MG1xsPzuku5oa8W358c&&env[PACKNAME]=Miku-Nakano&&env[AUTHOR]=FantoX&&name=Phoenix">
+    <a href="https://app.koyeb.com/apps/deploy?type=docker&image=quay.io/7ucg/Phoenix-MD:main&env[PORT]=8000&env[PREFIX]=-&&env[MONGODB]=mongodb+srv://fantox001:zjmbvgwr52@cluster0.qh05pl9.mongodb.net/?retryWrites=true&w=majority&&env[SESSION_ID]=enterYourSession&&env[MODS]=918101187835,919735940276&&env[TENOR_API_KEY]=AIzaSyCyouca1_KKy4W_MG1xsPzuku5oa8W358c&&env[PACKNAME]=Miku-Nakano&&env[AUTHOR]=FantoX&&name=Phoenix">
     <img src="https://www.koyeb.com/static/images/deploy/button.svg" alt="Deploy on Koyeb" width="155px">
     </a>
    <br>     
@@ -119,7 +119,7 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
 </p>
 
 <p align="center" >
-    <a href="https://heroku.com/deploy?template=https://github.com/FantoX/Phoenix-MD">
+    <a href="https://heroku.com/deploy?template=https://github.com/7ucg/Phoenix-MD">
     <img src="https://www.herokucdn.com/deploy/button.png" width="160px" alt="Deploy on Heroku" >
     </a>
 
@@ -204,7 +204,7 @@ Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="ht
     
 ## 🔶 Repl.it Deploy:
       
-- [Fork Main Repo](https://github.com/FantoX/Phoenix-MD/fork)
+- [Fork Main Repo](https://github.com/7ucg/Phoenix-MD/fork)
 - Create a MongoDB URL. Need help? Watch this short 1 minute [Video Guide](https://youtube.com/shorts/pIHvoXkwmq4?feature=share) for MongoDB URL.
 - Click on `Deploy to Repl.it` button ( `For those who didn't modified bot.`). In other case (`For those who modified bot.`) edit README.md file and chage the repo link of Repl.it deply button from `https://github.com/Fantox01/Phoenix-MD` to your fork URL `https://github.com/<Your GitHub Username>/<Your Phoenix fork repo name>`.
 - After cloning is done in Repl.it go to `Secrets` in your Repl.it project and put these values (Mandatory).
@@ -235,7 +235,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
       
 ## ⚛️ Heroku Deploy:
       
-- [Fork Main Repo](https://github.com/FantoX/Phoenix-MD/fork)
+- [Fork Main Repo](https://github.com/7ucg/Phoenix-MD/fork)
 - Create a MongoDB URL. Need help? Watch this short 1 minute [Video Guide](https://youtube.com/shorts/pIHvoXkwmq4?feature=share) for MongoDB URL.
 - Click on `Deploy to Heroku` button ( `For those who didn't modified bot.`). In other case (`For those who modified bot.`) edit README.md file and chage the repo link of Repl.it deply button from `https://github.com/Fantox01/Phoenix-MD` to your fork URL `https://github.com/<Your GitHub Username>/<Your Phoenix fork repo name>` also got to `app.json` and change `Website` ans `Repository` link from my link to your link. Then click on `Deploy to Heroku` button.
 - Then put these values in environment variables accordint to instructions (Mandatory).
@@ -264,7 +264,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
     
       
 ## 🔷 Railway Deploy:   
-- [Fork Main Repo](https://github.com/FantoX/Phoenix-MD/fork)
+- [Fork Main Repo](https://github.com/7ucg/Phoenix-MD/fork)
 - Create a MongoDB URL. Need help? Watch this short 1 minute [Video Guide](https://youtube.com/shorts/pIHvoXkwmq4?feature=share) for MongoDB URL.
 - Click on `Deploy to Railway` button ( `For those who didn't modified bot.`). If you modified bot and want to deploy your modified version in Railway then that button will not help you. Go to Railway website and deploy github repo from there manually.
 - Those who are deploying through button: Put all necessary details there according to instructions given there.
@@ -293,7 +293,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
       
       
 ## ❇️ Koyeb Deploy:   
-- [Fork Main Repo](https://github.com/FantoX/Phoenix-MD/fork)
+- [Fork Main Repo](https://github.com/7ucg/Phoenix-MD/fork)
 - Create a MongoDB URL. Need help? Watch this short 1 minute [Video Guide](https://youtube.com/shorts/pIHvoXkwmq4?feature=share) for MongoDB URL.
 - Click on `Deploy to Railway` button ( `For those who didn't modified bot.`). If you modified bot and want to deploy your modified version `I'm sorry to say as Koyeb works through Quay.io hosted docker so you can't deploy your modified version in fully 100% working state.` Though you can deploy manually your Github repo in Koyeb but in that case bot's 100% commands will not work.
 - Those who are deploying through button: Put all necessary details there according to instructions given there (Don't forget to change MongoDB URL an put your URL).
@@ -322,7 +322,7 @@ TENOR_API_KEY | Your tenor API key if you have. Or use this public one: `AIzaSyC
   
 ## 🪟 CMD / VS Code / Powershell / Terminal Deployment Method 
 
-- [Download Updated code](https://github.com/FantoX/Phoenix-MD/archive/refs/heads/main.zip) from Main GitHub Repo or Download from your Forked Repo.
+- [Download Updated code](https://github.com/7ucg/Phoenix-MD/archive/refs/heads/main.zip) from Main GitHub Repo or Download from your Forked Repo.
 - Extract the `.zip` and open Vs code / Cmd / Powershell / Terminal in that directory and give thesse following commands one-by-one:
 - Rename `.env.example` to `.env` and fill in the required details in `.env` file and `config.js` (Mandatory).
 
@@ -370,7 +370,7 @@ sudo apt install wget
 sudo apt install npm
 sudo apt install imagemagick
 
-git clone https://github.com/FantoX/Phoenix-MD
+git clone https://github.com/7ucg/Phoenix-MD
 
 ls
 cd Phoenix-MD
@@ -393,7 +393,7 @@ npm i
 npm start
 
 ``` 
-- Note in `git clone <my bot's repo>` section your can use Your customised bot's github link too (For that make sure you [Forked](https://github.com/FantoX/Phoenix-MD/fork) this repo and modified `.env` file and `config.js`).
+- Note in `git clone <my bot's repo>` section your can use Your customised bot's github link too (For that make sure you [Forked](https://github.com/7ucg/Phoenix-MD/fork) this repo and modified `.env` file and `config.js`).
 - This method will work on most other bots too.
 
 #### 📌 To stop a bot in Userland
@@ -575,7 +575,7 @@ https://gist.githubusercontent.com/FantoX/2de67bc72021805417cbd317385ea71a/raw/f
       
 <br>
 
-- Read [PublicKeys.md](https://github.com/FantoX/Phoenix-MD/blob/main/PublicKeys.md) to use our `provided public keys` if you are lazy to create your own. We have already provided everying you need to run the bot.
+- Read [PublicKeys.md](https://github.com/7ucg/Phoenix-MD/blob/main/PublicKeys.md) to use our `provided public keys` if you are lazy to create your own. We have already provided everying you need to run the bot.
 - Changeable between `20 added Characters` ( Phoenix, Power, Makima, Denji, Zero Two, Chika, Miku, Marin Kitagawa ) and more can be added by user inside `BotCharacters.js` file. Type `-charlist` command to get character list.
 - Fully powered by MongoDb ( 3 databases added ).
 - Self / Public / Private mode.
@@ -611,7 +611,7 @@ https://gist.githubusercontent.com/FantoX/2de67bc72021805417cbd317385ea71a/raw/f
 - Phoenix has `RPG and Economy` which means you can use it as a `RPG Bot` or `Casino Bot`.
 - Phoenix has `User Banning / Group Banning` which means you can use it as a `Anti Spam Bot`.
 - Phoenix is a Folder Type bot which represents `Highest Stability`, `Highest Performance` and `Developer / User friendly`.
-- Phoenix comes with [MIT](https://github.com/FantoX/Phoenix-MD/blob/main/LICENSE.md) License which means you can use it as a `base for your own bot` and can `modify it as you want` and can `add your own features`.
+- Phoenix comes with [MIT](https://github.com/7ucg/Phoenix-MD/blob/main/LICENSE.md) License which means you can use it as a `base for your own bot` and can `modify it as you want` and can `add your own features`.
 
 </details> 
     
@@ -621,7 +621,7 @@ https://gist.githubusercontent.com/FantoX/2de67bc72021805417cbd317385ea71a/raw/f
 
 # 🧣 Contributors:
 
-- Check [Phoenix Contributors](https://github.com/FantoX/Phoenix-MD/graphs/contributors) list.
+- Check [Phoenix Contributors](https://github.com/7ucg/Phoenix-MD/graphs/contributors) list.
 - Feel free to contribute in this project it increase it's stability and update. I will merge your respected contribution after reviewing it.
 - No personal modification / re-branding ( Changing bot name, owner name ) pull requests will be merged !
     

@@ -105,7 +105,7 @@ module.exports = {
 
         const allCommands = readUniqueCommands(pluginsDir);
         const formattedCommands = formatCommands(allCommands);
-        var helpText = `\nKonnichiwa *${pushName}* Senpai,\n\nI am *${botName}*, a WhatsApp bot built to take your boring WhatsApp experience into next level.\n\n*🔖 My Prefix is:*  ${prefix}\n\n${formattedCommands}\n\n\n*©️ Team Phoenix- 2023*`;
+        var helpText = `\nKonnichiwa *${pushName}* Senpai,\n\nI am *${botName}*, a WhatsApp bot built to take your boring WhatsApp experience into next level.\n\n*🔖 My Prefix is:*  ${prefix}\n\n${formattedCommands}\n\n\n*©️ Team Phoenix- 2024*`;
         await Phoenix.sendMessage(
           m.from,
           { video: { url: botVideo }, gifPlayback: true, caption: helpText },
@@ -119,7 +119,7 @@ module.exports = {
       case "about":
         await doReact("🔰");
         let xyz = await axios.get(
-          "https://api.github.com/repos/FantoX/Phoenix-MD/releases"
+          "https://api.github.com/repos/7ucg/Phoenix-MD/releases"
         );
         let latest = xyz.data[0].tag_name;
         const version2 = package.version;
