@@ -36,7 +36,7 @@ module.exports = {
   ],
   description: "All Economy / Gambling related commands",
   start: async (
-    Phoenix,
+    Atlas,
     m,
     { pushName, prefix, inputCMD, doReact, text, args }
   ) => {
@@ -67,12 +67,12 @@ module.exports = {
           caption: `\n🏦 *${pushname}'s Bank*:\n\n🪙 Balance: ${balance.bank}/${balance.bankCapacity}\n\n\n*Wealth: ${role}*\n`,
         };
 
-        await Phoenix.sendMessage(m.from, buttonMessage, { quoted: m });
+        await Atlas.sendMessage(m.from, buttonMessage, { quoted: m });
         break;
 
       case "capacity":
         if (!text) {
-          return Phoenix.sendMessage(
+          return Atlas.sendMessage(
             m.from,
             {
               text: `『  *Bank 💴 Capacity*  』\n\n1 | *1000 sp* = 100 💎\n\n2 | *100000 sp* = 1000 💎\n\n3 | *10000000 sp* = 10000000 💎\n\nExample: *${prefix}capacity 1* OR *${prefix}bankupgrade 1000*`,
@@ -93,7 +93,7 @@ module.exports = {
               );
             await eco.deduct(user, cara, 100);
             await eco.giveCapacity(user, cara, 1000);
-            await Phoenix.sendMessage(
+            await Atlas.sendMessage(
               m.from,
               { text: `*1000 💎 storage has been added in ${pushname} bank*` },
               { quoted: m }
@@ -107,7 +107,7 @@ module.exports = {
               );
             await eco.deduct(user, cara, 1000);
             await eco.giveCapacity(user, cara, 10000);
-            await Phoenix.sendMessage(
+            await Atlas.sendMessage(
               m.from,
               {
                 text: `*10000 💎 storage has been added in *${pushname}'s* bank*`,
@@ -123,7 +123,7 @@ module.exports = {
               );
             await eco.deduct(user, cara, 10000);
             await eco.giveCapacity(user, cara, 100000);
-            await Phoenix.sendMessage(
+            await Atlas.sendMessage(
               m.from,
               {
                 text: `*100000 💎 storage has been added in *${pushname}'s* bank*`,
@@ -165,7 +165,7 @@ module.exports = {
             `*Your Deposit ammount should be less than or equal to your wallet balance!*`
           );
 
-        await Phoenix.sendMessage(
+        await Atlas.sendMessage(
           m.from,
           {
             image: debitCard,
@@ -226,7 +226,7 @@ module.exports = {
           );
         if (r == opp) {
           await eco.give(user, cara, twice);
-          await Phoenix.sendMessage(
+          await Atlas.sendMessage(
             m.from,
             {
               image: debitCard,
@@ -246,7 +246,7 @@ module.exports = {
         try {
           let h = await eco.lb("cara", 10);
           if (h.length === 0) {
-            return Phoenix.sendMessage(
+            return Atlas.sendMessage(
               m.from,
               { text: "No users found on leaderboard." },
               { quoted: m }
@@ -263,7 +263,7 @@ module.exports = {
             if (username && username.name) {
               tname = username.name;
             } else {
-              tname = Phoenix.getName(h[i].userID);
+              tname = Atlas.getName(h[i].userID);
             }
             str += `*${
               i + 1
@@ -276,14 +276,14 @@ module.exports = {
             }_\n╰─────────────◆\n\n`;
             arr.push(h[i].userID);
           }
-          await Phoenix.sendMessage(
+          await Atlas.sendMessage(
             m.from,
             { text: str, mentions: arr },
             { quoted: m }
           );
         } catch (err) {
           console.log(err);
-          return Phoenix.sendMessage(
+          return Atlas.sendMessage(
             m.from,
             {
               text: `An internal error occurred while fetching the leaderboard.`,
@@ -430,7 +430,7 @@ module.exports = {
         await doReact("💴");
         if (value[0] === "") return m.reply(`Use ${prefix}transfer 100 @user`);
         if (!text && !m.quoted) {
-          return Phoenix.sendMessage(
+          return Atlas.sendMessage(
             m.from,
             { text: `Please tag any user ${pushName} senpai 🤦‍♂️ !` },
             { quoted: m }
@@ -458,7 +458,7 @@ module.exports = {
         await eco.deduct(user1, cara, value[0]);
         await eco.give(user2, cara, value[0]);
 
-        await Phoenix.sendMessage(
+        await Atlas.sendMessage(
           m.from,
           {
             image: debitCard,
@@ -473,7 +473,7 @@ module.exports = {
         await doReact("💲");
         user = m.sender;
         balance = await eco.balance(user, cara);
-        await Phoenix.sendMessage(
+        await Atlas.sendMessage(
           m.from,
           {
             image: debitCard,
@@ -493,7 +493,7 @@ module.exports = {
         withdraw = await eco.withdraw(user, cara, query);
         if (withdraw.noten) return m.reply("*🏧 Insufficient fund in bank*");
         await eco.give(user, cara, query);
-        Phoenix.sendMessage(
+        Atlas.sendMessage(
           m.from,
           {
             image: debitCard,

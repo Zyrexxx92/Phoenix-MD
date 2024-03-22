@@ -188,9 +188,7 @@ m.reply(` *━━━〈 🦁ღĹíőͥńͣ BͫØ₸ღ Team🦁 〉━━━*
 -💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
 -💻 *(Name)* (Hoster)
 
-\n📛 Wir bemühen uns, euch zeitnah zu antworten, und bitten höflich darum, kein Spam zu 
-versenden. \n\n Um eine Supportanfrage zu stellen,benutzt bitte ${prefix}support gefolgt von 
-eurem Anliegen.\n\n✨️Danke für eure Unterstützung,euer Phoenix-Bot Team. `)
+\n*📛 Wir bemühen uns,* *euch zeitnah zu antworten,* *und bitten höflich darum,* *kein Spam zu versenden.* \n\n* Um eine Supportanfrage zu stellen,* *benutzt bitte ${prefix}support gefolgt von eurem Anliegen.*\n\n*✨️Danke für eure Unterstützung,euer Phoenix-Bot Team. *`)
 break;
        
 
