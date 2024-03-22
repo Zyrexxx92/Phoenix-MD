@@ -2,10 +2,10 @@
   "name": "phoenix",
   "version": "3.5.0",
   "description": "The future of WhatsApp bots with plugin support.",
-  "main": "index.js",
+  "main": "indexx.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --max-old-space-size=4096 index.js"
+    "start": "node --max-old-space-size=4096 indexx.js"
   },
   "repository": {
     "type": "git",
@@ -30,11 +30,12 @@
     "@fantox01/lyrics-scraper": "^1.0.1",
     "@hapi/boom": "^10.0.1",
     "@napi-rs/canvas": "^0.1.41",
-    "@whiskeysockets/baileys": "^6.2.1",
     "axios": "^1.2.2",
     "baileysjs": "^6.2.1",
     "canvacord": "^5.2.3",
+    "cfonts": "^3.2.0",
     "chalk": "^4.1.2",
+    "@whiskeysockets/baileys": "^6.2.1",
     "cheerio": "^1.0.0-rc.12",
     "child_process": "^1.0.2",
     "discord-mongoose-economy": "^1.2.0",
