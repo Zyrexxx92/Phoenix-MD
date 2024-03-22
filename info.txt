@@ -109,3 +109,12 @@
     }
   }
 }
+///////////////
+ Phoenix.sendMessage(
+            m.from,
+            {
+              video: { url: botVideo},
+              gifPlayback: true,
+              caption: textM,
+              mentions: xyz,
+            },

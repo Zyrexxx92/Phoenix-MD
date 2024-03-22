@@ -290,6 +290,7 @@ module.exports = async (Phoenix, m, commands, chatUpdate) => {
 
     global.botName = global[idConfig].botName;
     global.botVideo = global[idConfig].botVideo;
+    global.botImage = global[idConfig].botImage;
     global.botImage1 = global[idConfig].botImage1;
     global.botImage2 = global[idConfig].botImage2;
     global.botImage3 = global[idConfig].botImage3;

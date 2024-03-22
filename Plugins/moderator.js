@@ -238,16 +238,14 @@ module.exports = {
           if (modlistString != "" || ownerList.length != 0) {
             textM += `\n\n📛 *Don't Spam them to avoid Blocking !*\n\n🎀 For any help, type *${prefix}support* and ask in group.\n\n*💫 Thanks for using ${botName}. 💫*\n`;
           }
-
           Phoenix.sendMessage(
             m.from,
             {
-              video: { url: botVideo },
+              video: { url: botVideo},
               gifPlayback: true,
               caption: textM,
               mentions: xyz,
             },
-            { quoted: m }
           );
         } catch (err) {
           console.log(err);

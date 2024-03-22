@@ -36,6 +36,7 @@ Don't forget to change "charlist.js" and "setchar.js" inside "Plugins\moderator.
 global.charID0 = {
     botName : "Phoenix",
     botVideo : "https://graph.org/file/e3b2ee218b98b8679bf98.mp4",
+    botImage : "./Assets/Phoenix.jpg",
     botImage1 : "https://i.imgur.com/OWX9ZF1.jpg",
     botImage2 : "https://i.imgur.com/OWX9ZF1.jpg",
     botImage3 : "https://i.imgur.com/OWX9ZF1.jpg",
