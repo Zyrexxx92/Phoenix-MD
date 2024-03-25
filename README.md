@@ -7,7 +7,7 @@
 </h1>
 
 <p align="center"> 
-Konnichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="https://github.com/7ucg">Baron</a> and his team "Phoenix" to do everything that's beyond imagination with highest <b>Features</b> and <b>Stability</b> and <b>Compatibility</b> built with Baileys Multi Device support.
+Konichiwa Senpai, I am "Phoenix" an Opensource WhatsApp bot made by <a href="https://github.com/7ucg">Baron</a> and his team "Phoenix" to do everything that's beyond imagination with highest <b>Features</b> and <b>Stability</b> and <b>Compatibility</b> built with Baileys Multi Device support.
 
 <h3 align="center"> Phoenix Bot - The Future Is Here
 </h4>
