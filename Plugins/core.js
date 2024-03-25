@@ -188,12 +188,12 @@ m.reply(` *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━�
 *High Team* :
 
 -👑 *Ɛ×ͥΐզͣօͫή* (Inhaber)
--👑 *𝕯𝖆𝖗𝖙𝖍 𝕾𝖎𝖉𝖎𝖔𝖚𝖘* (Inhaber)
+-👑 *Baron*  (Inhaber)
 
 *Teamleitung* :
 
--👀 *GoldtraderJD* (Leitung)
--👀 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Stv.Leitung)
+-👀 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Leitung)
+-👀 *(Name)* (Stv.Leitung)
 
 *Community-Manager* : 
 
@@ -222,8 +222,8 @@ m.reply(` *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━�
 *Hoster-Team*:
 
 -💎 *Ɛ×ͥΐզͣօͫή* (Leitung)
--💻 *GoldtraderJD* (Hoster)
 -💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
+-💻 *(Name)* (Hoster)
 -💻 *(Name)* (Hoster)
 
 \n* Um eine Supportanfrage zu stellen,* *benutzt bitte /support gefolgt von eurem Anliegen.*
