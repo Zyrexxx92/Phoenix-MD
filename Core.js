@@ -733,7 +733,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "✅", key: m.key } })
 
-        let { data } = await axios.get('https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4');
+        let { data } = await axios.get('https://github.com/7ucg/Phoenix-MD');
         teks = `
 ┌───────────────       
 │ *®-ᴄʏʙᴇʀ-ᴘᴀɴᴅᴀ-ᴍᴅ*
@@ -742,7 +742,7 @@ Typed *surrender* to surrender and admited defeat`
 ├───────────────
 │ *Total Forks* ${data.forks_count} forks
 ├───────────────
-│ *GitHub* https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4
+│ *GitHub* https://github.com/7ucg/Phoenix-MD
 ├───────────────
 │ *ꜱᴀᴄʜɪᴛʜ ᴄʜᴀɴᴅʀᴀ*
 └────────────────`
@@ -764,8 +764,8 @@ Typed *surrender* to surrender and admited defeat`
               mediaType: 1,
               //mediaUrl: 'https://wallpapercave.com/wp/wp10524580.jpg',
               //sourceUrl: "https://wallpapercave.com/wp/wp10524580.jpg"
-              mediaUrl: 'github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4',
-              sourceUrl: "github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4"
+              mediaUrl: 'github.com/7ucg/Phoenix-MD',
+              sourceUrl: "github.com/7ucg/Phoenix-MD"
             }
           }
 
@@ -849,7 +849,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
 
         A17.sendMessage(from, { react: { text: "💫", key: m.key } })
-        reply(`⚙ My Source Code is </> - https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4`)
+        reply(`⚙ My Source Code is </> - https://github.com/7ucg/Phoenix-MD`)
       }
         break;
 
@@ -2762,7 +2762,7 @@ Typed *surrender* to surrender and admited defeat`
         A17.sendMessage(from, { react: { text: "💞", key: m.key } });
 
         if (!args[0]) {
-          return reply(`Please provide the GitHub repository link.\nExample:\n${prefix}${command} https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4
+          return reply(`Please provide the GitHub repository link.\nExample:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
 🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋
           `);
         }
@@ -5158,7 +5158,7 @@ _Click the button below to download_`
         const YT = require('./lib/ytdl-core')
         const ytmp3play2 = await YT.mp3(text)
 
-        await A17.sendMessage(from, { document: fs.readFileSync(ytmp3play2.path), fileName: 'CYBER-PANDA-MD_YTmp3_Downloader.mp3', mimetype: 'audio/mpeg', }, { quoted: m })
+        await A17.sendMessage(from, { document: fs.readFileSync(ytmp3play2.path), fileName: 'PHOENIX-Md_YTmp3_Downloader.mp3', mimetype: 'audio/mpeg', }, { quoted: m })
       }
         break;
 
@@ -5169,7 +5169,7 @@ _Click the button below to download_`
         A17.sendMessage(from, { react: { text: "🍁", key: m.key } })
         const YT = require('./lib/ytdl-core')
         const ytmp4play2 = await YT.mp4(text)
-        A17.sendMessage(from, { video: { url: ytmp4play2.videoUrl }, mimetype: "video/mp4", caption: '━━━❬❬🦋 *CYBER-PANDA-MD* 🦋❭❭ ━━━*', }, { quoted: m })
+        A17.sendMessage(from, { video: { url: ytmp4play2.videoUrl }, mimetype: "video/mp4", caption: '━━━❬❬🦋 *PHOENIX-Md* 🦋❭❭ ━━━*', }, { quoted: m })
       }
         break;
 

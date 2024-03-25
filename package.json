@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4.git"
+        "url": "git+https://github.com/7ucg/Phoenix-MD.git"
     },
     "keywords": [
         "md-bot"
@@ -20,9 +20,9 @@
     "author": "Kai",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4/issues"
+        "url": "https://github.com/7ucg/Phoenix-MD/issues"
     },
-    "homepage": "https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4#readme",
+    "homepage": "https://github.com/7ucg/Phoenix-MD#readme",
     "devDependencies": {
         "@adiwajshing/keyed-db": "^0.2.4",
         "@hapi/boom": "^10.0.1",

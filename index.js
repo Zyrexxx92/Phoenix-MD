@@ -51,7 +51,7 @@ const store = makeInMemoryStore({
 async function startA17() {
   console.log(
     color(
-      figlet.textSync("CYBER-PANDA-MD", {
+      figlet.textSync("PHOENIX-Md", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
@@ -69,7 +69,7 @@ async function startA17() {
   const A17 = A17Connect({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
-    browser: ["CYBER-PANDA-MD", "Safari", "3.O"],
+    browser: ["PHOENIX-Md", "Safari", "3.O"],
     auth: state,
   });
 

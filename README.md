@@ -27,7 +27,7 @@ ____________________
 <u>🎯 ＣＹＢＥＲ-ＰＡＮＤＡ-ＭＤ 🎯</u>
 </p>
 <p align="center">
-<img src="https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.3/assets/133668461/1f9ce998-691d-4394-ae3e-be7f3f51d4c6" width="300" height="300"/>
+<img src="https://github.com/7ucg/PHOENIX-Md.V.0.3/assets/133668461/1f9ce998-691d-4394-ae3e-be7f3f51d4c6" width="300" height="300"/>
 
 [![Typing SVG](http://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=FF0000&random=false&width=435&lines=%F0%9F%A6%8B+%E2%94%82%F0%9D%90%82%F0%9D%90%98%F0%9D%90%81%F0%9D%9C%A9%F0%9D%90%91%E2%94%82%F0%9D%90%8F%F0%9D%9C%9F%F0%9D%90%8D%F0%9D%90%83%F0%9D%90%80%E2%94%82%F0%9D%90%8C%F0%9D%90%83%E2%94%82%F0%9D%90%95%E2%9E%82+%F0%9F%A6%8B)](https://git.io/typing-svg)
  
@@ -72,7 +72,7 @@ ____________________
 
 ## Deploy Heroku 👇
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/7ucg/Phoenix-MD)
 
 ____________________
 

@@ -45,7 +45,7 @@ global.location = "HambanThota, Sri Lankan";
 global.reactmoji = "💞";
 global.themeemoji = "😂";
 global.vidmenu = { url: 'https://tenor.com/en-CA/view/anonymous-hacker-smooth-gif-10171911193797826570%9D%90%95-12-14' };
-global.websitex = "https://github.com/CYBER-x-SACHIYA-SL-MD-BOT/CYBER-PANDA-MD.V.0.4";
+global.websitex = "https://github.com/7ucg/Phoenix-MD";
 global.lolhuman = "Sachith";
 
 
