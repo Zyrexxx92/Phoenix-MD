@@ -84,11 +84,11 @@ global.mess = {
   botadmin: 'Sorry, i cant execute this command without being an *Admin* of this group.',
   botowner: 'Nur meine *Owner* können diesen Befehl benutzen!',
   grouponly: 'Dieser Befehl ist nur für *Gruppen* Verfügbar!',
-  privateonly: 'This command is only made for *Private Chat*, Baka!',
+  privateonly: 'Dieser Befehl ist nur für *Private Chats* Verfügbar!',
   botonly: 'Only the *Bot itself* can use this command!',
   waiting: '*Un momento por favor ich arbeite daran...*',
   nolink: 'Please provide me *link*, Baka!',
-  error: 'An error occurd!',
+  error: 'Error!',
   banned: 'You are *Banned* fron using commands!',
   bangc: 'This Group is *Banned* from using Commands!',
   nonsfw: 'Dont be a pervert Baka! This is not a NSFW enabled group!'
