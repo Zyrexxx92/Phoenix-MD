@@ -2916,7 +2916,7 @@ Typed *surrender* to surrender and admited defeat`
 
         const searchTerm = args.join(" ");
         modapk.happymod(searchTerm).then(async (res) => {
-          let teks = '```「 HappyMod Search Engine 」```';
+          let teks = '```「 HappyMod Suchmaschine 」```';
           for (let i of res) {
             teks += `\n\n${i.name}\n`;
             teks += `${i.link}`;
@@ -3239,9 +3239,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (args[0] === 'close') {
-          await A17.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`Group has been closed!`)).catch((err) => reply(jsonformat(err)))
+          await A17.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`*_DIE GRUPPE WURDE ERFOLGREICH GESCHLOSSEN_*.`)).catch((err) => reply(jsonformat(err)))
         } else if (args[0] === 'open') {
-          await A17.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Group has been opened!`)).catch((err) => reply(jsonformat(err)))
+          await A17.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`*_DIE GRUPPE WURDE ERFOLGREICH GEÖFFNET_*.`)).catch((err) => reply(jsonformat(err)))
         } else {
 
           let buttonMessage = {
@@ -3354,7 +3354,7 @@ Typed *surrender* to surrender and admited defeat`
           }).then(async (res) => {
             sizny = res.content[0].attrs.size
             if (sizny < 20) {
-              teks = `Sorry, munimun 20 members are required in a group to add bot!`
+              teks = `Sorry, minimun 20 members are required in a group to add bot!`
               sendOrder(m.chat, teks, "667140254502463", fs.readFileSync('./Assets/pic7.jpg'), `${global.packname}`, `${global.BotName}`, "916297175943@s.whatsapp.net", "AR6NCY8euY5cbS8Ybg5Ca55R8HFSuLO3qZqrIYCT7hQp0g==", "99999999999999999999")
             } else if (sizny > 20) {
               await A17.groupAcceptInvite(vcc).then(async (res) => reply(jsonformat(res))).catch(_ => _)
@@ -3426,7 +3426,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.botowner)
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), For Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
+        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
         if (args[1]) {
           orgnye = args[1] + "@s.whatsapp.net"
         } else if (m.quoted) {
@@ -6203,28 +6203,28 @@ _Click the button below to download_`
 ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ* 🎯 ••』──◈
 │╭────────────···▸▸
 ┴│
-❒│▸  *Uꜱᴇʀ :  ${pushname}* !!! ✅
-❒│▸  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
-❒│▸  *Tɪᴍᴇ : ${kaitime}* ⌚
-❒│▸  *Dᴀᴛᴇ : ${kaidate}* 📆
-❒│▸  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
-❒│▸  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
-❒│▸  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
-❒│▸  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Mʀ Sᴀᴄʜɪᴛʜ* 
-┬│   *ᴄʏʙᴇʀ-ᴘᴀɴᴅᴀ-ᴍᴅ*
+  │⊳  *Uꜱᴇʀ :  ${pushname}* !!! ✅
+  │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
+  │⊳  *Tɪᴍᴇ : ${kaitime}* ⌚
+  │⊳  *Dᴀᴛᴇ : ${kaidate}* 📆
+  │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
+  │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
+  │⊳  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
+  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Mʀ Sᴀᴄʜɪᴛʜ* 
+┬│   *Phoenix-MD*
 │╰───────────···▸▸
 └──────────────···▸▸▸
 ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ* 🎯 ••』──◈
 │╭────────────···▸▸
 ┴│
-❒│▸ *${prefix}1.1*  *ʙᴏᴛᴍᴇɴᴜ*
-❒│▸ *${prefix}1.2*  *ᴏᴡɴᴇʀᴍᴇɴᴜ*
-❒│▸ *${prefix}1.3*  *ɢʀᴏᴜᴘᴍᴇɴᴜ*
-❒│▸ *${prefix}1.4*  *ᴀɴᴛɪʟɪɴᴋ*
-❒│▸ *${prefix}1.5*  *searchmenu*
-❒│▸ *${prefix}1.6*  *ᴄᴏɴᴠᴇʀᴛ*
-❒│▸ *${prefix}1.7*  *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*
-❒│▸ *${prefix}1.8*  *ɢᴀᴍᴇ-ᴍᴇɴᴜ*
+  │⊳ *${prefix}1.1*  *ʙᴏᴛᴍᴇɴᴜ*
+  │⊳ *${prefix}1.2*  *ᴏᴡɴᴇʀᴍᴇɴᴜ*
+  │⊳ *${prefix}1.3*  *ɢʀᴏᴜᴘᴍᴇɴᴜ*
+  │⊳ *${prefix}1.4*  *ᴀɴᴛɪʟɪɴᴋ*
+  │⊳ *${prefix}1.5*  *searchmenu*
+  │⊳ *${prefix}1.6*  *ᴄᴏɴᴠᴇʀᴛ*
+  │⊳ *${prefix}1.7*  *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*
+  │⊳ *${prefix}1.8*  *ɢᴀᴍᴇ-ᴍᴇɴᴜ*
 ┬│
 │╰───────────···▸▸
 └──────────────···▸▸▸`
@@ -6250,15 +6250,15 @@ _Click the button below to download_`
 ┌──『•• 🎯 *ᴀʟɪᴠᴇ* 🎯 ••』──◈
 │╭────────────···▸▸
 ┴│
-❒│▸  *Uꜱᴇʀ :  ${pushname}* !!! ✅
-❒│▸  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
-❒│▸  *Tɪᴍᴇ : ${kaitime}* ⌚
-❒│▸  *Dᴀᴛᴇ : ${kaidate}* 📆
-❒│▸  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
-❒│▸  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
-❒│▸  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
-❒│▸  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Mʀ Sᴀᴄʜɪᴛʜ* 
-┬│   *ᴄʏʙᴇʀ-ᴘᴀɴᴅᴀ-ᴍᴅ*
+  │⊳  *Uꜱᴇʀ :  ${pushname}* !!! ✅
+  │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
+  │⊳  *Tɪᴍᴇ : ${kaitime}* ⌚
+  │⊳  *Dᴀᴛᴇ : ${kaidate}* 📆
+  │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
+  │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
+  │⊳  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
+  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Mʀ Sᴀᴄʜɪᴛʜ* 
+┬│   *Phoenix-MD*
 │╰───────────···▸▸
 └──────────────···▸▸▸`)
         }
