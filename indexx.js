@@ -70,5 +70,4 @@ function start(file) {
     })
   // console.log(p)
 }
-
 start('index.js')

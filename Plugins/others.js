@@ -17,7 +17,7 @@ module.exports = {
         if (!text) {
           await doReact("❔");
           return m.reply(
-            `Please provide an URL to convert into QR code!\n\nExample: *${prefix}toqr https://github.com/FantoX001*`
+            `Bitte gebe einen Link ein!\n\nBeispiel: *${prefix}toqr https://baron.x10.bz*`
           );
         }
 

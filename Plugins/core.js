@@ -52,7 +52,7 @@ module.exports = {
   start: async (
     Phoenix,
     m,
-    { pushName, prefix, inputCMD, doReact, text, args, userNumber, user}
+    { pushName, prefix, inputCMD, doReact, text, args, participants, isCreator }
   ) => {  
     
     const pushname = m.pushName || `${botName} User`;
@@ -123,11 +123,13 @@ module.exports = {
               file.replace(".js", "").charAt(0).toUpperCase() +
               file.replace(".js", "").slice(1);
 
-            formatted += `┌──⊰ _*${capitalizedFile}*_\n`;
-            formatted += `\`\`\`${commands
-              .map((cmd) => `│⊳${prefix + cmd}`)
-              .join("\n")}\`\`\`\n\n\n`;
+              formatted += `┌──⊰ _*${capitalizedFile}*_\n`;
+              formatted += `\`\`\`${commands.map((cmd) => `│⊳${prefix + cmd}`).join("\n")}\`\`\`\n`;
+              formatted += `└──────────⊰\n`;
+              
+              
           }
+           
 
           return formatted.trim();
         }
@@ -136,7 +138,7 @@ module.exports = {
 
         const allCommands = readUniqueCommands(pluginsDir);
         const formattedCommands = formatCommands(allCommands);
-        var helpText = `\nKonnichiwa *${pushName}* Senpai,\n\nI am *${botName}*, a WhatsApp bot built to take your boring WhatsApp experience into next level.\n\n*🔖 My Prefix is:*  ${prefix}\n\n${formattedCommands}\n└──────────⊰\n\n*©️ Team Phoenix- 2024*`;
+        var helpText = `\nKonnichiwa *${pushName}* Senpai,\n\nI am *${botName}*, a WhatsApp bot built to take your boring WhatsApp experience into next level.\n\n*🔖 My Prefix is:*  ${prefix}\n\n${formattedCommands}\n\n*©️ Team Phoenix- 2024*`;
         await Phoenix.sendMessage(
           m.from,
           { video: { url: botVideo }, gifPlayback: true, caption: helpText },
@@ -183,17 +185,17 @@ break;
 case 'team': 
 await doReact("👀");
 
-m.reply(` *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━━*
+m.reply(`  *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━━*
 
 *High Team* :
 
 -👑 *Ɛ×ͥΐզͣօͫή* (Inhaber)
--👑 *𝕯𝖆𝖗𝖙𝖍 𝕾𝖎𝖉𝖎𝖔𝖚𝖘* (Inhaber)
+-👑 *Baron*  (Inhaber)
 
 *Teamleitung* :
 
--👀 *GoldtraderJD* (Leitung)
--👀 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Stv.Leitung)
+-👀 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Leitung)
+-👀 *(Name)* (Stv.Leitung)
 
 *Community-Manager* : 
 
@@ -222,8 +224,8 @@ m.reply(` *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━�
 *Hoster-Team*:
 
 -💎 *Ɛ×ͥΐզͣօͫή* (Leitung)
--💻 *GoldtraderJD* (Hoster)
 -💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
+-💻 *(Name)* (Hoster)
 -💻 *(Name)* (Hoster)
 
 \n* Um eine Supportanfrage zu stellen,* *benutzt bitte /support gefolgt von eurem Anliegen.*

@@ -5,10 +5,21 @@ const axios = require("axios");
 const prefix = global.prefa;
 const { QuickDB, JSONDriver } = require("quick.db");
 global.Levels = require("discord-xp");
-module.exports = async (Phoenix, m, commands, chatUpdate) => {
+module.exports = async (Phoenix, m, commands, conn, chatUpdate) => {
   try {
     const jsonDriver = new JSONDriver();
     const db = new QuickDB({ driver: jsonDriver });
+    if (!Array.prototype.find) {
+      Array.prototype.find = function(callback, thisArg) {
+        for (var i = 0; i < this.length; i++) {
+          if (callback.call(thisArg, this[i], i, this)) {
+            return this[i];
+          }
+        }
+        return undefined;
+      };
+    }
+    
 
     //Levels.setURL(mongodb);
     let { type, isGroup, sender, from } = m;
@@ -83,6 +94,7 @@ module.exports = async (Phoenix, m, commands, chatUpdate) => {
       };
       await Phoenix.sendMessage(m.from, reactm);
     }
+   
     const cmdName = response
       .slice(prefix.length)
       .trim()
@@ -106,33 +118,44 @@ module.exports = async (Phoenix, m, commands, chatUpdate) => {
         ? m.message.extendedTextMessage.contextInfo.mentionedJid
         : [];
 
-    if (m.message && isGroup) {
-      console.log(
-        "" + "\n" + chalk.black(chalk.bgWhite("[ GROUP ]")),
-        chalk.black(
-          chalk.bgBlueBright(isGroup ? metadata.subject : m.pushName)
-        ) +
-          "\n" +
-          chalk.black(chalk.bgWhite("[ SENDER ]")),
-        chalk.black(chalk.bgBlueBright(m.pushName)) +
-          "\n" +
-          chalk.black(chalk.bgWhite("[ MESSAGE ]")),
-        chalk.black(chalk.bgBlueBright(body || type)) + "\n" + ""
-      );
-    }
-    if (m.message && !isGroup) {
-      console.log(
-        "" + "\n" + chalk.black(chalk.bgWhite("[ PRIVATE CHAT ]")),
-        chalk.black(chalk.bgRedBright("+" + m.from.split("@")[0])) +
-          "\n" +
-          chalk.black(chalk.bgWhite("[ SENDER ]")),
-        chalk.black(chalk.bgRedBright(m.pushName)) +
-          "\n" +
-          chalk.black(chalk.bgWhite("[ MESSAGE ]")),
-        chalk.black(chalk.bgRedBright(body || type)) + "\n" + ""
-      );
-    }
-    //if (body.startsWith(prefix) && !icmd)  return Phoenix.sendMessage(m.from, { text: "Baka no such command" });
+    if (m.message && m.isGroup) {
+            
+			console.log(chalk.redBright(`\n\nGroup Chat:`))
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(groupName, m.chat))
+        } else {
+            
+			console.log(chalk.redBright(`\n\nPrivate Chat:`))
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
+        }
+    if (body.startsWith(prefix) && !icmd)  return Phoenix.sendMessage(m.from, { text: "Baka no such command" });
+
+   
+
+    // Anti Spam Protection
+    const spamProtection = new Map();
+
+    const isUserSpamming = (sender, commands) => {
+        if (spamProtection.has(sender)) {
+            const userData = spamProtection.get(sender);
+            const { lastCommandTime, commandsCount } = userData;
+            const currentTime = Date.now();
+            const timeDifference = currentTime - lastCommandTime;
+            if (timeDifference < 2 * 60 * 1000) { // 2 minutes
+                userData.commandCount += 1;
+                if (userData.commandCount >= 8) {
+                    userData.timeout = currentTime + 5 * 60 * 1000; // 5 minutes timeout
+                    return true;
+                }
+            } else {
+                userData.commandCount = 1;
+                userData.lastCommandTime = currentTime;
+            }
+            spamProtection.set(sender, userData);
+        } else {
+            spamProtection.set(sender, { lastCommandTime: Date.now(), commandCount: 1 });
+        }
+        return false;
+    };
 
     // ----------------------------- System Configuration (Do not modify this part) ---------------------------- //
 
@@ -290,7 +313,6 @@ module.exports = async (Phoenix, m, commands, chatUpdate) => {
 
     global.botName = global[idConfig].botName;
     global.botVideo = global[idConfig].botVideo;
-    global.botImage = global[idConfig].botImage;
     global.botImage1 = global[idConfig].botImage1;
     global.botImage2 = global[idConfig].botImage2;
     global.botImage3 = global[idConfig].botImage3;
@@ -347,6 +369,6 @@ module.exports = async (Phoenix, m, commands, chatUpdate) => {
     });
   } catch (e) {
     e = String(e);
-    if (!e.includes("cmd.start")) console.error(e);
+    if (!e.includes("cmd.start")) console.log(e);
   }
 };

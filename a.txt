@@ -550,8 +550,8 @@ process {
 
 
   "@adiwajshing/keyed-db": "^0.2.4",
-    "@whiskeysockets/baileys": "^6.2.1",
-    "baileysjs": "^6.2.1",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "baileysjs": "^6.2.2",
 
       "peerDependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",

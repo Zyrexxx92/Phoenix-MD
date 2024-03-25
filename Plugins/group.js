@@ -352,7 +352,7 @@ module.exports = {
         }*\n\n_🧩 Group Description:_\n${desc}\n\n_👑 Group Owner:_ @${
           metadata.owner.split("@")[0]
         }\n_💫 Group Created on:_ *${moment(`${metadata.creation}` * 1000)
-          .tz("Asia/Kolkata")
+          .tz("Europe/Berlin")
           .format("DD/MM/YYYY")}*\n_📛 Total Admins:_ *${
           groupAdmins.length
         }*\n_🎈 Total Participants:_ *${metadata.participants.length}*\n`;

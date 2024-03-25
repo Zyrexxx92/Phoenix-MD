@@ -107,7 +107,7 @@ exports.getTime = (format, date) => {
   if (date) {
     return moment(date).locale("id").format(format);
   } else {
-    return moment.tz("Asia/Jakarta").locale("id").format(format);
+    return moment.tz("Europe/Berlin").locale("id").format(format);
   }
 };
 
@@ -155,7 +155,7 @@ exports.tanggal = (numer) => {
     thisDay = myDays[thisDay];
   var yy = tgl.getYear();
   var year = yy < 1000 ? yy + 1900 : yy;
-  const time = moment.tz("Asia/India").format("DD/MM HH:mm:ss");
+  const time = moment.tz("Europe/Berlin").format("DD/MM HH:mm:ss");
   let d = new Date();
   let locale = "id";
   let gmt = new Date(0).getTime() - new Date("1 January 1970").getTime();
@@ -253,11 +253,11 @@ exports.GIFBufferToVideoBuffer = async (image) => {
 
 /**
  * Serialize Message
- * @param {WAConnection} conn
+ * @param {WAPhoenixxection} Phoenixx
  * @param {Object} m
  * @param {store} store
  */
-exports.smsg = (conn, m, store) => {
+exports.smsg = (Phoenixx, m, store) => {
   if (!m) return m;
   let M = proto.WebMessageInfo;
   if (m.key) {
@@ -266,14 +266,14 @@ exports.smsg = (conn, m, store) => {
     m.chat = m.key.remoteJid;
     m.fromMe = m.key.fromMe;
     m.isGroup = m.chat.endsWith("@g.us");
-    m.sender = conn.decodeJid(
-      (m.fromMe && conn.user.id) ||
+    m.sender = Phoenixx.decodeJid(
+      (m.fromMe && Phoenixx.user.id) ||
         m.participant ||
         m.key.participant ||
         m.chat ||
         ""
     );
-    if (m.isGroup) m.participant = conn.decodeJid(m.key.participant) || "";
+    if (m.isGroup) m.participant = Phoenixx.decodeJid(m.key.participant) || "";
   }
   if (m.message) {
     m.mtype = getContentType(m.message);
@@ -311,8 +311,8 @@ exports.smsg = (conn, m, store) => {
       m.quoted.isBaileys = m.quoted.id
         ? m.quoted.id.startsWith("BAE5") && m.quoted.id.length === 16
         : false;
-      m.quoted.sender = conn.decodeJid(m.msg.contextInfo.participant);
-      m.quoted.fromMe = m.quoted.sender === (conn.user && conn.user.id);
+      m.quoted.sender = Phoenixx.decodeJid(m.msg.contextInfo.participant);
+      m.quoted.fromMe = m.quoted.sender === (Phoenixx.user && Phoenixx.user.id);
       m.quoted.text =
         m.quoted.text ||
         m.quoted.caption ||
@@ -326,8 +326,8 @@ exports.smsg = (conn, m, store) => {
         : [];
       m.getQuotedObj = m.getQuotedMessage = async () => {
         if (!m.quoted.id) return false;
-        let q = await store.loadMessage(m.chat, m.quoted.id, conn);
-        return exports.smsg(conn, q, store);
+        let q = await store.loadMessage(m.chat, m.quoted.id, Phoenixx);
+        return exports.smsg(Phoenixx, q, store);
       };
       let vM = (m.quoted.fakeObj = M.fromObject({
         key: {
@@ -344,7 +344,7 @@ exports.smsg = (conn, m, store) => {
        * @returns
        */
       m.quoted.delete = () =>
-        conn.sendMessage(m.quoted.chat, { delete: vM.key });
+        Phoenixx.sendMessage(m.quoted.chat, { delete: vM.key });
 
       /**
        *
@@ -354,16 +354,16 @@ exports.smsg = (conn, m, store) => {
        * @returns
        */
       m.quoted.copyNForward = (jid, forceForward = false, options = {}) =>
-        conn.copyNForward(jid, vM, forceForward, options);
+        Phoenixx.copyNForward(jid, vM, forceForward, options);
 
       /**
        *
        * @returns
        */
-      m.quoted.download = () => conn.downloadMediaMessage(m.quoted);
+      m.quoted.download = () => Phoenixx.downloadMediaMessage(m.quoted);
     }
   }
-  if (m.msg.url) m.download = () => conn.downloadMediaMessage(m.msg);
+  if (m.msg.url) m.download = () => Phoenixx.downloadMediaMessage(m.msg);
   m.text =
     m.msg.text ||
     m.msg.caption ||
@@ -380,12 +380,12 @@ exports.smsg = (conn, m, store) => {
    */
   m.reply = (text, chatId = m.chat, options = {}) =>
     Buffer.isBuffer(text)
-      ? conn.sendMedia(chatId, text, "file", "", m, { ...options })
-      : conn.sendText(chatId, text, m, { ...options });
+      ? Phoenixx.sendMedia(chatId, text, "file", "", m, { ...options })
+      : Phoenixx.sendText(chatId, text, m, { ...options });
   /**
    * Copy this message
    */
-  m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)));
+  m.copy = () => exports.smsg(Phoenixx, M.fromObject(M.toObject(m)));
 
   /**
    *
@@ -395,7 +395,7 @@ exports.smsg = (conn, m, store) => {
    * @returns
    */
   m.copyNForward = (jid = m.chat, forceForward = false, options = {}) =>
-    conn.copyNForward(jid, m, forceForward, options);
+    Phoenixx.copyNForward(jid, m, forceForward, options);
 
   return m;
 };

@@ -167,7 +167,7 @@ module.exports = {
         if (!text) {
           await doReact("❔");
           return m.reply(
-            `Please provide an ringtone Search Term !\n\n*${prefix}weather Kolkata*`
+            `Please provide an ringtone Search Term !\n\n*${prefix}weather Berlin*`
           );
 
         }

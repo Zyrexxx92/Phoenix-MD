@@ -125,7 +125,7 @@ module.exports = {
           "Mention the incident that makes you hurt that you still remember",
           "what achievements have you got this year?",
           "what was your worst habit at school?",
-          "do you love the bot creator Fantox?",
+          "do you love the bot creator Baron?",
           "have you ever thought of taking revenge from ur teacher?",
           "do you like current prime minister of ur country",
           "you non veg or veg",
@@ -227,7 +227,7 @@ module.exports = {
           "shout you bastard in front of your mom/papa",
           "change the name to i am idiot for 24 hours",
           "slap urself firmly and send the sound of slap through voice note😂",
-          "say i love the bot owner Fantox through voice note",
+          "say i love the bot owner Baron through voice note",
           "send your gf/bf pic here",
           "make any tiktok dance challenge video and put it on status, u can delete it after 5hrs",
           "breakup with your best friend for 5hrs without telling him/her that its a dare",
@@ -290,7 +290,7 @@ module.exports = {
             );
           })
           .catch((err) => {
-            m.reply(`An error occurred.`);
+            m.reply(`Error.`);
           });
         break;
 
@@ -307,7 +307,7 @@ module.exports = {
           await doReact("❌");
           return Phoenix.sendMessage(
             m.from,
-            { text: `Please tag a user to use this command!` },
+            { text: `Bitte markiere einen Benutzer,um diesen Befehl zu verwenden!` },
             { quoted: m }
           );
         } else if (m.quoted) {
@@ -338,7 +338,7 @@ module.exports = {
           await doReact("❌");
           return Phoenix.sendMessage(
             m.from,
-            { text: `Please tag a user to use this command!` },
+            { text: `Bitte markiere einen Benutzer,um diesen Befehl zu verwenden!` },
             { quoted: m }
           );
         } else if (m.quoted) {
@@ -366,9 +366,9 @@ module.exports = {
         const userCharacterSeletion =
           userChar[Math.floor(Math.random() * userChar.length)];
 
-        let Phoenixtext4 = `Character Check Of : @${
+        let Phoenixtext4 = `Character Check von : @${
           mentionedUser.split("@")[0]
-        }\n\nAnswer : *${userCharacterSeletion}*`;
+        }\n\nAntwort : *${userCharacterSeletion}*`;
 
         Phoenix.sendMessage(
           m.from,

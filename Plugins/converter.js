@@ -79,7 +79,7 @@ module.exports = {
         if (!m.quoted && !/webp/.test(mime)) {
           await doReact("❔");
           return reply(
-            `Please reply to an *Animated* sticker to convert it to video !`
+            `Bitte reagiere auf den Befehl mit einem Sticker!`
           );
         }
         await doReact("🎴");
@@ -101,7 +101,7 @@ module.exports = {
         if (!m.quoted && !/webp/.test(mime)) {
           await doReact("❔");
           return m.reply(
-            `Please reply to an *Animated* sticker to convert it to gif !`
+            `Bitte reagiere auf den Befehl mit einem Sticker!`
           );
         }
         await doReact("🎴");
@@ -209,7 +209,7 @@ module.exports = {
             return Phoenix.sendMessage(
               m.from,
               {
-                text: `*Your video size is too big!*\n\n*Max video size:* 5MB`,
+                text: `*Error!*\n\n*Maximale Größe:* 5MB`,
               },
               { quoted: m }
             );
@@ -277,19 +277,19 @@ module.exports = {
             await doReact("❌");
             console.error(error);
             return m.reply(
-              `An error occurred while converting the image to PDF.`
+              `Error.`
             );
           }
         } else {
           await doReact("❔");
-          return m.reply(`Please reply to an *Image* to convert it to PDF!`);
+          return m.reply(`Bitte reagiere auf ein *Bild*, um es in eine PDF Datei zu konvertieren!`);
         }
         break;
       case "toqr":
         if (!text) {
           await doReact("❔");
           return m.reply(
-            `Please provide an URL to convert into QR code!\n\nExample: *${prefix}toqr https://github.com/FantoX001*`
+            `Bitte gebe einen Link ein!\n\nBeispiel: *${prefix}toqr https://baron.x10.bz*`
           );
         }
 

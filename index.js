@@ -182,7 +182,24 @@ const startPhoenix = async () => {
       QR_GENERATE = qr;
     }
   });
+// Beispielarray
+const myArray = [1, 2, 3, 4, 5];
+// Überprüfen, ob das Array definiert und nicht leer ist
+if (myArray && myArray.length > 0) {
+  // Anwenden der find-Methode auf das Array
+  const result = myArray.find(item => item === 3);
 
+  // Überprüfen, ob ein Ergebnis gefunden wurde
+  if (result !== undefined) {
+    console.log('Element gefunden:', result);
+  } else {
+    console.log('Element nicht gefunden');
+  }
+} else {
+  console.log('Das Array ist entweder nicht definiert oder leer');
+}
+
+  
   Phoenix.ev.on("group-participants.update", async (m) => {
     welcomeLeft(Phoenix, m);
   });
