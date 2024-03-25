@@ -42,7 +42,7 @@
     "discord-xp": "^1.1.16",
     "discord.js": "^14.8.0",
     "dotenv": "^16.1.4",
-    "express": "^4.18.2",
+    "express": "^4.19.1",
     "figlet": "^1.5.2",
     "file-type": "^16.5.4",
     "fluent-ffmpeg": "^2.1.2",

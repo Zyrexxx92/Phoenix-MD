@@ -30,6 +30,8 @@ let mergedCommands = [
   "team"
 ];
 
+
+
 module.exports = {
   name: "systemcommands",
   alias: [...mergedCommands],
@@ -107,9 +109,9 @@ module.exports = {
               file.replace(".js", "").charAt(0).toUpperCase() +
               file.replace(".js", "").slice(1);
 
-            formatted += `╟   🏮 *${capitalizedFile}* 🏮   ╢\n\n`;
+            formatted += `┌──⊰ _*${capitalizedFile}*_\n`;
             formatted += `\`\`\`${commands
-              .map((cmd) => `⥼   ${prefix + cmd}`)
+              .map((cmd) => `│⊳${prefix + cmd}`)
               .join("\n")}\`\`\`\n\n\n`;
           }
 
@@ -120,7 +122,7 @@ module.exports = {
 
         const allCommands = readUniqueCommands(pluginsDir);
         const formattedCommands = formatCommands(allCommands);
-        var helpText = `\nKonnichiwa *${pushName}* Senpai,\n\nI am *${botName}*, a WhatsApp bot built to take your boring WhatsApp experience into next level.\n\n*🔖 My Prefix is:*  ${prefix}\n\n${formattedCommands}\n\n\n*©️ Team Phoenix- 2024*`;
+        var helpText = `\nKonnichiwa *${pushName}* Senpai,\n\nI am *${botName}*, a WhatsApp bot built to take your boring WhatsApp experience into next level.\n\n*🔖 My Prefix is:*  ${prefix}\n\n${formattedCommands}\n└──────────⊰\n\n*©️ Team Phoenix- 2024*`;
         await Phoenix.sendMessage(
           m.from,
           { video: { url: botVideo }, gifPlayback: true, caption: helpText },
@@ -128,24 +130,7 @@ module.exports = {
         );
 
         break;
-       // Define pad function
-function pad(s) {
-  return (s < 10 ? "0" : "") + s;
-}
-
-// Define formatTime function
-function formatTime(seconds) {
-  const hours = Math.floor(seconds / (60 * 60));
-  const minutes = Math.floor((seconds % (60 * 60)) / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
-}
-
-// Define uptime function
-function uptime() {
-  return formatTime(process.uptime());
-}
-
+      
 // Your case 'runtime' block
 case 'runtime': {
   await doReact("👀");
