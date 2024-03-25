@@ -83,7 +83,7 @@ global.mess = {
   useradmin: '*Dieser Befehl kann nur von einem Admin verwendet werden.* !',
   botadmin: 'Sorry, i cant execute this command without being an *Admin* of this group.',
   botowner: 'Nur meine *Owner* können diesen Befehl benutzen!',
-  grouponly: 'This command is only made for *Groups*, Baka!',
+  grouponly: 'Dieser Befehl ist nur für *Gruppen* Verfügbar!',
   privateonly: 'This command is only made for *Private Chat*, Baka!',
   botonly: 'Only the *Bot itself* can use this command!',
   waiting: '*Un momento por favor ich arbeite daran...*',

@@ -32,14 +32,6 @@ ____________________
 
 ____________________
 
- ## Heroku Tutorial Video 👇
-
- 
- <p align="left">
-<a href="https://youtu.be/amorCyDpKIo?si=VIw9mxSA5ruc6UKi"><img align="center" src="https://i.imgur.com/fYDmZGF.png" alt="DEPLOY" height="110" width="200" /></a>
-
-____________________
-
 ## Get Season File 👇
   
 <a href='https://replit.com/@slsachith93/oror?v=1' target="_blank"><img alt='SESSION FILE' src='https://img.shields.io/badge/SESSION FILE-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
