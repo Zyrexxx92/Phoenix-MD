@@ -871,7 +871,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.botowner)
         A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
-        if (!args[0]) return reply(`Use ${prefix + command} number\nExample ${prefix + command} ${OwnerNumber}`)
+        if (!args[0]) return reply(`Use ${prefix + command} number\nBeispiel ${prefix + command} ${OwnerNumber}`)
         bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
         let ceknye = await A17.onWhatsApp(bnnd)
         if (ceknye.length == 0) return reply(`Enter A Valid And Registered Number On WhatsApp!!!`)
@@ -888,7 +888,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.botowner)
         A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
-        if (!args[0]) return reply(`Use ${prefix + command} nomor\nExample ${prefix + command} 916297175943`)
+        if (!args[0]) return reply(`Use ${prefix + command} nomor\nBeispiel ${prefix + command} 916297175943`)
         ya = q.split("|")[0].replace(/[^0-9]/g, '')
         unp = Owner.indexOf(ya)
         Owner.splice(unp, 1)
@@ -1176,7 +1176,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
-        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), For Example: reply *${prefix}ban add* to the user you want to ban.`)
+        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), For Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
         if (args[1]) {
           orgnye = args[1] + "@s.whatsapp.net"
         } else if (m.quoted) {
@@ -1347,7 +1347,7 @@ Typed *surrender* to surrender and admited defeat`
           A17.sendMessage(from, { react: { text: "💲", key: m.key } })
 
           //if (!isCreator) return reply(mess.botowner)
-          if (!text) return reply(`💴 Bank-capacity 💳\n\n1 | 1000 sp = 💎100\n\n2 | 10000 sp = 💎1000\n\n3 | 100000 sp = 💎10000\n\nExample- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)
+          if (!text) return reply(`💴 Bank-capacity 💳\n\n1 | 1000 sp = 💎100\n\n2 | 10000 sp = 💎1000\n\n3 | 100000 sp = 💎10000\n\nBeispiel- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)
           if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
           const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
           const cara = "cara"
@@ -1530,7 +1530,7 @@ Typed *surrender* to surrender and admited defeat`
           //if (link1 == link2){
           if (texts[0] === "")
             return reply(
-              `Example:  ${prefix}gamble 100 direction(left,right,up,down)`
+              `Beispiel:  ${prefix}gamble 100 direction(left,right,up,down)`
             );
           if (!value) return reply("*Please, specify the amount you are gambling with!");
           if (!opp) return reply("Specify the direction you are betting on!");
@@ -1754,7 +1754,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         reply(mess.waiting)
-        if (!q) return reply(`Please enter a Movie search term...\nExample: ${prefix}movie Spiderman`)
+        if (!q) return reply(`Please enter a Movie search term...\nBeispiel: ${prefix}movie Spiderman`)
         xfarrapi.Film(q)
           .then(data => {
             console.log(data)
@@ -2000,7 +2000,7 @@ Typed *surrender* to surrender and admited defeat`
         const randomEmoji = manyemojis[Math.floor(Math.random() * manyemojis.length)];
         A17.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
-        if (!q) return reply(`Please provide a text query. Example: ${prefix + command} Hello, *ChatGPT*`);
+        if (!q) return reply(`Please provide a text query. Beispiel: ${prefix + command} Hello, *ChatGPT*`);
 
         try {
           const apiUrl1 = `https://vihangayt.me/tools/chatgpt2?q=${encodeURIComponent(q)}`;
@@ -2034,7 +2034,7 @@ Typed *surrender* to surrender and admited defeat`
         const randomEmoji = manyemojis[Math.floor(Math.random() * manyemojis.length)];
         A17.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
-        if (!q) return reply(`Please provide a query to generate an image. Example: ${prefix + command} Beautiful landscape`);
+        if (!q) return reply(`Please provide a query to generate an image. Beispiel: ${prefix + command} Beautiful landscape`);
 
         const apiUrl = `https://gurugpt.cyclic.app/dalle?prompt=${encodeURIComponent(q)}`;
 
@@ -2111,7 +2111,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        if (!q) reply(`*Example :* ${prefix + command} 😊+🌹`)
+        if (!q) reply(`*Beispiel :* ${prefix + command} 😊+🌹`)
         let [emoji1, emoji2] = q.split`+`
         let kuntuh = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
         for (let res of kuntuh.results) {
@@ -2762,7 +2762,7 @@ Typed *surrender* to surrender and admited defeat`
         A17.sendMessage(from, { react: { text: "💞", key: m.key } });
 
         if (!args[0]) {
-          return reply(`Please provide the GitHub repository link.\nExample:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
+          return reply(`Please provide the GitHub repository link.\nBeispiel:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
 🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋
           `);
         }
@@ -2900,7 +2900,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'fliptext': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (args.length < 1) return reply(`Example:\n${prefix}fliptext ${OwnerName}`)
+        if (args.length < 1) return reply(`Beispiel:\n${prefix}fliptext ${OwnerName}`)
         quere = args.join(" ")
         flipe = quere.split('').reverse().join('')
         reply(`\`\`\`「  Text Flipper Tool  」\`\`\`\n*Input text :*\n${quere}\n*Fliped text :*\n${flipe}`)
@@ -2911,7 +2911,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'toletter': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!Number(args[0])) return reply(`Example:\n${prefix}toletter 956`)
+        if (!Number(args[0])) return reply(`Beispiel:\n${prefix}toletter 956`)
         try {
           quere = args.join(" ")
           convertes = await toHur(quere)
@@ -3376,7 +3376,7 @@ Typed *surrender* to surrender and admited defeat`
       // if (isBan) return reply(mess.banned);	 			
       // if (isBanChat) return reply(mess.bangc);
       // A17.sendMessage(from, { react: { text: "🫡" , key: m.key }})
-      // if (!args.join(" ")) return reply(`Example : ${prefix + command} Kinemaster`)
+      // if (!args.join(" ")) return reply(`Beispiel : ${prefix + command} Kinemaster`)
       //modapk.happymod(args.join(" ")).then(async(res) => {
       // teks = '```「 HappyMod Search Engine 」```'
       // for (let i of res) {
@@ -3402,7 +3402,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "🔍", key: m.key } });
 
-        if (!args.join(" ")) return reply(`Example: ${prefix + command} Kinemaster`);
+        if (!args.join(" ")) return reply(`Beispiel: ${prefix + command} Kinemaster`);
 
         const searchTerm = args.join(" ");
         modapk.happymod(searchTerm).then(async (res) => {
@@ -3795,7 +3795,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        if (!text) return reply(`Enter the number you want to invite to the group...\n\nExample :\n*${prefix + command}* 916297175943`)
+        if (!text) return reply(`Enter the number you want to invite to the group...\n\nBeispiel :\n*${prefix + command}* 916297175943`)
         if (text.includes('+')) return reply(`Enter the number together without *+*`)
         if (isNaN(text)) return reply(`Enter only the numbers plus your country code without spaces`)
         let group = m.chat
@@ -3916,7 +3916,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.botowner)
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), For Example: reply *${prefix}ban add* to the user you want to ban.`)
+        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), For Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
         if (args[1]) {
           orgnye = args[1] + "@s.whatsapp.net"
         } else if (m.quoted) {
@@ -3978,7 +3978,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'ringtone': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!args.join(" ")) return reply(`Example: ${prefix}ringtone black over`)
+        if (!args.join(" ")) return reply(`Beispiel: ${prefix}ringtone black over`)
         let { ringtone } = require('./lib/scraper')
         let anu = await ringtone(text)
         let result = anu[Math.floor(Math.random() * anu.length)]
@@ -3990,7 +3990,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'volume': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!args.join(" ")) return reply(`Example: ${prefix + command} 10`)
+        if (!args.join(" ")) return reply(`Beispiel: ${prefix + command} 10`)
         media = await A17.downloadAndSaveMediaMessage(quoted, "volume")
         if (isQuotedAudio) {
           rname = getRandom('.mp3')
@@ -4020,7 +4020,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'tempo': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!args.join(" ")) return reply(`Example: ${prefix + command} 10`)
+        if (!args.join(" ")) return reply(`Beispiel: ${prefix + command} 10`)
         var req = args.join(' ')
         media = await A17.downloadAndSaveMediaMessage(quoted, "tempo")
         if (isQuotedAudio) {
@@ -4086,7 +4086,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'calculator': case 'cal': case 'calculate': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (args.length < 1) return reply(`*Example :*\n${prefix}calculator 2*5\n\n`)
+        if (args.length < 1) return reply(`*Beispiel :*\n${prefix}calculator 2*5\n\n`)
         let qsd = args.join(" ")
         if (typeof mathjs.evaluate(qsd) !== 'number') {
           reply('Error')
@@ -4365,7 +4365,7 @@ Typed *surrender* to surrender and admited defeat`
       //   case "image":
       //     if (!text) {
       //       A17.sendMessage(from, { react: { text: "⌛", key: m.key } });
-      //       return m.reply(`Please provide an image Search Term !\n\nExample: *${prefix}image cheems*`);
+      //       return m.reply(`Please provide an image Search Term !\n\nBeispiel: *${prefix}image cheems*`);
       //     }
 
       //     gis(text, async (error, result) => {
@@ -4443,14 +4443,14 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "😿", key: m.key } })
 
-        if (!args[0]) return reply(`Example: ${prefix + command} <query>\nUses : ${prefix + command} anything...`)
+        if (!args[0]) return reply(`Beispiel: ${prefix + command} <query>\nUses : ${prefix + command} anything...`)
         let google = require('google-it')
         google({ 'query': args.join(" ") }).then(res => {
-          let teks = `「 *Google Search Engine* 」\n\n*Search term:* ${text}\n\n\n`
+          let teks = `「 *Google Suchmaschine* 」\n\n*Suchbegriff:* ${text}\n\n\n`
           for (let g of res) {
-            teks += `*ᴛɪᴛʟᴇ* : ${g.title}\n\n`
-            teks += `*ᴅᴄꜱᴄʀɪᴘᴛɪᴏɴ* : ${g.snippet}\n\n`
-            teks += `*ʟɪɴᴋ* : ${g.link}\n\n\n        -----------------------------------------------------------------------------\n\n`
+            teks += `*Titel* : ${g.title}\n\n`
+            teks += `*Beschreibung* : ${g.snippet}\n\n`
+            teks += `*Link* : ${g.link}\n\n\n        -----------------------------------------------------------------------------\n\n`
           }
           reply(teks)
         })
@@ -4563,7 +4563,7 @@ Typed *surrender* to surrender and admited defeat`
 
           // Check if a link is provided
           if (!text) {
-            return reply(`Where is the link?\n\nExample: ${prefix + command} https://www.instagram.com/reel/Ctjt0srIQFg/?igshid=MzRlODBiNWFlZA==`);
+            return reply(`Where is the link?\n\nBeispiel: ${prefix + command} https://www.instagram.com/reel/Ctjt0srIQFg/?igshid=MzRlODBiNWFlZA==`);
           }
 
           try {
@@ -4585,7 +4585,7 @@ Typed *surrender* to surrender and admited defeat`
       // if (isBan) return reply(mess.banned);	 			
       // if (isBanChat) return reply(mess.bangc);
       // A17.sendMessage(from, { react: { text: "🪄" , key: m.key }})
-      // if (!args[0]) return reply(`Example :\n${prefix + command} https://www.instagram.com/p/CcvJGuxh9VI/?igshid=YmMyMTA2M2Y=`)
+      // if (!args[0]) return reply(`Beispiel :\n${prefix + command} https://www.instagram.com/p/CcvJGuxh9VI/?igshid=YmMyMTA2M2Y=`)
       // try {
       // hx.igdl(args[0]).then(async(resed) => {
       // ini_anu = []
@@ -4732,7 +4732,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'twitterxx': case 'twdlxx': case 'twmp4xx': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!args[0]) return reply(`Example :\n${prefix + command} https://twitter.com/cinema21/status/1517754155644821504?t=rUnbyqwh4vAE1QXMXlsVeQ&s=19`)
+        if (!args[0]) return reply(`Beispiel :\n${prefix + command} https://twitter.com/cinema21/status/1517754155644821504?t=rUnbyqwh4vAE1QXMXlsVeQ&s=19`)
         try {
           let lotwit = await aiovideodl(args[0])
           teks = `「 _Twitter Downloader_ 」
@@ -4784,7 +4784,7 @@ _Please choose the video quality_`
       case 'fbdl': case 'fb': case 'facebook': case 'fbmp4': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!text) return reply(`Please provide the link!\n\nExample: ${prefix}facebook https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
+        if (!text) return reply(`Please provide the link!\n\nBeispiel: ${prefix}facebook https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
         if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
         let bocil = require('@bochilteam/scraper')
         bocil.facebookdlv2(`${text}`).then(async (data) => {
@@ -4808,7 +4808,7 @@ _Please choose the video quality_`
       case 'fbmp3': case 'facebookmp3': case 'facebookaudio': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!text) return reply(`Please provide the link!\n\nExample: ${prefix + command} https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
+        if (!text) return reply(`Please provide the link!\n\nBeispiel: ${prefix + command} https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
         if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
         let noh = require('@bochilteam/scraper')
         noh.savefrom(`${text}`).then(async (anu) => {
@@ -4823,7 +4823,7 @@ _Please choose the video quality_`
       case 'facebookxx': case 'fbdlxxx': case 'fbmp4xxx': case 'fbxxx': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!args[0]) return reply(`Example :\n${prefix + command} https://fb.watch/cAX2dep-BZ/`)
+        if (!args[0]) return reply(`Beispiel :\n${prefix + command} https://fb.watch/cAX2dep-BZ/`)
         try {
           let resd = await aiovideodl(args[0])
           teks = `「 _Facebook Downloader_ 」
@@ -4938,7 +4938,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "📍", key: m.key } })
 
-        if (!args.join(" ")) return reply(`Example : -yts Cyber panda md 2023`)
+        if (!args.join(" ")) return reply(`Beispiel : -yts Cyber panda md 2023`)
         let yts = require("youtube-yts")
         let search = await yts(args.join(" "))
         let teks = '```「 ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ 」```\n\n Search Term: ' + text + '\n\n'
@@ -5066,7 +5066,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "🍁", key: m.key } });
 
-        if (!q) return reply(`Please provide a query. Example: ${prefix + command} 295`);
+        if (!q) return reply(`Please provide a query. Beispiel: ${prefix + command} 295`);
 
         let abuffer = `https://www.guruapi.tech/api/spotifydl?url=${encodeURIComponent(q)}`
         let bbuffer = await fetchJson(`https://www.guruapi.tech/api/spotifyinfo?text=${encodeURIComponent(q)}`)
@@ -5499,7 +5499,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "😺", key: m.key } })
-        if (!text) return reply(`Tag Someone, Example : ${prefix + command} @Kai`)
+        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const gan = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const teng = gan[Math.floor(Math.random() * gan.length)]
         A17.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${teng}%*` }, { quoted: m })
@@ -5511,7 +5511,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "😺", key: m.key } })
 
-        if (!text) return reply(`Tag Someone, Example : ${prefix + command} @Kai`)
+        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const can = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const tik = can[Math.floor(Math.random() * can.length)]
         A17.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
@@ -5532,7 +5532,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "😺", key: m.key } })
 
-        if (!text) return reply(`Tag Someone, Example : ${prefix + command} @Kai`)
+        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const sangeh = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const sange = sangeh[Math.floor(Math.random() * sangeh.length)]
         A17.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${sange}%*` }, { quoted: m })
@@ -5544,7 +5544,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "🤧", key: m.key } })
 
-        if (!text) return reply(`Tag Someone, Example : ${prefix + command} @Kai`)
+        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const A17tttt = ['Compassionate', 'Generous', 'Grumpy', 'Forgiving', 'Obedient', 'Good', 'Simp', 'Kind-Hearted', 'patient', 'UwU', 'top, anyway', 'Helpful']
         const taky = A17tttt[Math.floor(Math.random() * A17tttt.length)]
         A17.sendMessage(from, { text: `Character Check : ${q}\nAnswer : *${taky}*` }, { quoted: m })
@@ -5574,7 +5574,7 @@ _Click the button below to download_`
           "chat random people with gheto language then ss here",
           "tell your own version of embarrassing things",
           "tag the person you hate",
-          "Pretending to be possessed, for example: possessed by dog, possessed by grasshoppers, possessed by refrigerator, etc.",
+          "Pretending to be possessed, for Beispiel: possessed by dog, possessed by grasshoppers, possessed by refrigerator, etc.",
           "change name to *I AM DONKEY* for 24 hours",
           "shout *ma chuda ma chuda ma chuda* in front of your house",
           "snap/post boyfriend photo/crush",
@@ -6454,7 +6454,7 @@ _Click the button below to download_`
       //   if (isBan) return reply(mess.banned);	 			
       //   if (isBanChat) return reply(mess.bangc);
       //   if (!m.isGroup) return reply(mess.grouponly);
-      //     if(!q) return reply(`Please proide a search term!\n\n*Example:* ${prefix}anime naruto`)
+      //     if(!q) return reply(`Please proide a search term!\n\n*Beispiel:* ${prefix}anime naruto`)
       // reply(mess.waiting)							
       // const { Anime } =require("@shineiichijo/marika")
       //   const client = new Anime();
@@ -6504,7 +6504,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         A17.sendMessage(from, { react: { text: "🍁", key: m.key } });
-        if (!text) return reply(`Please proide a search term!\n\n*Example:* ${prefix}anime naruto`)
+        if (!text) return reply(`Please proide a search term!\n\n*Beispiel:* ${prefix}anime naruto`)
 
         const malScraper = require('mal-scraper')
         reply(mess.waiting);
@@ -6539,7 +6539,7 @@ _Click the button below to download_`
         reply(mess.waiting)
         const { Manga } = require("@shineiichijo/marika")
         const manga = new Manga();
-        if (!q) return reply(`Please proide a search term!\n\n_Example:_ ${prefix}manga naruto`)
+        if (!q) return reply(`Please proide a search term!\n\n_Beispiel:_ ${prefix}manga naruto`)
         let srh = await manga.searchManga(q)
         let mang = `*Title:* ${srh.data[0].title}\n`;
         mang += `*Status:* ${srh.data[0].status}\n`;
@@ -6659,7 +6659,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        if (!args.join(" ")) return reply(`Please enter some text to broadcast! \n\nExample : ${prefix + command} ${global.OwnerName}`)
+        if (!args.join(" ")) return reply(`Please enter some text to broadcast! \n\nBeispiel : ${prefix + command} ${global.OwnerName}`)
         let anu = await store.chats.all().map(v => v.id)
         reply(`Send Broadcast To ${anu.length} Chat\nTime's up ${anu.length * 1.5} second`)
         for (let yoi of anu) {
