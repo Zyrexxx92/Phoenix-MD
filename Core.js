@@ -15,9 +15,9 @@ const { addBalance } = require("./lib/limit.js");
 const { smsg, formatp, tanggal, GIFBufferToVideoBuffer, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, fetchBuffer } = require('./lib/myfunc')
 const _ = require("lodash");
 const yargs = require("yargs/yargs");
-const kaitime = moment.tz('Asia/Kolkata').format('HH:mm:ss');
-const kaidate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY');
-const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss');
+const kaitime = moment.tz('Europe/Berlin').format('HH:mm:ss');
+const kaidate = moment.tz('Europe/Berlin').format('DD/MM/YYYY');
+const time2 = moment().tz('Europe/Berlin').format('HH:mm:ss');
 const currentDate = new Date();
 const options = { weekday: 'long' }; // Specify 'long' to get the full day name
 const currentDay = new Intl.DateTimeFormat('en-US', options).format(currentDate);
@@ -157,8 +157,8 @@ let videox = JSON.parse(fs.readFileSync('./src/video.json'))
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
 let _sewa = require("./lib/sewa");
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'))
-const time = moment.tz('Asia/Kolkata').format('DD/MM HH:mm:ss')
-const ucap = moment(Date.now()).tz('Asia/Kolkata').locale('id').format('a')
+const time = moment.tz('Europe/Berlin').format('DD/MM HH:mm:ss')
+const ucap = moment(Date.now()).tz('Europe/Berlin').locale('id').format('a')
 var buln = ['/01/', '/02/', '/03/', '/04/', '/05/', '/06/', '/07/', '/08/', '/09/', '/10/', '/11/', '/12/'];
 var myHari = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var tgel = new Date();
@@ -428,7 +428,7 @@ function updateStatus() {
   // ㅤㅤ〄ㅤㅤ〘 BELUGA-BOT BETA EDITION 〙ㅤㅤ〄ㅤㅤㅤㅤ
   // ㅤㅤㅤ〘ㅤ Auto Uptime: ${uptimeFormatted}ㅤ〙`;
 
-  function _0x582b(_0xabb6f8,_0x12cdd8){const _0x58e890=_0x58e8();return _0x582b=function(_0x582b90,_0x4387b3){_0x582b90=_0x582b90-0x189;let _0x932613=_0x58e890[_0x582b90];return _0x932613;},_0x582b(_0xabb6f8,_0x12cdd8);}function _0x58e8(){const _0x109554=['12896370RDSmnX','3BgvPel','189HbmdoW','18854HvEPNh','11TZHUID','9125326EcyeIg','464328lPaAMf','3400722cbWEOK','2263175KIczdo','12TaHNqM','2521564eqJRHK'];_0x58e8=function(){return _0x109554;};return _0x58e8();}(function(_0x429d7b,_0x532ab5){const _0x527567=_0x582b,_0x130eb4=_0x429d7b();while(!![]){try{const _0x75c57a=-parseInt(_0x527567(0x18b))/0x1+-parseInt(_0x527567(0x192))/0x2*(-parseInt(_0x527567(0x189))/0x3)+parseInt(_0x527567(0x191))/0x4*(-parseInt(_0x527567(0x190))/0x5)+-parseInt(_0x527567(0x18f))/0x6+parseInt(_0x527567(0x18d))/0x7+parseInt(_0x527567(0x18e))/0x8*(-parseInt(_0x527567(0x18a))/0x9)+parseInt(_0x527567(0x193))/0xa*(parseInt(_0x527567(0x18c))/0xb);if(_0x75c57a===_0x532ab5)break;else _0x130eb4['push'](_0x130eb4['shift']());}catch(_0x19ea04){_0x130eb4['push'](_0x130eb4['shift']());}}}(_0x58e8,0xa8dae));const status='\x0a\x20          \x20『•• \x20Panda-\x20Bᴏᴛ\x20-Mᴅ\x20 ••』       \x0a\x20\x20ㅤㅤㅤ〘ㅤ\x20🛡️ Auto\x20Uptime:\x20'+uptimeFormatted+'ㅤ〙';
+  function _0x582b(_0xabb6f8,_0x12cdd8){const _0x58e890=_0x58e8();return _0x582b=function(_0x582b90,_0x4387b3){_0x582b90=_0x582b90-0x189;let _0x932613=_0x58e890[_0x582b90];return _0x932613;},_0x582b(_0xabb6f8,_0x12cdd8);}function _0x58e8(){const _0x109554=['12896370RDSmnX','3BgvPel','189HbmdoW','18854HvEPNh','11TZHUID','9125326EcyeIg','464328lPaAMf','3400722cbWEOK','2263175KIczdo','12TaHNqM','2521564eqJRHK'];_0x58e8=function(){return _0x109554;};return _0x58e8();}(function(_0x429d7b,_0x532ab5){const _0x527567=_0x582b,_0x130eb4=_0x429d7b();while(!![]){try{const _0x75c57a=-parseInt(_0x527567(0x18b))/0x1+-parseInt(_0x527567(0x192))/0x2*(-parseInt(_0x527567(0x189))/0x3)+parseInt(_0x527567(0x191))/0x4*(-parseInt(_0x527567(0x190))/0x5)+-parseInt(_0x527567(0x18f))/0x6+parseInt(_0x527567(0x18d))/0x7+parseInt(_0x527567(0x18e))/0x8*(-parseInt(_0x527567(0x18a))/0x9)+parseInt(_0x527567(0x193))/0xa*(parseInt(_0x527567(0x18c))/0xb);if(_0x75c57a===_0x532ab5)break;else _0x130eb4['push'](_0x130eb4['shift']());}catch(_0x19ea04){_0x130eb4['push'](_0x130eb4['shift']());}}}(_0x58e8,0xa8dae));const status='\x0a\x20          \x20『•• \x20Phoenix-\x20Bᴏᴛ\x20-Mᴅ\x20 ••』       \x0a\x20\x20ㅤㅤㅤ〘ㅤ\x20🛡️ Auto\x20Uptime:\x20'+uptimeFormatted+'ㅤ〙';
 
   A17.setStatus(status); // Set the status using A17.setStatus or your equivalent method
 
@@ -2802,7 +2802,7 @@ Typed *surrender* to surrender and admited defeat`
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
         let teks = ` 「  🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using A17 in personal chat.`
         for (let i of anu) {
-          teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`
+          teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
         A17.sendTextWithMentions(m.chat, teks, m)
       }
@@ -2823,7 +2823,7 @@ Typed *surrender* to surrender and admited defeat`
           } else {
             loldd = metadata.owner
           }
-          teks += `\n\nName : ${metadata.subject ? metadata.subject : "undefined"}\nOwner : ${loldd ? '@' + loldd.split("@")[0] : "undefined"}\nID : ${metadata.id ? metadata.id : "undefined"}\nMade : ${metadata.creation ? moment(metadata.creation * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss') : "undefined"}\nMember : ${metadata.participants.length ? metadata.participants.length : "undefined"}`
+          teks += `\n\nName : ${metadata.subject ? metadata.subject : "undefined"}\nOwner : ${loldd ? '@' + loldd.split("@")[0] : "undefined"}\nID : ${metadata.id ? metadata.id : "undefined"}\nMade : ${metadata.creation ? moment(metadata.creation * 1000).tz('Europe/Berlin').format('DD/MM/YYYY HH:mm:ss') : "undefined"}\nMember : ${metadata.participants.length ? metadata.participants.length : "undefined"}`
         }
         A17.sendTextWithMentions(m.chat, teks, m)
       }
@@ -3663,7 +3663,7 @@ Typed *surrender* to surrender and admited defeat`
             if (anu1 == '401' || anu1.status.length == 0) {
               nobio += `wa.me/${anu[0].jid.split("@")[0]}\n`
             } else {
-              nomerny += `🪄 *Number:* wa.me/${anu[0].jid.split("@")[0]}\n🔹 *Bio :* ${anu1.status}\n🔸 *Updated On :* ${moment(anu1.setAt).tz('Asia/Kolkata').format('HH:mm:ss DD/MM/YYYY')}\n\n`
+              nomerny += `🪄 *Number:* wa.me/${anu[0].jid.split("@")[0]}\n🔹 *Bio :* ${anu1.status}\n🔸 *Updated On :* ${moment(anu1.setAt).tz('Europe/Berlin').format('HH:mm:ss DD/MM/YYYY')}\n\n`
             }
           } catch {
             nowhatsapp += `${number0}${i}${number1}\n`
@@ -4409,7 +4409,7 @@ Typed *surrender* to surrender and admited defeat`
 
         const apiKey = 'ugce43VIO63s8gQhcQ7Ts2DHQo1Srcchdh9mgI2S'; // Replace with your actual NASA API key // You can use it.
         const moment = require('moment'); // Import moment library here
-        const timeZone = 'Asia/Kolkata'; // Set desired timezone.
+        const timeZone = 'Europe/Berlin'; // Set desired timezone.
 
         const currentDate = moment().tz(timeZone).format('YYYY-MM-DD'); // Initialize currentDate here
 
@@ -4938,7 +4938,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         A17.sendMessage(from, { react: { text: "📍", key: m.key } })
 
-        if (!args.join(" ")) return reply(`Beispiel : -yts Cyber panda md 2023`)
+        if (!args.join(" ")) return reply(`Beispiel : -yts fortnite`)
         let yts = require("youtube-yts")
         let search = await yts(args.join(" "))
         let teks = '```「 ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ 」```\n\n Search Term: ' + text + '\n\n'
