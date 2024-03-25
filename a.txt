@@ -461,7 +461,7 @@ process {
       PUBLIC: 'C:\\Users\\Public',
       'PyCharm Community Edition': 'C:\\Program Files\\JetBrains\\PyCharm Community Edition 2022.2.3\\bin;',
       SESSIONNAME: 'Console',
-      SESSION_ID: 'ytsdtdfy36546dfgt46fgd',
+      SESSION_ID: 'phoenix',
       SystemDrive: 'C:',
       SystemRoot: 'C:\\WINDOWS',
       TEMP: 'C:\\Users\\shubh\\AppData\\Local\\Temp',
@@ -547,3 +547,15 @@ process {
       at m.reply (C:\Users\shubh\OneDrive\Desktop\Phoenix_MOD\Phoenix-MD\System\whatsapp.js:166:15)
       at Object.start (C:\Users\shubh\OneDrive\Desktop\Phoenix_MOD\Phoenix-MD\Plugins\system.js:120:11)
       at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+
+  "@adiwajshing/keyed-db": "^0.2.4",
+    "@whiskeysockets/baileys": "^6.2.1",
+    "baileysjs": "^6.2.1",
+
+      "peerDependencies": {
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "jimp": "^0.16.1",
+    "link-preview-js": "^3.0.0",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.30.5"
