@@ -222,7 +222,7 @@ module.exports = async (Phoenix, m, commands, chatUpdate) => {
       if (budy.includes(`https://chat.whatsapp.com/${linkgce}`)) {
         return;
       } else if (budy.includes(`https://chat.whatsapp`)) {
-        const bvl = `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫 You are not allowed to send group links in this group !*\n`;
+        const bvl = `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ 「 Link Erkannt 」 !*\n\n*🚫Wurde wegen eines Regelverstoß entfernt !*\n`;
         await Phoenix.sendMessage(
           from,
           {
