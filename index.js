@@ -62,8 +62,7 @@ async function startA17() {
       "green"
     )
   );
-  console.log(color('\nHi, Im CYBER PANDA MD V4 MAIN DEVELOPER OF THIS\n\nTHANKS FOR USER : CYBER PANDA MD V4.', 'aqua'))
-  console.log(color('\nYou can follow me on GitHub: Phoenix MD', 'aqua'))
+
 
   const { state, saveCreds } = await useMultiFileAuthState("./SESSION");
   const A17 = A17Connect({
