@@ -13,6 +13,7 @@ const { join } = require("path");
 const got = require("got");
 const pino = require("pino");
 const path = require("path");
+const speed = require('performance-now')
 const FileType = require("file-type");
 const { Boom } = require("@hapi/boom");
 const { serialize, WAConnection } = require("./System/whatsapp.js");

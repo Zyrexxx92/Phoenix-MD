@@ -4,6 +4,16 @@ const chalk = require("chalk");
 const prefix = global.prefa;
 const path = require("path");
 const package = require("../package.json");
+const figlet = require("figlet");
+const { join } = require("path");
+const got = require("got");
+const pino = require("pino");
+const FileType = require("file-type");
+const { Boom } = require("@hapi/boom");
+const moment = require('moment-timezone');
+const { performance } = require('perf_hooks')
+const speed = require('performance-now');
+
 
 const pad = (s) => (s < 10 ? "0" : "") + s;
 const formatTime = (seconds) => {
@@ -13,6 +23,7 @@ const formatTime = (seconds) => {
   return (time = `${pad(hours)}:${pad(minutes)}:${pad(secs)}`);
 };
 const uptime = () => formatTime(process.uptime());
+
 
 let mergedCommands = [
   "help",
@@ -27,7 +38,8 @@ let mergedCommands = [
   "about",
   "ping",
   "runtime",
-  "team"
+  "team",
+  "report"
 ];
 
 
@@ -35,13 +47,15 @@ let mergedCommands = [
 module.exports = {
   name: "systemcommands",
   alias: [...mergedCommands],
-  uniquecommands: ["script", "support", "help", "system", "about", "ping", "runtime", "team"],
+  uniquecommands: ["script", "support", "help", "system", "about", "ping", "runtime", "team", "report"],
   description: "All system commands",
   start: async (
     Phoenix,
     m,
-    { pushName, prefix, inputCMD, doReact, text, args }
-  ) => {
+    { pushName, prefix, inputCMD, doReact, text, args, userNumber, user}
+  ) => {  
+    
+    const pushname = m.pushName || `${botName} User`;
     const pic = fs.readFileSync("./Assets/Phoenix.jpg");
     switch (inputCMD) {
       case "script":
@@ -143,12 +157,28 @@ break;
 
   case 'test':
   case 'p':
-  case 'ping':
-    await doReact("👀");
-    let text4 = `🧧 Test erfolgreich, Bot ist aktiv!\n\n📍 Ping: ${latency.toFixed(4)} Millisekunden\n\nTippe ${prefix}menu um meine Befehle zu sehen.`;
-    Phoenix.sendMessage(m.from, { image: pic, caption: text4 }, { quoted: m });
-    break;
-
+    case 'ping':
+      await doReact("👀");
+      let timestampe = speed()
+        let latensie = speed() - timestampe
+         m.reply(`🧧Test erfolgreich, Bot ist aktiv!\n\n📍 *Ping* ${latensie.toFixed(4)} milisekunden\n\n Tippe ${prefix}menu um meine Befehle zu sehen`)
+        break;
+    
+        case "report":
+          await doReact("🎇");
+          const supportMessage = `Vielen Dank für deine Anfrage, ein Supporter wird sich so schnell wie möglich bei dir melden. Hier ist der Link zur Supportgruppe:\n\nhttps://chat.whatsapp.com/KSM8yCpBHGUGkb2f3zfGz7`;
+          await Phoenix.sendMessage(m.chat, { text: supportMessage });
+        
+          let userNumber = m.sender;
+          if (m.sender.endsWith("@s.whatsapp.net")) {
+            userNumber = m.sender.replace(/[^0-9]/g, '');
+          }
+        
+          const reportMessage = `── 「 Hallo Team 」 ──\n\nEine Anfrage von 📝 :\nName: ${pushname}\nUser: Wa.me/${userNumber}\nNachricht: ${text}\n`;
+        
+          await Phoenix.sendMessage("120363198299068646@g.us", { text: reportMessage, image: pic }, { quoted: m });
+          break;
+        
       
 case 'team': 
 await doReact("👀");
@@ -257,5 +287,5 @@ break;
       default:
         break;
     }
-  },
+  }
 };
