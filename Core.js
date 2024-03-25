@@ -697,12 +697,12 @@ Typed *surrender* to surrender and admited defeat`
     const responses = {
 
 
-      hello: `Hello ${pushname}, I am ${BotName}. My current prefix is "${prefix}". How can I help you?`,
-      kai: `My Boss is lost in another Multiverse, and I lost connection with him...`,
-      runtime: `🦋𝘏𝘐 ${pushname}\n${nowtime}\n\n🦋𝘙𝘜𝘕𝘛𝘐𝘔𝘌:${runtime(process.uptime())}\n\n🦋𝘗𝘙𝘌𝘍𝘐𝘟: *${prefix}*\n\n🦋𝘛𝘐𝘔𝘌: ${kaitime}\n\n🦋𝘋𝘈𝘛𝘌: ${kaidate}\n\n🦋𝘛𝘰𝘥𝘢𝘺 𝘪𝘴 ${currentDay}`,
+      hello: `Aloha ${pushname}, Ich bin ${BotName}. Mein Prefix lautet "${prefix}". Wie kann ich dir helfen?`,
+      kai: `Mein Boss ist in einem anderen Multiversum verschollen, und ich habe die Verbindung zu ihm verloren...`,
+      runtime: `🦋𝘏ey ${pushname}\n${nowtime}\n\n🦋𝘙𝘜𝘕𝘛𝘐𝘔𝘌:${runtime(process.uptime())}\n\n🦋𝘗𝘙𝘌𝘍𝘐𝘟: *${prefix}*\n\n🦋𝘛𝘐𝘔𝘌: ${kaitime}\n\n🦋𝘋𝘈𝘛𝘌: ${kaidate}\n\n🦋𝘛𝘰𝘥𝘢𝘺 𝘪𝘴 ${currentDay}`,
       konichiwa: `Konichiwa ${pushname}, I am ${BotName}. How can I help you?`,
-      alive: '🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋',
-      ping: `Hi🛡️ ${pushname}, Pong ${latensie.toFixed(4)} ms`,
+      alive: '🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋',
+      ping: `Aloha ${pushname}, Pong ${latensie.toFixed(4)} ms`,
       'good morning': `Good morning💞🦋.`,
       ohayo: `Good morning to you too ${pushname} ☺️. Have a great day 😇.`,
       'good afternoon': `Good afternoon💞🦋.`,
@@ -736,7 +736,7 @@ Typed *surrender* to surrender and admited defeat`
         let { data } = await axios.get('https://github.com/7ucg/Phoenix-MD');
         teks = `
 ┌───────────────       
-│ *®-ᴄʏʙᴇʀ-ᴘᴀɴᴅᴀ-ᴍᴅ*
+│ *®-𝐏𝐇𝐎𝐄𝐍𝐈𝐗-ᴘᴀɴᴅᴀ-ᴍᴅ*
 ├───────────────
 │ *Total Stars* ${data.stargazers_count}
 ├───────────────
@@ -758,7 +758,7 @@ Typed *surrender* to surrender and admited defeat`
            headerType: 4, */
           contextInfo: {
             externalAdreply: {
-              title: "Powered by Kai",
+              title: "Powered by Baron&Exiqon",
               body: " ",
               thumbnail: fs.readFileSync("Assets/pic2.jpg"),
               mediaType: 1,
@@ -957,10 +957,10 @@ Typed *surrender* to surrender and admited defeat`
           const newPrefix = args[0];
           try {
             global.prefa = [newPrefix];
-            return m.reply(`${pushname} Successfully changed Prefix to "${newPrefix}"`);
+            return m.reply(`${pushname} Prefix erfolgreich geändert in "${newPrefix}"`);
           } catch (error) {
-            console.error('Error changing prefix:', error);
-            return m.reply(`An error occurred while changing the prefix. Please try again later.`);
+            console.error('Fehler beim Ändern des Prefix:', error);
+            return m.reply(`Beim Ändern des Präfixes ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.`);
           }
         }
 
@@ -972,7 +972,7 @@ Typed *surrender* to surrender and admited defeat`
 
         await A17.sendMessage(from, { text: mess.waiting });
         await A17.sendMessage(from, { react: { text: "✅", key: m.key } });
-        await A17.sendMessage(from, { text: 'Restarting Success!' });
+        await A17.sendMessage(from, { text: 'Neustart Erfolgreich!' });
 
         // Delay the shutdown by 5 seconds using sleep function
         //await sleep(5000);
@@ -981,7 +981,7 @@ Typed *surrender* to surrender and admited defeat`
         pm2.restart('index', (err) => {
           if (err) {
             A17.sendMessage(from, { react: { text: "❌", key: m.key } });
-            A17.sendMessage(from, { text: 'Restarting Failed!' });
+            A17.sendMessage(from, { text: 'Neustart Fehlgeschlagen!' });
           } else {
             return;
           }
@@ -996,7 +996,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.owner)
         await A17.sendMessage(from, { react: { text: "⚠️", key: m.key } })
 
-        reply(`Okey bye time to sleep!`)
+        reply(`Okay bye bye wird zeit schlafen zu gehen!`)
         await sleep(5000)
         process.exit()
         break;
@@ -1184,14 +1184,14 @@ Typed *surrender* to surrender and admited defeat`
         }
         const isBane = banUser.includes(orgnye)
         if (args[0] === "add") {
-          if (isBane) return ads('User is already banned.')
+          if (isBane) return ads('Benutzer ist bereits gesperrt.')
           banUser.push(orgnye)
-          reply(`Successfully Banned the user.`)
+          reply(`Benutzer wurde Erfolgreich gesperrt.`)
         } else if (args[0] === "del") {
-          if (!isBane) return ads('User is already unbanned.')
+          if (!isBane) return ads('Benutzer ist bereits entsperrt.')
           let delbans = banUser.indexOf(orgnye)
           banUser.splice(delbans, 1)
-          reply(`Successfully Unbanned the user.`)
+          reply(`Benutzer wurde Erfolgreich entsperrt.`)
         } else {
           reply("Error")
         }
@@ -1292,7 +1292,7 @@ Typed *surrender* to surrender and admited defeat`
           const cara = "cara"
           const daily = await eco.daily(user, cara, 999); //give 999 for daily, can be changed
 
-          if (daily.cd) return reply(`You already claimed daily for today, come back in ${daily.cdL}`); //cdL is already formatted cooldown Left
+          if (daily.cd) return reply(`Du hast für heute bereits dein Geschenk einkassiert,komm wieder in ${daily.cdL}`); //cdL is already formatted cooldown Left
 
           reply(`You claimed 💎${daily.amount} for daily`);
         }
