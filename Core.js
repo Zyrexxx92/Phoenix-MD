@@ -637,7 +637,7 @@ Typed *surrender* to surrender and admited defeat`
   
   
   if (smallinput=='runtime') {
-    reply (`Hi💞 ${pushname}🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋${runtime(process.uptime())}\n\nCurrent Time: ${kaitime}\n\nCurrent Date: ${kaidate}`)
+    reply (`Hi💞 ${pushname}🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋${runtime(process.uptime())}\n\nCurrent Time: ${kaitime}\n\nCurrent Date: ${kaidate}`)
   }
   
   
@@ -663,7 +663,7 @@ Typed *surrender* to surrender and admited defeat`
   
   if (smallinput=='ping') {
       reply (`𝘏𝘐🦋 ${pushname} 𝘗𝘖𝘕𝘎 ${latensie.toFixed(4)} 𝘔;𝘚
-      🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋`)
+      🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
   }
   
   
@@ -674,13 +674,13 @@ Typed *surrender* to surrender and admited defeat`
   
   if (smallinput.includes('good afternoon') || smallinput.includes('konnichiwa')) {
   
-    reply (`Good afthernoon to you too ${pushname} 🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋.`);
+    reply (`Good afthernoon to you too ${pushname} 🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋.`);
   
   }
   
   
   //if (smallinput.includes('good afthernoon')) {
-   // reply (`Huh ${pushname} 😇.🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋`);
+   // reply (`Huh ${pushname} 😇.🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`);
   //   }
   
   
@@ -2140,7 +2140,7 @@ Typed *surrender* to surrender and admited defeat`
           ntnsfw.push(from);
           reply('Enabled NSFW Commands!');
         } else if (args[0] === "off") {
-          if (!AntiNsfw) return reply('Already deactivated');
+          if (!AntiNsfw) return reply('Bereits deaktiviert');
           let off = ntnsfw.indexOf(from);
           ntnsfw.splice(off, 1);
           reply('Disabled NSFW Commands!');
@@ -2273,7 +2273,7 @@ Typed *surrender* to surrender and admited defeat`
 
         if (!args[0]) {
           return reply(`Please provide the GitHub repository link.\nBeispiel:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
-🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋
+🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋
           `);
         }
 
@@ -2310,7 +2310,7 @@ Typed *surrender* to surrender and admited defeat`
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
-        let teks = ` 「  🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using A17 in personal chat.`
+        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using A17 in personal chat.`
         for (let i of anu) {
           teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
@@ -2325,7 +2325,7 @@ Typed *surrender* to surrender and admited defeat`
         A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-        let teks = ` 「  🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
+        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
         for (let i of anu) {
           let metadata = await A17.groupMetadata(i)
           if (metadata.owner === "undefined") {
@@ -2467,21 +2467,21 @@ Typed *surrender* to surrender and admited defeat`
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         if (args[0] === "on") {
-          if (AntiLink) return reply('Already activated')
+          if (AntiLink) return reply('Bereits aktiviert!')
           ntilink.push(from)
-          reply('Activated _Antilink_ in this group.')
+          reply('Antilink in dieser Gruppe Aktiviert!')
           var groupe = await A17.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLink) return reply('Already deactivated!')
+          if (!AntiLink) return reply('Bereits deaktiviert!')
           let off = ntilink.indexOf(from)
           ntilink.splice(off, 1)
-          reply('Deactivated _Antilink_ in this group!')
+          reply('Antilink in dieser Gruppe Deaktiviert!')
         } else {
           let buttonsntilink = [
             { buttonId: `${prefix}antilinkgc on`, buttonText: { displayText: 'On' }, type: 1 },
@@ -2509,9 +2509,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkYoutubeVid) return reply('Already deactivated')
+          if (!AntiLinkYoutubeVid) return reply('Bereits deaktiviert')
           let off = ntilinkytvid.indexOf(from)
           ntilinkytvid.splice(off, 1)
           reply('Deactivated youtube video antilink !')
@@ -2542,9 +2542,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkYoutubeChannel) return reply('Already deactivated')
+          if (!AntiLinkYoutubeChannel) return reply('Bereits deaktiviert')
           let off = ntilinkytch.indexOf(from)
           ntilinkytch.splice(off, 1)
           reply('Deactivated youtube channel antilink !')
@@ -2575,9 +2575,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkInstagram) return reply('Already deactivated')
+          if (!AntiLinkInstagram) return reply('Bereits deaktiviert')
           let off = ntilinkig.indexOf(from)
           ntilinkig.splice(off, 1)
           reply('Deactivated instagram antilink !')
@@ -2608,9 +2608,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkFacebook) return reply('Already deactivated')
+          if (!AntiLinkFacebook) return reply('Bereits deaktiviert')
           let off = ntilinkfb.indexOf(from)
           ntilinkfb.splice(off, 1)
           reply('Deactivated facebook antilink !')
@@ -2641,9 +2641,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkTelegram) return reply('Already deactivated')
+          if (!AntiLinkTelegram) return reply('Bereits deaktiviert')
           let off = ntilinkig.indexOf(from)
           ntilinkig.splice(off, 1)
           reply('Deactivated telegram antilink in this group')
@@ -2674,9 +2674,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkTiktok) return reply('Already deactivated')
+          if (!AntiLinkTiktok) return reply('Bereits deaktiviert')
           let off = ntilinktt.indexOf(from)
           ntilinktt.splice(off, 1)
           reply('Deactivated tiktok antilink !')
@@ -2707,9 +2707,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkTwitter) return reply('Already deactivated')
+          if (!AntiLinkTwitter) return reply('Bereits deaktiviert')
           let off = ntilinktwt.indexOf(from)
           ntilinktwt.splice(off, 1)
           reply('Deactivated twitter antilink !')
@@ -2740,9 +2740,9 @@ Typed *surrender* to surrender and admited defeat`
       // members.map(async adm => {
       // mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
       // })
-      // A17.sendMessage(from, {text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+      // A17.sendMessage(from, {text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
       // } else if (args[0] === "off") {
-      // if (!AntiLinkAll) return reply('Already deactivated')
+      // if (!AntiLinkAll) return reply('Bereits deaktiviert')
       // let off = ntilinkall.indexOf(from)
       // ntilinkall.splice(off, 1)
       // reply('Disabled all antilink !')
@@ -2776,9 +2776,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'));
           });
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
         } else if (args[0] === "off") {
-          if (!AntiLinkAll) return reply('Already deactivated');
+          if (!AntiLinkAll) return reply('Bereits deaktiviert');
           let off = ntilinkall.indexOf(from);
           ntilinkall.splice(off, 1);
           reply('Disabled all antilink!');
@@ -2807,7 +2807,7 @@ Typed *surrender* to surrender and admited defeat`
           })
           A17.sendMessage(from, { text: `\`\`\`*「  Warning  」*\`\`\`\n\nAntilink is enabled!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!antiWame) return reply('Already deactivated')
+          if (!antiWame) return reply('Bereits deaktiviert')
           let off = nttoxic.indexOf(from)
           ntwame.splice(off, 1)
           reply('Deactivated antiwame !')
@@ -2847,7 +2847,7 @@ Typed *surrender* to surrender and admited defeat`
       // })
       // A17.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nNSFW(not safe for work) feature has been enabled in this group, which means anyone here can accesss Adult commands!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
       // } else if (args[0] === "off") {
-      // if (!AntiNsfw) return reply('Already deactivated')
+      // if (!AntiNsfw) return reply('Bereits deaktiviert')
       // let off = ntnsfw.indexOf(from)
       // ntnsfw.splice(off, 1)
       // reply('Disabled NSFW Commands!')
@@ -3061,7 +3061,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         A17.sendMessage(from, { react: { text: "💬", key: m.key } })
-        A17.sendMessage(m.chat, { text: args.join("🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋") ? args.join("🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
+        A17.sendMessage(m.chat, { text: args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋") ? args.join("🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
       }
         break;
 
@@ -3071,7 +3071,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         A17.sendMessage(from, { react: { text: "🗿", key: m.key } })
-        if (!text) return reply(`*🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋*`)
+        if (!text) return reply(`*🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋*`)
         let teks = `*「 Tag Admins 」*
 
 *Message : ${text}*\n\n`
@@ -3465,9 +3465,9 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warning 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
-          if (!AntiLinkAll) return reply('Already deactivated')
+          if (!AntiLinkAll) return reply('Bereits deaktiviert')
           let off = ntilinkall.indexOf(from)
           ntilinkall.splice(off, 1)
           reply('Disabled all antilink !')
@@ -4593,7 +4593,7 @@ _Click the button below to download_`
           contextInfo: {
             mentionedJid: [m.sender],
             externalAdReply: {
-              title: "🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋",
+              title: "🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋",
               body: `Now playing: ${bname}`,
               thumbnailUrl: bimg,
               sourceUrl: burl,
@@ -6426,7 +6426,7 @@ _Click the button below to download_`
           if (isBanChat) return reply(mess.bangc);
           A17.sendMessage(from, { react: { text: "💫", key: m.key } })
 
-          reply(`🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋`)
+          reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
         }
 
         break;
@@ -6497,7 +6497,7 @@ _Click the button below to download_`
           if (isBanChat) return reply(mess.bangc);
           A17.sendMessage(from, { react: { text: "🔑", key: m.key } })
 
-          reply(`🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋`)
+          reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
         }
 
         break;
