@@ -68,22 +68,22 @@ async function startA17() {
   const A17 = A17Connect({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
-    browser: ["PHOENIX-Md", "Safari", "3.O"],
+    browser: ["PHOENIX-Md", "Chrome (linux)", "3.O"],
     auth: state,
   });
 
-  store.bind(A17.ev);
+  store.bind(Phoenix.ev);
 
 
  //
-  A17.ws.on('CB:call', async (json) => {
+  Phoenix.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag === 'offer') {
       try {
-        let contactMessage = await A17.sendContact(callerId, global.Owner)
-        await A17.sendMessage(callerId, { text: `Automatic Block System!\nDo not call this number!\nPlease unblock this number with permission from the Bot Owner.` }, { quoted: contactMessage })
+        let contactMessage = await Phoenix.sendContact(callerId, global.Owner)
+        await Phoenix.sendMessage(callerId, { text: `Automatic Block System!\nDo not call this number!\nPlease unblock this number with permission from the Bot Owner.` }, { quoted: contactMessage })
         await sleep(8000)
-        await A17.updateBlockStatus(callerId, "block")
+        await Phoenix.updateBlockStatus(callerId, "block")
       } catch (error) {
         console.error(error)
       }
@@ -91,7 +91,7 @@ async function startA17() {
   })
 
 
-  A17.ev.on("messages.upsert", async (chatUpdate) => {
+  Phoenix.ev.on("messages.upsert", async (chatUpdate) => {
     try {
       mek = chatUpdate.messages[0];
       if (!mek.message) return;
@@ -100,7 +100,7 @@ async function startA17() {
           ? mek.message.ephemeralMessage.message
           : mek.message;
       if (mek.key && mek.key.remoteJid === "status@broadcast") return;
-      if (!A17.public && !mek.key.fromMe && chatUpdate.type === "notify")
+      if (!Phoenix.public && !mek.key.fromMe && chatUpdate.type === "notify")
         return;
       if (mek.key.id.startsWith("BAE5") && mek.key.id.length === 16) return;
       m = smsg(A17, mek, store);
@@ -112,50 +112,50 @@ async function startA17() {
 
 
   /* 
- A17.ev.on('groups.update', async pea => {
+ Phoenix.ev.on('groups.update', async pea => {
      
         try {     
-        ppgc = await A17.profilePictureUrl(pea[0].id, 'image')
+        ppgc = await Phoenix.profilePictureUrl(pea[0].id, 'image')
         } catch {
         ppgc = 'https://wallpapercave.com/wp/wp10524580.jpg'
         }
         let wm_fatih = { url : ppgc }
         if (pea[0].announce == true) {
-        A17.send5ButImg(pea[0].id, `Grop has been *Closed!* Only *Admins* can send Messages!`, `${BotName}`, wm_fatih, [])
+        Phoenix.send5ButImg(pea[0].id, `Grop has been *Closed!* Only *Admins* can send Messages!`, `${BotName}`, wm_fatih, [])
         } else if(pea[0].announce == false) {
-        A17.send5ButImg(pea[0].id, `Grop has been *Opened!* Now *Everyone* can send Messages!`, `${BotName}`, wm_fatih, [])
+        Phoenix.send5ButImg(pea[0].id, `Grop has been *Opened!* Now *Everyone* can send Messages!`, `${BotName}`, wm_fatih, [])
         } else {
-        A17.send5ButImg(pea[0].id, `Group Subject has been updated to *${pea[0].subject}*`, `${BotName}`, wm_fatih, [])
+        Phoenix.send5ButImg(pea[0].id, `Group Subject has been updated to *${pea[0].subject}*`, `${BotName}`, wm_fatih, [])
       }
      })
  */
 
-  A17.ev.on('groups.update', async pea => {
+  Phoenix.ev.on('groups.update', async pea => {
     //console.log(pea)
     // Get Profile Picture Group
     try {
-      ppgc = await A17.profilePictureUrl(pea[0].id, 'image')
+      ppgc = await Phoenix.profilePictureUrl(pea[0].id, 'image')
     } catch {
       ppgc = 'https://images2.alphacoders.com/882/882819.jpg'
     }
     let wm_fatih = { url: ppgc }
     if (pea[0].announce == true) {
-      //A17.send5ButImg(pea[0].id, `Grop has been *Closed!* Only *Admins* can send Messages!`, `A17 Bot`, wm_fatih, [])
+      //Phoenix.send5ButImg(pea[0].id, `Grop has been *Closed!* Only *Admins* can send Messages!`, `A17 Bot`, wm_fatih, [])
 
-      A17.sendMessage(m.chat, { image: wm_fatih, caption: 'Grop has been *Closed!* Only *Admins* can send Messages!' })
+      Phoenix.sendMessage(m.chat, { image: wm_fatih, caption: 'Grop has been *Closed!* Only *Admins* can send Messages!' })
     } else if (pea[0].announce == false) {
-      // A17.send5ButImg(pea[0].id, `Grop has been *Opened!* Now *Everyone* can send Messages!`, `A17 Bot`, wm_fatih, [])
-      A17.sendMessage(m.chat, { image: wm_fatih, caption: 'Grop has been *Opened!* Now *Everyone* can send Messages!' })
+      // Phoenix.send5ButImg(pea[0].id, `Grop has been *Opened!* Now *Everyone* can send Messages!`, `A17 Bot`, wm_fatih, [])
+      Phoenix.sendMessage(m.chat, { image: wm_fatih, caption: 'Grop has been *Opened!* Now *Everyone* can send Messages!' })
     } else if (pea[0].restrict == true) {
-      //A17.send5ButImg(pea[0].id, `Group Info modification has been *Restricted*, Now only *Admins* can edit Group Info !`, `A17 Bot`, wm_fatih, [])
-      A17.sendMessage(m.chat, { image: wm_fatih, caption: 'Group Info modification has been *Restricted*, Now only *Admins* can edit Group Info !' })
+      //Phoenix.send5ButImg(pea[0].id, `Group Info modification has been *Restricted*, Now only *Admins* can edit Group Info !`, `A17 Bot`, wm_fatih, [])
+      Phoenix.sendMessage(m.chat, { image: wm_fatih, caption: 'Group Info modification has been *Restricted*, Now only *Admins* can edit Group Info !' })
     } else if (pea[0].restrict == false) {
-      //A17.send5ButImg(pea[0].id, `Group Info modification has been *Un-Restricted*, Now only *Everyone* can edit Group Info !`, `A17 Bot`, wm_fatih, [])
-      A17.sendMessage(m.chat, { image: wm_fatih, caption: 'Group Info modification has been *Un-Restricted*, Now only *Everyone* can edit Group Info !' })
+      //Phoenix.send5ButImg(pea[0].id, `Group Info modification has been *Un-Restricted*, Now only *Everyone* can edit Group Info !`, `A17 Bot`, wm_fatih, [])
+      Phoenix.sendMessage(m.chat, { image: wm_fatih, caption: 'Group Info modification has been *Un-Restricted*, Now only *Everyone* can edit Group Info !' })
     } else {
-      //A17.send5ButImg(pea[0].id, `Group Subject has been uhanged To:\n\n*${pea[0].subject}*`, `A17 Bot`, wm_fatih, [])
+      //Phoenix.send5ButImg(pea[0].id, `Group Subject has been uhanged To:\n\n*${pea[0].subject}*`, `A17 Bot`, wm_fatih, [])
       A17textddfq = `Group Subject has been updated To:\n\n*${pea[0].subject}*`
-      A17.sendMessage(pea[0].id, { image: wm_fatih, caption: A17textddfq })
+      Phoenix.sendMessage(pea[0].id, { image: wm_fatih, caption: A17textddfq })
     }
   })
 
@@ -170,27 +170,27 @@ async function startA17() {
 
   /* 
   
-    A17.ev.on('group-participants.update', async (anu) => {
+    Phoenix.ev.on('group-participants.update', async (anu) => {
       console.log(anu)
   
       try {
-        let metadata = await A17.groupMetadata(anu.id)
+        let metadata = await Phoenix.groupMetadata(anu.id)
         let participants = anu.participants
         for (let num of participants) {
   
           try {
-            ppuser = await A17.profilePictureUrl(num, 'image')
+            ppuser = await Phoenix.profilePictureUrl(num, 'image')
           } catch {
             ppuser = 'https://images6.alphacoders.com/690/690121.jpg'
           }
   
           try {
-            ppgroup = await A17.profilePictureUrl(anu.id, 'image')
+            ppgroup = await Phoenix.profilePictureUrl(anu.id, 'image')
           } catch {
             ppgroup = 'https://telegra.ph/file/4cc2712eee93c105f6739.jpg'
           }
   
-          let targetname = await A17.getName(num)
+          let targetname = await Phoenix.getName(num)
           grpmembernum = metadata.participants.length
   
   
@@ -212,7 +212,7 @@ async function startA17() {
               footer: `${global.BotName}`,
               headerType: 4,
             }
-            A17.sendMessage(anu.id, buttonMessage)
+            Phoenix.sendMessage(anu.id, buttonMessage)
           } else if (anu.action == 'remove') {
             let WAuserName = num
             A17text = `
@@ -229,7 +229,7 @@ async function startA17() {
               headerType: 4,
   
             }
-            A17.sendMessage(anu.id, buttonMessage)
+            Phoenix.sendMessage(anu.id, buttonMessage)
           }
         }
       } catch (err) {
@@ -242,29 +242,29 @@ async function startA17() {
 
   //... Groupevent handling
 
-  A17.ev.on('group-participants.update', async (anu) => {
+  Phoenix.ev.on('group-participants.update', async (anu) => {
     if (global.groupevent) { // Check if group event handling is enabled ...
       console.log(anu);
 
       try {
-        let metadata = await A17.groupMetadata(anu.id);
+        let metadata = await Phoenix.groupMetadata(anu.id);
         let participants = anu.participants;
         for (let num of participants) {
           // ... existing logic for adding and removing participants ...
 
           try {
-            ppuser = await A17.profilePictureUrl(num, 'image')
+            ppuser = await Phoenix.profilePictureUrl(num, 'image')
           } catch {
             ppuser = 'https://images6.alphacoders.com/690/690121.jpg'
           }
 
           try {
-            ppgroup = await A17.profilePictureUrl(anu.id, 'image')
+            ppgroup = await Phoenix.profilePictureUrl(anu.id, 'image')
           } catch {
             ppgroup = 'https://telegra.ph/file/4cc2712eee93c105f6739.jpg'
           }
 
-          let targetname = await A17.getName(num)
+          let targetname = await Phoenix.getName(num)
           grpmembernum = metadata.participants.length
 
 
@@ -287,7 +287,7 @@ ${metadata.desc}
               footer: `${global.BotName}`,
               headerType: 4,
             }
-            A17.sendMessage(anu.id, buttonMessage)
+            Phoenix.sendMessage(anu.id, buttonMessage)
           } else if (anu.action == 'remove') {
             // ... existing logic for saying goodbye to departing participants ...
             let WAuserName = num
@@ -305,7 +305,7 @@ You'll be a noticeable absence!
               headerType: 4,
 
             }
-            A17.sendMessage(anu.id, buttonMessage)
+            Phoenix.sendMessage(anu.id, buttonMessage)
           }
         }
       } catch (err) {
@@ -316,7 +316,7 @@ You'll be a noticeable absence!
 
 
   //
-  A17.decodeJid = (jid) => {
+  Phoenix.decodeJid = (jid) => {
     if (!jid) return jid;
     if (/:\d+@/gi.test(jid)) {
       let decode = jidDecode(jid) || {};
@@ -327,22 +327,22 @@ You'll be a noticeable absence!
     } else return jid;
   };
 
-  A17.ev.on("contacts.update", (update) => {
+  Phoenix.ev.on("contacts.update", (update) => {
     for (let contact of update) {
-      let id = A17.decodeJid(contact.id);
+      let id = Phoenix.decodeJid(contact.id);
       if (store && store.contacts)
         store.contacts[id] = { id, name: contact.notify };
     }
   });
 
-  A17.getName = (jid, withoutContact = false) => {
-    id = A17.decodeJid(jid);
-    withoutContact = A17.withoutContact || withoutContact;
+  Phoenix.getName = (jid, withoutContact = false) => {
+    id = Phoenix.decodeJid(jid);
+    withoutContact = Phoenix.withoutContact || withoutContact;
     let v;
     if (id.endsWith("@g.us"))
       return new Promise(async (resolve) => {
         v = store.contacts[id] || {};
-        if (!(v.name || v.subject)) v = A17.groupMetadata(id) || {};
+        if (!(v.name || v.subject)) v = Phoenix.groupMetadata(id) || {};
         resolve(
           v.name ||
           v.subject ||
@@ -358,8 +358,8 @@ You'll be a noticeable absence!
             id,
             name: "WhatsApp",
           }
-          : id === A17.decodeJid(A17.user.id)
-            ? A17.user
+          : id === Phoenix.decodeJid(Phoenix.user.id)
+            ? Phoenix.user
             : store.contacts[id] || {};
     return (
       (withoutContact ? "" : v.name) ||
@@ -371,12 +371,12 @@ You'll be a noticeable absence!
     );
   };
 
-  A17.sendContact = async (jid, kon, quoted = "", opts = {}) => {
+  Phoenix.sendContact = async (jid, kon, quoted = "", opts = {}) => {
     let list = [];
     for (let i of kon) {
       list.push({
-        displayName: await A17.getName(i + "@s.whatsapp.net"),
-        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await A17.getName(
+        displayName: await Phoenix.getName(i + "@s.whatsapp.net"),
+        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await Phoenix.getName(
           i + "@s.whatsapp.net"
         )}\nFN:${global.OwnerName
           }\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${global.websitex
@@ -385,7 +385,7 @@ You'll be a noticeable absence!
           };;;;\nitem4.X-ABLabel:Region\nEND:VCARD`,
       });
     }
-    A17.sendMessage(
+    Phoenix.sendMessage(
       jid,
       {
         contacts: { displayName: `${list.length} Contact`, contacts: list },
@@ -395,8 +395,8 @@ You'll be a noticeable absence!
     );
   };
 
-  A17.setStatus = (status) => {
-    A17.query({
+  Phoenix.setStatus = (status) => {
+    Phoenix.query({
       tag: "iq",
       attrs: {
         to: "@s.whatsapp.net",
@@ -414,11 +414,11 @@ You'll be a noticeable absence!
     return status;
   };
 
-  A17.public = true;
+  Phoenix.public = true;
 
-  A17.serializeM = (m) => smsg(A17, m, store);
+  Phoenix.serializeM = (m) => smsg(A17, m, store);
 
-  A17.ev.on("connection.update", async (update) => {
+  Phoenix.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect } = update;
     if (connection === "close") {
       let reason = lastDisconnect.error
@@ -454,7 +454,7 @@ You'll be a noticeable absence!
     //console.log('Connected...', update)
   });
 
-  A17.ev.on("creds.update", saveCreds);
+  Phoenix.ev.on("creds.update", saveCreds);
 
 
 
@@ -473,7 +473,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.send5ButImg = async (
+  Phoenix.send5ButImg = async (
     jid,
     text = "",
     footer = "",
@@ -484,7 +484,7 @@ You'll be a noticeable absence!
   ) => {
     let message = await prepareWAMessageMedia(
       { image: img, jpegThumbnail: thumb },
-      { upload: A17.waUploadToServer }
+      { upload: Phoenix.waUploadToServer }
     );
     var template = generateWAMessageFromContent(
       m.chat,
@@ -500,7 +500,7 @@ You'll be a noticeable absence!
       }),
       options
     );
-    A17.relayMessage(jid, template.message, { messageId: template.key.id });
+    Phoenix.relayMessage(jid, template.message, { messageId: template.key.id });
   };
 
   /**
@@ -512,7 +512,7 @@ You'll be a noticeable absence!
    * @param {*} quoted
    * @param {*} options
    */
-  A17.sendButtonText = (
+  Phoenix.sendButtonText = (
     jid,
     buttons = [],
     text,
@@ -527,7 +527,7 @@ You'll be a noticeable absence!
       headerType: 2,
       ...options,
     };
-    A17.sendMessage(jid, buttonMessage, { quoted, ...options });
+    Phoenix.sendMessage(jid, buttonMessage, { quoted, ...options });
   };
 
   /**
@@ -538,8 +538,8 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendText = (jid, text, quoted = "", options) =>
-    A17.sendMessage(jid, { text: text, ...options }, { quoted });
+  Phoenix.sendText = (jid, text, quoted = "", options) =>
+    Phoenix.sendMessage(jid, { text: text, ...options }, { quoted });
 
   /**
    *
@@ -550,7 +550,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendImage = async (jid, path, caption = "", quoted = "", options) => {
+  Phoenix.sendImage = async (jid, path, caption = "", quoted = "", options) => {
     let buffer = Buffer.isBuffer(path)
       ? path
       : /^data:.*?\/.*?;base64,/i.test(path)
@@ -560,7 +560,7 @@ You'll be a noticeable absence!
           : fs.existsSync(path)
             ? fs.readFileSync(path)
             : Buffer.alloc(0);
-    return await A17.sendMessage(
+    return await Phoenix.sendMessage(
       jid,
       { image: buffer, caption: caption, ...options },
       { quoted }
@@ -576,7 +576,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendVideo = async (
+  Phoenix.sendVideo = async (
     jid,
     path,
     caption = "",
@@ -593,7 +593,7 @@ You'll be a noticeable absence!
           : fs.existsSync(path)
             ? fs.readFileSync(path)
             : Buffer.alloc(0);
-    return await A17.sendMessage(
+    return await Phoenix.sendMessage(
       jid,
       { video: buffer, caption: caption, gifPlayback: gif, ...options },
       { quoted }
@@ -609,7 +609,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendAudio = async (jid, path, quoted = "", ptt = false, options) => {
+  Phoenix.sendAudio = async (jid, path, quoted = "", ptt = false, options) => {
     let buffer = Buffer.isBuffer(path)
       ? path
       : /^data:.*?\/.*?;base64,/i.test(path)
@@ -619,7 +619,7 @@ You'll be a noticeable absence!
           : fs.existsSync(path)
             ? fs.readFileSync(path)
             : Buffer.alloc(0);
-    return await A17.sendMessage(
+    return await Phoenix.sendMessage(
       jid,
       { audio: buffer, ptt: ptt, ...options },
       { quoted }
@@ -634,8 +634,8 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendTextWithMentions = async (jid, text, quoted, options = {}) =>
-    A17.sendMessage(
+  Phoenix.sendTextWithMentions = async (jid, text, quoted, options = {}) =>
+    Phoenix.sendMessage(
       jid,
       {
         text: text,
@@ -657,7 +657,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+  Phoenix.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
     let buff = Buffer.isBuffer(path)
       ? path
       : /^data:.*?\/.*?;base64,/i.test(path)
@@ -674,7 +674,7 @@ You'll be a noticeable absence!
       buffer = await imageToWebp(buff);
     }
 
-    await A17.sendMessage(
+    await Phoenix.sendMessage(
       jid,
       { sticker: { url: buffer }, ...options },
       { quoted }
@@ -690,7 +690,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+  Phoenix.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
     let buff = Buffer.isBuffer(path)
       ? path
       : /^data:.*?\/.*?;base64,/i.test(path)
@@ -707,14 +707,14 @@ You'll be a noticeable absence!
       buffer = await videoToWebp(buff);
     }
 
-    await A17.sendMessage(
+    await Phoenix.sendMessage(
       jid,
       { sticker: { url: buffer }, ...options },
       { quoted }
     );
     return buffer;
   };
-  A17.sendMedia = async (
+  Phoenix.sendMedia = async (
     jid,
     path,
     fileName = "",
@@ -722,7 +722,7 @@ You'll be a noticeable absence!
     quoted = "",
     options = {}
   ) => {
-    let types = await A17.getFile(path, true);
+    let types = await Phoenix.getFile(path, true);
     let { mime, ext, res, data, filename } = types;
     if ((res && res.status !== 200) || file.length <= 65536) {
       try {
@@ -750,7 +750,7 @@ You'll be a noticeable absence!
     else if (/video/.test(mime)) type = "video";
     else if (/audio/.test(mime)) type = "audio";
     else type = "document";
-    await A17.sendMessage(
+    await Phoenix.sendMessage(
       jid,
       { [type]: { url: pathFile }, caption, mimetype, fileName, ...options },
       { quoted, ...options }
@@ -764,7 +764,7 @@ You'll be a noticeable absence!
    * @param {*} attachExtension
    * @returns
    */
-  A17.downloadAndSaveMediaMessage = async (
+  Phoenix.downloadAndSaveMediaMessage = async (
     message,
     filename,
     attachExtension = true
@@ -786,7 +786,7 @@ You'll be a noticeable absence!
     return trueFileName;
   };
 
-  A17.downloadMediaMessage = async (message) => {
+  Phoenix.downloadMediaMessage = async (message) => {
     let mime = (message.msg || message).mimetype || "";
     let messageType = message.mtype
       ? message.mtype.replace(/Message/gi, "")
@@ -808,7 +808,7 @@ You'll be a noticeable absence!
    * @param {*} options
    * @returns
    */
-  A17.copyNForward = async (
+  Phoenix.copyNForward = async (
     jid,
     message,
     forceForward = false,
@@ -859,13 +859,13 @@ You'll be a noticeable absence!
         }
         : {}
     );
-    await A17.relayMessage(jid, waMessage.message, {
+    await Phoenix.relayMessage(jid, waMessage.message, {
       messageId: waMessage.key.id,
     });
     return waMessage;
   };
 
-  A17.sendListMsg = (
+  Phoenix.sendListMsg = (
     jid,
     text = "",
     footer = "",
@@ -882,14 +882,14 @@ You'll be a noticeable absence!
       buttonText: butText,
       sections,
     };
-    A17.sendMessage(jid, listMes, { quoted: quoted });
+    Phoenix.sendMessage(jid, listMes, { quoted: quoted });
   };
 
-  A17.cMod = (
+  Phoenix.cMod = (
     jid,
     copy,
     text = "",
-    sender = A17.user.id,
+    sender = Phoenix.user.id,
     options = {}
   ) => {
     //let copy = message.toJSON()
@@ -919,7 +919,7 @@ You'll be a noticeable absence!
     else if (copy.key.remoteJid.includes("@broadcast"))
       sender = sender || copy.key.remoteJid;
     copy.key.remoteJid = jid;
-    copy.key.fromMe = sender === A17.user.id;
+    copy.key.fromMe = sender === Phoenix.user.id;
 
     return proto.WebMessageInfo.fromObject(copy);
   };
@@ -929,7 +929,7 @@ You'll be a noticeable absence!
    * @param {*} path
    * @returns
    */
-  A17.getFile = async (PATH, save) => {
+  Phoenix.getFile = async (PATH, save) => {
     let res;
     let data = Buffer.isBuffer(PATH)
       ? PATH
@@ -961,7 +961,7 @@ You'll be a noticeable absence!
     };
   };
 
-  A17.send5ButGif = async (
+  Phoenix.send5ButGif = async (
     jid,
     text = "",
     footer = "",
@@ -971,7 +971,7 @@ You'll be a noticeable absence!
   ) => {
     let message = await prepareWAMessageMedia(
       { video: gif, gifPlayback: true },
-      { upload: A17.waUploadToServer }
+      { upload: Phoenix.waUploadToServer }
     );
     var template = generateWAMessageFromContent(
       jid,
@@ -987,10 +987,10 @@ You'll be a noticeable absence!
       }),
       options
     );
-    A17.relayMessage(jid, template.message, { messageId: template.key.id });
+    Phoenix.relayMessage(jid, template.message, { messageId: template.key.id });
   };
 
-  A17.send5ButVid = async (
+  Phoenix.send5ButVid = async (
     jid,
     text = "",
     footer = "",
@@ -1000,7 +1000,7 @@ You'll be a noticeable absence!
   ) => {
     let message = await prepareWAMessageMedia(
       { video: vid },
-      { upload: A17.waUploadToServer }
+      { upload: Phoenix.waUploadToServer }
     );
     var template = generateWAMessageFromContent(
       jid,
@@ -1016,21 +1016,21 @@ You'll be a noticeable absence!
       }),
       options
     );
-    A17.relayMessage(jid, template.message, { messageId: template.key.id });
+    Phoenix.relayMessage(jid, template.message, { messageId: template.key.id });
   };
   //send5butmsg
-  A17.send5ButMsg = (jid, text = "", footer = "", but = []) => {
+  Phoenix.send5ButMsg = (jid, text = "", footer = "", but = []) => {
     let templateButtons = but;
     var templateMessage = {
       text: text,
       footer: footer,
       templateButtons: templateButtons,
     };
-    A17.sendMessage(jid, templateMessage);
+    Phoenix.sendMessage(jid, templateMessage);
   };
 
-  A17.sendFile = async (jid, PATH, fileName, quoted = {}, options = {}) => {
-    let types = await A17.getFile(PATH, true);
+  Phoenix.sendFile = async (jid, PATH, fileName, quoted = {}, options = {}) => {
+    let types = await Phoenix.getFile(PATH, true);
     let { filename, size, ext, mime, data } = types;
     let type = "",
       mimetype = mime,
@@ -1051,14 +1051,14 @@ You'll be a noticeable absence!
     else if (/video/.test(mime)) type = "video";
     else if (/audio/.test(mime)) type = "audio";
     else type = "document";
-    await A17.sendMessage(
+    await Phoenix.sendMessage(
       jid,
       { [type]: { url: pathFile }, mimetype, fileName, ...options },
       { quoted, ...options }
     );
     return fs.promises.unlink(pathFile);
   };
-  A17.parseMention = async (text) => {
+  Phoenix.parseMention = async (text) => {
     return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(
       (v) => v[1] + "@s.whatsapp.net"
     );

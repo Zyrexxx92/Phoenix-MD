@@ -197,7 +197,7 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
     const command = isCmd ? body.slice(1).trim().split(' ')[0].toLowerCase() : ''
     const args = body.trim().split(/ +/).slice(1)
     const pushname = m.pushName || "No Name"
-    const botNumber = await A17.decodeJid(A17.user.id)
+    const botNumber = await Phoenix.decodeJid(Phoenix.user.id)
     const isCreator = [botNumber, ...global.Owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
     const itsMe = m.sender == botNumber ? true : false
     const text = args.join(" ")
@@ -206,7 +206,7 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
     const mime = (quoted.msg || quoted).mimetype || ''
     const isMedia = /image|video|sticker|audio/.test(mime)
     const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
-    const groupMetadata = m.isGroup ? await A17.groupMetadata(m.chat).catch(e => { }) : ''
+    const groupMetadata = m.isGroup ? await Phoenix.groupMetadata(m.chat).catch(e => { }) : ''
     const groupName = m.isGroup ? groupMetadata.subject : ''
     const participants = m.isGroup ? await groupMetadata.participants : ''
     const groupAdmins = m.isGroup ? await participants.filter(v => v.admin !== null).map(v => v.id) : ''
@@ -243,12 +243,12 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
     _sewa.expiredCheck(A17, sewa);
 
     const reply = (teks) => {
-      A17.sendMessage(m.chat, { text: teks }, { quoted: m })
+      Phoenix.sendMessage(m.chat, { text: teks }, { quoted: m })
     }
 
 
     /* const reply = (teks) => {
-      A17.sendMessage(m.chat, { text: teks }, { quoted: m }); 
+      Phoenix.sendMessage(m.chat, { text: teks }, { quoted: m }); 
     }; */
 
 
@@ -286,8 +286,8 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
 
     // if (global.autoreadpmngc) {
     //   if (command) {
-    //     await A17.sendPresenceUpdate("composing", m.chat);
-    //     A17.sendReadReceipt(from, m.sender, [m.key.id]);
+    //     await Phoenix.sendPresenceUpdate("composing", m.chat);
+    //     Phoenix.sendReadReceipt(from, m.sender, [m.key.id]);
     //   }
     // }
 
@@ -295,21 +295,21 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
     //
     //   if (global.autoReadGc) {
     //   if (m.isGroup) { 
-    //       A17.sendReadReceipt(m.chat, m.sender, [m.key.id]);
+    //       Phoenix.sendReadReceipt(m.chat, m.sender, [m.key.id]);
     //   }
     // }
 
 
     // if (global.autoReadAll) {
     //   if (m.chat) {
-    //     A17.sendReadReceipt(m.chat, m.sender, [m.key.id]);
+    //     Phoenix.sendReadReceipt(m.chat, m.sender, [m.key.id]);
     //   }
     // }
 
 
     if (global.autoreadgc) {
       if (command) {
-        await A17.sendPresenceUpdate('composing', m.chat);
+        await Phoenix.sendPresenceUpdate('composing', m.chat);
 
         // Create an array of message keys to mark as read
         const keysToMarkAsRead = [
@@ -322,26 +322,26 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
         ];
 
         // Use the sock object to read the specified messages
-        await A17.readMessages(keysToMarkAsRead);
+        await Phoenix.readMessages(keysToMarkAsRead);
       }
     }
 
 
     if (global.autoRecord) {
       if (m.chat) {
-        A17.sendPresenceUpdate("recording", m.chat);
+        Phoenix.sendPresenceUpdate("recording", m.chat);
       }
     }
 
     if (global.autoTyping) {
       if (m.chat) {
-        A17.sendPresenceUpdate("composing", m.chat);
+        Phoenix.sendPresenceUpdate("composing", m.chat);
       }
     }
 
     if (global.available) {
       if (m.chat) {
-        A17.sendPresenceUpdate("available", m.chat);
+        Phoenix.sendPresenceUpdate("available", m.chat);
       }
     }
 
@@ -367,7 +367,7 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
     for (let anju of kaiaudio) {
       if (budy === anju) {
         result = fs.readFileSync(`./Assets/audio/${anju}.mp3`)
-        A17.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { audio: result, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
       }
     }
 
@@ -430,7 +430,7 @@ function updateStatus() {
 
   function _0x582b(_0xabb6f8,_0x12cdd8){const _0x58e890=_0x58e8();return _0x582b=function(_0x582b90,_0x4387b3){_0x582b90=_0x582b90-0x189;let _0x932613=_0x58e890[_0x582b90];return _0x932613;},_0x582b(_0xabb6f8,_0x12cdd8);}function _0x58e8(){const _0x109554=['12896370RDSmnX','3BgvPel','189HbmdoW','18854HvEPNh','11TZHUID','9125326EcyeIg','464328lPaAMf','3400722cbWEOK','2263175KIczdo','12TaHNqM','2521564eqJRHK'];_0x58e8=function(){return _0x109554;};return _0x58e8();}(function(_0x429d7b,_0x532ab5){const _0x527567=_0x582b,_0x130eb4=_0x429d7b();while(!![]){try{const _0x75c57a=-parseInt(_0x527567(0x18b))/0x1+-parseInt(_0x527567(0x192))/0x2*(-parseInt(_0x527567(0x189))/0x3)+parseInt(_0x527567(0x191))/0x4*(-parseInt(_0x527567(0x190))/0x5)+-parseInt(_0x527567(0x18f))/0x6+parseInt(_0x527567(0x18d))/0x7+parseInt(_0x527567(0x18e))/0x8*(-parseInt(_0x527567(0x18a))/0x9)+parseInt(_0x527567(0x193))/0xa*(parseInt(_0x527567(0x18c))/0xb);if(_0x75c57a===_0x532ab5)break;else _0x130eb4['push'](_0x130eb4['shift']());}catch(_0x19ea04){_0x130eb4['push'](_0x130eb4['shift']());}}}(_0x58e8,0xa8dae));const status='\x0a\x20          \x20『•• \x20Phoenix-\x20Bᴏᴛ\x20-Mᴅ\x20 ••』       \x0a\x20\x20ㅤㅤㅤ〘ㅤ\x20🛡️ Auto\x20Uptime:\x20'+uptimeFormatted+'ㅤ〙';
 
-  A17.setStatus(status); // Set the status using A17.setStatus or your equivalent method
+  Phoenix.setStatus(status); // Set the status using Phoenix.setStatus or your equivalent method
 
   // Update the status randomly within 5 minutes (300000 milliseconds)
   const randomTime = Math.floor(Math.random() * 300000) + 1000; // don't edit.
@@ -455,7 +455,7 @@ updateStatus();
     //     if (m.key.fromMe) return reply(bvl)
     //     if (isCreator) return reply(bvl)
     //     kice = m.sender
-    //     await A17.sendMessage(
+    //     await Phoenix.sendMessage(
     //       from,
     //       {
     //         delete: {
@@ -469,8 +469,8 @@ updateStatus();
     //         quoted: m,
     //       }
     //     );
-    //   //  await A17.groupParticipantsUpdate(m.chat, [kice], 'remove')
-    //     A17.sendMessage(from, { text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫@${kice.split("@")[0]} You are not allowed to send any links in this group !*\n`, contextInfo: { mentionedJid: [kice] } }, { quoted: m })
+    //   //  await Phoenix.groupParticipantsUpdate(m.chat, [kice], 'remove')
+    //     Phoenix.sendMessage(from, { text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫@${kice.split("@")[0]} You are not allowed to send any links in this group !*\n`, contextInfo: { mentionedJid: [kice] } }, { quoted: m })
     //   } else {
     //   }
 
@@ -481,7 +481,7 @@ updateStatus();
     //     if (m.key.fromMe) return reply(bvl)
     //     if (isCreator) return reply(bvl)
     //     kice = m.sender
-    //     await A17.sendMessage(
+    //     await Phoenix.sendMessage(
     //       from,
     //       {
     //         delete: {
@@ -495,8 +495,8 @@ updateStatus();
     //         quoted: m,
     //       }
     //     );
-    //   //  await A17.groupParticipantsUpdate(m.chat, [kice], 'remove')
-    //     A17.sendMessage(from, { text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫@${kice.split("@")[0]} You are not allowed to send any links in this group !*\n`, contextInfo: { mentionedJid: [kice] } }, { quoted: m })
+    //   //  await Phoenix.groupParticipantsUpdate(m.chat, [kice], 'remove')
+    //     Phoenix.sendMessage(from, { text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫@${kice.split("@")[0]} You are not allowed to send any links in this group !*\n`, contextInfo: { mentionedJid: [kice] } }, { quoted: m })
     //   } else {
     //   }
 
@@ -602,8 +602,8 @@ ${isWin ? `@${winner.split('@')[0]} Won!` : isTie ? `Game Over` : `Turn ${['❌'
 Typed *surrender* to surrender and admited defeat`
       if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
         room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-      if (room.x !== room.o) await A17.sendText(room.x, str, m, { mentions: parseMention(str) })
-      await A17.sendText(room.o, str, m, { mentions: parseMention(str) })
+      if (room.x !== room.o) await Phoenix.sendText(room.x, str, m, { mentions: parseMention(str) })
+      await Phoenix.sendText(room.o, str, m, { mentions: parseMention(str) })
       if (isTie || isWin) {
         delete this.game[room.id]
       }
@@ -731,7 +731,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'sc': case 'script': case 'git': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "✅", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "✅", key: m.key } })
 
         let { data } = await axios.get('https://github.com/7ucg/Phoenix-MD');
         teks = `
@@ -770,7 +770,7 @@ Typed *surrender* to surrender and admited defeat`
           }
 
         }
-        A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       }
         break;
 
@@ -784,9 +784,9 @@ Typed *surrender* to surrender and admited defeat`
         try {
           let userPfp;
           if (m.quoted) {
-            userPfp = await A17.profilePictureUrl(m.quoted.sender, "image");
+            userPfp = await Phoenix.profilePictureUrl(m.quoted.sender, "image");
           } else {
-            userPfp = await A17.profilePictureUrl(m.sender, "image");
+            userPfp = await Phoenix.profilePictureUrl(m.sender, "image");
           }
 
           const waUserName = pushname;
@@ -821,7 +821,7 @@ Typed *surrender* to surrender and admited defeat`
           });
 
           const buffer = Buffer.from(quoteResponse.data.result.image, "base64");
-          A17.sendImageAsSticker(m.chat, buffer, m, {
+          Phoenix.sendImageAsSticker(m.chat, buffer, m, {
             packname: `${global.BotName}`,
             author: waUserName,
           });
@@ -838,8 +838,8 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        A17.sendMessage(from, { react: { text: "💫", key: m.key } })
-        reply(`⚙ *My developer's group:* http://gg.gg/gc-support`)
+        Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
+        reply(`⚙ *My developer's group:* https://chat.whatsapp.com/GXJA9IomUhaHyofAT4PlJQ`)
       }
         break;
 
@@ -848,7 +848,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        A17.sendMessage(from, { react: { text: "💫", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
         reply(`⚙ My Source Code is </> - https://github.com/7ucg/Phoenix-MD`)
       }
         break;
@@ -858,8 +858,8 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        A17.sendMessage(from, { react: { text: "💫", key: m.key } })
-        A17.sendContact(m.chat, global.Owner, m)
+        Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
+        Phoenix.sendContact(m.chat, global.Owner, m)
       }
         break;
 
@@ -869,11 +869,11 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
         if (!args[0]) return reply(`Use ${prefix + command} number\nBeispiel ${prefix + command} ${OwnerNumber}`)
         bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
-        let ceknye = await A17.onWhatsApp(bnnd)
+        let ceknye = await Phoenix.onWhatsApp(bnnd)
         if (ceknye.length == 0) return reply(`Enter A Valid And Registered Number On WhatsApp!!!`)
         Owner.push(bnnd)
         fs.writeFileSync('./database/mod.json', JSON.stringify(Owner))
@@ -886,7 +886,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
         if (!args[0]) return reply(`Use ${prefix + command} nomor\nBeispiel ${prefix + command} 916297175943`)
         ya = q.split("|")[0].replace(/[^0-9]/g, '')
@@ -901,7 +901,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner);
-        A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
         try {
           const modData = fs.readFileSync('./database/mod.json', 'utf8');
@@ -913,7 +913,7 @@ Typed *surrender* to surrender and admited defeat`
             let modList = '';
 
             mods.forEach((mod, index) => {
-              modList += `(${index + 1}) ${A17.getName(mod)}\n`;
+              modList += `(${index + 1}) ${Phoenix.getName(mod)}\n`;
             });
 
             reply(`List of List of Moderators:\n\n${modList}`);
@@ -930,13 +930,13 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.owner)
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.owner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!quoted) return `*Send/reply Image With Caption* ${prefix + command}`
         if (!/image/.test(mime)) return `*Send/reply Image With Caption* ${prefix + command}`
         if (/webp/.test(mime)) return `*Send/reply Image With Caption* ${prefix + command}`
-        let media = await A17.downloadAndSaveMediaMessage(quoted)
-        await A17.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
+        let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
+        await Phoenix.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
         m.reply(mess.jobdone)
       }
         break;
@@ -949,7 +949,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
         if (args.length !== 1) {
           return m.reply(`Please provide a single character as the new prefix.`);
@@ -967,12 +967,12 @@ Typed *surrender* to surrender and admited defeat`
 
       //
       case 'restart':
-        await A17.sendMessage(from, { react: { text: "⚙", key: m.key } });
+        await Phoenix.sendMessage(from, { react: { text: "⚙", key: m.key } });
         if (!isCreator) return reply(mess.botowner)
 
-        await A17.sendMessage(from, { text: mess.waiting });
-        await A17.sendMessage(from, { react: { text: "✅", key: m.key } });
-        await A17.sendMessage(from, { text: 'Neustart Erfolgreich!' });
+        await Phoenix.sendMessage(from, { text: mess.waiting });
+        await Phoenix.sendMessage(from, { react: { text: "✅", key: m.key } });
+        await Phoenix.sendMessage(from, { text: 'Neustart Erfolgreich!' });
 
         // Delay the shutdown by 5 seconds using sleep function
         //await sleep(5000);
@@ -980,8 +980,8 @@ Typed *surrender* to surrender and admited defeat`
         // Use PM2 to restart the script
         pm2.restart('index', (err) => {
           if (err) {
-            A17.sendMessage(from, { react: { text: "❌", key: m.key } });
-            A17.sendMessage(from, { text: 'Neustart Fehlgeschlagen!' });
+            Phoenix.sendMessage(from, { react: { text: "❌", key: m.key } });
+            Phoenix.sendMessage(from, { text: 'Neustart Fehlgeschlagen!' });
           } else {
             return;
           }
@@ -994,7 +994,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isCreator) return reply(mess.owner)
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.owner)
-        await A17.sendMessage(from, { react: { text: "⚠️", key: m.key } })
+        await Phoenix.sendMessage(from, { react: { text: "⚠️", key: m.key } })
 
         reply(`Okay bye bye wird zeit schlafen zu gehen!`)
         await sleep(5000)
@@ -1006,11 +1006,11 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.owner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        A17.public = true
+        Phoenix.public = true
         reply('I am now Publicly accessable!')
-        A17.setStatus(`Mode : Public`)
+        Phoenix.setStatus(`Mode : Public`)
       }
         break;
 
@@ -1020,10 +1020,10 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
 
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
-        A17.public = false
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.public = false
         reply('Only Owner can use me now!')
-        A17.setStatus(`Mode : Self`)
+        Phoenix.setStatus(`Mode : Self`)
       }
         break;
 
@@ -1034,7 +1034,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner);
-        A17.sendMessage(from, { react: { text: '❤', key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: '❤', key: m.key } });
 
         if (args.length === 0) {
           // Display the current status of autoreadgc
@@ -1060,7 +1060,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: '❤', key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: '❤', key: m.key } });
 
         if (args.length === 0) {
           if (global.autoTyping) {
@@ -1089,7 +1089,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: '❤', key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: '❤', key: m.key } });
 
         if (args.length === 0) {
           if (global.autoRecord) {
@@ -1151,7 +1151,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: '❤', key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: '❤', key: m.key } });
 
         if (args.length === 0) {
           // Display the current status of autostatus
@@ -1170,34 +1170,56 @@ Typed *surrender* to surrender and admited defeat`
         }
         break;
 
-
-      case 'ban': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
-        if (!args[0]) return reply(`Select add or del (add to ban, del to unban), For Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
-        if (args[1]) {
-          orgnye = args[1] + "@s.whatsapp.net"
-        } else if (m.quoted) {
-          orgnye = m.quoted.sender
+        case 'ban': {
+          if (isBan) return reply(mess.banned);
+          if (isBanChat) return reply(mess.bangc);
+          if (!isCreator) return reply(mess.botowner);
+          
+          Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } });
+        
+          if (!args[0]) return reply(`Wähle 'add' oder 'del' aus (add zum Sperren, del zum Entsperren). Zum Beispiel: antworte *${prefix}ban add* auf den Benutzer, den du sperren möchtest.`);
+        
+          let orgnye;
+          if (args[1]) {
+            orgnye = args[1].endsWith("@s.whatsapp.net") ? args[1] : args[1] + "@s.whatsapp.net";
+          } else if (m.quoted) {
+            orgnye = m.quoted.sender.endsWith("@s.whatsapp.net") ? m.quoted.sender : m.quoted.sender + "@s.whatsapp.net";
+          }
+        
+          const isBane = banUser.includes(orgnye);
+        
+          if (args[0] === "add") {
+            if (isBane) return m.reply('Benutzer ist bereits gesperrt.');
+            banUser.push(orgnye);
+            saveBanList();
+            m.reply(`Benutzer wurde erfolgreich gesperrt.`);
+          } else if (args[0] === "del") {
+            if (!isBane) return m.reply('Benutzer ist bereits entsperrt.');
+            const delIndex = banUser.indexOf(orgnye);
+            if (delIndex !== -1) {
+              banUser.splice(delIndex, 1);
+              saveBanList();
+              m.reply(`Benutzer wurde erfolgreich entsperrt.`);
+            } else {
+              m.reply('Benutzer nicht gefunden.');
+            }
+          } else {
+            m.reply("Fehler: Ungültiger Befehl.");
+          }
         }
-        const isBane = banUser.includes(orgnye)
-        if (args[0] === "add") {
-          if (isBane) return ads('Benutzer ist bereits gesperrt.')
-          banUser.push(orgnye)
-          reply(`Benutzer wurde Erfolgreich gesperrt.`)
-        } else if (args[0] === "del") {
-          if (!isBane) return ads('Benutzer ist bereits entsperrt.')
-          let delbans = banUser.indexOf(orgnye)
-          banUser.splice(delbans, 1)
-          reply(`Benutzer wurde Erfolgreich entsperrt.`)
-        } else {
-          reply("Error")
+        
+        function saveBanList() {
+          const data = JSON.stringify(banUser);
+          fs.writeFile('./database/banUser.json', data, 'utf8', (err) => {
+            if (err) {
+              console.error('Fehler beim Speichern der Sperrliste:', err);
+            } else {
+              console.log('Sperrliste erfolgreich gespeichert.');
+            }
+          });
         }
-      }
+        
         break;
-
 
 
       //-------------------------------------------------------------------------------------------------------------------------//
@@ -1209,7 +1231,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'ttc': case 'ttt': case 'tictactoe': {
         if (isBan) return reply(mess.ban)
         if (isBanChat) return reply(mess.banChat)
-        A17.sendMessage(from, { react: { text: "🎮", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🎮", key: m.key } })
 
         let TicTacToe = require("./lib/tictactoe")
         this.game = this.game ? this.game : {}
@@ -1241,8 +1263,8 @@ Typed *surrender* to surrender and admited defeat`
   ${arr.slice(6).join('')}
   Waiting @${room.game.currentTurn.split('@')[0]}
   Type *surrender* to surrender and admit defeat...`
-          if (room.x !== room.o) await A17.sendText(room.x, str, m, { mentions: parseMention(str) })
-          await A17.sendText(room.o, str, m, { mentions: parseMention(str) })
+          if (room.x !== room.o) await Phoenix.sendText(room.x, str, m, { mentions: parseMention(str) })
+          await Phoenix.sendText(room.o, str, m, { mentions: parseMention(str) })
         } else {
           room = {
             id: 'tictactoe-' + (+new Date),
@@ -1268,9 +1290,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!text) return reply(`please provide a report message you want to deliver`)
         if (text.length > 300) return reply(`Are you trying to send virus!`)
         const txtmsg = `*📮 Report Message*\n\n*Sender ➛* wa.me/${m.sender.split("@")[0]}\n\n*Group Name ➛* ${groupName}\n\n*Message ➛*  ${text}`
-        for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '6297175943@s.whatsapp.net'))
-          await A17.sendMessage(`${mod}`, { text: `${txtmsg}` }, { quoted: m })
-        await A17.sendMessage(`120363026915700516@g.us`, { text: `${txtmsg}`, mentions: groupAdmins }, { quoted: m })
+        for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '4915678394727@s.whatsapp.net'))
+          await Phoenix.sendMessage(`${mod}`, { text: `${txtmsg}` }, { quoted: m })
+        await Phoenix.sendMessage(`120363198299068646@g.us`, { text: `${txtmsg}`, mentions: groupAdmins }, { quoted: m })
         reply(`*✅ Your Report has been submitted Successfully to Support group & Owner*\n\n*You will get response shortly... ♥️*`);
       }
         break;
@@ -1287,7 +1309,7 @@ Typed *surrender* to surrender and admited defeat`
           if (isBanChat) return reply(mess.bangc);
           if (!m.isGroup) return reply(mess.grouponly)
 
-          A17.sendMessage(from, { react: { text: "💰", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "💰", key: m.key } })
           let user = m.sender
           const cara = "cara"
           const daily = await eco.daily(user, cara, 999); //give 999 for daily, can be changed
@@ -1304,7 +1326,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
 
-        A17.sendMessage(from, { react: { text: "💳", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "💳", key: m.key } })
 
         if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
 
@@ -1328,7 +1350,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
 
-        A17.sendMessage(from, { react: { text: "💳", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "💳", key: m.key } })
 
         const user = m.sender
         const cara = "cara"
@@ -1344,7 +1366,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly)
 
         {
-          A17.sendMessage(from, { react: { text: "💲", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "💲", key: m.key } })
 
           //if (!isCreator) return reply(mess.botowner)
           if (!text) return reply(`💴 Bank-capacity 💳\n\n1 | 1000 sp = 💎100\n\n2 | 10000 sp = 💎1000\n\n3 | 100000 sp = 💎10000\n\nBeispiel- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)
@@ -1383,7 +1405,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
 
-        A17.sendMessage(from, { react: { text: "📥", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "📥", key: m.key } })
 
         if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         if (!text) return reply("Provide the amount you want to deposit!");
@@ -1402,7 +1424,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
 
-        A17.sendMessage(from, { react: { text: "💸", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "💸", key: m.key } })
 
         if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         const user = m.sender
@@ -1424,7 +1446,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly)
 
         {
-          A17.sendMessage(from, { react: { text: "🔪", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🔪", key: m.key } })
           if (!text) return reply(`Use ${prefix}rob @user`)
           const target =
             m.quoted && m.mentionedJid.length === 0
@@ -1456,7 +1478,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
-        A17.sendMessage(from, { react: { text: "🗿", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🗿", key: m.key } })
         let value = text.trim().split(" ");
         if (value[0] === "") return reply(`Use ${prefix}transfer 100 @user`);
         const target =
@@ -1508,7 +1530,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
         {
-          //var response = await A17.groupInviteCode(from)
+          //var response = await Phoenix.groupInviteCode(from)
           //var link1 = `https://chat.whatsapp.com/${response}`
           //var link2 = `https://chat.whatsapp.com/BXQaaeg7utI29OI4RbhdIhl`
           var texts = text.trim().split(" ");
@@ -1705,13 +1727,13 @@ Typed *surrender* to surrender and admited defeat`
       //   if (isBanChat) return reply('This Group is Already Banned from using me!')
       //   banchat.push(from)
       //   reply('This Group has been banned from using me!')
-      //   var groupe = await A17.groupMetadata(from)
+      //   var groupe = await Phoenix.groupMetadata(from)
       //   var members = groupe['participants']
       //   var mems = []
       //   members.map(async adm => {
       //   mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
       //   })
-      //   A17.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nThis group is banned from using bot. So, here nobody can use me anymore!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+      //   Phoenix.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nThis group is banned from using bot. So, here nobody can use me anymore!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
       //   } else if (args[0] === "off") {
       //   if (!isBanChat) return reply('This Group is Already Banned from using me!')
       //   let off = banchat.indexOf(from)
@@ -1722,7 +1744,7 @@ Typed *surrender* to surrender and admited defeat`
       //     { buttonId: `${prefix}bangroup on`, buttonText: { displayText: 'Ban' }, type: 1 },
       //     { buttonId: `${prefix}bangroup off`, buttonText: { displayText: 'Unban' }, type: 1 }
       //     ]
-      //     await A17.sendButtonText(m.chat, buttonsntnsfw, `Please choose any Button below.\n\n *On / Off*`, `${global.BotName }`, m)
+      //     await Phoenix.sendButtonText(m.chat, buttonsntnsfw, `Please choose any Button below.\n\n *On / Off*`, `${global.BotName }`, m)
       //     }
       //     }
       //     break;
@@ -1731,7 +1753,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'reaction': case 'react': case 'reactions': case 'r':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
         reply(` *━━〈  💞 Reactions 💞  〉━━*\n\nbonk, cry, bully, cuddle, hug, kiss, lick, pat, smug, yeet, blush, smile, wave, highfive, handhold, nom, glomp, bite, slap, kill, happy, wink, poke, dance, cringe`)
         break;
@@ -1762,7 +1784,7 @@ Typed *surrender* to surrender and admited defeat`
             for (let i of data) {
               krl += (`${prefix}----------------------------------------------------------------------------\n\n\n*Movie Name:* ${i.judul}\n *Quality :* ${i.quality}\n *Type : ${i.type}*\n *Uploaded on :* ${i.upload}\n *Source URL :* ${i.link}\n\n\n`)
             }
-            A17.sendMessage(from, { image: { url: data[0].thumb }, caption: krl }, { quoted: fdocs })
+            Phoenix.sendMessage(from, { image: { url: data[0].thumb }, caption: krl }, { quoted: fdocs })
           });
         break;
 
@@ -1788,7 +1810,7 @@ Typed *surrender* to surrender and admited defeat`
       //             buttons: buttons,
       //             headerType: 4
       //         }
-      //         A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+      //         Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       //     }
       //     break;
 
@@ -1798,7 +1820,7 @@ Typed *surrender* to surrender and admited defeat`
       // case 'animewall': {
       //   if (isBan) return reply(mess.banned);
       //   if (isBanChat) return reply(mess.bangc);
-      //   A17.sendMessage(from, { react: { text: "🥵" , key: m.key }});
+      //   Phoenix.sendMessage(from, { react: { text: "🥵" , key: m.key }});
 
       //   if (!args.join(" ")) return reply("Please enter a term to search!");
 
@@ -1816,7 +1838,7 @@ Typed *surrender* to surrender and admited defeat`
       //     headerType: 4
       //   };
 
-      //   A17.sendMessage(m.chat, message, { quoted: m });
+      //   Phoenix.sendMessage(m.chat, message, { quoted: m });
       // }
       // break;
 
@@ -1841,7 +1863,7 @@ Typed *surrender* to surrender and admited defeat`
       //       footer: `${BotName}`,
       //       headerType: 4
       //     };
-      //     A17.sendMessage(m.chat, message, { quoted: m });
+      //     Phoenix.sendMessage(m.chat, message, { quoted: m });
       //   }
       // }
       // break;
@@ -1853,7 +1875,7 @@ Typed *surrender* to surrender and admited defeat`
       //   if (isBan) return reply(mess.banned);
       //   if (isBanChat) return reply(mess.bangc);
       //   reply(mess.waiting)
-      //   A17.sendMessage(from, { react: { text: "🥵" , key: m.key }});
+      //   Phoenix.sendMessage(from, { react: { text: "🥵" , key: m.key }});
       //   if (!args.join(" ")) return reply("Please enter a term to search!");
 
       //   const { AnimeWallpaper } = require("anime-wallpaper");
@@ -1868,7 +1890,7 @@ Typed *surrender* to surrender and admited defeat`
       //       footer: `${BotName}`,
       //       headerType: 4
       //     };
-      //     A17.sendMessage(m.chat, message, { quoted: m });
+      //     Phoenix.sendMessage(m.chat, message, { quoted: m });
       //   }
       // }
       // break;
@@ -1880,7 +1902,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         reply(mess.waiting);
-        A17.sendMessage(from, { react: { text: "🥵", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🥵", key: m.key } });
         if (!args.join(" ")) return reply("Please enter a term to search!");
 
         const { AnimeWallpaper } = require("anime-wallpaper");
@@ -1899,7 +1921,7 @@ Typed *surrender* to surrender and admited defeat`
             footer: `${BotName}`,
             headerType: 4
           };
-          A17.sendMessage(m.chat, message, { quoted: m });
+          Phoenix.sendMessage(m.chat, message, { quoted: m });
         }
       }
         break;
@@ -1922,7 +1944,7 @@ Typed *surrender* to surrender and admited defeat`
           buttons: buttons,
           headerType: 4
         }
-        A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       }
         break;
 
@@ -1932,7 +1954,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         let cok = await fetchJson(`http://api.lolhuman.xyz/api/random/quotesimage?apikey=${lolkey}`)
         reply(mess.waiting)
-        A17.sendMessage(m.chat, { image: { url: cok }, caption: 'Here it is...' }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { image: { url: cok }, caption: 'Here it is...' }, { quoted: m })
         break;
 
 
@@ -1949,7 +1971,7 @@ Typed *surrender* to surrender and admited defeat`
                buttons: buttons,
                headerType: 2  */
         }
-        A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       }
         break;
 
@@ -1976,7 +1998,7 @@ Typed *surrender* to surrender and admited defeat`
               }
               sections.push(list)
             }
-            const sendm = A17.sendMessage(
+            const sendm = Phoenix.sendMessage(
               from,
               {
                 text: "Anime Search",
@@ -1998,7 +2020,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
 
         const randomEmoji = manyemojis[Math.floor(Math.random() * manyemojis.length)];
-        A17.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
         if (!q) return reply(`Please provide a text query. Beispiel: ${prefix + command} Hello, *ChatGPT*`);
 
@@ -2017,7 +2039,7 @@ Typed *surrender* to surrender and admited defeat`
           }
 
           const me = m.sender;
-          await A17.sendMessage(m.chat, { text: message, mentions: [me] }, { quoted: m });
+          await Phoenix.sendMessage(m.chat, { text: message, mentions: [me] }, { quoted: m });
 
         } catch (error) {
           console.error(error);
@@ -2032,14 +2054,14 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
 
         const randomEmoji = manyemojis[Math.floor(Math.random() * manyemojis.length)];
-        A17.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
         if (!q) return reply(`Please provide a query to generate an image. Beispiel: ${prefix + command} Beautiful landscape`);
 
         const apiUrl = `https://gurugpt.cyclic.app/dalle?prompt=${encodeURIComponent(q)}`;
 
         try {
-          await A17.sendMessage(m.chat, { image: { url: apiUrl } }, { quoted: m });
+          await Phoenix.sendMessage(m.chat, { image: { url: apiUrl } }, { quoted: m });
         } catch (error) {
           console.error(error);
           reply("An error occurred while generating the image.");
@@ -2053,7 +2075,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'groupsetting': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let sections = []
         let com = [`group open`, `leveling on`, `antilinkgc on`, `antilinktg on`, `antilinktt on`, `antilinkytch on`, `antilinkytvid on`, `antilinkig on`, `antilinkfb on`, `antilinktwit on`, `antilinkall on`, `antiwame on`]
@@ -2080,7 +2102,7 @@ Typed *surrender* to surrender and admited defeat`
           }
           sections.push(yy)
         }
-        const sendm = A17.sendMessage(
+        const sendm = Phoenix.sendMessage(
           from,
           {
             text: "Group Settings",
@@ -2099,7 +2121,7 @@ Typed *surrender* to surrender and admited defeat`
           await fetchJson(`https://api.jikan.moe/v4/anime/${q}`)
           .then((res) => {
           let txt = `   _Anime Search Engine_ \n\n*Title:* *${res.data.title}*\n*English:* *${res.data.title_english}*\n*Japanese:* *${res.data.title_japanese}*\n*Anime Type:* *${res.data.type}*\n*Adaptation:* *${res.data.source}*\n*Total Episode:* *${res.data.episodes}*\n*Status:* *${res.data.status}*\n*Ongoing:* *${res.data.airing ? 'Yes' : 'No'}*\n*Aired:* *${res.data.aired.string}*\n*Duration:* *${res.data.duration}*\n*Rating:* *${res.data.rating}*\n*Score:* *${res.data.score}*\n*Rank:* *${res.data.rank}*\n*Main Producer:* *${res.data.producers.name}*\n*Studio:* *${res.data.studios[0].name}* `
-          A17.sendMessage(from, { image : { url : res.data.images.jpg.image_url}, caption : txt}, {quoted :m }) 
+          Phoenix.sendMessage(from, { image : { url : res.data.images.jpg.image_url}, caption : txt}, {quoted :m }) 
           })
           }
           break;
@@ -2109,13 +2131,13 @@ Typed *surrender* to surrender and admited defeat`
       case 'emojimix': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!q) reply(`*Beispiel :* ${prefix + command} 😊+🌹`)
         let [emoji1, emoji2] = q.split`+`
         let kuntuh = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
         for (let res of kuntuh.results) {
-          let encmedia = await A17.sendImageAsSticker(from, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
+          let encmedia = await Phoenix.sendImageAsSticker(from, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
           await fs.unlinkSync(encmedia)
         }
       }
@@ -2133,7 +2155,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin);
-        A17.sendMessage(from, { react: { text: "⚠️", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "⚠️", key: m.key } });
 
         if (args[0] === "on") {
           if (AntiNsfw) return reply('Already activated');
@@ -2162,7 +2184,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (m.isGroup) reply(mess.privateonly)
 
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         const getCase = (cases) => {
           return "case" + `'${cases}'` + fs.readFileSync("Core.js").toString().split('case \'' + cases + '\'')[1].split("break;")[0] + "break;"
@@ -2174,12 +2196,12 @@ Typed *surrender* to surrender and admited defeat`
       case 'emoji': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!args.join(" ")) return reply('Where is the emoji?')
         emoji.get(args.join(" ")).then(async (emoji) => {
-          let mese = await A17.sendMessage(m.chat, { image: { url: emoji.images[4].url }, caption: `Here it is...` }, { quoted: m })
-          await A17.sendMessage(from, { text: "reply -s to this image to make sticker" }, { quoted: mese })
+          let mese = await Phoenix.sendMessage(m.chat, { image: { url: emoji.images[4].url }, caption: `Here it is...` }, { quoted: m })
+          await Phoenix.sendMessage(from, { text: "reply -s to this image to make sticker" }, { quoted: mese })
         })
       }
         break;
@@ -2192,7 +2214,7 @@ Typed *surrender* to surrender and admited defeat`
       if (!m.quoted) return
       let { chat, fromMe, id, isBaileys } = m.quoted
       if (!isBaileys) return reply('How can i delete messages of other person? Baka!')
-      A17.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+      Phoenix.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
       }
       break;
       */
@@ -2203,7 +2225,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!m.quoted) return reply('Please mention a message baka!')
         let { chat, fromMe, id } = m.quoted
@@ -2215,7 +2237,7 @@ Typed *surrender* to surrender and admited defeat`
           participant: m.quoted.sender
         }
 
-        await A17.sendMessage(m.chat, { delete: key })
+        await Phoenix.sendMessage(m.chat, { delete: key })
       }
         break;
 
@@ -2227,12 +2249,12 @@ Typed *surrender* to surrender and admited defeat`
 
 
       case 'ghstalk': case 'githubstalk': case 'github': {
-        A17.sendMessage(from, { react: { text: "🔍", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🔍", key: m.key } })
 
         if (!q) return reply(`Give me a user name like *${prefix}github Kai0071*`)
 
         gitdata = await githubstalk.githubstalk(`${q}`)
-        A17.sendMessage(m.chat, {
+        Phoenix.sendMessage(m.chat, {
           image: { url: gitdata.profile_pic }, caption:
             `*ㅤㅤㅤ|ㅤㅤㅤGithub Info ㅤㅤㅤ|\*
 
@@ -2269,7 +2291,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        A17.sendMessage(from, { react: { text: "💞", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "💞", key: m.key } });
 
         if (!args[0]) {
           return reply(`Please provide the GitHub repository link.\nBeispiel:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
@@ -2290,13 +2312,13 @@ Typed *surrender* to surrender and admited defeat`
 
           let gitZipUrl = `https://api.github.com/repos/${githubUser}/${githubRepo}/zipball`;
 
-          await A17.sendMessage(from, { text: `${pushname}, Please wait, downloading...` });
+          await Phoenix.sendMessage(from, { text: `${pushname}, Please wait, downloading...` });
 
 
           let zipHeaders = await fetch(gitZipUrl, { method: 'HEAD' }).then(res => res.headers);
           let zipFilename = zipHeaders.get('content-disposition').match(/attachment; filename=(.*)/)[1];
 
-          await A17.sendMessage(m.chat, { document: { url: gitZipUrl }, fileName: zipFilename + '.zip', mimetype: 'application/zip' }, { quoted: m });
+          await Phoenix.sendMessage(m.chat, { document: { url: gitZipUrl }, fileName: zipFilename + '.zip', mimetype: 'application/zip' }, { quoted: m });
         } catch (err) {
           console.error(err);
           return reply(`Failed to fetch the repository contents. Please ensure the GitHub link is correct and accessible. Use the format: 'https://github.com/username/repository'.`);
@@ -2307,14 +2329,14 @@ Typed *surrender* to surrender and admited defeat`
       case 'listpc': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
         let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using A17 in personal chat.`
         for (let i of anu) {
           teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
-        A17.sendTextWithMentions(m.chat, teks, m)
+        Phoenix.sendTextWithMentions(m.chat, teks, m)
       }
         break;
 
@@ -2322,12 +2344,12 @@ Typed *surrender* to surrender and admited defeat`
       case 'listgc': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
         let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
         for (let i of anu) {
-          let metadata = await A17.groupMetadata(i)
+          let metadata = await Phoenix.groupMetadata(i)
           if (metadata.owner === "undefined") {
             loldd = false
           } else {
@@ -2335,13 +2357,13 @@ Typed *surrender* to surrender and admited defeat`
           }
           teks += `\n\nName : ${metadata.subject ? metadata.subject : "undefined"}\nOwner : ${loldd ? '@' + loldd.split("@")[0] : "undefined"}\nID : ${metadata.id ? metadata.id : "undefined"}\nMade : ${metadata.creation ? moment(metadata.creation * 1000).tz('Europe/Berlin').format('DD/MM/YYYY HH:mm:ss') : "undefined"}\nMember : ${metadata.participants.length ? metadata.participants.length : "undefined"}`
         }
-        A17.sendTextWithMentions(m.chat, teks, m)
+        Phoenix.sendTextWithMentions(m.chat, teks, m)
       }
         break;
 
 
       case 'speedtest': case 'speedcheck': {
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         m.reply(`Plz Wait ${pushname} Testing Speed... ⚙️`)
         let cp = require('child_process')
@@ -2371,13 +2393,13 @@ Typed *surrender* to surrender and admited defeat`
         if (messageType === 'imageMessage') {
           const media = await downloadMediaMessage(m, 'media', {}, { logger, reuploadRequest: sock.updateMediaMessage })
           await writeFile('./image.jpeg', media)
-          await A17.sendMessage(botNumber, 'status@broadcast', { url: './image.jpeg', media }).catch((err) => fs.unlinkSync(media))
+          await Phoenix.sendMessage(botNumber, 'status@broadcast', { url: './image.jpeg', media }).catch((err) => fs.unlinkSync(media))
           reply(`*✨ ${pushname}...!! Posted On My Status ✨*`);
         }
         else if (messageType === 'videoMessage') {
           const media = await downloadMediaMessage(m, 'media', {}, { logger, reuploadRequest: sock.updateMediaMessage })
           await writeFile('./video.mp4', media)
-          await A17.sendMessage(botNumber, 'status@broadcast', { url: 'video.mp4', media }).catch((err) => fs.unlinkSync(media))
+          await Phoenix.sendMessage(botNumber, 'status@broadcast', { url: 'video.mp4', media }).catch((err) => fs.unlinkSync(media))
           reply(`*✨ ${pushname}...!! Posted On My Status ✨*`);
         }
         else {
@@ -2397,7 +2419,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'app': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let user = global.db.users[m.sender]
         user.afkTime = + new Date
@@ -2470,13 +2492,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLink) return reply('Bereits aktiviert!')
           ntilink.push(from)
           reply('Antilink in dieser Gruppe Aktiviert!')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLink) return reply('Bereits deaktiviert!')
           let off = ntilink.indexOf(from)
@@ -2487,7 +2509,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinkgc on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinkgc off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2503,13 +2525,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkYoutubeVid) return reply('Already activated')
           ntilinkytvid.push(from)
           reply('Activated youtube video antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkYoutubeVid) return reply('Bereits deaktiviert')
           let off = ntilinkytvid.indexOf(from)
@@ -2520,7 +2542,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinkyoutubevideo on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinkyoutubevideo off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2536,13 +2558,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkYoutubeChannel) return reply('Already activated')
           ntilinkytch.push(from)
           reply('Activated youtube channel antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkYoutubeChannel) return reply('Bereits deaktiviert')
           let off = ntilinkytch.indexOf(from)
@@ -2553,7 +2575,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinkyoutubech on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinkyoutubech off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2569,13 +2591,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkInstagram) return reply('Already activated')
           ntilinkig.push(from)
           reply('Activated instagram antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkInstagram) return reply('Bereits deaktiviert')
           let off = ntilinkig.indexOf(from)
@@ -2586,7 +2608,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinkinstagram on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinkinstagram off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2602,13 +2624,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkFacebook) return reply('Already activated')
           ntilinkfb.push(from)
           reply('Activated facebook antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkFacebook) return reply('Bereits deaktiviert')
           let off = ntilinkfb.indexOf(from)
@@ -2619,7 +2641,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinkfacebook on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinkfacebook off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off `, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off `, `${global.BotName}`, m)
         }
       }
         break;
@@ -2635,13 +2657,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkTelegram) return reply('Already activated')
           ntilinktg.push(from)
           reply('Activated telegram antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkTelegram) return reply('Bereits deaktiviert')
           let off = ntilinkig.indexOf(from)
@@ -2652,7 +2674,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinktelegram on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinktelegram off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off `, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off `, `${global.BotName}`, m)
         }
       }
         break;
@@ -2668,13 +2690,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkTiktok) return reply('Already activated')
           ntilinktt.push(from)
           reply('Activated tiktok antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkTiktok) return reply('Bereits deaktiviert')
           let off = ntilinktt.indexOf(from)
@@ -2685,7 +2707,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinktiktok on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinktiktok off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2701,13 +2723,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkTwitter) return reply('Already activated')
           ntilinktwt.push(from)
           reply('Activated twitter antilink in this group !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkTwitter) return reply('Bereits deaktiviert')
           let off = ntilinktwt.indexOf(from)
@@ -2718,7 +2740,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antilinktwt on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antilinktwt off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2734,13 +2756,13 @@ Typed *surrender* to surrender and admited defeat`
       // if (AntiLinkTwitter) return reply('Already activated')
       // ntilinkall.push(from)
       // reply('Enabled all antilink !')
-      // var groupe = await A17.groupMetadata(from)
+      // var groupe = await Phoenix.groupMetadata(from)
       // var members = groupe['participants']
       // var mems = []
       // members.map(async adm => {
       // mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
       // })
-      // A17.sendMessage(from, {text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+      // Phoenix.sendMessage(from, {text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
       // } else if (args[0] === "off") {
       // if (!AntiLinkAll) return reply('Bereits deaktiviert')
       // let off = ntilinkall.indexOf(from)
@@ -2751,7 +2773,7 @@ Typed *surrender* to surrender and admited defeat`
       // { buttonId: `${prefix}antilinkall on`, buttonText: { displayText: 'On' }, type: 1 },
       // { buttonId: `${prefix}antilinkall off`, buttonText: { displayText: 'Off' }, type: 1 }
       // ]
-      // await A17.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
+      // await Phoenix.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
       // }
       // }
       // break;
@@ -2763,20 +2785,20 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } });
 
         if (args[0] === "on") {
 
           if (AntiLinkAll) return reply('Already activated');
           ntilinkall.push(from);
           reply('Enabled all antilink!');
-          var groupe = await A17.groupMetadata(from);
+          var groupe = await Phoenix.groupMetadata(from);
           var members = groupe['participants'];
           var mems = [];
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'));
           });
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
         } else if (args[0] === "off") {
           if (!AntiLinkAll) return reply('Bereits deaktiviert');
           let off = ntilinkall.indexOf(from);
@@ -2799,13 +2821,13 @@ Typed *surrender* to surrender and admited defeat`
           if (antiWame) return reply('Already activated')
           ntwame.push(from)
           reply('Activated antiwame !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`*「  Warning  」*\`\`\`\n\nAntilink is enabled!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`*「  Warning  」*\`\`\`\n\nAntilink is enabled!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!antiWame) return reply('Bereits deaktiviert')
           let off = nttoxic.indexOf(from)
@@ -2816,7 +2838,7 @@ Typed *surrender* to surrender and admited defeat`
             { buttonId: `${prefix}antiwame on`, buttonText: { displayText: 'On' }, type: 1 },
             { buttonId: `${prefix}antiwame off`, buttonText: { displayText: 'Off' }, type: 1 }
           ]
-          await A17.sendButtonText(m.chat, buttonsntwame, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
+          await Phoenix.sendButtonText(m.chat, buttonsntwame, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
         }
       }
         break;
@@ -2834,18 +2856,18 @@ Typed *surrender* to surrender and admited defeat`
       // if (!m.isGroup) return reply(mess.grouponly);
       // if (!isBotAdmins) return reply(mess.botadmin);
       // if (!isAdmins && !isCreator) return reply(mess.useradmin)
-      // A17.sendMessage(from, { react: { text: "🫡" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "🫡" , key: m.key }})
       // if (args[0] === "on") {
       // if (AntiNsfw) return reply('Already activated')
       // ntnsfw.push(from)
       // reply('Enabled NSFW Commands!')
-      // var groupe = await A17.groupMetadata(from)
+      // var groupe = await Phoenix.groupMetadata(from)
       // var members = groupe['participants']
       // var mems = []
       // members.map(async adm => {
       // mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
       // })
-      // A17.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nNSFW(not safe for work) feature has been enabled in this group, which means anyone here can accesss Adult commands!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+      // Phoenix.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nNSFW(not safe for work) feature has been enabled in this group, which means anyone here can accesss Adult commands!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
       // } else if (args[0] === "off") {
       // if (!AntiNsfw) return reply('Bereits deaktiviert')
       // let off = ntnsfw.indexOf(from)
@@ -2856,7 +2878,7 @@ Typed *surrender* to surrender and admited defeat`
       // { buttonId: `${prefix}nsfw on`, buttonText: { displayText: 'On' }, type: 1 },
       // { buttonId: `${prefix}nsfw off`, buttonText: { displayText: 'Off' }, type: 1 }
       // ]
-      // await A17.sendButtonText(m.chat, buttonsntnsfw, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
+      // await Phoenix.sendButtonText(m.chat, buttonsntnsfw, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
       // }
       // }
       // break;
@@ -2869,12 +2891,12 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
         let online = [...Object.keys(store.presences[id]), botNumber]
         let liston = 1
-        A17.sendText(m.chat, '  「 *Online Members* 」\n\n' + online.map(v => `${liston++} . @` + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+        Phoenix.sendText(m.chat, '  「 *Online Members* 」\n\n' + online.map(v => `${liston++} . @` + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
       }
         break;
 
@@ -2885,7 +2907,7 @@ Typed *surrender* to surrender and admited defeat`
       // case 'happymod': {
       // if (isBan) return reply(mess.banned);	 			
       // if (isBanChat) return reply(mess.bangc);
-      // A17.sendMessage(from, { react: { text: "🫡" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "🫡" , key: m.key }})
       // if (!args.join(" ")) return reply(`Beispiel : ${prefix + command} Kinemaster`)
       //modapk.happymod(args.join(" ")).then(async(res) => {
       // teks = '```「 HappyMod Search Engine 」```'
@@ -2901,7 +2923,7 @@ Typed *surrender* to surrender and admited defeat`
       // footer: `${global.BotName}`,
       // headerType: 4
       // }
-      // A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+      // Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       // })
       // }
       // break;
@@ -2910,7 +2932,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'happymod': case 'modapk': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🔍", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🔍", key: m.key } });
 
         if (!args.join(" ")) return reply(`Beispiel: ${prefix + command} Kinemaster`);
 
@@ -2931,7 +2953,7 @@ Typed *surrender* to surrender and admited defeat`
             };
           }
 
-          A17.sendMessage(from, messageToSend, { quoted: m });
+          Phoenix.sendMessage(from, messageToSend, { quoted: m });
         });
       }
         break;
@@ -2946,21 +2968,21 @@ Typed *surrender* to surrender and admited defeat`
       case 'banchat': case 'bangroup': case 'banmode': {
         if (isBan) return reply(mess.banned);
         if (!isCreator) return reply(mess.botowner);
-        A17.sendMessage(from, { react: { text: "⚠️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⚠️", key: m.key } })
 
         if (args[0] === "on") {
           if (isBanChat) return reply('This Group is Already Banned from using me!');
           banchat.push(from);
           reply('This Group has been banned from using me!');
 
-          var groupe = await A17.groupMetadata(from);
+          var groupe = await Phoenix.groupMetadata(from);
           var members = groupe['participants'];
           var mems = [];
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'));
           });
 
-          A17.sendMessage(from, { text: `\`\`\`「 Notice 」\`\`\`\n\nThis group is banned from using the bot. So, here nobody can use me anymore!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Notice 」\`\`\`\n\nThis group is banned from using the bot. So, here nobody can use me anymore!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
         } else if (args[0] === "off") {
           if (!isBanChat) return reply('This Group is Already Banned from using me!');
           let off = banchat.indexOf(from);
@@ -2979,9 +3001,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (!text) return reply('Pls enter -setname <New Group Name>  to change this Group Name')
-        await A17.groupUpdateSubject(m.chat, text).then((res) => reply(mess.jobdone)).catch((err) => reply(jsonformat(err)))
+        await Phoenix.groupUpdateSubject(m.chat, text).then((res) => reply(mess.jobdone)).catch((err) => reply(jsonformat(err)))
       }
         break;
 
@@ -2990,9 +3012,9 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await A17.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+        await Phoenix.updateBlockStatus(users, 'block').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       }
         break;
 
@@ -3001,9 +3023,9 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await A17.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+        await Phoenix.updateBlockStatus(users, 'unblock').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       }
         break;
 
@@ -3014,9 +3036,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (!text) return reply('Pls enter -setname <New Group Description>  to change this Group Description.')
-        await A17.groupUpdateDescription(m.chat, text).then((res) => reply(mess.jobdone)).catch((err) => reply(jsonformat(err)))
+        await Phoenix.groupUpdateDescription(m.chat, text).then((res) => reply(mess.jobdone)).catch((err) => reply(jsonformat(err)))
       }
         break;
 
@@ -3027,12 +3049,12 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (!quoted) return reply(`Send/reply Image With Caption ${prefix + command}`)
         if (!/image/.test(mime)) return reply(`Send/reply Image With Caption ${prefix + command} to change the Profile Pic of this group.`)
         if (/webp/.test(mime)) return reply(`Send/reply Image With Caption ${prefix + command} to change the Profile Pic of this group.`)
-        let media = await A17.downloadAndSaveMediaMessage(quoted)
-        await A17.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
+        let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
+        await Phoenix.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
         reply(mess.jobdone)
       }
         break;
@@ -3043,14 +3065,14 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "😳", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "😳", key: m.key } })
         let teks = `「 Attention 」
 
 *Message : ${args.join(" ") ? args.join(" ") : 'no message'}*\n\n`
         for (let mem of participants) {
           teks += `» @${mem.id.split('@')[0]}\n`
         }
-        A17.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
       }
         break;
 
@@ -3060,8 +3082,8 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "💬", key: m.key } })
-        A17.sendMessage(m.chat, { text: args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋") ? args.join("🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
+        Phoenix.sendMessage(from, { react: { text: "💬", key: m.key } })
+        Phoenix.sendMessage(m.chat, { text: args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋") ? args.join("🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
       }
         break;
 
@@ -3070,7 +3092,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🗿", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🗿", key: m.key } })
         if (!text) return reply(`*🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋*`)
         let teks = `*「 Tag Admins 」*
 
@@ -3078,7 +3100,7 @@ Typed *surrender* to surrender and admited defeat`
         for (let mem of groupAdmins) {
           teks += `✅ @${mem.split('@')[0]}\n`
         }
-        A17.sendMessage(m.chat, { text: teks, mentions: groupAdmins }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { text: teks, mentions: groupAdmins }, { quoted: m })
       }
         break;
 
@@ -3093,10 +3115,10 @@ Typed *surrender* to surrender and admited defeat`
       
         const delay = time => new Promise(res=>setTimeout(res,time));
       
-        let users = (await A17.fetchGroupMetadataFromWA(m.chat)).participants.map(u => u.jid)
+        let users = (await Phoenix.fetchGroupMetadataFromWA(m.chat)).participants.map(u => u.jid)
         for (let user of users){
       
-            await A17.groupParticipantsUpdate(m.chat, [user], 'remove')
+            await Phoenix.groupParticipantsUpdate(m.chat, [user], 'remove')
             await delay(3000)
         }
       }
@@ -3114,7 +3136,7 @@ Typed *surrender* to surrender and admited defeat`
         const delay = time => new Promise(res => setTimeout(res, time));
         let mentioned = participants.map(v => v.jid)
         for (let member of mentioned) {
-          A17.groupParticipantsUpdate(m.chat, [member], 'remove')
+          Phoenix.groupParticipantsUpdate(m.chat, [member], 'remove')
         }
       }
 
@@ -3123,7 +3145,7 @@ Typed *surrender* to surrender and admited defeat`
 
       case 'nowa': case 'find': case 'stalk': case 'stalknumber': {
         if (isBan) return reply(mess.banned);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (!args[0]) return reply(`Use command like: ${prefix}stalk <number>xxx`)
         var inputnumber = args[0]
         if (!inputnumber.includes('x')) return reply('You didnot added x')
@@ -3162,11 +3184,11 @@ Typed *surrender* to surrender and admited defeat`
           } else if (random_length == 4) {
             rndm = `${status1}${status2}${status3}${dom4}`
           }
-          var anu = await A17.onWhatsApp(`${number0}${i}${number1}@s.whatsapp.net`);
+          var anu = await Phoenix.onWhatsApp(`${number0}${i}${number1}@s.whatsapp.net`);
           var anuu = anu.length !== 0 ? anu : false
           try {
             try {
-              var anu1 = await A17.fetchStatus(anu[0].jid)
+              var anu1 = await Phoenix.fetchStatus(anu[0].jid)
             } catch {
               var anu1 = '401'
             }
@@ -3189,9 +3211,9 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
-        A17.sendMessage(from, { react: { text: "🪄", key: m.key } })
-        let response = await A17.groupInviteCode(m.chat)
-        A17.sendMessage(m.chat, {
+        Phoenix.sendMessage(from, { react: { text: "🪄", key: m.key } })
+        let response = await Phoenix.groupInviteCode(m.chat)
+        Phoenix.sendMessage(m.chat, {
           text: `*Group Name:* *${groupMetadata.subject}* \n\n*Group Link :* \nhttps://chat.whatsapp.com/${response}l`, "contextInfo": {
             mimetype: "image/jpeg",
             text: `${global.OwnerName}`,
@@ -3225,8 +3247,8 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
-        A17.groupRevokeInvite(m.chat)
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.groupRevokeInvite(m.chat)
       }
         break;
 
@@ -3237,11 +3259,11 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (args[0] === 'close') {
-          await A17.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`*_DIE GRUPPE WURDE ERFOLGREICH GESCHLOSSEN_*.`)).catch((err) => reply(jsonformat(err)))
+          await Phoenix.groupSettingUpdate(m.chat, 'announcement').then((res) => reply(`*_DIE GRUPPE WURDE ERFOLGREICH GESCHLOSSEN_*.`)).catch((err) => reply(jsonformat(err)))
         } else if (args[0] === 'open') {
-          await A17.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`*_DIE GRUPPE WURDE ERFOLGREICH GEÖFFNET_*.`)).catch((err) => reply(jsonformat(err)))
+          await Phoenix.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`*_DIE GRUPPE WURDE ERFOLGREICH GEÖFFNET_*.`)).catch((err) => reply(jsonformat(err)))
         } else {
 
           let buttonMessage = {
@@ -3251,7 +3273,7 @@ Typed *surrender* to surrender and admited defeat`
             footer: `${BotName}`,
             headerType: 4
           }
-          A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+          Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
         }
       }
         break;
@@ -3263,9 +3285,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await A17.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+        await Phoenix.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       }
         break;
 
@@ -3276,9 +3298,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await A17.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+        await Phoenix.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       }
         break;
 
@@ -3287,12 +3309,12 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
 
         let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
         if (users.length == 0) return reply(`Please write the number of the person you want to add to thhis group`)
-        await A17.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(`User Added Successfully!`)).catch((err) => reply(`Cannot add that user to this group!`))
+        await Phoenix.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(`User Added Successfully!`)).catch((err) => reply(`Cannot add that user to this group!`))
       }
         break;
 
@@ -3303,14 +3325,14 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!text) return reply(`Enter the number you want to invite to the group...\n\nBeispiel :\n*${prefix + command}* 916297175943`)
         if (text.includes('+')) return reply(`Enter the number together without *+*`)
         if (isNaN(text)) return reply(`Enter only the numbers plus your country code without spaces`)
         let group = m.chat
-        let link = 'https://chat.whatsapp.com/' + await A17.groupInviteCode(group)
-        await A17.sendMessage(text + '@s.whatsapp.net', { text: ` *GROUP INVITATION*\n\nA user invites you to join this group \n\n${link}`, mentions: [m.sender] })
+        let link = 'https://chat.whatsapp.com/' + await Phoenix.groupInviteCode(group)
+        await Phoenix.sendMessage(text + '@s.whatsapp.net', { text: ` *GROUP INVITATION*\n\nA user invites you to join this group \n\n${link}`, mentions: [m.sender] })
         reply(` An invite link is sent to the user`)
       }
         break;
@@ -3322,9 +3344,9 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        await A17.groupParticipantsUpdate(m.chat, [users], 'remove')
+        await Phoenix.groupParticipantsUpdate(m.chat, [users], 'remove')
       }
         break;
 
@@ -3334,16 +3356,16 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (!args[0]) return reply(`Where's the link?`)
         vdd = args[0]
         let vcc = vdd.split("https://chat.whatsapp.com/")[1]
         if (!vcc) return reply("Link invalid!")
         if (isCreator) {
-          await A17.groupAcceptInvite(vcc).then(async (res) => reply(jsonformat(res))).catch(_ => _)
+          await Phoenix.groupAcceptInvite(vcc).then(async (res) => reply(jsonformat(res))).catch(_ => _)
           reply("Succes!")
         } else {
-          A17.query({
+          Phoenix.query({
             tag: "iq",
             attrs: {
               type: "get",
@@ -3357,7 +3379,7 @@ Typed *surrender* to surrender and admited defeat`
               teks = `Sorry, minimun 20 members are required in a group to add bot!`
               sendOrder(m.chat, teks, "667140254502463", fs.readFileSync('./Assets/pic7.jpg'), `${global.packname}`, `${global.BotName}`, "916297175943@s.whatsapp.net", "AR6NCY8euY5cbS8Ybg5Ca55R8HFSuLO3qZqrIYCT7hQp0g==", "99999999999999999999")
             } else if (sizny > 20) {
-              await A17.groupAcceptInvite(vcc).then(async (res) => reply(jsonformat(res))).catch(_ => _)
+              await Phoenix.groupAcceptInvite(vcc).then(async (res) => reply(jsonformat(res))).catch(_ => _)
               reply("Joined !")
             } else {
               reply("Error")
@@ -3374,8 +3396,8 @@ Typed *surrender* to surrender and admited defeat`
       //   if (!m.isGroup) return reply(mess.grouponly);
       //       reply(mess.waiting)
       //                   if (!isCreator) return reply(`${mess.botowner}`)
-      //                   A17.sendMessage(from, { react: { text: "☯️" , key: m.key }})
-      //                   await A17.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
+      //                   Phoenix.sendMessage(from, { react: { text: "☯️" , key: m.key }})
+      //                   await Phoenix.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       //               }
       //               break;
 
@@ -3384,7 +3406,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'groupevent':
       case 'group-event':
 
-        A17.sendMessage(from, { react: { text: '❤', key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: '❤', key: m.key } });
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isBotAdmins) return reply(mess.botadmin);
@@ -3424,7 +3446,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!args[0]) return reply(`Select add or del (add to ban, del to unban), Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
         if (args[1]) {
@@ -3459,13 +3481,13 @@ Typed *surrender* to surrender and admited defeat`
           if (AntiLinkAll) return reply('Already activated')
           ntilinkall.push(from)
           reply('Enabled all antilink !')
-          var groupe = await A17.groupMetadata(from)
+          var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          A17.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkAll) return reply('Bereits deaktiviert')
           let off = ntilinkall.indexOf(from)
@@ -3473,7 +3495,7 @@ Typed *surrender* to surrender and admited defeat`
           reply('Disabled all antilink !')
         } else {
           let textmsg = 'Type ' + `${prefix}${command}` + ' on to turn on antilink feature or Type ' + `${prefix + command}` + ' off to turn off antilink feature'
-          await A17.sendMessage(m.chat, { text: `${textmsg}` }, `${global.BotName}`, m)
+          await Phoenix.sendMessage(m.chat, { text: `${textmsg}` }, `${global.BotName}`, m)
         }
       }
         break;
@@ -3492,7 +3514,7 @@ Typed *surrender* to surrender and admited defeat`
         let { ringtone } = require('./lib/scraper')
         let anu = await ringtone(text)
         let result = anu[Math.floor(Math.random() * anu.length)]
-        A17.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title + '.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title + '.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
       }
         break;
 
@@ -3501,14 +3523,14 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!args.join(" ")) return reply(`Beispiel: ${prefix + command} 10`)
-        media = await A17.downloadAndSaveMediaMessage(quoted, "volume")
+        media = await Phoenix.downloadAndSaveMediaMessage(quoted, "volume")
         if (isQuotedAudio) {
           rname = getRandom('.mp3')
           exec(`ffmpeg -i ${media} -filter:a volume=${args[0]} ${rname}`, (err, stderr, stdout) => {
             fs.unlinkSync(media)
             if (err) return reply('Error!')
             jadie = fs.readFileSync(rname)
-            A17.sendMessage(from, { audio: jadie, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
+            Phoenix.sendMessage(from, { audio: jadie, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
             fs.unlinkSync(rname)
           })
         } else if (isQuotedVideo) {
@@ -3517,7 +3539,7 @@ Typed *surrender* to surrender and admited defeat`
             fs.unlinkSync(media)
             if (err) return reply('Error!')
             jadie = fs.readFileSync(rname)
-            A17.sendMessage(from, { video: jadie, mimetype: 'video/mp4' }, { quoted: m })
+            Phoenix.sendMessage(from, { video: jadie, mimetype: 'video/mp4' }, { quoted: m })
             fs.unlinkSync(rname)
           })
         } else {
@@ -3532,14 +3554,14 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!args.join(" ")) return reply(`Beispiel: ${prefix + command} 10`)
         var req = args.join(' ')
-        media = await A17.downloadAndSaveMediaMessage(quoted, "tempo")
+        media = await Phoenix.downloadAndSaveMediaMessage(quoted, "tempo")
         if (isQuotedAudio) {
           ran = getRandom('.mp3')
           exec(`ffmpeg -i ${media} -filter:a "atempo=1.0,asetrate=${req}" ${ran}`, (err, stderr, stdout) => {
             fs.unlinkSync(media)
             if (err) return reply('Error!')
             hah = fs.readFileSync(ran)
-            A17.sendMessage(from, { audio: hah, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
+            Phoenix.sendMessage(from, { audio: hah, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
             fs.unlinkSync(ran)
           })
         } else if (isQuotedVideo) {
@@ -3548,7 +3570,7 @@ Typed *surrender* to surrender and admited defeat`
             fs.unlinkSync(media)
             if (err) return reply('Error!')
             hah = fs.readFileSync(ran)
-            A17.sendMessage(from, { video: hah, mimetype: 'video/mp4' }, { quoted: m })
+            Phoenix.sendMessage(from, { video: hah, mimetype: 'video/mp4' }, { quoted: m })
             fs.unlinkSync(ran)
           })
         } else {
@@ -3559,7 +3581,7 @@ Typed *surrender* to surrender and admited defeat`
 
 
       case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'tupai':
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         try {
           let set
@@ -3577,13 +3599,13 @@ Typed *surrender* to surrender and admited defeat`
           if (/tupai/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
           if (/audio/.test(mime)) {
             reply(mess.waiting)
-            let media = await A17.downloadAndSaveMediaMessage(quoted)
+            let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
             let ran = getRandom('.mp3')
             exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
               fs.unlinkSync(media)
               if (err) return reply(err)
               let buff = fs.readFileSync(ran)
-              A17.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted: m })
+              Phoenix.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted: m })
               fs.unlinkSync(ran)
             })
           } else reply(`Pls mention any audio you want to modify _${prefix + command}_`)
@@ -3617,17 +3639,17 @@ Typed *surrender* to surrender and admited defeat`
       case 'toimage': case 'makeimg': case 'toimg': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🪄", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🪄", key: m.key } })
         if (!m.quoted) return reply('reply Image')
         if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
         reply(mess.waiting)
-        let media = await A17.downloadAndSaveMediaMessage(quoted)
+        let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
         let ran = await getRandom('.png')
         exec(`ffmpeg -i ${media} ${ran}`, (err) => {
           fs.unlinkSync(media)
           if (err) throw err
           let buffer = fs.readFileSync(ran)
-          A17.sendMessage(m.chat, { image: buffer }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { image: buffer }, { quoted: m })
           fs.unlinkSync(ran)
         })
       }
@@ -3637,14 +3659,14 @@ Typed *surrender* to surrender and admited defeat`
       case 'tomp4': case 'makemp4': case 'makevideo': case 'tovideo': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🪄", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🪄", key: m.key } })
         if (!m.quoted) return reply('reply Image')
         if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
         reply(mess.waiting)
         let { webp2mp4File } = require('./lib/uploader')
-        let media = await A17.downloadAndSaveMediaMessage(quoted)
+        let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
         let webpToMp4 = await webp2mp4File(media)
-        await A17.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Here it is...' } }, { quoted: m })
+        await Phoenix.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Here it is...' } }, { quoted: m })
         await fs.unlinkSync(media)
       }
         break;
@@ -3653,7 +3675,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'toaud': case 'makeaudio': case 'toaudio': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         if (!/video/.test(mime) && !/audio/.test(mime)) return reply(`Send/reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
         if (!m.quoted) return reply(`Send/reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
@@ -3661,7 +3683,7 @@ Typed *surrender* to surrender and admited defeat`
         let media = await quoted.download()
         let { toAudio } = require('./lib/converter')
         let audio = await toAudio(media, 'mp4')
-        A17.sendMessage(m.chat, { audio: audio, mimetype: 'audio/mpeg' }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { audio: audio, mimetype: 'audio/mpeg' }, { quoted: m })
       }
         break;
 
@@ -3669,7 +3691,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'tomp3': case 'makemp3': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (/document/.test(mime)) return reply(`Send/reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`)
         if (!/video/.test(mime) && !/audio/.test(mime)) return reply(`Send/reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`)
         if (!m.quoted) return reply(`Send/reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`)
@@ -3677,7 +3699,7 @@ Typed *surrender* to surrender and admited defeat`
         let media = await quoted.download()
         let { toAudio } = require('./lib/converter')
         let audio = await toAudio(media, 'mp4')
-        A17.sendMessage(m.chat, { document: audio, mimetype: 'audio/mpeg', fileName: `Converted By ${global.BotName} (${m.id}).mp3` }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { document: audio, mimetype: 'audio/mpeg', fileName: `Converted By ${global.BotName} (${m.id}).mp3` }, { quoted: m })
       }
         break;
 
@@ -3685,14 +3707,14 @@ Typed *surrender* to surrender and admited defeat`
       case 'togif': case 'makegif': case 'getgif': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         if (!m.quoted) return reply('reply Image')
         if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
         reply(mess.wait)
         let { webp2mp4File } = require('./lib/uploader')
-        let media = await A17.downloadAndSaveMediaMessage(quoted)
+        let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
         let webpToMp4 = await webp2mp4File(media)
-        await A17.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Converted From Webp To Gif' }, gifPlayback: true }, { quoted: m })
+        await Phoenix.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Converted From Webp To Gif' }, gifPlayback: true }, { quoted: m })
         await fs.unlinkSync(media)
       }
         break;
@@ -3701,10 +3723,10 @@ Typed *surrender* to surrender and admited defeat`
       // case 'tourl': case 'makeurl':{
       // if (isBan) return reply(mess.banned);	 			
       // if (isBanChat) return reply(mess.bangc);
-      // A17.sendMessage(from, { react: { text: "🪄" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "🪄" , key: m.key }})
 
       // // let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader');
-      // let media = await A17.downloadAndSaveMediaMessage(quoted)
+      // let media = await Phoenix.downloadAndSaveMediaMessage(quoted)
       // if (/image/.test(mime)) {
       // let anu = await TelegraPh(media)
       // reply(util.format(anu))
@@ -3724,12 +3746,12 @@ Typed *surrender* to surrender and admited defeat`
         let { GraphOrg } = require("./lib/uploader");
         if (!m.quoted) {
           //
-          A17.sendMessage(from, { react: { text: "❔", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "❔", key: m.key } })
           return m.reply(
             `With caption not working, first send an *Image* / *Video* to generate a link! then tag with *${prefix}tourl*`
           );
         }
-        let media5 = await A17.downloadAndSaveMediaMessage(quoted);
+        let media5 = await Phoenix.downloadAndSaveMediaMessage(quoted);
         if (/image/.test(mime)) {
           //
           let anu = await GraphOrg(media5);
@@ -3742,7 +3764,7 @@ Typed *surrender* to surrender and admited defeat`
           } catch (e) {
             //
             await fs.unlinkSync(media5);
-            return A17.sendMessage(
+            return Phoenix.sendMessage(
               m.from,
               {
                 text: `*Your video size is too big!*\n\n*Max video size:* 5MB`,
@@ -3767,7 +3789,7 @@ Typed *surrender* to surrender and admited defeat`
 
       case 'translate': case 'ts': case 'trans': {
         if (isBan) return reply(mess.banned);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         if (!args.join(" ")) return reply("Pls enter any text to translate")
         tes = await fetchJson(`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
@@ -3781,7 +3803,7 @@ Typed *surrender* to surrender and admited defeat`
       // case 'gimage': case 'gig': case 'googleimage':{
       // if (isBan) return reply(mess.banned);	 			
       // if (isBanChat) return reply(mess.bangc);
-      // A17.sendMessage(from, { react: { text: "⌛" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "⌛" , key: m.key }})
 
       // if (!args[0]) return reply("Enter a Suchbegriff to get Google Image!")
       // let gis = require('g-i-s')
@@ -3802,7 +3824,7 @@ Typed *surrender* to surrender and admited defeat`
       // headerType: 4,
 
       // }
-      // A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+      // Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       // })
       // }
       // break;
@@ -3814,7 +3836,7 @@ Typed *surrender* to surrender and admited defeat`
       // case 'googleimage': {
       //   if (isBan) return reply(mess.banned);
       //   if (isBanChat) return reply(mess.bangc);
-      //   A17.sendMessage(from, { react: { text: "⌛", key: m.key } });
+      //   Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } });
 
       //   if (!args[0]) return reply("Enter a Suchbegriff to get Google Image!");
       //   let gis = require('g-i-s');
@@ -3827,7 +3849,7 @@ Typed *surrender* to surrender and admited defeat`
       //       footer: `${global.BotName}`,
       //       headerType: 4,
       //     };
-      //     A17.sendMessage(m.chat, buttonMessage, { quoted: m });
+      //     Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m });
       //   });
       // }
       // break;
@@ -3836,7 +3858,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'googleimage': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } });
 
         if (!args[0]) return reply("Enter a Suchbegriff to get Google Image!");
         let gis = require('g-i-s');
@@ -3858,7 +3880,7 @@ Typed *surrender* to surrender and admited defeat`
             footer: `${global.BotName}`,
             headerType: 4,
           };
-          A17.sendMessage(m.chat, buttonMessage, { quoted: m });
+          Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m });
         });
       }
         break;
@@ -3874,7 +3896,7 @@ Typed *surrender* to surrender and admited defeat`
       //   case "googleimage":
       //   case "image":
       //     if (!text) {
-      //       A17.sendMessage(from, { react: { text: "⌛", key: m.key } });
+      //       Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } });
       //       return m.reply(`Please provide an image Suchbegriff !\n\nBeispiel: *${prefix}image cheems*`);
       //     }
 
@@ -3891,7 +3913,7 @@ Typed *surrender* to surrender and admited defeat`
       //         },
       //       ];
       //       */
-      //       await A17.sendMessage(
+      //       await Phoenix.sendMessage(
       //         m.from,
       //         {
       //           image: { url: images },
@@ -3913,9 +3935,9 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        //A17.sendMessage(from, { react: { text: "🌌", key: m.key }});
+        //Phoenix.sendMessage(from, { react: { text: "🌌", key: m.key }});
         const randomEmoji = spaceemojis[Math.floor(Math.random() * spaceemojis.length)]; // Select a random emoji
-        A17.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
         const apiKey = 'ugce43VIO63s8gQhcQ7Ts2DHQo1Srcchdh9mgI2S'; // Replace with your actual NASA API key // You can use it.
         const moment = require('moment'); // Import moment library here
@@ -3930,7 +3952,7 @@ Typed *surrender* to surrender and admited defeat`
           const data = await response.json();
 
           if (data.url) {
-            A17.sendMessage(from, {
+            Phoenix.sendMessage(from, {
               image: { url: data.url },
               caption: `*Astronomy Picture of the Day:*\n\n${data.title}\n${data.explanation}`,
             });
@@ -3951,7 +3973,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'google': case 'search': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "😿", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "😿", key: m.key } })
 
         if (!args[0]) return reply(`Beispiel: ${prefix + command} <query>\nUses : ${prefix + command} anything...`)
         let google = require('google-it')
@@ -3971,7 +3993,7 @@ Typed *surrender* to surrender and admited defeat`
       case "tts": case "texttospeech": case "say": case "speak": {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         if (!args[0]) return reply("Please give me a text so that i can speak it!")
 
@@ -3982,7 +4004,7 @@ Typed *surrender* to surrender and admited defeat`
             : m.text;
         const SpeakEngine = require("google-tts-api");
         const texttospeechurl = SpeakEngine.getAudioUrl(texttosay, { lang: "en", slow: false, host: "https://translate.google.com", });
-        A17.sendMessage(m.chat, { audio: { url: texttospeechurl, }, mimetype: "audio/mpeg", fileName: `A17SpeechEngine.mp3`, }, { quoted: m, });
+        Phoenix.sendMessage(m.chat, { audio: { url: texttospeechurl, }, mimetype: "audio/mpeg", fileName: `A17SpeechEngine.mp3`, }, { quoted: m, });
       }
         break;
 
@@ -3990,26 +4012,26 @@ Typed *surrender* to surrender and admited defeat`
       case 'wiki':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         if (args.length < 1) return reply('What Are You Looking For?? ')
         const res2 = await wikiSearch(q).catch(e => {
           return reply('Error Result Not Found!')
         })
         const result2 = `*Title :* ${res2[0].judul}\n*Wiki :* ${res2[0].wiki}`
-        A17.sendMessage(from, { image: { url: res2[0].thumb }, caption: result2 })
+        Phoenix.sendMessage(from, { image: { url: res2[0].thumb }, caption: result2 })
         break;
 
       case 'earthquake':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         const tres = await Gempa()
         var { Waktu, Lintang, Bujur, Magnitude, Kedalaman, Wilayah, Map } = tres.result
         console.log(Map)
         const captt = `Time : ${Waktu}\nLatitude : ${Lintang}\nLongitude : ${Bujur}\nRegion : ${Wilayah}`
-        A17.sendMessage(from, { image: { url: Map }, caption: captt })
+        Phoenix.sendMessage(from, { image: { url: Map }, caption: captt })
         break;
 
 
@@ -4017,11 +4039,11 @@ Typed *surrender* to surrender and admited defeat`
       case 'covid':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         const c = await covid()
         var { cases, death, healed } = c[0]
-        A17.sendMessage(from, { text: `\nCovid Sri lanka \n\nCase : ${cases}\n\nDead : ${death}\n\nHealed : ${healed}\n` }, m)
+        Phoenix.sendMessage(from, { text: `\nCovid Sri lanka \n\nCase : ${cases}\n\nDead : ${death}\n\nHealed : ${healed}\n` }, m)
         break;
 
 
@@ -4040,7 +4062,7 @@ Typed *surrender* to surrender and admited defeat`
 
       //     try {
       //       const resImage = await getBuffer(`https://api.popcat.xyz/screenshot?url=${lookupURL}`);
-      //       await A17.sendMessage(m.from, { image: resImage, caption: `_Here's how this URL looks like:_\n${args[0]}\n` }, { quoted: m });
+      //       await Phoenix.sendMessage(m.from, { image: resImage, caption: `_Here's how this URL looks like:_\n${args[0]}\n` }, { quoted: m });
       //     } catch (error) {
       //       m.reply(`An error occurred while processing your request!\n\nPlease recheck your link and try again!`);
       //     }
@@ -4069,7 +4091,7 @@ Typed *surrender* to surrender and admited defeat`
           }
 
           // Send a reaction emoji
-          A17.sendMessage(from, { react: { text: "🪄", key: m.key } });
+          Phoenix.sendMessage(from, { react: { text: "🪄", key: m.key } });
 
           // Check if a link is provided
           if (!text) {
@@ -4081,7 +4103,7 @@ Typed *surrender* to surrender and admited defeat`
             let instadownload = await instadl(text);
 
             // Send the downloaded video as a reply to the command
-            await A17.sendMessage(m.chat, { video: { url: instadownload.url[0].url }, caption: mess.jobdone }, { quoted: m });
+            await Phoenix.sendMessage(m.chat, { video: { url: instadownload.url[0].url }, caption: mess.jobdone }, { quoted: m });
           } catch (error) {
             console.error('Error while processing Instagram video:', error);
             return reply('An error occurred while processing the Instagram video.');
@@ -4094,7 +4116,7 @@ Typed *surrender* to surrender and admited defeat`
       // case 'igdl': case 'instagramreels': case 'igreels': {
       // if (isBan) return reply(mess.banned);	 			
       // if (isBanChat) return reply(mess.bangc);
-      // A17.sendMessage(from, { react: { text: "🪄" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "🪄" , key: m.key }})
       // if (!args[0]) return reply(`Beispiel :\n${prefix + command} https://www.instagram.com/p/CcvJGuxh9VI/?igshid=YmMyMTA2M2Y=`)
       // try {
       // hx.igdl(args[0]).then(async(resed) => {
@@ -4122,7 +4144,7 @@ Typed *surrender* to surrender and admited defeat`
       // buttons: buttons,
       // headerType: 4
       // }
-      // A17.sendMessage(from, buttonMessage, {quoted:m})
+      // Phoenix.sendMessage(from, buttonMessage, {quoted:m})
       // })
       // } catch (err) {
       // reply("An Error Occured!")
@@ -4135,9 +4157,9 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (args[0] === "mp4") {
-          A17.sendMessage(from, { video: { url: args[1] }, caption: 'Here it is...', mimetype: 'video/mp4' }, { quoted: m })
+          Phoenix.sendMessage(from, { video: { url: args[1] }, caption: 'Here it is...', mimetype: 'video/mp4' }, { quoted: m })
         } else if (args[0] === "jpg") {
-          A17.sendMessage(from, { image: { url: args[1] }, caption: 'Here it is...' }, { quoted: m })
+          Phoenix.sendMessage(from, { image: { url: args[1] }, caption: 'Here it is...' }, { quoted: m })
         } else {
           reply("Error! ")
         }
@@ -4150,7 +4172,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!args[0]) return reply(`Pls provide link!`)
         try {
-          A17.sendMessage(from, {
+          Phoenix.sendMessage(from, {
             video: { url: args[0] }, caption: "Succes!", contextInfo: {
               externalAdreply: {
                 title: `${global.BotName}`,
@@ -4174,7 +4196,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!args[0]) return reply(`Please provide link!`)
         try {
-          A17.sendMessage(from, { image: { url: args[0] }, caption: "Success!" }, { quoted: m })
+          Phoenix.sendMessage(from, { image: { url: args[0] }, caption: "Success!" }, { quoted: m })
         } catch {
           reply("Link error")
         }
@@ -4190,7 +4212,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply('*Invalid link!*')
         instagramdlv3(`${text}`).then(async (data) => {
           var buf = await getBuffer(data[0].thumbnail)
-          A17.sendMessage(m.chat, { video: { url: data[0].url }, jpegThumbnail: buf, caption: `${BotName}` }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: { url: data[0].url }, jpegThumbnail: buf, caption: `${BotName}` }, { quoted: m })
         }).catch((err) => {
           reply(mess.error)
         })
@@ -4214,9 +4236,9 @@ Typed *surrender* to surrender and admited defeat`
           txt += `*URL :* ${data.url}\n\n`
           txt += `*${BotName}*`
           buf = await getBuffer(data.thumbnail)
-          A17.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail: buf, caption: `${txt}` }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail: buf, caption: `${txt}` }, { quoted: m })
           for (let i of data.medias) {
-            A17.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail: buf, caption: `*${text}*` }, { quoted: m })
+            Phoenix.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail: buf, caption: `*${text}*` }, { quoted: m })
           }
         }).catch((err) => {
           reply(mess.error)
@@ -4231,7 +4253,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!text) return reply(`Please provide link!`)
         if (!isUrl(args[0]) && !args[0].includes('twitter.com')) return reply(`*Invalid link!*`)
         xfarrapi.Twitter(`${text}`).then(async (data) => {
-          A17.sendMessage(m.chat, { audio: { url: data.medias[1].url }, mimetype: 'audio/mp4' }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { audio: { url: data.medias[1].url }, mimetype: 'audio/mp4' }, { quoted: m })
         }).catch((err) => {
           reply(mess.reply)
         })
@@ -4263,7 +4285,7 @@ _Please choose the video quality_`
             headerType: 4,
 
           }
-          A17.sendMessage(from, buttonMessage, { quoted: m })
+          Phoenix.sendMessage(from, buttonMessage, { quoted: m })
         } catch {
           reply("Link Error!")
         }
@@ -4285,7 +4307,7 @@ _Please choose the video quality_`
           headerType: 4,
 
         }
-        A17.sendMessage(from, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(from, buttonMessage, { quoted: m })
       }
         break;
 
@@ -4304,9 +4326,9 @@ _Please choose the video quality_`
           txt += `*Description:* ${data.description}\n`
           txt += `*URL :* ${text}\n\n`
           buf = await getBuffer(data.thumbnail)
-          A17.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail: buf, caption: `${txt}` }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail: buf, caption: `${txt}` }, { quoted: m })
           for (let i of data.result) {
-            A17.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail: buf, caption: `*Quality :* ${i.quality}` }, { quoted: m })
+            Phoenix.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail: buf, caption: `*Quality :* ${i.quality}` }, { quoted: m })
           }
         }).catch((err) => {
           reply(mess.error)
@@ -4322,7 +4344,7 @@ _Please choose the video quality_`
         if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
         let noh = require('@bochilteam/scraper')
         noh.savefrom(`${text}`).then(async (anu) => {
-          A17.sendMessage(m.chat, { audio: { url: anu.url[0].url }, mimetype: 'audio/mp4' }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { audio: { url: anu.url[0].url }, mimetype: 'audio/mp4' }, { quoted: m })
         }).catch((err) => {
           reply(mess.error)
         })
@@ -4352,7 +4374,7 @@ _Click the button below to download_`
             headerType: 4,
 
           }
-          A17.sendMessage(from, buttonMessage, { quoted: m })
+          Phoenix.sendMessage(from, buttonMessage, { quoted: m })
         } catch {
           reply("Link invalid!")
         }
@@ -4374,7 +4396,7 @@ _Click the button below to download_`
           headerType: 4,
 
         }
-        A17.sendMessage(from, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(from, buttonMessage, { quoted: m })
       }
         break;
 
@@ -4404,7 +4426,7 @@ _Click the button below to download_`
           headerType: 4,
 
         }
-        A17.sendMessage(from, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(from, buttonMessage, { quoted: m })
       }
         break;
 
@@ -4420,7 +4442,7 @@ _Click the button below to download_`
         })
         console.log(musim_rambutan)
         const A17tiktoknowm = musim_rambutan.result.nowatermark
-        A17.sendMessage(from, { video: { url: A17tiktoknowm }, caption: "Here it is..." }, { quoted: m })
+        Phoenix.sendMessage(from, { video: { url: A17tiktoknowm }, caption: "Here it is..." }, { quoted: m })
       }
         break;
 
@@ -4437,7 +4459,7 @@ _Click the button below to download_`
         })
         console.log(musim_rambutan)
         const A17tiktokaudio = musim_rambutan.result.nowatermark
-        A17.sendMessage(from, { audio: { url: A17tiktokaudio }, mimetype: 'audio/mp4' }, { quoted: m })
+        Phoenix.sendMessage(from, { audio: { url: A17tiktokaudio }, mimetype: 'audio/mp4' }, { quoted: m })
       }
         break;
 
@@ -4446,7 +4468,7 @@ _Click the button below to download_`
       case 'yts': case 'ytsearch': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "📍", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "📍", key: m.key } })
 
         if (!args.join(" ")) return reply(`Beispiel : -yts fortnite`)
         let yts = require("youtube-yts")
@@ -4456,7 +4478,7 @@ _Click the button below to download_`
         for (let i of search.all) {
           teks += `*ʀᴇꜱᴜʟᴛ ɴᴏ* : ${no++}\n\n*ᴛɪᴛʟᴇ* : ${i.title}\n\n*ᴠɪᴇᴡᴇ* : ${i.views}\n\n*ᴅᴜʀᴀᴛɪᴏɴ* : ${i.timestamp}\n\n*ᴜᴘʟᴏᴀᴅᴇᴅ* : ${i.ago}\n\n*ᴀᴜᴛʜᴏʀ* : ${i.author.name}\n\n*ᴜʀʟ* : ${i.url}\n\n\n---------------------------------------------\n\n\n`
         }
-        A17.sendMessage(m.chat, { image: { url: search.all[0].thumbnail }, caption: teks }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { image: { url: search.all[0].thumbnail }, caption: teks }, { quoted: m })
       }
         break;
 
@@ -4466,11 +4488,11 @@ _Click the button below to download_`
       case 'music': case 'p': case 'play': case 'song': case 'ytplay': {
           if (isBan) return reply(mess.banned);	 			
        if (isBanChat) return reply(mess.bangc);
-       A17.sendMessage(from, { react: { text: "🍁" , key: m.key }}) 
+       Phoenix.sendMessage(from, { react: { text: "🍁" , key: m.key }}) 
        const YT=require('./lib/ytdlcore')
        const { isUrl, fetchBuffer } = require('./lib/Function')
       
-       if(!text) return A17.sendMessage(from,{text:"Pls enter song name to play!"},{quoted:m})
+       if(!text) return Phoenix.sendMessage(from,{text:"Pls enter song name to play!"},{quoted:m})
        let yts = require("@adiwajshing/keyed-db2")
        let search = await yts(text)
        let anu = search.videos[0]
@@ -4500,7 +4522,7 @@ _Click the button below to download_`
        headerType: 4,
       
        }
-       A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+       Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
        }
        break;
       
@@ -4511,14 +4533,14 @@ _Click the button below to download_`
       // case 'play': case 'song': case 'music': {
       //   if (isBan) return reply(mess.banned);	 			
       //   if (isBanChat) return reply(mess.bangc);
-      //   A17.sendMessage(from, { react: { text: "🍁" , key: m.key }}) 
+      //   Phoenix.sendMessage(from, { react: { text: "🍁" , key: m.key }}) 
       //   const YT=require('./lib/ytdl-core')
       //   let yts = require("youtube-yts")
       //   let search = await yts(text)
       //   let anu = search.videos[0]
       //   const ytmp3play = await YT.mp3(anu.url)
 
-      // await A17.sendMessage(from, {audio: fs.readFileSync(ytmp3play.path),fileName: anu.title + '.mp3',mimetype: 'audio/mpeg',}, {quoted:m})
+      // await Phoenix.sendMessage(from, {audio: fs.readFileSync(ytmp3play.path),fileName: anu.title + '.mp3',mimetype: 'audio/mpeg',}, {quoted:m})
       // }
       // break;
 
@@ -4528,7 +4550,7 @@ _Click the button below to download_`
       case 'music': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🎵", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🎵", key: m.key } });
 
         const YT = require('./lib/ytdl-core');
         const yts = require('youtube-yts');
@@ -4541,7 +4563,7 @@ _Click the button below to download_`
         // Fetch the thumbnail URL from the 'anu' object
         let thumbnailUrl = anu.thumbnail;
 
-        await A17.sendMessage(
+        await Phoenix.sendMessage(
           from,
           {
             image: { url: thumbnailUrl }, // Include the thumbnail image in the response
@@ -4559,7 +4581,7 @@ _Click the button below to download_`
         );
 
         // Send the audio file with the proper 'type' property set to 'audio'
-        await A17.sendMessage(from, {
+        await Phoenix.sendMessage(from, {
           audio: fs.readFileSync(ytmp3play.path),
           filename: anu.title + '.mp3',
           mimetype: 'audio/mpeg',
@@ -4574,7 +4596,7 @@ _Click the button below to download_`
       case 'spotify': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🍁", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } });
 
         if (!q) return reply(`Please provide a query. Beispiel: ${prefix + command} 295`);
 
@@ -4585,7 +4607,7 @@ _Click the button below to download_`
         let bname = bbuffer.spty.results.title
         let burl = bbuffer.spty.results.url;
 
-        await A17.sendMessage(from, {
+        await Phoenix.sendMessage(from, {
           audio: { url: abuffer },
           ptt: true,
           filename: 'error.mp3',
@@ -4610,13 +4632,13 @@ _Click the button below to download_`
       case 'ytvd': case 'video': case 'ytvideo': case 'ytmp4': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🎬", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🎬", key: m.key } })
         const YT = require('./lib/ytdl-core')
         let yts = require("youtube-yts")
         let search = await yts(text)
         let anu = search.videos[0]
         const ytmp4play = await YT.mp4(anu.url)
-        A17.sendMessage(from, { video: { url: ytmp4play.videoUrl }, mimetype: "video/mp4", caption: anu.title + '*ＣＹＢＥＲ-ＰＡＮＤＡ-ＭＤ*\n*ʏᴛ-ᴠɪᴅᴇᴏ*', }, { quoted: m })
+        Phoenix.sendMessage(from, { video: { url: ytmp4play.videoUrl }, mimetype: "video/mp4", caption: anu.title + '*ＣＹＢＥＲ-ＰＡＮＤＡ-ＭＤ*\n*ʏᴛ-ᴠɪᴅᴇᴏ*', }, { quoted: m })
       }
 
         break;
@@ -4629,7 +4651,7 @@ _Click the button below to download_`
       if (!args[0]) return reply(mess.nolink)
       
       const YT=require('./lib/ytdlcore')
-      if(!text) return A17.sendMessage(from,{text:"Please provide a valid youtube link!"},{quoted:m})
+      if(!text) return Phoenix.sendMessage(from,{text:"Please provide a valid youtube link!"},{quoted:m})
       let yts = require("@adiwajshing/keyed-db2")
       let search = await yts(text)
       let anu = search.videos[0]
@@ -4654,7 +4676,7 @@ _Click the button below to download_`
       headerType: 4,
       
       }
-      A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+      Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       }
       break; 
       */
@@ -4663,12 +4685,12 @@ _Click the button below to download_`
       case 'ytmp3': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         const YT = require('./lib/ytdl-core')
         const ytmp3play2 = await YT.mp3(text)
 
-        await A17.sendMessage(from, { document: fs.readFileSync(ytmp3play2.path), fileName: 'PHOENIX-Md_YTmp3_Downloader.mp3', mimetype: 'audio/mpeg', }, { quoted: m })
+        await Phoenix.sendMessage(from, { document: fs.readFileSync(ytmp3play2.path), fileName: 'PHOENIX-Md_YTmp3_Downloader.mp3', mimetype: 'audio/mpeg', }, { quoted: m })
       }
         break;
 
@@ -4676,10 +4698,10 @@ _Click the button below to download_`
       case 'ytvd2': case 'ytmp4': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🍁", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } })
         const YT = require('./lib/ytdl-core')
         const ytmp4play2 = await YT.mp4(text)
-        A17.sendMessage(from, { video: { url: ytmp4play2.videoUrl }, mimetype: "video/mp4", caption: '━━━❬❬🦋 *PHOENIX-Md* 🦋❭❭ ━━━*', }, { quoted: m })
+        Phoenix.sendMessage(from, { video: { url: ytmp4play2.videoUrl }, mimetype: "video/mp4", caption: '━━━❬❬🦋 *PHOENIX-Md* 🦋❭❭ ━━━*', }, { quoted: m })
       }
         break;
 
@@ -4688,7 +4710,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🍁", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } })
         if (!text) return reply(`Comand usage: ${prefix}lyrics Thunder`)
         reply(mess.waiting)
         const { lyrics, lyricsv2 } = require('@bochilteam/scraper')
@@ -4715,13 +4737,13 @@ _Click the button below to download_`
       // case 'couplepp': case 'cpp': case 'ppcouple': {
       // if (isBan) return reply(mess.banned);
       // if (isBanChat) return reply(mess.bangc);
-      // A17.sendMessage(from, { react: { text: "🙀" , key: m.key }});
+      // Phoenix.sendMessage(from, { react: { text: "🙀" , key: m.key }});
 
       //        reply(mess.waiting)
       //        let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
       //        let random = anu[Math.floor(Math.random() * anu.length)]
-      //        A17.sendMessage(m.chat, { image: { url: random.male }, caption: `For him...` }, { quoted: m })
-      //        A17.sendMessage(m.chat, { image: { url: random.female }, caption: `For her...` }, { quoted: m })
+      //        Phoenix.sendMessage(m.chat, { image: { url: random.male }, caption: `For him...` }, { quoted: m })
+      //        Phoenix.sendMessage(m.chat, { image: { url: random.female }, caption: `For her...` }, { quoted: m })
       //    }
       // break;
 
@@ -4732,7 +4754,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        A17.sendMessage(from, { react: { text: "🙀", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🙀", key: m.key } });
         reply(mess.waiting);
 
         let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json');
@@ -4741,10 +4763,10 @@ _Click the button below to download_`
           let random = anu[Math.floor(Math.random() * anu.length)];
 
           // Sending the male picture
-          await A17.sendMessage(m.chat, { image: { url: random.male }, caption: `For him...` }, { quoted: m });
+          await Phoenix.sendMessage(m.chat, { image: { url: random.male }, caption: `For him...` }, { quoted: m });
 
           // Sending the female picture
-          await A17.sendMessage(m.chat, { image: { url: random.female }, caption: `For her...` }, { quoted: m });
+          await Phoenix.sendMessage(m.chat, { image: { url: random.female }, caption: `For her...` }, { quoted: m });
         }
       }
         break;
@@ -4754,7 +4776,7 @@ _Click the button below to download_`
       case 'coffee': case 'kopi': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         /*     let buttons = [
                      {buttonId: `${prefix}coffee`, buttonText: {displayText: '>>'}, type: 1}
@@ -4766,7 +4788,7 @@ _Click the button below to download_`
              buttons: buttons,
              headerType: 4  */
         }
-        A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       }
         break;
 
@@ -4791,7 +4813,7 @@ _Click the button below to download_`
       // headerType: 4, */
 
       // }
-      // A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+      // Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       // }).catch(_ => _)
       // } catch {
       // reply("Error")
@@ -4810,7 +4832,7 @@ _Click the button below to download_`
       // let { pinterest } = require('./lib/scraper')
       // anutrest = await pinterest(text)
       // result = anutrest[Math.floor(Math.random() * anutrest.length)]
-      // A17.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
+      // Phoenix.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
       // }
       // break;
 
@@ -4820,7 +4842,7 @@ _Click the button below to download_`
       case 'pin': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🐦", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🐦", key: m.key } });
 
         if (!args.join(" ")) return reply(`${pushname} Please provide a Suchbegriff!`);
         reply(mess.waiting)
@@ -4836,7 +4858,7 @@ _Click the button below to download_`
 
         // Send each image without any caption
         for (let i = 0; i < results.length; i++) {
-          A17.sendMessage(m.chat, { image: { url: results[i] } }, { quoted: m });
+          Phoenix.sendMessage(m.chat, { image: { url: results[i] } }, { quoted: m });
         }
       }
         break;
@@ -4846,7 +4868,7 @@ _Click the button below to download_`
       // case 'pin': {
       //   if (isBan) return reply(mess.banned);
       //   if (isBanChat) return reply(mess.bangc);
-      //   A17.sendMessage(from, { react: { text: "🐦", key: m.key } });
+      //   Phoenix.sendMessage(from, { react: { text: "🐦", key: m.key } });
 
       //   if (!args.join(" ")) return reply(`${pushname} Please provide a Suchbegriff!`);
       //   reply(mess.waiting);
@@ -4863,7 +4885,7 @@ _Click the button below to download_`
       //   // Send each image with a common caption
       //   const commonCaption = 'Check out this image from Pinterest By A17';
       //   for (let i = 0; i < results.length; i++) {
-      //     A17.sendMessage(m.chat, { image: { url: results[i] }, caption: commonCaption }, { quoted: m });
+      //     Phoenix.sendMessage(m.chat, { image: { url: results[i] }, caption: commonCaption }, { quoted: m });
       //   }
       // }
       // break;
@@ -4879,23 +4901,23 @@ _Click the button below to download_`
       case 'swm': case 'take': case 'stickerwm': case 'steal': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!args.join(" ")) return reply(`Like use -take A17|By: Kai`)
         const swn = args.join(" ")
         const pcknm = swn.split("|")[0];
         const atnm = swn.split("|")[1];
         if (m.quoted.isAnimated === true) {
-          A17.downloadAndSaveMediaMessage(quoted, "gifee")
-          A17.sendMessage(from, { sticker: fs.readFileSync("gifee.webp") }, { quoted: m })
+          Phoenix.downloadAndSaveMediaMessage(quoted, "gifee")
+          Phoenix.sendMessage(from, { sticker: fs.readFileSync("gifee.webp") }, { quoted: m })
         } else if (/image/.test(mime)) {
           let media = await quoted.download()
-          let encmedia = await A17.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+          let encmedia = await Phoenix.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
           await fs.unlinkSync(encmedia)
         } else if (/video/.test(mime)) {
           if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds is allowed!')
           let media = await quoted.download()
-          let encmedia = await A17.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+          let encmedia = await Phoenix.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
           await fs.unlinkSync(encmedia)
         } else {
           reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 seconds is allowed!`)
@@ -4907,17 +4929,17 @@ _Click the button below to download_`
       case 'smeme': case 'stickermeme': case 'stickmeme': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "⌛", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "⌛", key: m.key } })
 
         let { TelegraPh } = require('./lib/uploader')
         if (!text) return reply(`Send/reply Photo With Caption ${prefix + command} *text*`)
         if (text.includes('|')) return reply(`Send/reply Photo With Caption ${prefix + command} *text*`)
         if (!/image/.test(mime)) return reply(`Send/reply Photo With Caption ${prefix + command} *text*`)
         reply(mess.wait)
-        mee = await A17.downloadAndSaveMediaMessage(quoted)
+        mee = await Phoenix.downloadAndSaveMediaMessage(quoted)
         mem = await TelegraPh(mee)
         meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}`
-        memek = await A17.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
+        memek = await Phoenix.sendImageAsSticker(m.chat, meme, m, { packname: global.packname, author: global.author })
         await fs.unlinkSync(memek)
       }
         break;
@@ -4926,15 +4948,15 @@ _Click the button below to download_`
       case 'sgif': case 'sticker': case 's': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
         if (/image/.test(mime)) {
           let media = await quoted.download()
-          let encmedia = await A17.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+          let encmedia = await Phoenix.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
           await fs.unlinkSync(encmedia)
         } else if (/video/.test(mime)) {
           if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
           let media = await quoted.download()
-          let encmedia = await A17.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+          let encmedia = await Phoenix.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
           await fs.unlinkSync(encmedia)
         } else {
           reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`)
@@ -4953,7 +4975,7 @@ _Click the button below to download_`
       //   if (isBan) return reply(mess.banned);
       //   if (isBanChat) return reply(mess.bangc);
       // if (!m.isGroup) return reply(`${mess.grouponly}`)
-      // A17.sendMessage(from, { react: { text: "🌝" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "🌝" , key: m.key }})
 
       // let member = participants.map(u => u.id)
       // let orang = member[Math.floor(Math.random() * member.length)]
@@ -4964,7 +4986,7 @@ _Click the button below to download_`
       // let buttons = [
       // { buttonId: '❤️', buttonText: { displayText: 'Congratulations ❤️' }, type: 1 }
       // ]
-      // await A17.sendButtonText(m.chat, buttons, jawab, A17.user.name, m, {mentions: menst})
+      // await Phoenix.sendButtonText(m.chat, buttons, jawab, Phoenix.user.name, m, {mentions: menst})
       // }
       // break;
 
@@ -4973,7 +4995,7 @@ _Click the button below to download_`
       //   if (isBan) return reply(mess.banned);
       //   if (isBanChat) return reply(mess.bangc);
       // if (!m.isGroup) return reply(`${mess.grouponly}`)
-      // A17.sendMessage(from, { react: { text: "🌝" , key: m.key }})
+      // Phoenix.sendMessage(from, { react: { text: "🌝" , key: m.key }})
       // let member = participants.map(u => u.id)
       // let me = m.sender
       // let jodoh = member[Math.floor(Math.random() * member.length)]
@@ -4983,7 +5005,7 @@ _Click the button below to download_`
       // let buttons = [
       // { buttonId: '❤️', buttonText: { displayText: 'Be my Soulmate ❤️' }, type: 1 }
       // ]
-      // await A17.sendButtonText(m.chat, buttons, jawab, A17.user.name, m, {mentions: ments})
+      // await Phoenix.sendButtonText(m.chat, buttons, jawab, Phoenix.user.name, m, {mentions: ments})
       // }
       // break;
 
@@ -4993,14 +5015,14 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(`${mess.grouponly}`);
-        A17.sendMessage(from, { react: { text: "🌝", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🌝", key: m.key } });
 
         let member = participants.map(u => u.id);
         let me = m.sender;
         let jodoh = member[Math.floor(Math.random() * member.length)];
 
         let message = `👫 Be me Soulmate...\n@${me.split('@')[0]} ❤️ @${jodoh.split('@')[0]}`;
-        A17.sendMessage(m.chat, { text: message, mentions: [me, jodoh] }, { quoted: m });
+        Phoenix.sendMessage(m.chat, { text: message, mentions: [me, jodoh] }, { quoted: m });
       }
         break;
 
@@ -5008,23 +5030,23 @@ _Click the button below to download_`
       case 'handsomecheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "😺", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "😺", key: m.key } })
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const gan = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const teng = gan[Math.floor(Math.random() * gan.length)]
-        A17.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${teng}%*` }, { quoted: m })
+        Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${teng}%*` }, { quoted: m })
         break;
 
 
       case 'beautifulcheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "😺", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "😺", key: m.key } })
 
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const can = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const tik = can[Math.floor(Math.random() * can.length)]
-        A17.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
+        Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
         break;
 
 
@@ -5040,24 +5062,24 @@ _Click the button below to download_`
       case 'uglycheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "😺", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "😺", key: m.key } })
 
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const sangeh = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const sange = sangeh[Math.floor(Math.random() * sangeh.length)]
-        A17.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${sange}%*` }, { quoted: m })
+        Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${sange}%*` }, { quoted: m })
         break;
 
 
       case 'charactercheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🤧", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🤧", key: m.key } })
 
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const A17tttt = ['Compassionate', 'Generous', 'Grumpy', 'Forgiving', 'Obedient', 'Good', 'Simp', 'Kind-Hearted', 'patient', 'UwU', 'top, anyway', 'Helpful']
         const taky = A17tttt[Math.floor(Math.random() * A17tttt.length)]
-        A17.sendMessage(from, { text: `Character Check : ${q}\nAnswer : *${taky}*` }, { quoted: m })
+        Phoenix.sendMessage(from, { text: `Character Check : ${q}\nAnswer : *${taky}*` }, { quoted: m })
         break;
 
 
@@ -5065,7 +5087,7 @@ _Click the button below to download_`
       case 'dare':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🌝", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🌝", key: m.key } })
 
         const dare = [
           "eat 2 tablespoons of rice without any side dishes, if it's dragging you can drink",
@@ -5152,14 +5174,14 @@ _Click the button below to download_`
         ]
         const A17dareww = dare[Math.floor(Math.random() * dare.length)]
         buffer = await getBuffer(`https://images4.alphacoders.com/101/1016619.jpg`)
-        A17.sendMessage(from, { image: buffer, caption: '*You have chosen Dare...*\n\n' + A17dareww }, { quoted: m })
+        Phoenix.sendMessage(from, { image: buffer, caption: '*You have chosen Dare...*\n\n' + A17dareww }, { quoted: m })
         break;
 
 
       case 'truth':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "🌝", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🌝", key: m.key } })
 
         const truth = [
           "Have you ever liked anyone? How long?",
@@ -5254,7 +5276,7 @@ _Click the button below to download_`
         ]
         const A17truthww = truth[Math.floor(Math.random() * truth.length)]
         buffer = await getBuffer(`https://images2.alphacoders.com/650/650812.jpg`)
-        A17.sendMessage(from, { image: buffer, caption: '*You have chosen Truth...*\n' + A17truthww }, { quoted: m })
+        Phoenix.sendMessage(from, { image: buffer, caption: '*You have chosen Truth...*\n' + A17truthww }, { quoted: m })
         break;
 
 
@@ -5269,7 +5291,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         reply(mess.wait)
         nye = `http://api.lolhuman.xyz/api/gimage?apikey=${lolkey}&query=${command}`
-        A17.sendMessage(from, { image: { url: nye }, caption: "Master..." }, { quoted: m })
+        Phoenix.sendMessage(from, { image: { url: nye }, caption: "Master..." }, { quoted: m })
         break;
 
       case 'mediafire': case 'mediafiredl': {
@@ -5285,7 +5307,7 @@ _Click the button below to download_`
 *Mime* : ${baby1[0].mime}
 *Link* : ${baby1[0].link}`
         reply(`${result4}`)
-        A17.sendMessage(m.chat, { document: { url: baby1[0].link }, fileName: baby1[0].nama, mimetype: baby1[0].mime }, { quoted: m }).catch((err) => reply(mess.error))
+        Phoenix.sendMessage(m.chat, { document: { url: baby1[0].link }, fileName: baby1[0].nama, mimetype: baby1[0].mime }, { quoted: m }).catch((err) => reply(mess.error))
       }
         break;
 
@@ -5303,12 +5325,12 @@ _Click the button below to download_`
 
 
       // // buffer = `https://fantox-apis.vercel.app/${command}`
-      // // A17.sendMessage(from, {image:{url:buffer}, caption:"Here you go!"}, {quoted:m})
+      // // Phoenix.sendMessage(from, {image:{url:buffer}, caption:"Here you go!"}, {quoted:m})
 
 
       // // // NoHorny = await fetchJson(`https://fantox-apis.vercel.app/${command}`)
       // // // YesHorny = await getBuffer(NoHorny.result)
-      // // // A17.sendMessage(from, {image:YesHorny},{quoted:m})
+      // // // Phoenix.sendMessage(from, {image:YesHorny},{quoted:m})
       // // // } catch (e) {error("Error")}	
       // // break;
 
@@ -5321,7 +5343,7 @@ _Click the button below to download_`
       // spankd = await axios.get(`https://nekos.life/api/v2/img/spank`)                                   
       // let spbuff = await getBuffer(spankd.data.url)
       // let spgif = await GIFBufferToVideoBuffer(spbuff)   
-      //       await A17.sendMessage(m.chat,{video: spgif, gifPlayback:true},{ quoted:m }).catch(err => {
+      //       await Phoenix.sendMessage(m.chat,{video: spgif, gifPlayback:true},{ quoted:m }).catch(err => {
       //                   return reply('Error!')
       //                                   })
       // break;
@@ -5336,7 +5358,7 @@ _Click the button below to download_`
       // bjd = await axios.get(`https://api.waifu.pics/nsfw/blowjob`)         
       // let bjf = await getBuffer(bjd.data.url)
       // let bjif = await GIFBufferToVideoBuffer(bjf)   
-      //       await A17.sendMessage(m.chat,{video: bjif, gifPlayback:true},{ quoted:m }).catch(err => {
+      //       await Phoenix.sendMessage(m.chat,{video: bjif, gifPlayback:true},{ quoted:m }).catch(err => {
       //                   return reply('error..')
       //                                   })
       // break;
@@ -5350,7 +5372,7 @@ _Click the button below to download_`
       // reply(mess.waiting)
       // anu = await hentai()
       // result912 = anu[Math.floor(Math.random(), anu.length)]
-      // A17.sendMessage(m.chat, { video: { url: result912.video_1 }, caption: `Title : ${result912.title}\nCategory : ${result912.category}\n$Mimetype : ${result912.type}\nViews : ${result912.views_count}\nShares : ${result912.share_count}\nSource : ${result912.link}\nMedia Url : ${result912.video_1}` }, { quoted: m })
+      // Phoenix.sendMessage(m.chat, { video: { url: result912.video_1 }, caption: `Title : ${result912.title}\nCategory : ${result912.category}\n$Mimetype : ${result912.type}\nViews : ${result912.views_count}\nShares : ${result912.share_count}\nSource : ${result912.link}\nMedia Url : ${result912.video_1}` }, { quoted: m })
       // }
       // break;
 
@@ -5371,7 +5393,7 @@ _Click the button below to download_`
       // /* buttons: trapbot,
       // headerType: 1 */
       // }     
-      //           await A17.sendMessage(m.chat, button2Messages, { quoted:m }).catch(err => {
+      //           await Phoenix.sendMessage(m.chat, button2Messages, { quoted:m }).catch(err => {
       //                   return('Error!')
       //               })
       // break;
@@ -5394,7 +5416,7 @@ _Click the button below to download_`
       // /* buttons: hnekobot,
       // headerType: 1 */
       // }      
-      //           await A17.sendMessage(m.chat, button3Messages, { quoted:m }).catch(err => {
+      //           await Phoenix.sendMessage(m.chat, button3Messages, { quoted:m }).catch(err => {
       //                   return('Error!')
       //               })
       // break;
@@ -5417,7 +5439,7 @@ _Click the button below to download_`
       // /* buttons: nwaifubot,
       // headerType: 1 */
       // }      
-      //           await A17.sendMessage(m.chat, button4Messages, { quoted:m }).catch(err => {
+      //           await Phoenix.sendMessage(m.chat, button4Messages, { quoted:m }).catch(err => {
       //                   return('Error!')
       //               })
       // break;
@@ -5440,7 +5462,7 @@ _Click the button below to download_`
       //     buttons: wbuttsss,
       //     headerType: 4 */
       //     }     
-      //           await A17.sendMessage(m.chat, buttonsssMessages,{ quoted:m }).catch(err => {
+      //           await Phoenix.sendMessage(m.chat, buttonsssMessages,{ quoted:m }).catch(err => {
       //                   return('Error!')
       //               })
       // break;  
@@ -5471,7 +5493,7 @@ _Click the button below to download_`
             buttons: wbuttsss,
             headerType: 4 */
         }
-        await A17.sendMessage(m.chat, button1ssMessages, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, button1ssMessages, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5481,7 +5503,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "✨", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "✨", key: m.key } })
 
         reply(mess.waiting)
         waifudd = await axios.get(`https://nekos.life/api/v2/img/fox_girl`)
@@ -5496,7 +5518,7 @@ _Click the button below to download_`
           buttons: wbuttsss,
           headerType: 4 */
         }
-        await A17.sendMessage(m.chat, button12ssMessages, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, button12ssMessages, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5517,7 +5539,7 @@ _Click the button below to download_`
           /*  buttons: xxhnekobot,
           headerType: 1 */
         }
-        await A17.sendMessage(m.chat, xx1button3Messages, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, xx1button3Messages, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5539,7 +5561,7 @@ _Click the button below to download_`
              buttons: wbuttsss,
              headerType: 4 */
         }
-        await A17.sendMessage(m.chat, button112ssMessages, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, button112ssMessages, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5550,7 +5572,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "✨", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "✨", key: m.key } })
 
         /*   const buttons = [
    {buttonId: '-crossplay', buttonText: {displayText: '>>'}, type: 1},
@@ -5564,7 +5586,7 @@ _Click the button below to download_`
            headerType: 4 */
         }
 
-        await A17.sendMessage(m.chat, cosplybutton, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, cosplybutton, { quoted: m }).catch(err => {
           return ('Error!')
         })
 
@@ -5588,7 +5610,7 @@ _Click the button below to download_`
           buttons: wbutsss,
           headerType: 4
         }
-        await A17.sendMessage(m.chat, buttonssMessage, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, buttonssMessage, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5612,7 +5634,7 @@ _Click the button below to download_`
           buttons: wbuttsss,
           headerType: 4
         }
-        await A17.sendMessage(m.chat, buttonssMessages, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, buttonssMessages, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5630,7 +5652,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "❤", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "❤", key: m.key } })
 
         var pat = await fetchJson(`https://api.waifu.pics/sfw/${command}`)
         try {
@@ -5657,7 +5679,7 @@ _Click the button below to download_`
           const response = await axios.get(pat.url, { responseType: 'arraybuffer' })
           const buffer = Buffer.from(response.data, "utf-8")
           var fetchedgif = await GIFBufferToVideoBuffer(buffer)
-          A17.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
         } catch (error) {
           console.log(error);
         }
@@ -5695,7 +5717,7 @@ _Click the button below to download_`
           const response = await axios.get(pat.url, { responseType: 'arraybuffer' })
           const buffer = Buffer.from(response.data, "utf-8")
           var fetchedgif = await GIFBufferToVideoBuffer(buffer)
-          A17.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
         } catch (error) {
           console.log(error);
         }
@@ -5733,7 +5755,7 @@ _Click the button below to download_`
           const response = await axios.get(pat.url, { responseType: 'arraybuffer' })
           const buffer = Buffer.from(response.data, "utf-8")
           var fetchedgif = await GIFBufferToVideoBuffer(buffer)
-          A17.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
         } catch (error) {
           console.log(error);
         }
@@ -5771,7 +5793,7 @@ _Click the button below to download_`
           const response = await axios.get(pat.url, { responseType: 'arraybuffer' })
           const buffer = Buffer.from(response.data, "utf-8")
           var fetchedgif = await GIFBufferToVideoBuffer(buffer)
-          A17.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
         } catch (error) {
           console.log(error);
         }
@@ -5813,7 +5835,7 @@ _Click the button below to download_`
           const response = await axios.get(pat.url, { responseType: 'arraybuffer' })
           const buffer = Buffer.from(response.data, "utf-8")
           var fetchedgif = await GIFBufferToVideoBuffer(buffer)
-          A17.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
         } catch (error) {
           console.log(error);
         }
@@ -5854,7 +5876,7 @@ _Click the button below to download_`
           const response = await axios.get(pat.url, { responseType: 'arraybuffer' })
           const buffer = Buffer.from(response.data, "utf-8")
           var fetchedgif = await GIFBufferToVideoBuffer(buffer)
-          A17.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
+          Phoenix.sendMessage(m.chat, { video: fetchedgif, gifPlayback: true, mentions: ment, caption: musers }, { quoted: m })
         } catch (error) {
           console.log(error);
         }
@@ -5875,7 +5897,7 @@ _Click the button below to download_`
       resggh = await axios.get(`https://nekos.life/api/v2/img/${command}`)         
       let resffj = await getBuffer(resggh.data.url)
       let resmain = await GIFBufferToVideoBuffer(resffj)   
-          await A17.sendMessage(m.chat,{video: resmain, gifPlayback:true},{ quoted:m }).catch(err => {
+          await Phoenix.sendMessage(m.chat,{video: resmain, gifPlayback:true},{ quoted:m }).catch(err => {
                       return reply('error..')
                                       })
       break;
@@ -5899,7 +5921,7 @@ _Click the button below to download_`
                  buttons: wbutsss,
             headerType: 4 */
         }
-        await A17.sendMessage(m.chat, buttonzMessage, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, buttonzMessage, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5909,7 +5931,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🤤", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🤤", key: m.key } })
 
         reply(mess.waiting)
         waifudd = await axios.get(`https://waifu.pics/api/sfw/awoo`)
@@ -5924,7 +5946,7 @@ _Click the button below to download_`
           headerType: 2 */
 
         }
-        await A17.sendMessage(m.chat, button1Messages, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, button1Messages, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -5954,7 +5976,7 @@ _Click the button below to download_`
           buttons: walb,
           headerType: 4
         }
-        await A17.sendMessage(m.chat, wal, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, wal, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -6004,7 +6026,7 @@ _Click the button below to download_`
       //     /\[Written by MAL Rewrite]/g,
       //     ""
       //   )}`
-      // A17.sendMessage(m.chat,{image:{url:result.images.jpg.large_image_url},caption:details},{quoted:m})   
+      // Phoenix.sendMessage(m.chat,{image:{url:result.images.jpg.large_image_url},caption:details},{quoted:m})   
       // break;
 
 
@@ -6013,7 +6035,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🍁", key: m.key } });
+        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } });
         if (!text) return reply(`Please proide a Suchbegriff!\n\n*Beispiel:* ${prefix}anime naruto`)
 
         const malScraper = require('mal-scraper')
@@ -6035,7 +6057,7 @@ _Click the button below to download_`
   ♦️ *Trailer: ${anime.trailer}*
   🌐 *URL: ${anime.url}*
   ❄ *Description:* ${anime.synopsis}*`
-        await A17.sendMessage(m.chat, { image: { url: anime.picture }, caption: animetxt }, { quoted: m })
+        await Phoenix.sendMessage(m.chat, { image: { url: anime.picture }, caption: animetxt }, { quoted: m })
       }
         break;
 
@@ -6044,7 +6066,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🍁", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } })
 
         reply(mess.waiting)
         const { Manga } = require("@shineiichijo/marika")
@@ -6074,7 +6096,7 @@ _Click the button below to download_`
           /\[Written by MAL Rewrite]/g,
           ""
         )}`;
-        A17.sendMessage(m.chat, { image: { url: srh.data[0].images.jpg.large_image_url }, caption: mang }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { image: { url: srh.data[0].images.jpg.large_image_url }, caption: mang }, { quoted: m })
         break;
 
 
@@ -6094,7 +6116,7 @@ _Click the button below to download_`
           headerType: 4 */
         }
 
-        await A17.sendMessage(m.chat, button4Messagess, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, button4Messagess, { quoted: m }).catch(err => {
           return ('error..')
         })
         break;
@@ -6116,7 +6138,7 @@ _Click the button below to download_`
               headerType: 2  */
         }
 
-        await A17.sendMessage(m.chat, buttonMessagessf, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, buttonMessagessf, { quoted: m }).catch(err => {
           return ('error..')
         })
         break;
@@ -6138,7 +6160,7 @@ _Click the button below to download_`
             headerType: 2 */
         }
 
-        await A17.sendMessage(m.chat, buttonMessagessfgr, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, buttonMessagessfgr, { quoted: m }).catch(err => {
           return ('error..')
         })
         break;
@@ -6155,7 +6177,7 @@ _Click the button below to download_`
       //   if (!isBotAdmins) return reply(mess.botadmin);
       //   if (!isAdmins && !isCreator) return reply(mess.useradmin)
       //   let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-      //   await A17.groupParticipantsUpdate(m.chat, [users], 'remove')
+      //   await Phoenix.groupParticipantsUpdate(m.chat, [users], 'remove')
       // }
       //   break;
 
@@ -6186,7 +6208,7 @@ _Click the button below to download_`
             }
           }]
           let txt = `「 *${global.OwnerName}'s Broadcast* 」\n\n${text}`
-          A17.send5ButImg(yoi, txt, `${global.BotName}`, BotLogo, btn, Thumb)
+          Phoenix.send5ButImg(yoi, txt, `${global.BotName}`, BotLogo, btn, Thumb)
         }
         reply('Broadcast Sent !')
       }
@@ -6198,7 +6220,7 @@ _Click the button below to download_`
     case 'help': case 'h': case 'menu': case 'allmenu': case 'list':{
       if (isBan) return reply(mess.banned);	 			
       if (isBanChat) return reply(mess.bangc);
-  A17.sendMessage(from, { react: { text: "📲" , key: m.key }})      
+  Phoenix.sendMessage(from, { react: { text: "📲" , key: m.key }})      
   const helpmenu = ` 
 ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ* 🎯 ••』──◈
 │╭────────────···▸▸
@@ -6210,8 +6232,8 @@ _Click the button below to download_`
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
   │⊳  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
-  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Mʀ Sᴀᴄʜɪᴛʜ* 
-┬│   *Phoenix-MD*
+  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Phoenix Team* 
+┬│   
 │╰───────────···▸▸
 └──────────────···▸▸▸
 ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ* 🎯 ••』──◈
@@ -6235,7 +6257,7 @@ _Click the button below to download_`
           headerType: 4
 
         }
-        A17.sendMessage(m.chat, buttonMessage, { quoted: m })
+        Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
       }
         break;
 
@@ -6244,7 +6266,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🗓️", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🗓️", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *ᴀʟɪᴠᴇ* 🎯 ••』──◈
@@ -6257,8 +6279,8 @@ _Click the button below to download_`
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
   │⊳  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
-  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Mʀ Sᴀᴄʜɪᴛʜ* 
-┬│   *Phoenix-MD*
+  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Phoenix Team* 
+┬│   
 │╰───────────···▸▸
 └──────────────···▸▸▸`)
         }
@@ -6270,7 +6292,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🗓️", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🗓️", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *Bᴏᴛ-Mᴇɴᴜ* 🎯 ••』──◈
@@ -6300,7 +6322,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🎩", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🎩", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *Oᴡɴᴇʀ* 🎯 ••』───◈
@@ -6336,7 +6358,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🧊", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🧊", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *Gʀᴏᴜᴘ* 🎯 ••』───◈
@@ -6371,7 +6393,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *Aɴᴛɪ-Lɪɴᴋ* 🎯 ••』───◈
@@ -6397,7 +6419,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🗒️", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🗒️", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *Eᴄᴏɴᴏᴍʏ* 🎯 ••』───◈
@@ -6424,7 +6446,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "💫", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
 
           reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
         }
@@ -6436,7 +6458,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🧿", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🧿", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *ɢᴀᴍᴇꜱ* 🎯 ••』───◈
@@ -6458,7 +6480,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🥰", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🥰", key: m.key } })
 
           reply(`
 ┌──『•• 🎯 *Cᴏɴᴠᴇʀᴛ* 🎯 ••』───◈
@@ -6483,7 +6505,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "📣", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "📣", key: m.key } })
 
           reply(``)
         }
@@ -6495,7 +6517,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🔑", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🔑", key: m.key } })
 
           reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
         }
@@ -6507,7 +6529,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🧊", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🧊", key: m.key } })
 
           reply(`
 ┌─『•• 📥 *Dᴏᴡɴʟᴏᴀᴅᴇʀ* 📥 ••』─◈
@@ -6539,7 +6561,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🤪", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🤪", key: m.key } })
 
           reply(`🥲🥲`)
         }
@@ -6551,7 +6573,7 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🌐", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🌐", key: m.key } })
 
           reply(`😊`)
         }
@@ -6563,9 +6585,9 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "🪀", key: m.key } })
+          Phoenix.sendMessage(from, { react: { text: "🪀", key: m.key } })
 
-          reply(`*Hi🎯${pushname}*,  *Pong*  *${latensie.toFixed(4)}* *ms*`)
+          reply(`*Hey🎯${pushname}*,  *Pong*  *${latensie.toFixed(4)}* *ms*`)
         }
 
         break;
@@ -6575,7 +6597,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        A17.sendMessage(from, { react: { text: "🍁", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } })
 
         reply(`Running repl....Please wait until repl.it responds...`)
         var replqr = await getBuffer(`https://a17-qr-scanner.broken0007.repl.co/`)
@@ -6589,7 +6611,7 @@ _Click the button below to download_`
               buttons: qrbutton,
               headerType: 4 */
         }
-        await A17.sendMessage(m.chat, bmffg, { quoted: m }).catch(err => {
+        await Phoenix.sendMessage(m.chat, bmffg, { quoted: m }).catch(err => {
           return ('Error!')
         })
         break;
@@ -6599,12 +6621,12 @@ _Click the button below to download_`
       case 'weather':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        A17.sendMessage(from, { react: { text: "✨", key: m.key } })
+        Phoenix.sendMessage(from, { react: { text: "✨", key: m.key } })
         if (!args[0]) return reply("Enter your location to search weather.")
         myweather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args.join(" ")}&units=metric&appid=e409825a497a0c894d2dd975542234b0&language=tr`)
 
         const weathertext = `           🌤 *Weather Report* 🌤  \n\n🔎 *Search Location:* ${myweather.data.name}\n*💮 Country:* ${myweather.data.sys.country}\n🌈 *Weather:* ${myweather.data.weather[0].description}\n🌡️ *Temperature:* ${myweather.data.main.temp}°C\n❄️ *Minimum Temperature:* ${myweather.data.main.temp_min}°C\n📛 *Maximum Temperature:* ${myweather.data.main.temp_max}°C\n💦 *Humidity:* ${myweather.data.main.humidity}%\n🎐 *Wind:* ${myweather.data.wind.speed} km/h\n`
-        A17.sendMessage(from, { video: { url: 'https://media.tenor.com/bC57J4v11UcAAAPo/weather-sunny.mp4' }, gifPlayback: true, caption: weathertext }, { quoted: m })
+        Phoenix.sendMessage(from, { video: { url: 'https://media.tenor.com/bC57J4v11UcAAAPo/weather-sunny.mp4' }, gifPlayback: true, caption: weathertext }, { quoted: m })
 
         break;
 
@@ -6627,7 +6649,7 @@ _Click the button below to download_`
       //               textw += `*Longitude:-* ${wdata.data.coord.lon}\n`
       //               textw += `*Country:-* ${wdata.data.sys.country}\n`
 
-      //             A17.sendMessage(
+      //             Phoenix.sendMessage(
       //                   m.chat, {
       //                       text: textw,
       //                   }, {
@@ -6655,7 +6677,7 @@ _Click the button below to download_`
         cantik = body.slice(1)
         const okebnh1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const A17kak = okebnh1[Math.floor(Math.random() * okebnh1.length)]
-        A17.sendMessage(m.chat, { text: A17kak }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { text: A17kak }, { quoted: m })
         break;
 
 
@@ -6670,8 +6692,8 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          A17.sendMessage(from, { react: { text: "❌", key: m.key } })
-          reply(`Hey *${pushname}* *මෙවනි විදානයක් මා සතුව නැත..*${prefix}*menu* *ලෙස ටයිප් කරන්න.*.`)
+          Phoenix.sendMessage(from, { react: { text: "❌", key: m.key } })
+          reply(`Hey *${pushname}* *dieser Command nicht Vorhanden..*${prefix}*menu* *Nutze um weitere Commands.*.`)
 
         }
 
@@ -6689,7 +6711,7 @@ _Click the button below to download_`
           try {
             reply(util.format(eval(`(async () => { ${budy.slice(3)} })()`)))
           } catch (e) {
-            A17.sendMessage(from, { image: ErrorPic, caption: String(e) }, { quoted: m })
+            Phoenix.sendMessage(from, { image: ErrorPic, caption: String(e) }, { quoted: m })
           }
         }
         if (budy.startsWith('>')) {
@@ -6699,7 +6721,7 @@ _Click the button below to download_`
             if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
             await reply(evaled)
           } catch (err) {
-            await A17.sendMessage(from, { image: ErrorPic, caption: String(err) }, { quoted: m })
+            await Phoenix.sendMessage(from, { image: ErrorPic, caption: String(err) }, { quoted: m })
           }
         }
 
@@ -6707,7 +6729,7 @@ _Click the button below to download_`
         if (budy.startsWith('$')) {
           if (!isCreator) return reply(mess.botowner)
           exec(budy.slice(2), (err, stdout) => {
-            if (err) return A17.sendMessage(from, { image: ErrorPic, caption: String(err) }, { quoted: m })
+            if (err) return Phoenix.sendMessage(from, { image: ErrorPic, caption: String(err) }, { quoted: m })
             if (stdout) return replyH(stdout)
           })
         }
@@ -6718,11 +6740,11 @@ _Click the button below to download_`
           if (m.isBaileys) return
           let msgs = global.db.database
           if (!(budy.toLowerCase() in msgs)) return
-          A17.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+          Phoenix.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
         }
     }
   } catch (err) {
-    A17.sendMessage(`${ownertag}@s.whatsapp.net`, util.format(err), { quoted: m })
+    Phoenix.sendMessage(`${ownertag}@s.whatsapp.net`, util.format(err), { quoted: m })
     console.log(err)
   }
 }

@@ -29,7 +29,7 @@ global.BotName = "Phoenix MD";
 global.packname = "By Phoenix Bot";                             //Do not change.
 global.author = "Phoenix MD";                               //Do not change.
 global.BotSourceCode = "https://github.com/7ucg"; //Do not change.
-global.SupportGroupLink = "https://chat.whatsapp.com/";
+global.SupportGroupLink = "https://chat.whatsapp.com/GXJA9IomUhaHyofAT4PlJQ";
 
 
 //
@@ -86,7 +86,7 @@ global.mess = {
   grouponly: 'Dieser Befehl ist nur für *Gruppen* Verfügbar!',
   privateonly: 'Dieser Befehl ist nur für *Private Chats* Verfügbar!',
   botonly: 'Only the *Bot itself* can use this command!',
-  waiting: '*Un momento por favor ich arbeite daran...*',
+  waiting: '* ich arbeite daran...*',
   nolink: 'Please provide me *link*, Baka!',
   error: 'Error!',
   banned: 'You are *Banned* fron using commands!',
