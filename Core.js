@@ -187,7 +187,7 @@ var yye = tgel.getYear();
 
 
 //
-module.exports = A17 = async (A17, m, chatUpdate, store) => {
+module.exports = Phoenix = async (Phoenix, m, chatUpdate, store) => {
   try {
     var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectreply.selectedRowId : (m.mtype == 'templateButtonreplyMessage') ? m.message.templateButtonreplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectreply.selectedRowId || m.text) : ''
     var budy = (typeof m.text == 'string' ? m.text : '')
@@ -240,7 +240,7 @@ module.exports = A17 = async (A17, m, chatUpdate, store) => {
 
 
     autoreadsw = true;
-    _sewa.expiredCheck(A17, sewa);
+    _sewa.expiredCheck(Phoenix, sewa);
 
     const reply = (teks) => {
       Phoenix.sendMessage(m.chat, { text: teks }, { quoted: m })
@@ -736,7 +736,7 @@ Typed *surrender* to surrender and admited defeat`
         let { data } = await axios.get('https://github.com/7ucg/Phoenix-MD');
         teks = `
 ┌───────────────       
-│ *®-𝐏𝐇𝐎𝐄𝐍𝐈𝐗-ᴘᴀɴᴅᴀ-ᴍᴅ*
+│ *®-𝐏𝐇𝐎𝐄𝐍𝐈𝐗-ᴍᴅ*
 ├───────────────
 │ *Total Stars* ${data.stargazers_count}
 ├───────────────
@@ -744,7 +744,7 @@ Typed *surrender* to surrender and admited defeat`
 ├───────────────
 │ *GitHub* https://github.com/7ucg/Phoenix-MD
 ├───────────────
-│ *ꜱᴀᴄʜɪᴛʜ ᴄʜᴀɴᴅʀᴀ*
+│ *Powered by Baron&Exiqon*
 └────────────────`
         /*  let buttons = [
           {buttonId: `${prefix}owner`, buttonText: {displayText: '🍁 DEVELOPER 🍁'}, type: 1}
@@ -1121,7 +1121,7 @@ Typed *surrender* to surrender and admited defeat`
         const systemName = os.platform() + ' ' + os.release();
 
         const respon = `
-  🤖 *A17's Server Info* 🤖
+  🤖 *Phoenixenix's Server Info* 🤖
   
   *System*: ${systemName}
   
@@ -1967,7 +1967,7 @@ Typed *surrender* to surrender and admited defeat`
              ]  */
         let buttonMessage = {
           text: `_${hasil.quotes}_\n\nBy '${hasil.karakter}', ${hasil.anime}\n\n- ${hasil.up_at}`,
-          /*     footer: 'A17',
+          /*     footer: 'Phoenix',
                buttons: buttons,
                headerType: 2  */
         }
@@ -2332,7 +2332,7 @@ Typed *surrender* to surrender and admited defeat`
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
-        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using A17 in personal chat.`
+        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
         for (let i of anu) {
           teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
@@ -4004,7 +4004,7 @@ Typed *surrender* to surrender and admited defeat`
             : m.text;
         const SpeakEngine = require("google-tts-api");
         const texttospeechurl = SpeakEngine.getAudioUrl(texttosay, { lang: "en", slow: false, host: "https://translate.google.com", });
-        Phoenix.sendMessage(m.chat, { audio: { url: texttospeechurl, }, mimetype: "audio/mpeg", fileName: `A17SpeechEngine.mp3`, }, { quoted: m, });
+        Phoenix.sendMessage(m.chat, { audio: { url: texttospeechurl, }, mimetype: "audio/mpeg", fileName: `PhoenixenixSpeechEngine.mp3`, }, { quoted: m, });
       }
         break;
 
@@ -4050,7 +4050,7 @@ Typed *surrender* to surrender and admited defeat`
       // const { getBuffer } = require("./lib/myfunc");
 
       // case 'ss':
-      //   async (A17, m, { pushName, prefix, args, text }) => {
+      //   async (Phoenix, m, { pushName, prefix, args, text }) => {
       //     if (!args[0]) return m.reply(`Please provide me a link to lookup!`);
 
       //     let lookupURL;
@@ -4408,18 +4408,18 @@ _Click the button below to download_`
         if (!q) return reply('Please provide the link !')
         reply(mess.wait)
         if (!q.includes('tiktok')) return reply(`Invalid tiktok link!`)
-        const musim_rambutan = await A17Tiktok(`${q}`).catch(e => {
+        const musim_rambutan = await PhoenixTiktok(`${q}`).catch(e => {
           reply(mess.error)
         })
         console.log(musim_rambutan)
-        const A17tiktokop = musim_rambutan.result.watermark
+        const Phoenixtiktokop = musim_rambutan.result.watermark
         texttk = `_Please choose the button below_`
         let buttons = [
           { buttonId: `${prefix}ttnowm ${q}`, buttonText: { displayText: 'Watermark Free' }, type: 1 },
           { buttonId: `${prefix}ttaud ${q}`, buttonText: { displayText: 'Audio ' }, type: 1 }
         ]
         let buttonMessage = {
-          video: { url: A17tiktokop },
+          video: { url: Phoenixtiktokop },
           caption: texttk,
           footer: `${BotName}`,
           buttons: buttons,
@@ -4437,12 +4437,12 @@ _Click the button below to download_`
         if (!q) return reply('Please provide the link !')
         reply(mess.wait)
         if (!q.includes('tiktok')) return reply(`That's not a tiktok link!`)
-        const musim_rambutan = await A17Tiktok(`${q}`).catch(e => {
+        const musim_rambutan = await PhoenixTiktok(`${q}`).catch(e => {
           reply(mess.error)
         })
         console.log(musim_rambutan)
-        const A17tiktoknowm = musim_rambutan.result.nowatermark
-        Phoenix.sendMessage(from, { video: { url: A17tiktoknowm }, caption: "Here it is..." }, { quoted: m })
+        const Phoenixtiktoknowm = musim_rambutan.result.nowatermark
+        Phoenix.sendMessage(from, { video: { url: Phoenixtiktoknowm }, caption: "Here it is..." }, { quoted: m })
       }
         break;
 
@@ -4454,12 +4454,12 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         if (!q) return reply('Where is the audio?')
         if (!q.includes('tiktok')) return reply(`That's not a tiktok link!`)
-        const musim_rambutan = await A17Tiktok(`${q}`).catch(e => {
+        const musim_rambutan = await PhoenixTiktok(`${q}`).catch(e => {
           reply(mess.error)
         })
         console.log(musim_rambutan)
-        const A17tiktokaudio = musim_rambutan.result.nowatermark
-        Phoenix.sendMessage(from, { audio: { url: A17tiktokaudio }, mimetype: 'audio/mp4' }, { quoted: m })
+        const Phoenixtiktokaudio = musim_rambutan.result.nowatermark
+        Phoenix.sendMessage(from, { audio: { url: Phoenixtiktokaudio }, mimetype: 'audio/mp4' }, { quoted: m })
       }
         break;
 
@@ -4503,7 +4503,7 @@ _Click the button below to download_`
        ]
        let buttonMessage = {
        image: { url: anu.thumbnail },
-       caption: `「  A17 Youtube Player 2.0  」
+       caption: `「  Phoenix Youtube Player 2.0  」
       
       ✨ *Title :* ${anu.title}
       
@@ -4662,7 +4662,7 @@ _Click the button below to download_`
       ]
       let buttonMessage = {
       image: { url: anu.thumbnail },
-      caption: `「  A17 Youtube Downloader 2.0  」
+      caption: `「  Phoenix Youtube Downloader 2.0  」
       
       ✨ *Title :* ${anu.title}
       
@@ -4793,7 +4793,7 @@ _Click the button below to download_`
         break;
 
 
-      //old code of A17 button 
+      //old code of Phoenix button 
 
       // case 'pinterest': case 'pin': {
       //   if (isBan) return reply(mess.banned);
@@ -4883,7 +4883,7 @@ _Click the button below to download_`
       //   }
 
       //   // Send each image with a common caption
-      //   const commonCaption = 'Check out this image from Pinterest By A17';
+      //   const commonCaption = 'Check out this image from Pinterest By Phoenix';
       //   for (let i = 0; i < results.length; i++) {
       //     Phoenix.sendMessage(m.chat, { image: { url: results[i] }, caption: commonCaption }, { quoted: m });
       //   }
@@ -4903,7 +4903,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        if (!args.join(" ")) return reply(`Like use -take A17|By: Kai`)
+        if (!args.join(" ")) return reply(`Like use -take Phoenix|By: Kai`)
         const swn = args.join(" ")
         const pcknm = swn.split("|")[0];
         const atnm = swn.split("|")[1];
@@ -5077,8 +5077,8 @@ _Click the button below to download_`
         Phoenix.sendMessage(from, { react: { text: "🤧", key: m.key } })
 
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
-        const A17tttt = ['Compassionate', 'Generous', 'Grumpy', 'Forgiving', 'Obedient', 'Good', 'Simp', 'Kind-Hearted', 'patient', 'UwU', 'top, anyway', 'Helpful']
-        const taky = A17tttt[Math.floor(Math.random() * A17tttt.length)]
+        const Phoenixtttt = ['Compassionate', 'Generous', 'Grumpy', 'Forgiving', 'Obedient', 'Good', 'Simp', 'Kind-Hearted', 'patient', 'UwU', 'top, anyway', 'Helpful']
+        const taky = Phoenixtttt[Math.floor(Math.random() * Phoenixtttt.length)]
         Phoenix.sendMessage(from, { text: `Character Check : ${q}\nAnswer : *${taky}*` }, { quoted: m })
         break;
 
@@ -5172,9 +5172,9 @@ _Click the button below to download_`
           "put your father name on status for 5hrs",
           "send abusive words in any grup, excepting this grup, and send screenshot proof here"
         ]
-        const A17dareww = dare[Math.floor(Math.random() * dare.length)]
+        const Phoenixdareww = dare[Math.floor(Math.random() * dare.length)]
         buffer = await getBuffer(`https://images4.alphacoders.com/101/1016619.jpg`)
-        Phoenix.sendMessage(from, { image: buffer, caption: '*You have chosen Dare...*\n\n' + A17dareww }, { quoted: m })
+        Phoenix.sendMessage(from, { image: buffer, caption: '*You have chosen Dare...*\n\n' + Phoenixdareww }, { quoted: m })
         break;
 
 
@@ -5274,9 +5274,9 @@ _Click the button below to download_`
           "Whats the strangest dream you have ever had",
           "do you play pubg, if you then send ur id number"
         ]
-        const A17truthww = truth[Math.floor(Math.random() * truth.length)]
+        const Phoenixtruthww = truth[Math.floor(Math.random() * truth.length)]
         buffer = await getBuffer(`https://images2.alphacoders.com/650/650812.jpg`)
-        Phoenix.sendMessage(from, { image: buffer, caption: '*You have chosen Truth...*\n' + A17truthww }, { quoted: m })
+        Phoenix.sendMessage(from, { image: buffer, caption: '*You have chosen Truth...*\n' + Phoenixenixtruthww }, { quoted: m })
         break;
 
 
@@ -5286,7 +5286,7 @@ _Click the button below to download_`
 
 
 
-      case 'nsfwA17':
+      case 'nsfwPhoenix':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         reply(mess.wait)
@@ -6251,7 +6251,7 @@ _Click the button below to download_`
 │╰───────────···▸▸
 └──────────────···▸▸▸`
         let buttonMessage = {
-          video: fs.readFileSync('./system/A17_3.mp4'), gifPlayback: true,
+          video: fs.readFileSync('./system/Phoenix_3.mp4'), gifPlayback: true,
           caption: helpmenu,
 
           headerType: 4
@@ -6600,7 +6600,7 @@ _Click the button below to download_`
         Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } })
 
         reply(`Running repl....Please wait until repl.it responds...`)
-        var replqr = await getBuffer(`https://a17-qr-scanner.broken0007.repl.co/`)
+        var replqr = await getBuffer(`https://Phoenix-qr-scanner.broken0007.repl.co/`)
         /*        var qrbutton = [
 {buttonId: `${prefix}qr`, buttonText: {displayText: `Tap to Re-run Repl`}, type: 1}
 ] */
@@ -6676,8 +6676,8 @@ _Click the button below to download_`
       case 'waifucheck':
         cantik = body.slice(1)
         const okebnh1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
-        const A17kak = okebnh1[Math.floor(Math.random() * okebnh1.length)]
-        Phoenix.sendMessage(m.chat, { text: A17kak }, { quoted: m })
+        const Phoenixkak = okebnh1[Math.floor(Math.random() * okebnh1.length)]
+        Phoenix.sendMessage(m.chat, { text: Phoenixkak }, { quoted: m })
         break;
 
 

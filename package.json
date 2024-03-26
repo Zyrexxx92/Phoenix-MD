@@ -1,7 +1,7 @@
 {
-    "name": "a17",
+    "name": "Phoenix",
     "version": "1.0.0",
-    "description": "A17 is a WhatsApp multiDevice Bot based on Miku and Baileys written in Javascript.",
+    "description": "Phoenix is a WhatsApp multiDevice Bot based on Miku and Baileys written in Javascript.",
     "main": "index.js",
     "directories": {
         "lib": "lib"
