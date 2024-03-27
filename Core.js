@@ -51,17 +51,17 @@ const { MessageType } = require('@whiskeysockets/baileys');
 let nowtime = '';
 
 if (time2 < "05:00:00") {
-  nowtime = '𝘎𝘜𝘛𝘌 𝘕𝘈𝘊𝘏𝘛 🦋💞';
+  nowtime = '𝘎𝘜𝘛𝘌 𝘕𝘈𝘊𝘏𝘛';
 } else if (time2 < "11:00:00") {
-  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘔𝘖𝘙𝘎𝘌𝘕 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘔𝘖𝘙𝘎𝘌𝘕';
 } else if (time2 < "15:00:00") {
-  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋';
 } else if (time2 < "18:00:00") {
-  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋';
 } else if (time2 < "19:00:00") {
-  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋';
 } else {
-  nowtime = '𝘎𝘜𝘛𝘌 𝘕𝘈𝘊𝘏𝘛 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌 𝘕𝘈𝘊𝘏𝘛';
 }
 
 
@@ -6184,7 +6184,7 @@ _Click the button below to download_`
 
 
 
-    case 'help': case 'h': case 'menu': case 'allmenu': case 'list':{
+    case 'help': case 'h': case 'menu': case 'list':{
       if (isBan) return reply(mess.banned);	 			
       if (isBanChat) return reply(mess.bangc);
   Phoenix.sendMessage(from, { react: { text: "📲" , key: m.key }})      
@@ -6193,13 +6193,13 @@ _Click the button below to download_`
 │╭────────────···▸▸
 ┴│
   │⊳  *Uꜱᴇʀ :  ${pushname}* !!! ✅
-  │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
+  │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*
   │⊳  *Uhrzeit : ${kaitime}* ⌚
   │⊳  *Datum : ${kaidate}* 📆
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
   │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
-  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Phoenix Team* 
+  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Team-Phoenix* 
 ┬│   
 │╰───────────···▸▸
 └──────────────···▸▸▸
@@ -6210,10 +6210,12 @@ _Click the button below to download_`
   │⊳ *${prefix}1.2*  *ᴏᴡɴᴇʀᴍᴇɴᴜ*
   │⊳ *${prefix}1.3*  *ɢʀᴏᴜᴘᴍᴇɴᴜ*
   │⊳ *${prefix}1.4*  *ᴀɴᴛɪʟɪɴᴋ*
-  │⊳ *${prefix}1.5*  *searchmenu*
+  │⊳ *${prefix}1.5*  *Eᴄᴏɴᴏᴍʏ*
   │⊳ *${prefix}1.6*  *ᴄᴏɴᴠᴇʀᴛ*
   │⊳ *${prefix}1.7*  *ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*
   │⊳ *${prefix}1.8*  *ɢᴀᴍᴇ-ᴍᴇɴᴜ*
+  │⊳ *${prefix}1.9*  *Fun-ᴍᴇɴᴜ*
+  │⊳ *${prefix}2.0*  *ᴀʟʟᴍᴇɴᴜ 2.0*
 ┬│
 │╰───────────···▸▸
 └──────────────···▸▸▸`
@@ -6228,6 +6230,129 @@ _Click the button below to download_`
       }
         break;
 
+        case '2.0': case 'allmenu': {
+          if (isBan) return reply(mess.banned);	 			
+          if (isBanChat) return reply(mess.bangc);
+      Phoenix.sendMessage(from, { react: { text: "📲" , key: m.key }})      
+      const helpmenu = ` 
+    ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ 2.0* 🎯 ••』──◈
+    │╭────────────···▸▸
+    ┴│
+      │⊳  *Uꜱᴇʀ :  ${pushname}* !!!✅
+      │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
+      │⊳  *Uhrzeit : ${kaitime}*⌚
+      │⊳  *Datum : ${kaidate}*📆
+      │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}*🙋
+      │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』* 💡
+      │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
+      │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Team-Phoenix* 
+    ┬│   
+    │╰───────────···▸▸
+    └──────────────···▸▸▸
+    ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ 2.0 * 🎯 ••』──◈
+    │╭────────────···▸▸
+    ┴│
+    ⬡│▸ ${prefix}ʀᴇᴘᴏ 
+    ⬡│▸ ${prefix}ꜱᴄʀɪᴘᴛ
+    ⬡│▸ ${prefix}ᴀʟɪᴠᴇ
+    ⬡│▸ ${prefix}ꜱᴘᴇᴀᴋ
+    ⬡│▸ ${prefix}ꜱᴜᴘᴘᴏʀᴛ
+    ⬡│▸ ${prefix}ꜱᴘᴇᴇᴅᴄʜᴇᴄᴋ
+    ⬡│▸ ${prefix}ꜱᴛᴀʟᴋ
+    ⬡│▸ ${prefix}ꜱᴇᴛᴘʀᴇꜰɪx
+    ⬡│▸ ${prefix}ᴀᴜᴛᴏ-ᴛʏᴘɪɴɢ  
+    ⬡│▸ ${prefix}ᴀᴜᴛᴏ-ꜱᴛᴀᴛᴜꜱ
+    ⬡│▸ ${prefix}ᴀᴜᴛᴏ-ʀᴇᴄᴏʀᴅɪɴɢ 
+    ⬡│▸ ${prefix}ᴘᴜʙʟɪᴄ
+    ⬡│▸ ${prefix}ꜱᴇʟꜰ
+    ⬡│▸ ${prefix}ʀᴇꜱᴛᴀʀᴛ
+    ⬡│▸ ${prefix}ꜱᴇᴛʙᴏᴛᴘᴘ
+    ⬡│▸ ${prefix}ꜱʟᴇᴇᴘ
+    ⬡│▸ ${prefix}ᴊᴏɪɴ
+    ⬡│▸ ${prefix}ᴘᴏꜱᴛ
+    ⬡│▸ ${prefix}ʟɪꜱᴛɢᴄ
+    ⬡│▸ ${prefix}ʟɪꜱᴛᴘᴄ
+    ⬡│▸ ${prefix}ʟɪꜱᴛᴏɴʟɪɴᴇ 
+    ⬡│▸ ${prefix}ʙʀᴏᴀᴅᴄᴀꜱᴛ
+    ⬡│▸ ${prefix}ʙʏᴇ
+    ⬡│▸ ${prefix}ʙᴀɴɢʀᴏᴜᴘ 
+    ⬡│▸ ${prefix}ʙʟᴏᴄᴋ
+    ⬡│▸ ${prefix}ᴜɴʙʟᴏᴄᴋ
+    ⬡│▸ ${prefix}ʙᴀɴ ᴀᴅᴅ
+    ⬡│▸ ${prefix}ʙᴀɴ ᴅᴇʟ
+    ⬡│▸ ${prefix}ᴘʀᴏᴍᴏᴛᴇ  
+    ⬡│▸ ${prefix}ᴅᴇᴍᴏᴛᴇ  
+    ⬡│▸ ${prefix}ɢʀᴏᴜᴘ-ᴇᴠᴇɴᴛ  
+    ⬡│▸ ${prefix}ɢʀᴏᴜᴘꜱᴇᴛᴛɪɴɢ
+    ⬡│▸ ${prefix}ɢʀᴏᴜᴘʟɪɴᴋ
+    ⬡│▸ ${prefix}ʀᴇᴍᴏᴠᴇ 
+    ⬡│▸ ${prefix}ꜱᴇᴛɴᴀᴍᴇ
+    ⬡│▸ ${prefix}ꜱᴇᴛɢᴄᴘᴘ
+    ⬡│▸ ${prefix}ꜱᴇᴛᴅᴇꜱᴄ
+    ⬡│▸ ${prefix}ʀᴇᴠᴏᴋᴇ
+    ⬡│▸ ${prefix}ᴛᴀɢᴀᴅᴍɪɴꜱ
+    ⬡│▸ ${prefix}ᴛᴀɢᴀʟʟ
+    ⬡│▸ ${prefix}ʜɪᴅᴇᴛᴀɢ
+    ⬡│▸ ${prefix}ɴꜱꜰᴡ 
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋɢᴄ 
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋᴛᴛ
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋʏᴛᴄʜ
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋꜰʙ
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋɪɢ
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋᴛᴡɪᴛ
+    ⬡│▸  ${prefix}ᴀɴᴛɪᴡᴀᴍᴇ     
+    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋᴀʟʟ  
+    ⬡│▸  ${prefix}ᴅᴀɪʟʏ 
+    ⬡│▸  ${prefix}ᴡᴀʟʟᴇᴛ 
+    ⬡│▸  ${prefix}ʙᴀɴᴋ
+    ⬡│▸  ${prefix}ʙᴀɴᴋᴜᴘɢʀᴀᴅᴇ 
+    ⬡│▸  ${prefix}ᴅᴇᴘᴏꜱɪᴛ
+    ⬡│▸  ${prefix}ᴡɪᴛʜᴅʀᴀᴡ
+    ⬡│▸  ${prefix}ʀᴏʙ / ᴀᴛᴛᴀᴄᴋ 
+    ⬡│▸  ${prefix}ᴛʀᴀɴꜱꜰᴇʀ / ɢɪᴠᴇ 
+    ⬡│▸  ${prefix}ᴡᴇᴀʟᴛʜ / ʀɪᴛᴜᴀʟ 
+    ⬡│▸ ${prefix}ᴛᴛᴛ / ᴛɪᴄᴛᴀᴄᴛᴏᴇ   
+    ⬡│▸ ${prefix}ᴛʀᴜᴛʜ
+    ⬡│▸ ${prefix}ᴅᴀʀᴇ
+    ⬡│▸ ${prefix}ꜱᴘɪɴ / ꜱʟᴏᴛ  
+    ⬡│▸ ${prefix}ɢᴀᴍʙʟᴇ / ʟᴏᴛᴛᴇʀʏ
+    ⬡│▸  ${prefix}ꜱᴛɪᴄᴋᴇʀ 
+    ⬡│▸  ${prefix}ᴛᴏɪᴍɢ
+    ⬡│▸  ${prefix}ᴛᴏɢɪꜰ
+    ⬡│▸  ${prefix}ᴜʀʟ
+    ⬡│▸  ${prefix}ᴛᴏᴍᴘ3
+    ⬡│▸  ${prefix}ᴛᴏᴀᴜᴅɪᴏ
+    ⬡│▸  ${prefix}ᴇᴍᴏᴊɪᴍɪx 
+    ⬡│▸  ${prefix}ꜱᴛᴇᴀʟ
+    ⬡│▸  ${prefix}ᴘʟᴀʏ
+    ⬡│▸  ${prefix}ꜱᴏɴɢ
+    ⬡│▸  ${prefix}ᴠɪᴅᴇᴏ
+    ⬡│▸  ${prefix}ʏᴛᴍᴘ3
+    ⬡│▸  ${prefix}ʏᴛᴍᴘ4
+    ⬡│▸  ${prefix}ᴍᴏᴠɪᴇ
+    ⬡│▸  ${prefix}ɢᴏᴏɢʟᴇ
+    ⬡│▸  ${prefix}ᴡᴀʟʟᴘᴀᴘᴇʀ
+    ⬡│▸  ${prefix}ɪᴍᴀɢᴇ
+    ⬡│▸  ${prefix}ꜱᴇᴀʀᴄʜ
+    ⬡│▸  ${prefix}ʏᴛᴠɪᴅᴇᴏ
+    ⬡│▸  ${prefix}ᴍᴇᴅɪᴀꜰɪʀᴇ
+    ⬡│▸  ${prefix}ɪɴꜱᴛᴀɢʀᴀᴍ
+    ⬡│▸  ${prefix}ꜰᴀᴄᴇʙᴏᴏᴋ
+    ⬡│▸  ${prefix}ꜰʙᴍᴘ3
+    ⬡│▸  ${prefix}ᴛɪᴋᴛᴏᴋ
+    ┬│
+    │╰───────────···▸▸
+    └──────────────···▸▸▸`
+            let buttonMessage = {
+              video: fs.readFileSync('./system/Phoenix_3.mp4'), gifPlayback: true,
+              caption: helpmenu,
+    
+              headerType: 4
+    
+            }
+            Phoenix.sendMessage(m.chat, buttonMessage, { quoted: m })
+          }
+            break;
 
       case 'alive':
         if (isCmd) {
@@ -6246,7 +6371,7 @@ _Click the button below to download_`
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
   │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
-  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Phoenix Team* 
+  │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Team-Phoenix* 
 ┬│   
 │╰───────────···▸▸
 └──────────────···▸▸▸`)
@@ -6255,7 +6380,7 @@ _Click the button below to download_`
         break;
 
 
-      case '1.1':
+      case '1.1': case 'botmenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6285,7 +6410,7 @@ _Click the button below to download_`
 
 
 
-      case '1.2':
+      case '1.2': case 'ownermenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6321,7 +6446,7 @@ _Click the button below to download_`
         
         
         
-    case '1.3':
+    case '1.3': case 'groupmenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6353,7 +6478,7 @@ _Click the button below to download_`
         break;    
         
         
-        case '1.4':
+        case '1.4': case 'antilinkmenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6379,7 +6504,7 @@ _Click the button below to download_`
         break;
         
         
-        case '1.5':
+        case '1.5': case 'economymenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6418,7 +6543,7 @@ _Click the button below to download_`
         break;
         
         
-        case '1.8':
+        case '1.8': case 'gamesmenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6437,10 +6562,37 @@ _Click the button below to download_`
 │╰───────────···▸▸`)
         }
 
+
+        
+        case '1.9': case 'funmenu':
+        if (isCmd) {
+          if (isBan) return reply(mess.banned);
+          if (isBanChat) return reply(mess.bangc);
+          Phoenix.sendMessage(from, { react: { text: "🎈", key: m.key } })
+
+          m.reply(`
+┌──『•• 🎈 *Fun-Menu* 🎈 ••』───◈
+│╭────────────···▸▸
+┴│
+⬡│▸ ${prefix}stupidcheck  
+⬡│▸ ${prefix}uncleancheck
+⬡│▸ ${prefix}hotcheck
+⬡│▸ ${prefix}smartcheck 
+⬡│▸ ${prefix}greatcheck 
+⬡│▸ ${prefix}evilcheck
+⬡│▸ ${prefix}dogcheck
+⬡│▸ ${prefix}coolcheck
+⬡│▸ ${prefix}waifucheck
+┬│
+│╰───────────···▸▸`)
+        }
+
+     
+
         break;
         
         
-        case '1.6':
+        case '1.6': case 'convertmenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6489,7 +6641,7 @@ _Click the button below to download_`
         break;
         
         
-        case '1.7':
+        case '1.7': case 'downloadermenu':
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
@@ -6645,7 +6797,8 @@ _Click the button below to download_`
         break;
 
 
-
+       
+    
       ///////////////////////////////////////////////////
       ///////////////////////////////////////////////////
 
