@@ -51,17 +51,17 @@ const { MessageType } = require('@whiskeysockets/baileys');
 let nowtime = '';
 
 if (time2 < "05:00:00") {
-  nowtime = '𝘎𝘖𝘖𝘋 𝘕𝘐𝘎𝘏𝘛 🦋💞';
+  nowtime = '𝘎𝘜𝘛𝘌 𝘕𝘈𝘊𝘏𝘛 🦋💞';
 } else if (time2 < "11:00:00") {
-  nowtime = '𝘎𝘖𝘖𝘋 𝘔𝘖𝘙𝘕𝘐𝘕𝘎 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘔𝘖𝘙𝘎𝘌𝘕 💞🦋';
 } else if (time2 < "15:00:00") {
-  nowtime = '𝘎𝘖𝘖𝘋 𝘈𝘍𝘛𝘌𝘙𝘕𝘖𝘖𝘕 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋 💞🦋';
 } else if (time2 < "18:00:00") {
-  nowtime = '𝘎𝘖𝘖𝘋 𝘌𝘝𝘌𝘕𝘐𝘕𝘎 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋 💞🦋';
 } else if (time2 < "19:00:00") {
-  nowtime = '𝘎𝘖𝘖𝘋 𝘌𝘝𝘌𝘕𝘐𝘕𝘎 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌𝘕 𝘈𝘉𝘌𝘕𝘋 💞🦋';
 } else {
-  nowtime = '𝘎𝘖𝘖𝘋 𝘕𝘐𝘎𝘏𝘛 💞🦋';
+  nowtime = '𝘎𝘜𝘛𝘌 𝘕𝘈𝘊𝘏𝘛 💞🦋';
 }
 
 
@@ -700,7 +700,7 @@ Typed *surrender* to surrender and admited defeat`
       hello: `Aloha ${pushname}, Ich bin ${BotName}. Mein Prefix lautet "${prefix}". Wie kann ich dir helfen?`,
       kai: `Mein Boss ist in einem anderen Multiversum verschollen, und ich habe die Verbindung zu ihm verloren...`,
       runtime: `🦋𝘏ey ${pushname}\n${nowtime}\n\n🦋𝘙𝘜𝘕𝘛𝘐𝘔𝘌:${runtime(process.uptime())}\n\n🦋𝘗𝘙𝘌𝘍𝘐𝘟: *${prefix}*\n\n🦋𝘛𝘐𝘔𝘌: ${kaitime}\n\n🦋𝘋𝘈𝘛𝘌: ${kaidate}\n\n🦋𝘛𝘰𝘥𝘢𝘺 𝘪𝘴 ${currentDay}`,
-      konichiwa: `Konichiwa ${pushname}, I am ${BotName}. How can I help you?`,
+      konichiwa: `Konichiwa ${pushname}, Ich bin ${BotName}. Wie kann ich dir behilflich sein?`,
       alive: '🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋',
       ping: `Aloha ${pushname}, Pong ${latensie.toFixed(4)} ms`,
       'good morning': `Good morning💞🦋.`,
@@ -744,7 +744,7 @@ Typed *surrender* to surrender and admited defeat`
 ├───────────────
 │ *GitHub* https://github.com/7ucg/Phoenix-MD
 ├───────────────
-│ *Powered by Baron&Exiqon*
+│ *Powered by Exiqon&Baron*
 └────────────────`
         /*  let buttons = [
           {buttonId: `${prefix}owner`, buttonText: {displayText: '🍁 DEVELOPER 🍁'}, type: 1}
@@ -839,7 +839,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
 
         Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
-        reply(`⚙ *My developer's group:* https://chat.whatsapp.com/GXJA9IomUhaHyofAT4PlJQ`)
+        reply(`⚙ *Hey,hier ist der Link zur Supportgruppe:* https://chat.whatsapp.com/GXJA9IomUhaHyofAT4PlJQ`)
       }
         break;
 
@@ -960,7 +960,7 @@ Typed *surrender* to surrender and admited defeat`
             return m.reply(`${pushname} Prefix erfolgreich geändert in "${newPrefix}"`);
           } catch (error) {
             console.error('Fehler beim Ändern des Prefix:', error);
-            return m.reply(`Beim Ändern des Präfixes ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.`);
+            return m.reply(`Beim Ändern des Präfix ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.`);
           }
         }
 
@@ -1121,7 +1121,7 @@ Typed *surrender* to surrender and admited defeat`
         const systemName = os.platform() + ' ' + os.release();
 
         const respon = `
-  🤖 *Phoenixenix's Server Info* 🤖
+  🤖 *Phoenix's Server Info* 🤖
   
   *System*: ${systemName}
   
@@ -1133,9 +1133,9 @@ Typed *surrender* to surrender and admited defeat`
   
   *CPU Model*: ${cpu.model.trim()} (${cpu.speed} MHz)
   
-  *Runtime*: ${runtime(process.uptime())}
+  *Laufzeit*: ${runtime(process.uptime())}
   
-  *Response Speed*: ${latensie.toFixed(4)} seconds
+  *Reaktionsgeschwindigkeit*: ${latensie.toFixed(4)} sekunden
   `.trim();
 
         m.reply(respon);
@@ -1212,9 +1212,9 @@ Typed *surrender* to surrender and admited defeat`
           const data = JSON.stringify(banUser);
           fs.writeFile('./database/banUser.json', data, 'utf8', (err) => {
             if (err) {
-              console.error('Fehler beim Speichern der Sperrliste:', err);
+              console.error('Fehler beim Speichern der Banliste:', err);
             } else {
-              console.log('Sperrliste erfolgreich gespeichert.');
+              console.log('Banliste erfolgreich gespeichert.');
             }
           });
         }
@@ -1287,13 +1287,13 @@ Typed *surrender* to surrender and admited defeat`
       case 'report': case 'suggest ': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        if (!text) return reply(`please provide a report message you want to deliver`)
+        if (!text) return reply(`Bitte gebe die Nachricht an, die du übermitteln möchtest.`)
         if (text.length > 300) return reply(`Are you trying to send virus!`)
-        const txtmsg = `*📮 Report Message*\n\n*Sender ➛* wa.me/${m.sender.split("@")[0]}\n\n*Group Name ➛* ${groupName}\n\n*Message ➛*  ${text}`
+        const txtmsg = `*📮 Support Anfrage* :\n\n*Sender ➛* wa.me/${m.sender.split("@")[0]}\n\n*Gruppenname ➛* ${groupName}\n\n*Nachricht ➛*  ${text}`
         for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '4915678394727@s.whatsapp.net'))
           await Phoenix.sendMessage(`${mod}`, { text: `${txtmsg}` }, { quoted: m })
         await Phoenix.sendMessage(`120363198299068646@g.us`, { text: `${txtmsg}`, mentions: groupAdmins }, { quoted: m })
-        reply(`*✅ Your Report has been submitted Successfully to Support group & Owner*\n\n*You will get response shortly... ♥️*`);
+        reply(`*✅ Deine Supportanfrage wurde erfolgreich weitergeleitet!*\n\n*Wir werden dir so schnell wie möglich antworten. ♥️*`);
       }
         break;
 
@@ -1709,7 +1709,7 @@ Typed *surrender* to surrender and admited defeat`
           }
         }
         else {
-          reply(`*You can only play this game during weekends*\n\n*🌿 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
+          reply(`*Du kannst dieses Spiel nur am Wochenenden spielen!*\n\n*🌿 Freitag*\n*🎏 Samstag*\n*🎐 Sonntag*`)
         }
       }
         break;
@@ -2022,7 +2022,7 @@ Typed *surrender* to surrender and admited defeat`
         const randomEmoji = manyemojis[Math.floor(Math.random() * manyemojis.length)];
         Phoenix.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
-        if (!q) return reply(`Please provide a text query. Beispiel: ${prefix + command} Hello, *ChatGPT*`);
+        if (!q) return reply(`Bitte gebe einen Text ein. Beispiel: ${prefix + command} Hallo, *ChatGPT*`);
 
         try {
           const apiUrl1 = `https://vihangayt.me/tools/chatgpt2?q=${encodeURIComponent(q)}`;
@@ -2158,7 +2158,7 @@ Typed *surrender* to surrender and admited defeat`
         Phoenix.sendMessage(from, { react: { text: "⚠️", key: m.key } });
 
         if (args[0] === "on") {
-          if (AntiNsfw) return reply('Already activated');
+          if (AntiNsfw) return reply('Bereits aktiviert');
           ntnsfw.push(from);
           reply('Enabled NSFW Commands!');
         } else if (args[0] === "off") {
@@ -2365,7 +2365,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'speedtest': case 'speedcheck': {
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        m.reply(`Plz Wait ${pushname} Testing Speed... ⚙️`)
+        m.reply(`Bitte warten ${pushname} Teste Geschwindigkeit... ⚙️`)
         let cp = require('child_process')
         let { promisify } = require('util')
         let exec = promisify(cp.exec).bind(cp)
@@ -2498,7 +2498,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLink) return reply('Bereits deaktiviert!')
           let off = ntilink.indexOf(from)
@@ -2531,7 +2531,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkYoutubeVid) return reply('Bereits deaktiviert')
           let off = ntilinkytvid.indexOf(from)
@@ -2564,7 +2564,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkYoutubeChannel) return reply('Bereits deaktiviert')
           let off = ntilinkytch.indexOf(from)
@@ -2597,7 +2597,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkInstagram) return reply('Bereits deaktiviert')
           let off = ntilinkig.indexOf(from)
@@ -2630,7 +2630,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkFacebook) return reply('Bereits deaktiviert')
           let off = ntilinkfb.indexOf(from)
@@ -2663,7 +2663,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkTelegram) return reply('Bereits deaktiviert')
           let off = ntilinkig.indexOf(from)
@@ -2696,7 +2696,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkTiktok) return reply('Bereits deaktiviert')
           let off = ntilinktt.indexOf(from)
@@ -2729,7 +2729,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkTwitter) return reply('Bereits deaktiviert')
           let off = ntilinktwt.indexOf(from)
@@ -2789,7 +2789,7 @@ Typed *surrender* to surrender and admited defeat`
 
         if (args[0] === "on") {
 
-          if (AntiLinkAll) return reply('Already activated');
+          if (AntiLinkAll) return reply('Bereits aktiviert');
           ntilinkall.push(from);
           reply('Enabled all antilink!');
           var groupe = await Phoenix.groupMetadata(from);
@@ -2798,7 +2798,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'));
           });
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m });
         } else if (args[0] === "off") {
           if (!AntiLinkAll) return reply('Bereits deaktiviert');
           let off = ntilinkall.indexOf(from);
@@ -2827,7 +2827,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`*「  Warning  」*\`\`\`\n\nAntilink is enabled!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`*「  Warnung  」*\`\`\`\n\nAntilink ist aktiv!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!antiWame) return reply('Bereits deaktiviert')
           let off = nttoxic.indexOf(from)
@@ -2896,7 +2896,7 @@ Typed *surrender* to surrender and admited defeat`
         let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
         let online = [...Object.keys(store.presences[id]), botNumber]
         let liston = 1
-        Phoenix.sendText(m.chat, '  「 *Online Members* 」\n\n' + online.map(v => `${liston++} . @` + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+        Phoenix.sendText(m.chat, '  「 *Aktive Member* 」\n\n' + online.map(v => `${liston++} . @` + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
       }
         break;
 
@@ -3083,7 +3083,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         Phoenix.sendMessage(from, { react: { text: "💬", key: m.key } })
-        Phoenix.sendMessage(m.chat, { text: args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋") ? args.join("🦋 │𝐂𝐘𝐁𝜩𝐑│𝐏𝜟𝐍𝐃𝐀│𝐌𝐃│𝐕➂ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { text: args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋") ? args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
       }
         break;
 
@@ -3093,7 +3093,7 @@ Typed *surrender* to surrender and admited defeat`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         Phoenix.sendMessage(from, { react: { text: "🗿", key: m.key } })
-        if (!text) return reply(`*🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋*`)
+        if (!text) return reply(`*🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋*`)
         let teks = `*「 Tag Admins 」*
 
 *Message : ${text}*\n\n`
@@ -3313,7 +3313,7 @@ Typed *surrender* to surrender and admited defeat`
 
 
         let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-        if (users.length == 0) return reply(`Please write the number of the person you want to add to thhis group`)
+        if (users.length == 0) return reply(`Please write the number of the person you want to add to this group`)
         await Phoenix.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => reply(`User Added Successfully!`)).catch((err) => reply(`Cannot add that user to this group!`))
       }
         break;
@@ -3363,7 +3363,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!vcc) return reply("Link invalid!")
         if (isCreator) {
           await Phoenix.groupAcceptInvite(vcc).then(async (res) => reply(jsonformat(res))).catch(_ => _)
-          reply("Succes!")
+          reply("Erfolgreich!")
         } else {
           Phoenix.query({
             tag: "iq",
@@ -3478,7 +3478,7 @@ Typed *surrender* to surrender and admited defeat`
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         if (args[0] === "on") {
-          if (AntiLinkAll) return reply('Already activated')
+          if (AntiLinkAll) return reply('Bereits aktiviert ')
           ntilinkall.push(from)
           reply('Enabled all antilink !')
           var groupe = await Phoenix.groupMetadata(from)
@@ -3487,7 +3487,7 @@ Typed *surrender* to surrender and admited defeat`
           members.map(async adm => {
             mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
           })
-          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Activated!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
+          Phoenix.sendMessage(from, { text: `\`\`\`「 Warnung 」\`\`\`\n\nAntilink System Aktiviert!`, contextInfo: { mentionedJid: mems } }, { quoted: m })
         } else if (args[0] === "off") {
           if (!AntiLinkAll) return reply('Bereits deaktiviert')
           let off = ntilinkall.indexOf(from)
@@ -4569,9 +4569,9 @@ _Click the button below to download_`
             image: { url: thumbnailUrl }, // Include the thumbnail image in the response
             caption: `\n*ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ* *${anu.title}*
 ┌─────────────           
-│ *ᴅᴜʀᴀᴛɪᴏɴ* ${anu.timestamp}
-│ *ᴠɪᴇᴡᴇʀꜱ* ${anu.views}
-│ *ᴄʜᴀɴɴᴇʟ* ${anu.author.name}
+│ *Dauer* ${anu.timestamp}
+│ *ᴠɪᴇᴡs* ${anu.views}
+│ *Kanal* ${anu.author.name}
 │ *Video ᴜᴘʟᴏᴀᴅᴇᴅ* ${anu.ago}
 │ *ᴜʀʟ* ${anu.url}\n
 └─────────────`,
@@ -4615,7 +4615,7 @@ _Click the button below to download_`
           contextInfo: {
             mentionedJid: [m.sender],
             externalAdReply: {
-              title: "🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋",
+              title: "🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋",
               body: `Now playing: ${bname}`,
               thumbnailUrl: bimg,
               sourceUrl: burl,
@@ -4638,7 +4638,7 @@ _Click the button below to download_`
         let search = await yts(text)
         let anu = search.videos[0]
         const ytmp4play = await YT.mp4(anu.url)
-        Phoenix.sendMessage(from, { video: { url: ytmp4play.videoUrl }, mimetype: "video/mp4", caption: anu.title + '*ＣＹＢＥＲ-ＰＡＮＤＡ-ＭＤ*\n*ʏᴛ-ᴠɪᴅᴇᴏ*', }, { quoted: m })
+        Phoenix.sendMessage(from, { video: { url: ytmp4play.videoUrl }, mimetype: "video/mp4", caption: anu.title + '*𝐏𝐇𝐎𝐄𝐍𝐈𝐗-ＭＤ*\n*ʏᴛ-ᴠɪᴅᴇᴏ*', }, { quoted: m })
       }
 
         break;
@@ -4903,7 +4903,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
-        if (!args.join(" ")) return reply(`Like use -take Phoenix|By: Kai`)
+        if (!args.join(" ")) return reply(`Like use -take Phoenix|By: Exiqon&Baron`)
         const swn = args.join(" ")
         const pcknm = swn.split("|")[0];
         const atnm = swn.split("|")[1];
@@ -5031,7 +5031,7 @@ _Click the button below to download_`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         Phoenix.sendMessage(from, { react: { text: "😺", key: m.key } })
-        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
+        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Exiqon&Baron`)
         const gan = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const teng = gan[Math.floor(Math.random() * gan.length)]
         Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${teng}%*` }, { quoted: m })
@@ -5043,7 +5043,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         Phoenix.sendMessage(from, { react: { text: "😺", key: m.key } })
 
-        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
+        if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Exiqon&Baron`)
         const can = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const tik = can[Math.floor(Math.random() * can.length)]
         Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
@@ -5067,7 +5067,7 @@ _Click the button below to download_`
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const sangeh = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
         const sange = sangeh[Math.floor(Math.random() * sangeh.length)]
-        Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${sange}%*` }, { quoted: m })
+        Phoenix.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAntwort : *${sange}%*` }, { quoted: m })
         break;
 
 
@@ -5079,7 +5079,7 @@ _Click the button below to download_`
         if (!text) return reply(`Tag Someone, Beispiel : ${prefix + command} @Kai`)
         const Phoenixtttt = ['Compassionate', 'Generous', 'Grumpy', 'Forgiving', 'Obedient', 'Good', 'Simp', 'Kind-Hearted', 'patient', 'UwU', 'top, anyway', 'Helpful']
         const taky = Phoenixtttt[Math.floor(Math.random() * Phoenixtttt.length)]
-        Phoenix.sendMessage(from, { text: `Character Check : ${q}\nAnswer : *${taky}*` }, { quoted: m })
+        Phoenix.sendMessage(from, { text: `Character Check : ${q}\nAntwort : *${taky}*` }, { quoted: m })
         break;
 
 
@@ -6036,7 +6036,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } });
-        if (!text) return reply(`Please proide a Suchbegriff!\n\n*Beispiel:* ${prefix}anime naruto`)
+        if (!text) return reply(`Please provide a Suchbegriff!\n\n*Beispiel:* ${prefix}anime naruto`)
 
         const malScraper = require('mal-scraper')
         reply(mess.waiting);
@@ -6227,11 +6227,11 @@ _Click the button below to download_`
 ┴│
   │⊳  *Uꜱᴇʀ :  ${pushname}* !!! ✅
   │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
-  │⊳  *Tɪᴍᴇ : ${kaitime}* ⌚
-  │⊳  *Dᴀᴛᴇ : ${kaidate}* 📆
+  │⊳  *Uhrzeit : ${kaitime}* ⌚
+  │⊳  *Datum : ${kaidate}* 📆
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
-  │⊳  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
+  │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
   │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Phoenix Team* 
 ┬│   
 │╰───────────···▸▸
@@ -6274,11 +6274,11 @@ _Click the button below to download_`
 ┴│
   │⊳  *Uꜱᴇʀ :  ${pushname}* !!! ✅
   │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
-  │⊳  *Tɪᴍᴇ : ${kaitime}* ⌚
-  │⊳  *Dᴀᴛᴇ : ${kaidate}* 📆
+  │⊳  *Uhrzeit : ${kaitime}* ⌚
+  │⊳  *Datum : ${kaidate}* 📆
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
-  │⊳  *Rᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}* 💻
+  │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
   │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Phoenix Team* 
 ┬│   
 │╰───────────···▸▸
@@ -6448,7 +6448,7 @@ _Click the button below to download_`
           if (isBanChat) return reply(mess.bangc);
           Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
 
-          reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
+          reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋`)
         }
 
         break;
@@ -6519,7 +6519,7 @@ _Click the button below to download_`
           if (isBanChat) return reply(mess.bangc);
           Phoenix.sendMessage(from, { react: { text: "🔑", key: m.key } })
 
-          reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋`)
+          reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋`)
         }
 
         break;
@@ -6693,7 +6693,7 @@ _Click the button below to download_`
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
           Phoenix.sendMessage(from, { react: { text: "❌", key: m.key } })
-          reply(`Hey *${pushname}* *dieser Command nicht Vorhanden..*${prefix}*menu* *Nutze um weitere Commands.*.`)
+          reply(`Hey *${pushname}* *dieser Befehl ist nicht Vorhanden.. Nutze *${prefix}*menu* *um weitere Befehle zu sehen.*`)
 
         }
 
@@ -6757,4 +6757,3 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   require(file)
 })
-
