@@ -911,6 +911,7 @@ Typed *surrender* to surrender and admited defeat`
 
 
 m.reply(`  *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━━*
+
 *High Team* :
 -👑 *Ɛ×ͥΐզͣօͫή* (Inhaber)
 -👑 *Baron*  (Inhaber)
