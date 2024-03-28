@@ -25,7 +25,7 @@ global.Owner = ["49491741711168", "4915678394727", "4365022989060"];         //I
 global.OwnerNumber = ["49491741711168", "4915678394727", "4365022989060"];   //If you want singal number so global.Owner = ['916297175943'] Change into your number.
 global.ownertag = ["49491741711168", "4915678394727", "4365022989060"];
 global.OwnerName = "Exiqon & Baron";
-global.BotName = "Phoenix MD";
+global.BotName = "Phoenix-BOT";
 global.packname = "By Phoenix Bot";                             //Do not change.
 global.author = "Phoenix MD";                               //Do not change.
 global.BotSourceCode = "https://github.com/7ucg"; //Do not change.
@@ -46,7 +46,7 @@ global.reactmoji = "💞";
 global.themeemoji = "😂";
 global.vidmenu = { url: 'https://tenor.com/en-CA/view/anonymous-hacker-smooth-gif-10171911193797826570%9D%90%95-12-14' };
 global.websitex = "https://github.com/7ucg/Phoenix-MD";
-global.lolhuman = "Phoenix MD";
+global.lolhuman = "Phoenix-BOT";
 
 
 //

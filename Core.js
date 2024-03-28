@@ -701,7 +701,7 @@ Typed *surrender* to surrender and admited defeat`
       kai: `Mein Boss ist in einem anderen Multiversum verschollen, und ich habe die Verbindung zu ihm verloren...`,
       runtime: `🦋𝘏ey ${pushname}\n${nowtime}\n\n🦋𝘙𝘜𝘕𝘛𝘐𝘔𝘌:${runtime(process.uptime())}\n\n🦋𝘗𝘙𝘌𝘍𝘐𝘟: *${prefix}*\n\n🦋𝘛𝘐𝘔𝘌: ${kaitime}\n\n🦋𝘋𝘈𝘛𝘌: ${kaidate}\n\n🦋𝘛𝘰𝘥𝘢𝘺 𝘪𝘴 ${currentDay}`,
       konichiwa: `Konichiwa ${pushname}, Ich bin ${BotName}. Wie kann ich dir behilflich sein?`,
-      alive: '🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋',
+      alive: '🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋',
       ping: `Aloha ${pushname}, Pong ${latensie.toFixed(4)} ms`,
       'good morning': `Good morning💞🦋.`,
       ohayo: `Good morning to you too ${pushname} ☺️. Have a great day 😇.`,
@@ -852,17 +852,106 @@ Typed *surrender* to surrender and admited defeat`
         m.reply(`⚙ My Source Code is </> - https://github.com/7ucg/Phoenix-MD`)
       }
         break;
+        
+        case 'owner':
+          case 'creator':
+          case 'mod':
+          case 'mods': {
+            if (isBan) return reply(mess.banned);
+            if (isBanChat) return reply(mess.bangc);
+          
+            Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } });
+          
+            try {
+              // Retrieve owner list
+              const ownerList = global.Owner || [];
+          
+              // Prepare mentions for owner and mods
+              const yz = ownerList.map((owner) => owner + "@s.whatsapp.net");
+          
+              // Initialize textM
+              let textM = '';
+          
+              textM += `\n〽️ *Owners* 〽️\n`;
+          
+              // Append owner names to the message
+              ownerList.forEach((owner) => {
+                textM += `\n〄  @${owner}\n`;
+              });
+          
+              // Add footer message
+              textM += `\n\n📛 *Wir bitten darum keinen Spam zu versenden!*\n\n*🌃 Bei Problemen bitten wir euch* \n*/support zu verwenden.*\n\n*Danke euer Phoenix-Team.*`;
+          
+              // Send the message with mentions and caption
+              Phoenix.sendMessage(
+                m.chat,
+                {
+                  video: fs.readFileSync('./system/Phoenix_3.mp4'),
+                  gifPlayback: true,
+                  caption: textM,
+                  mentions: yz,
+                }
+              );
+            } catch (err) {
+              console.error(err);
+              // Send a message in case of internal error
+              await Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } });
+              return Phoenix.sendMessage(
+                m.from,
+                { text: `An internal error occurred while fetching the owner list.` },
+                { quoted: m }
+              );
+            }
+          }
+          break;
+          //////////
+
+          case 'team': 
+          await Phoenix.sendMessage(from, { react: { text: "👀", key: m.key } });
 
 
-      case 'owner': case 'creator': case 'mod': case 'mods': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
+m.reply(`  *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━━*
+*High Team* :
+-👑 *Ɛ×ͥΐզͣօͫή* (Inhaber)
+-👑 *Baron*  (Inhaber)
 
-        Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
-        Phoenix.sendContact(m.chat, global.Owner, m)
-      }
-        break;
+*Teamleitung* :
+-👀 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Leitung)
+-👀 *(Name)* (Stv.Leitung)
 
+*Community-Manager* : 
+-🤵 *(Name)*
+
+*Tech-Team* :
+-💎 *Baron* (Leitung)
+-🕹️ *(Name)* 
+-🕹️ *(Name)*
+
+*Mod-Team* :
+-💎 *𝔜𝔲𝔧𝔦𝔯𝔬* (Leitung)
+-👮🏻‍♂ *(Name)*  (Mod)
+-👮🏻‍♂ *(Name)* (Mod)
+
+*Support-Team* :
+-💎 𝕬𝖈𝖍𝖎𝖗𝖆(Leitung)
+-👷🏻‍♂️ *𝕾𝖆𝖒𝖚𝖗𝖆𝖎ᴳᵒᵈ*(Supporter)
+-👷🏻‍♂️ *(Name)* (Supporter)
+-👷🏻‍♂️ *(Name)* (Supporter)
+
+*Hoster-Team*:
+-💎 *Ɛ×ͥΐզͣօͫή* (Leitung)
+-💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
+-💻 *(Name)* (Hoster)
+-💻 *(Name)* (Hoster)
+
+\n* Um eine Supportanfrage zu stellen,* *benutzt bitte /support gefolgt von eurem Anliegen.*
+*📛 Wir bemühen uns, euch zeitnah zu antworten,* *und bitten höflich darum, kein Spam zu versenden.*
+*✨ Danke für eure Unterstützung,*
+*euer Phoenix-Bot Team.*`)
+break;
+          
+          
+///////////////////////////////
 
       case 'addmod':
       case 'addowner':
@@ -2295,7 +2384,7 @@ Typed *surrender* to surrender and admited defeat`
 
         if (!args[0]) {
           return m.reply(`Please provide the GitHub repository link.\nBeispiel:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
-🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋
+🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋
           `);
         }
 
@@ -2332,7 +2421,7 @@ Typed *surrender* to surrender and admited defeat`
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
-        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
+        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
         for (let i of anu) {
           teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
@@ -2347,7 +2436,7 @@ Typed *surrender* to surrender and admited defeat`
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
+        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
         for (let i of anu) {
           let metadata = await Phoenix.groupMetadata(i)
           if (metadata.owner === "undefined") {
@@ -6294,52 +6383,274 @@ _Click the button below to download_`
     ⬡│▸ ${prefix}ᴛᴀɢᴀʟʟ
     ⬡│▸ ${prefix}ʜɪᴅᴇᴛᴀɢ
     ⬡│▸ ${prefix}ɴꜱꜰᴡ 
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋɢᴄ 
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋᴛᴛ
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋʏᴛᴄʜ
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋꜰʙ
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋɪɢ
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋᴛᴡɪᴛ
-    ⬡│▸  ${prefix}ᴀɴᴛɪᴡᴀᴍᴇ     
-    ⬡│▸  ${prefix}ᴀɴᴛɪʟɪɴᴋᴀʟʟ  
-    ⬡│▸  ${prefix}ᴅᴀɪʟʏ 
-    ⬡│▸  ${prefix}ᴡᴀʟʟᴇᴛ 
-    ⬡│▸  ${prefix}ʙᴀɴᴋ
-    ⬡│▸  ${prefix}ʙᴀɴᴋᴜᴘɢʀᴀᴅᴇ 
-    ⬡│▸  ${prefix}ᴅᴇᴘᴏꜱɪᴛ
-    ⬡│▸  ${prefix}ᴡɪᴛʜᴅʀᴀᴡ
-    ⬡│▸  ${prefix}ʀᴏʙ / ᴀᴛᴛᴀᴄᴋ 
-    ⬡│▸  ${prefix}ᴛʀᴀɴꜱꜰᴇʀ / ɢɪᴠᴇ 
-    ⬡│▸  ${prefix}ᴡᴇᴀʟᴛʜ / ʀɪᴛᴜᴀʟ 
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋɢᴄ 
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋᴛᴛ
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋʏᴛᴄʜ
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋꜰʙ
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋɪɢ
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋᴛᴡɪᴛ
+    ⬡│▸ ${prefix}ᴀɴᴛɪᴡᴀᴍᴇ     
+    ⬡│▸ ${prefix}ᴀɴᴛɪʟɪɴᴋᴀʟʟ  
+    ⬡│▸ ${prefix}ᴅᴀɪʟʏ 
+    ⬡│▸ ${prefix}ᴡᴀʟʟᴇᴛ 
+    ⬡│▸ ${prefix}ʙᴀɴᴋ
+    ⬡│▸ ${prefix}ʙᴀɴᴋᴜᴘɢʀᴀᴅᴇ 
+    ⬡│▸ ${prefix}ᴅᴇᴘᴏꜱɪᴛ
+    ⬡│▸ ${prefix}ᴡɪᴛʜᴅʀᴀᴡ
+    ⬡│▸ ${prefix}ʀᴏʙ / ᴀᴛᴛᴀᴄᴋ 
+    ⬡│▸ ${prefix}ᴛʀᴀɴꜱꜰᴇʀ / ɢɪᴠᴇ 
+    ⬡│▸ ${prefix}ᴡᴇᴀʟᴛʜ / ʀɪᴛᴜᴀʟ 
     ⬡│▸ ${prefix}ᴛᴛᴛ / ᴛɪᴄᴛᴀᴄᴛᴏᴇ   
     ⬡│▸ ${prefix}ᴛʀᴜᴛʜ
     ⬡│▸ ${prefix}ᴅᴀʀᴇ
     ⬡│▸ ${prefix}ꜱᴘɪɴ / ꜱʟᴏᴛ  
     ⬡│▸ ${prefix}ɢᴀᴍʙʟᴇ / ʟᴏᴛᴛᴇʀʏ
-    ⬡│▸  ${prefix}ꜱᴛɪᴄᴋᴇʀ 
-    ⬡│▸  ${prefix}ᴛᴏɪᴍɢ
-    ⬡│▸  ${prefix}ᴛᴏɢɪꜰ
-    ⬡│▸  ${prefix}ᴜʀʟ
-    ⬡│▸  ${prefix}ᴛᴏᴍᴘ3
-    ⬡│▸  ${prefix}ᴛᴏᴀᴜᴅɪᴏ
-    ⬡│▸  ${prefix}ᴇᴍᴏᴊɪᴍɪx 
-    ⬡│▸  ${prefix}ꜱᴛᴇᴀʟ
-    ⬡│▸  ${prefix}ᴘʟᴀʏ
-    ⬡│▸  ${prefix}ꜱᴏɴɢ
-    ⬡│▸  ${prefix}ᴠɪᴅᴇᴏ
-    ⬡│▸  ${prefix}ʏᴛᴍᴘ3
-    ⬡│▸  ${prefix}ʏᴛᴍᴘ4
-    ⬡│▸  ${prefix}ᴍᴏᴠɪᴇ
-    ⬡│▸  ${prefix}ɢᴏᴏɢʟᴇ
-    ⬡│▸  ${prefix}ᴡᴀʟʟᴘᴀᴘᴇʀ
-    ⬡│▸  ${prefix}ɪᴍᴀɢᴇ
-    ⬡│▸  ${prefix}ꜱᴇᴀʀᴄʜ
-    ⬡│▸  ${prefix}ʏᴛᴠɪᴅᴇᴏ
-    ⬡│▸  ${prefix}ᴍᴇᴅɪᴀꜰɪʀᴇ
-    ⬡│▸  ${prefix}ɪɴꜱᴛᴀɢʀᴀᴍ
-    ⬡│▸  ${prefix}ꜰᴀᴄᴇʙᴏᴏᴋ
-    ⬡│▸  ${prefix}ꜰʙᴍᴘ3
-    ⬡│▸  ${prefix}ᴛɪᴋᴛᴏᴋ
+    ⬡│▸ ${prefix}ꜱᴛɪᴄᴋᴇʀ 
+    ⬡│▸ ${prefix}ᴛᴏɪᴍɢ
+    ⬡│▸ ${prefix}ᴛᴏɢɪꜰ
+    ⬡│▸ ${prefix}ᴜʀʟ
+    ⬡│▸ ${prefix}ᴛᴏᴍᴘ3
+    ⬡│▸ ${prefix}ᴛᴏᴀᴜᴅɪᴏ
+    ⬡│▸ ${prefix}ᴇᴍᴏᴊɪᴍɪx 
+    ⬡│▸ ${prefix}ꜱᴛᴇᴀʟ
+    ⬡│▸ ${prefix}ᴘʟᴀʏ
+    ⬡│▸ ${prefix}ꜱᴏɴɢ
+    ⬡│▸ ${prefix}ᴠɪᴅᴇᴏ
+    ⬡│▸ ${prefix}ʏᴛᴍᴘ3
+    ⬡│▸ ${prefix}ʏᴛᴍᴘ4
+    ⬡│▸ ${prefix}ᴍᴏᴠɪᴇ
+    ⬡│▸ ${prefix}ɢᴏᴏɢʟᴇ
+    ⬡│▸ ${prefix}ᴡᴀʟʟᴘᴀᴘᴇʀ
+    ⬡│▸ ${prefix}ɪᴍᴀɢᴇ
+    ⬡│▸ ${prefix}ꜱᴇᴀʀᴄʜ
+    ⬡│▸ ${prefix}ʏᴛᴠɪᴅᴇᴏ
+    ⬡│▸ ${prefix}ᴍᴇᴅɪᴀꜰɪʀᴇ
+    ⬡│▸ ${prefix}ɪɴꜱᴛᴀɢʀᴀᴍ
+    ⬡│▸ ${prefix}ꜰᴀᴄᴇʙᴏᴏᴋ
+    ⬡│▸ ${prefix}ꜰʙᴍᴘ3
+    ⬡│▸ ${prefix}wealth
+    ⬡│▸ ${prefix}wealth
+    ⬡│▸ ${prefix}ritual
+    ⬡│▸ ${prefix}gamble
+    ⬡│▸ ${prefix}lottery
+    ⬡│▸ ${prefix}slot
+    ⬡│▸ ${prefix}spin
+    ⬡│▸ ${prefix}reaction
+    ⬡│▸ ${prefix}react
+    ⬡│▸ ${prefix}reactions
+    ⬡│▸ ${prefix}r
+    ⬡│▸ ${prefix}limituser
+    ⬡│▸ ${prefix}userlimit
+    ⬡│▸ ${prefix}limit
+    ⬡│▸ ${prefix}film
+    ⬡│▸ ${prefix}movie
+    ⬡│▸ ${prefix}moviesearch
+    ⬡│▸ ${prefix}wallpaper
+    ⬡│▸ ${prefix}animewallpaper
+    ⬡│▸ ${prefix}animewall
+    ⬡│▸ ${prefix}wikimedia
+    ⬡│▸ ${prefix}wikiimage
+    ⬡│▸ ${prefix}quoteimagexxx
+    ⬡│▸ ${prefix}qoutesimagexxx
+    ⬡│▸ ${prefix}quoteimage
+    ⬡│▸ ${prefix}quotesanime
+    ⬡│▸ ${prefix}quoteanime
+    ⬡│▸ ${prefix}animequote
+    ⬡│▸ ${prefix}animequotes
+    ⬡│▸ ${prefix}animestory
+    ⬡│▸ ${prefix}chatgpt
+    ⬡│▸ ${prefix}ai
+    ⬡│▸ ${prefix}gpt
+    ⬡│▸ ${prefix}img
+    ⬡│▸ ${prefix}imgai
+    ⬡│▸ ${prefix}grupsetting
+    ⬡│▸ ${prefix}groupsetting
+    ⬡│▸ ${prefix}emojimix
+    ⬡│▸ ${prefix}ghstalk
+    ⬡│▸ ${prefix}githubstalk
+    ⬡│▸ ${prefix}github
+    ⬡│▸ ${prefix}git
+    ⬡│▸ ${prefix}gitclone
+    ⬡│▸ ${prefix}git-clone
+    ⬡│▸ ${prefix}listpc
+    ⬡│▸ ${prefix}listgc
+    ⬡│▸ ${prefix}fliptext
+    ⬡│▸ ${prefix}toletter
+    ⬡│▸ ${prefix}leveling
+    ⬡│▸ ${prefix}happymod
+    ⬡│▸ ${prefix}modapk
+    ⬡│▸ ${prefix}ringtone
+    ⬡│▸ ${prefix}volume
+    ⬡│▸ ${prefix}tempo
+    ⬡│▸ ${prefix}bass
+    ⬡│▸ ${prefix}blown
+    ⬡│▸ ${prefix}deep
+    ⬡│▸ ${prefix}earrape
+    ⬡│▸ ${prefix}fast
+    ⬡│▸ ${prefix}fat
+    ⬡│▸ ${prefix}nightcore
+    ⬡│▸ ${prefix}reverse
+    ⬡│▸ ${prefix}robot
+    ⬡│▸ ${prefix}slow
+    ⬡│▸ ${prefix}smooth
+    ⬡│▸ ${prefix}tupai
+    ⬡│▸ ${prefix}calculator
+    ⬡│▸ ${prefix}cal
+    ⬡│▸ ${prefix}calculate
+    ⬡│▸ ${prefix}toimage
+    ⬡│▸ ${prefix}makeimg
+    ⬡│▸ ${prefix}toimg
+    ⬡│▸ ${prefix}tomp4
+    ⬡│▸ ${prefix}makemp4
+    ⬡│▸ ${prefix}makevideo
+    ⬡│▸ ${prefix}tovideo
+    ⬡│▸ ${prefix}toaud
+    ⬡│▸ ${prefix}makeaudio
+    ⬡│▸ ${prefix}toaudio
+    ⬡│▸ ${prefix}tomp3
+    ⬡│▸ ${prefix}makemp3
+    ⬡│▸ ${prefix}togif
+    ⬡│▸ ${prefix}makegif
+    ⬡│▸ ${prefix}getgif
+    ⬡│▸ ${prefix}translate
+    ⬡│▸ ${prefix}ts
+    ⬡│▸ ${prefix}trans
+    ⬡│▸ ${prefix}gimage
+    ⬡│▸ ${prefix}gig
+    ⬡│▸ ${prefix}googleimage
+    ⬡│▸ ${prefix}apod
+    ⬡│▸ ${prefix}google
+    ⬡│▸ ${prefix}search
+    ⬡│▸ ${prefix}wiki
+    ⬡│▸ ${prefix}earthquake
+    ⬡│▸ ${prefix}covidinfo
+    ⬡│▸ ${prefix}covid
+    ⬡│▸ ${prefix}igdl
+    ⬡│▸ ${prefix}instagram
+    ⬡│▸ ${prefix}instagramreels
+    ⬡│▸ ${prefix}igreels
+    ⬡│▸ ${prefix}ig
+    ⬡│▸ ${prefix}mp4
+    ⬡│▸ ${prefix}jpeg
+    ⬡│▸ ${prefix}igtv
+    ⬡│▸ ${prefix}twitter
+    ⬡│▸ ${prefix}td
+    ⬡│▸ ${prefix}twitterdl
+    ⬡│▸ ${prefix}twittermp3
+    ⬡│▸ ${prefix}twitteraudio
+    ⬡│▸ ${prefix}twitterxx
+    ⬡│▸ ${prefix}twdlxx
+    ⬡│▸ ${prefix}twmp4xx
+    ⬡│▸ ${prefix}twddlxx
+    ⬡│▸ ${prefix}fbdl
+    ⬡│▸ ${prefix}fb
+    ⬡│▸ ${prefix}fbmp4
+    ⬡│▸ ${prefix}fbmp3
+    ⬡│▸ ${prefix}facebookmp3
+    ⬡│▸ ${prefix}facebookaudio
+    ⬡│▸ ${prefix}facebookxx
+    ⬡│▸ ${prefix}fbdlxxx
+    ⬡│▸ ${prefix}fbmp4xxx
+    ⬡│▸ ${prefix}fbxxx
+    ⬡│▸ ${prefix}fbddlxx
+    ⬡│▸ ${prefix}tiktok
+    ⬡│▸ ${prefix}tiktoknowm
+    ⬡│▸ ${prefix}ttnowm
+    ⬡│▸ ${prefix}tiktokaudio
+    ⬡│▸ ${prefix}tiktokmusic
+    ⬡│▸ ${prefix}ttaud
+    ⬡│▸ ${prefix}yts
+    ⬡│▸ ${prefix}ytsearch
+    ⬡│▸ ${prefix}music
+    ⬡│▸ ${prefix}p
+    ⬡│▸ ${prefix}play
+    ⬡│▸ ${prefix}song
+    ⬡│▸ ${prefix}ytplay
+    ⬡│▸ ${prefix}spotify
+    ⬡│▸ ${prefix}ytvd
+    ⬡│▸ ${prefix}video
+    ⬡│▸ ${prefix}ytvideo
+    ⬡│▸ ${prefix}ytmp4
+    ⬡│▸ ${prefix}ytmp3
+    ⬡│▸ ${prefix}ytvd2
+    ⬡│▸ ${prefix}ytdl
+    ⬡│▸ ${prefix}lyrics
+    ⬡│▸ ${prefix}couplepp
+    ⬡│▸ ${prefix}cpp
+    ⬡│▸ ${prefix}ppcouple
+    ⬡│▸ ${prefix}coffee
+    ⬡│▸ ${prefix}kopi
+    ⬡│▸ ${prefix}pinterest
+    ⬡│▸ ${prefix}pin
+    ⬡│▸ ${prefix}swm
+    ⬡│▸ ${prefix}take
+    ⬡│▸ ${prefix}stickerwm
+    ⬡│▸ ${prefix}steal
+    ⬡│▸ ${prefix}smeme
+    ⬡│▸ ${prefix}stickermeme
+    ⬡│▸ ${prefix}stickmeme
+    ⬡│▸ ${prefix}sgif
+    ⬡│▸ ${prefix}sticker
+    ⬡│▸ ${prefix}s
+    ⬡│▸ ${prefix}soulmate
+    ⬡│▸ ${prefix}handsomecheck
+    ⬡│▸ ${prefix}beautifulcheck
+    ⬡│▸ ${prefix}charactercheck
+    ⬡│▸ ${prefix}dare
+    ⬡│▸ ${prefix}truth
+    ⬡│▸ ${prefix}nsfwPhoenix
+    ⬡│▸ ${prefix}mediafire
+    ⬡│▸ ${prefix}mediafiredl
+    ⬡│▸ ${prefix}smug2
+    ⬡│▸ ${prefix}foxgirl
+    ⬡│▸ ${prefix}animenom
+    ⬡│▸ ${prefix}waifu3
+    ⬡│▸ ${prefix}crossplay
+    ⬡│▸ ${prefix}crosplay
+    ⬡│▸ ${prefix}cosplay
+    ⬡│▸ ${prefix}neko2
+    ⬡│▸ ${prefix}feed
+    ⬡│▸ ${prefix}meow
+    ⬡│▸ ${prefix}tickle
+    ⬡│▸ ${prefix}cry
+    ⬡│▸ ${prefix}handhold
+    ⬡│▸ ${prefix}nom
+    ⬡│▸ ${prefix}hug
+    ⬡│▸ ${prefix}dance
+    ⬡│▸ ${prefix}kill
+    ⬡│▸ ${prefix}pat
+    ⬡│▸ ${prefix}lick
+    ⬡│▸ ${prefix}kiss
+    ⬡│▸ ${prefix}bite
+    ⬡│▸ ${prefix}bully
+    ⬡│▸ ${prefix}bonk
+    ⬡│▸ ${prefix}poke
+    ⬡│▸ ${prefix}slap
+    ⬡│▸ ${prefix}happy
+    ⬡│▸ ${prefix}cuddle
+    ⬡│▸ ${prefix}kick
+    ⬡│▸ ${prefix}yeet
+    ⬡│▸ ${prefix}wink
+    ⬡│▸ ${prefix}smile
+    ⬡│▸ ${prefix}wave
+    ⬡│▸ ${prefix}blush
+    ⬡│▸ ${prefix}smug
+    ⬡│▸ ${prefix}glomp
+    ⬡│▸ ${prefix}cringe
+    ⬡│▸ ${prefix}highfive
+    ⬡│▸ ${prefix}megumin
+    ⬡│▸ ${prefix}awoo
+    ⬡│▸ ${prefix}animewall2
+    ⬡│▸ ${prefix}animewallpaper2
+    ⬡│▸ ${prefix}anime
+    ⬡│▸ ${prefix}manga
+    ⬡│▸ ${prefix}waifu
+    ⬡│▸ ${prefix}neko
+    ⬡│▸ ${prefix}bc
+    ⬡│▸ ${prefix}broadcast
+    ⬡│▸ ${prefix}bcall
+    ⬡│▸ ${prefix}ping
+    ⬡│▸ ${prefix}weathe    
     ┬│
     │╰───────────···▸▸
     └──────────────···▸▸▸`
@@ -6703,35 +7014,12 @@ _Click the button below to download_`
           if (isBanChat) return reply(mess.bangc);
           Phoenix.sendMessage(from, { react: { text: "🪀", key: m.key } })
 
-          m.reply(`*Hey🎯${pushname}*,  *Pong*  *${latensie.toFixed(4)}* *ms*`)
+          m.reply(`*Hey ${pushname}*,  *Pong*  *${latensie.toFixed(4)}* *ms*`)
         }
 
         break;
                
-       //qr
-      case 'qr': case 'scanner': case 'qrcode':
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!m.isGroup) return reply(mess.grouponly);
-        Phoenix.sendMessage(from, { react: { text: "🍁", key: m.key } })
-
-        m.reply(`Running repl....Please wait until repl.it responds...`)
-        var replqr = await getBuffer(`https://Phoenix-qr-scanner.broken0007.repl.co/`)
-        /*        var qrbutton = [
-{buttonId: `${prefix}qr`, buttonText: {displayText: `Tap to Re-run Repl`}, type: 1}
-] */
-        let bmffg = {
-          image: replqr,
-          caption: `Scan the qr within 10-15 seconds...`,
-          /*    footer: `${global.BotName}`,
-              buttons: qrbutton,
-              headerType: 4 */
-        }
-        await Phoenix.sendMessage(m.chat, bmffg, { quoted: m }).catch(err => {
-          return ('Error!')
-        })
-        break;
-
+       
 
       //////search
       case 'weather':

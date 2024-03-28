@@ -272,11 +272,11 @@ async function startPhoenix() {
             // ... existing logic for welcoming new participants ...
             let WAuserName = num
             Phoenixtext = `
-Hello @${WAuserName.split("@")[0]},
+Hallo @${WAuserName.split("@")[0]},
 
-I am *🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕➂ 🦋*, Welcome to ${metadata.subject}.
+Ich bin *🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋*, Welcome to ${metadata.subject}.
 
-*Group Description:*
+*Gruppenbeschreibung:*
 ${metadata.desc}
 `
 
