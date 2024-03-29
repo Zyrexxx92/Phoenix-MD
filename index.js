@@ -51,9 +51,9 @@ const store = makeInMemoryStore({
 
 const app = express();
 const port = 8000;
-
-app.get('/', (req, res) => {
-  res.render('index.html', { title: 'Bot Online' });
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/index.html', (req, res) => {
+  res.render('index', { title: 'Bot Online' });
 });
 
 // Middleware, um eingehende Anfragen in die Warteschlange zu stellen und Fehler zu behandeln
