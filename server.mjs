@@ -5,6 +5,9 @@ import Queue from 'queue';
 const app = express();
 const port = 3000;
 
+app.get('/', (req, res) => {
+  res.render('index.html', { title: 'Bot Online' });
+});
 // Middleware, um eingehende Anfragen in die Warteschlange zu stellen und Fehler zu behandeln
 app.use(async (req, res, next) => {
   try {
