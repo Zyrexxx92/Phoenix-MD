@@ -24,7 +24,8 @@ const PhoneNumber = require("awesome-phonenumber");
 const { promisify } = require("util");
 const writeFileAsync = promisify(fs.writeFile);
 const path = require("path");
-
+const express = require("express");
+const axios = require("axios");
 const {
   imageToWebp,
   videoToWebp,
@@ -48,6 +49,57 @@ const store = makeInMemoryStore({
   logger: pino().child({ level: "silent", stream: "store" }),
 });
 
+const app = express();
+const port = 8080;
+
+// Middleware, um eingehende Anfragen in die Warteschlange zu stellen und Fehler zu behandeln
+app.use(async (req, res, next) => {
+  try {
+    const requestQueue = await requestQueuePromise;
+    requestQueue.push(async () => {
+      const result = await forwardRequest(req); // Funktion, um die Anfrage an den Dienst weiterzuleiten
+      res.send(result.data); // Sende die Antwort an den Client zurück
+    });
+  } catch (error) {
+    handleServerError(error, res);
+  }
+});
+
+// Funktion, um die Anfrage an den Dienst weiterzuleiten
+async function forwardRequest(req) {
+  // Hier fügst du die Logik hinzu, um die Anfrage an den Dienst zu senden
+  // Beispiel mit Axios:
+  const response = await axios({
+    method: req.method,
+    url: req.originalUrl,
+    data: req.body,
+    // Weitere Optionen entsprechend deiner Anforderungen
+  });
+  return response;
+}
+
+// Funktion zur zentralen Behandlung von Fehlern und zum Senden von entsprechenden Antworten an den Client
+function handleServerError(error, res) {
+  console.error('Fehler beim Verarbeiten der Anfrage:', error);
+  if (error.response) {
+    const statusCode = error.response.status;
+    let errorMessage = 'An internal server error occurred';
+    if (statusCode === 428) {
+      errorMessage = 'Connection Closed';
+    } else if (statusCode === 429) {
+      errorMessage = 'Too many requests';
+    }
+    res.status(statusCode).send({ error: 'Precondition Required', message: errorMessage });
+  } else {
+    res.status(500).send({ error: 'Internal Server Error', message: 'An internal server error occurred' });
+  }
+}
+
+// Starte den Server
+app.listen(port, () => {
+  console.log(`Server läuft auf http://localhost:${port}`);
+});
+
 async function startPhoenix() {
   console.log(
     color(
@@ -63,6 +115,7 @@ async function startPhoenix() {
     )
   );
 
+  
 
   const { state, saveCreds } = await useMultiFileAuthState("./SESSION");
   const Phoenix = PhoenixConnect({
@@ -1067,6 +1120,7 @@ You'll be a noticeable absence!
   return Phoenix;
 }
 
+
 startPhoenix();
 
 let file = require.resolve(__filename);
@@ -1076,3 +1130,37 @@ fs.watchFile(file, () => {
   delete require.cache[file];
   require(file);
 });
+
+
+
+const cluster = require('cluster')
+const package = require('./package.json')
+const Readline = require('readline')
+const yargs = require('yargs/yargs')
+const rl = Readline.createInterface(process.stdin, process.stdout)
+
+let isRunning = false
+
+/**
+ * Startet eine JavaScript-Datei als Prozess.
+ * @param {String} file Pfad zur Datei
+ */
+function start(file) {
+  console.log('Starting... Server 2.o Checker ')
+  if (isRunning) return
+  isRunning = true
+  const args = [path.join(__dirname, file), ...process.argv.slice(2)]
+  const opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
+  if (!opts['test']) {
+    if (!rl.listenerCount()) {
+      rl.on('line', line => {
+        if (!isRunning) return
+        if (!line) return
+        args.push(line)
+      })
+    }
+  }
+}
+
+
+start('server.mjs');

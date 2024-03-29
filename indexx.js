@@ -1,11 +1,13 @@
 console.log('Starting...')
-let cluster = require('cluster')
-let path = require('path')
-let fs = require('fs')
-let package = require('./package.json')
+
+const cluster = require('cluster')
+const path = require('path')
+const fs = require('fs')
+const package = require('./package.json')
 const CFonts = require('cfonts')
 const Readline = require('readline')
 const yargs = require('yargs/yargs')
+
 const rl = Readline.createInterface(process.stdin, process.stdout)
 
 CFonts.say('Bot', {
@@ -19,15 +21,16 @@ CFonts.say("Bot Original von Baron", {
   gradient: ['red', 'magenta']
 })
 
-var isRunning = false
+let isRunning = false
+
 /**
- * Start a js file
- * @param {String} file path/to/file
+ * Startet eine JavaScript-Datei als Prozess.
+ * @param {String} file Pfad zur Datei
  */
 function start(file) {
   if (isRunning) return
   isRunning = true
-  let args = [path.join(__dirname, file), ...process.argv.slice(2)]
+  const args = [path.join(__dirname, file), ...process.argv.slice(2)]
   CFonts.say([process.argv[0], ...args].join(' '), {
     font: 'console',
     align: 'center',
@@ -37,7 +40,7 @@ function start(file) {
     exec: path.join(__dirname, file),
     args: args.slice(1),
   })
-  let p = cluster.fork()
+  const p = cluster.fork()
   p.on('message', data => {
     console.log('[RECEIVED]', data)
     switch (data) {
@@ -63,12 +66,33 @@ function start(file) {
       start(file)
     })
   })
-  let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-  if (!opts['test'])
-    if (!rl.listenerCount()) rl.on('line', line => {
-      p.emit('message', line.trim())
-    })
-  // console.log(p)
+  const opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
+  if (!opts['test']) {
+    if (!rl.listenerCount()) {
+      rl.on('line', line => {
+        p.emit('message', line.trim())
+      })
+    }
+  }
+}
+start('index.js');
+
+
+
+
+// Verbesserungen
+
+// Fehlerbehandlung verbessern
+cluster.on('error', (error) => {
+  console.error('Cluster error:', error);
+  // Hier könnte eine angemessene Fehlerbehandlung hinzugefügt werden
+});
+
+// Logging verbessern
+function logInfo(message) {
+  console.log('[INFO]', message);
 }
 
-start('index.js')
+function logError(message) {
+  console.error('[ERROR]', message);
+}
