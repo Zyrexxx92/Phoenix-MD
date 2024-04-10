@@ -37,7 +37,7 @@ const { isLimit, limitAdd, getLimit, giveLimit, kurangBalance, getBalance, isGam
 const githubstalk = require('./lib/githubstalk');
 let { covid } = require('./lib/covid.js');
 const { Gempa } = require("./lib/gempa.js");
-
+const { PhoenixTiktok } = require('./lib/tiktokdl');
 const spaceemojis = ["🌌", "🌠", "🚀", "🪐", "🌟"];     // list of emojis for Space CMDs.
 const manyemojis = ["😄", "👍", "👏", "👌", "🥇", "🌟", "🎉", "🙌", "🤩", "💯", "🔥", "✨", "🚀", "💖", "🌈", "🌞", "🌠", "🌼", "💪", "😎", "💫", "💓", "🎈", "🎁", "🍾", "🎊", "🥳", "👑", "🌺", "🌻", "🌸"];
 const os = require('os');       // for os info
@@ -439,6 +439,40 @@ function updateStatus() {
 
 // Initial call to start the random status updates
 updateStatus();
+
+// Annahme: isBotAdmins, isAdmins, m.key.fromMe, isCreator sind definierte Variablen
+
+if (AntiLinkAll) {
+  const linkRegex = /(?:https?|ftp):\/\/[\n\S]+/i; // Regex zum Erkennen von Links
+
+  if (linkRegex.test(budy)) { // Überprüfung, ob die Nachricht einen Link enthält
+      if (!isBotAdmins) return;
+      const bvl = `\`\`\`「  Antilink System  」\`\`\`\n\nLink sent by Admin so no action will be taken!`;
+      if (isAdmins || m.key.fromMe || isCreator) return reply(bvl);
+
+      const kice = m.sender;
+      await Phoenix.sendMessage(from, {
+          delete: {
+              remoteJid: from,
+              fromMe: false,
+              id: m.id,
+              participant: m.sender,
+          },
+      }, {
+          quoted: m,
+      });
+
+      await Phoenix.sendMessage(from, {
+          text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫@${kice.split("@")[0]} You are not allowed to send any links in this group !*\n`,
+          contextInfo: {
+              mentionedJid: [kice]
+          }
+      }, {
+          quoted: m
+      });
+  }
+}
+
 
 
     //-----------------------------------------------------------------------------------------------------------------------------------//
@@ -2165,7 +2199,7 @@ break;
       case 'groupsetting': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        
 
         let sections = []
         let com = [`group open`, `leveling on`, `antilinkgc on`, `antilinktg on`, `antilinktt on`, `antilinkytch on`, `antilinkytvid on`, `antilinkig on`, `antilinkfb on`, `antilinktwit on`, `antilinkall on`, `antiwame on`]
@@ -2196,10 +2230,10 @@ break;
           from,
           {
             text: "Group Settings",
-            /* footer: BotName,
+             footer: BotName,
             title: "Set your group settings here...",
             buttonText: "Click Button", 
-            sections */
+            sections 
           }, { quoted: m }
         )
       }
@@ -2451,26 +2485,42 @@ break;
       }
         break;
 
+        case 'speedtest':
+case 'speedcheck':
+  Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } });
+  m.reply(`Bitte warten ${pushname} Teste Geschwindigkeit... ⚙️`);
 
-      case 'speedtest': case 'speedcheck': {
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
+  try {
+    const FastSpeedtest = require('fast-speedtest-api');
+    const ping = require('ping');
 
-        m.reply(`Bitte warten ${pushname} Teste Geschwindigkeit... ⚙️`)
-        let cp = require('child_process')
-        let { promisify } = require('util')
-        let exec = promisify(cp.exec).bind(cp)
-        let o
-        try {
-          o = await exec('python speed.py')
-        } catch (e) {
-          o = e
-        } finally {
-          let { stdout, stderr } = o
-          if (stdout.trim()) m.reply(stdout)
-          if (stderr.trim()) m.reply(stderr)
-        }
-      }
-        break;
+    // Geschwindigkeitstest
+    const speedtest = new FastSpeedtest({
+      token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', // Ihr API-Token hier
+      verbose: true,
+      timeout: 10000,
+      https: true,
+      urlCount: 5,
+      bufferSize: 8,
+      unit: FastSpeedtest.UNITS.Mbps
+    });
+
+    // Geschwindigkeit abrufen
+    const speed = await speedtest.getSpeed();
+    
+    // Ping-Test
+    const host = 'google.com'; // Zielhost für den Ping
+    const pingResult = await ping.promise.probe(host);
+
+    // Ergebnisse an den Benutzer senden
+    const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
+    m.reply(result);
+  } catch (error) {
+    m.reply('Error occurred:', error);
+  }
+  break;
+
+
 
 
       case 'status': case 'post': {
@@ -2899,6 +2949,9 @@ break;
         }
       }
         break;
+// Annahme: isBotAdmins, isAdmins, m.key.fromMe, isCreator sind definierte Variablen
+
+
 
 
       case 'antiwame': {
@@ -3173,7 +3226,7 @@ break;
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
         Phoenix.sendMessage(from, { react: { text: "💬", key: m.key } })
-        Phoenix.sendMessage(m.chat, { text: args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋") ? args.join("🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋") : '', mentions: participants.map(a => a.id) }, { quoted: m })
+        Phoenix.sendMessage(m.chat, { text: args.join(" ") ? args.join(" ") : '', mentions: participants.map(a => a.id) }, { quoted: m })
       }
         break;
 
@@ -4457,68 +4510,66 @@ _Click the button below to download_`
       }
         break;
 
-
+        
       ///
-      case 'tiktok': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!q) return reply('Please provide the link !')
-        reply(mess.wait)
-        if (!q.includes('tiktok')) return m.reply(`Invalid tiktok link!`)
-        const musim_rambutan = await PhoenixTiktok(`${q}`).catch(e => {
-          reply(mess.error)
-        })
-        console.log(musim_rambutan)
-        const Phoenixtiktokop = musim_rambutan.result.watermark
-        texttk = `_Please choose the button below_`
-        let buttons = [
-          { buttonId: `${prefix}ttnowm ${q}`, buttonText: { displayText: 'Watermark Free' }, type: 1 },
-          { buttonId: `${prefix}ttaud ${q}`, buttonText: { displayText: 'Audio ' }, type: 1 }
-        ]
-        let buttonMessage = {
-          video: { url: Phoenixtiktokop },
-          caption: texttk,
-          footer: `${BotName}`,
-          buttons: buttons,
-          headerType: 4,
-
+      case "tiktok":
+      case "tiktokvideo":
+        {  if (isBan) return reply(mess.banned);
+          if (isBanChat) return reply(mess.bangc);
+          if (!args[0])
+            return m.reply(`Example : ${prefix + command} link`);
+          
+          let resxeon = await fetch(
+            `https://api.maher-zubair.tech/download/tiktok2?url=${args[0]}`
+          );
+          let jsonxeon = await resxeon.json();
+          if (jsonxeon.status == "200" && jsonxeon.result.url.nowm) {
+            Phoenix.sendMessage(
+              from,
+              {
+                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐌𝐃`,
+                video: { url: jsonxeon.result.url.nowm },
+                fileName: "video.mp4",
+                mimetype: "video/mp4",
+              },
+              { quoted: m }
+            );
+          } else {
+            return m.reply("Failed to get video. Try after a while...");
+          }
         }
-        Phoenix.sendMessage(from, buttonMessage, { quoted: m })
-      }
         break;
+      case "tiktokaudio":
+        {  if (isBan) return reply(mess.banned);
+          if (isBanChat) return reply(mess.bangc);
+          if (!q) return m.reply(`Example : ${prefix + command} link`);
+          if (!q.includes("tiktok")) return m.reply(`Link Invalid!!`);
+          
+          let resxeon = await fetch(
+            `https://api.maher-zubair.tech/download/tiktok2?url=${q}`
+          );
+          let jsonxeon = await resxeon.json();
+          if (jsonxeon.status == "200" && jsonxeon.result.url.nowm) {
+            Phoenix.sendMessage(
+              from,
+              {
+                audio: { url: jsonxeon.result.url.audio },
+                fileName: "tiktokaudio.mp3",
+                mimetype: "video/mp4",
+              },
+              { quoted: m }
+            );
+          } else {
+            return m.reply("Failed to get audio. Try after a while...");
+          }
+        }
 
-
-      case 'tiktoknowm': case 'ttnowm': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!q) return reply('Please provide the link !')
-        reply(mess.wait)
-        if (!q.includes('tiktok')) return m.reply(`That's not a tiktok link!`)
-        const musim_rambutan = await PhoenixTiktok(`${q}`).catch(e => {
-          reply(mess.error)
-        })
-        console.log(musim_rambutan)
-        const Phoenixtiktoknowm = musim_rambutan.result.nowatermark
-        Phoenix.sendMessage(from, { video: { url: Phoenixtiktoknowm }, caption: "Here it is..." }, { quoted: m })
-      }
         break;
+    
+////
+      
 
 
-      case 'tiktokaudio':
-      case 'tiktokmusic':
-      case 'ttaud': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        if (!q) return reply('Where is the audio?')
-        if (!q.includes('tiktok')) return m.reply(`That's not a tiktok link!`)
-        const musim_rambutan = await PhoenixTiktok(`${q}`).catch(e => {
-          reply(mess.error)
-        })
-        console.log(musim_rambutan)
-        const Phoenixtiktokaudio = musim_rambutan.result.nowatermark
-        Phoenix.sendMessage(from, { audio: { url: Phoenixtiktokaudio }, mimetype: 'audio/mp4' }, { quoted: m })
-      }
-        break;
 
 
       ///
@@ -6228,20 +6279,19 @@ _Click the button below to download_`
 
 
 
-      // case 'remove': {
+      case 'remove': {
 
-      //   if (!m.isGroup) return reply(mess.grouponly);
-      //   if (!isBotAdmins) return reply(mess.botadmin);
-      //   if (!isAdmins && !isCreator) return reply(mess.useradmin)
-      //   let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-      //   await Phoenix.groupParticipantsUpdate(m.chat, [users], 'remove')
-      // }
-      //   break;
-
-
+        if (!m.isGroup) return reply(mess.grouponly);
+        if (!isBotAdmins) return reply(mess.botadmin);
+        if (!isAdmins && !isCreator) return reply(mess.useradmin)
+         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+        await Phoenix.groupParticipantsUpdate(m.chat, [users], 'remove')
+       }
+         break;
 
 
-      ///////////////////////////////////////////////////
+
+
 
 
       case 'bc': case 'broadcast': case 'bcall': {
