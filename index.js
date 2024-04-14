@@ -50,7 +50,7 @@ const store = makeInMemoryStore({
 });
 
 const app = express();
-const port = 8000;
+const port = 9000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/index.html', (req, res) => {
   res.render('index', { title: 'Bot Online' });

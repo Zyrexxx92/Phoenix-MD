@@ -4,14 +4,12 @@ RUN apt-get update && \
     apt-get install -y \
     ffmpeg \
     imagemagick \
-    webp \
-    python3 \
-    python3-pip && \
+    webp && \
     apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 
-RUN pip3 install speedtest-cli
+
 
 WORKDIR /usr/src/app
 

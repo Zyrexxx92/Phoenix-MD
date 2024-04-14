@@ -15,12 +15,25 @@ const { addBalance } = require("./lib/limit.js");
 const { smsg, formatp, tanggal, GIFBufferToVideoBuffer, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, fetchBuffer } = require('./lib/myfunc')
 const _ = require("lodash");
 const yargs = require("yargs/yargs");
-const kaitime = moment.tz('Europe/Berlin').format('HH:mm:ss');
-const kaidate = moment.tz('Europe/Berlin').format('DD/MM/YYYY');
+
+
+let kaitime = moment.tz('Europe/Berlin').format('HH:mm:ss');
 const time2 = moment().tz('Europe/Berlin').format('HH:mm:ss');
+const kaidate = moment.tz('Europe/Berlin').format('DD/MM/YYYY');
 const currentDate = new Date();
 const options = { weekday: 'long' }; // Specify 'long' to get the full day name
-const currentDay = new Intl.DateTimeFormat('en-US', options).format(currentDate);
+const currentDay = new Intl.DateTimeFormat('de-EU', options).format(currentDate);
+
+function updateCurrentTime() {
+    kaitime = moment.tz('Europe/Berlin').format('HH:mm:ss');
+}
+
+setInterval(updateCurrentTime, 1000); 
+
+
+setInterval(() => {
+    
+}, 1000); 
 
 const speed = require('performance-now');
 const eco = require('discord-mongoose-economy');
