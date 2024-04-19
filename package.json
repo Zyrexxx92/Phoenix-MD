@@ -86,6 +86,7 @@
         "node-superfetch": "^0.1.11",
         "node-webpmux": "^3.2.0",
         "node-youtube-music": "^0.7.0",
+        "npm": "^10.5.2",
         "openai": "^4.33.0",
         "os": "^0.1.2",
         "path": "^0.12.7",
