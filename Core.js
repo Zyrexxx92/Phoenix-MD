@@ -956,7 +956,7 @@ m.reply(`  *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━
 -👀 *(Name)* (Stv.Leitung)
 
 *Community-Manager* : 
--🤵 *(Name)*
+-🤵 *𝐴𝑘𝑎𝑧𝑎™*
 
 *Tech-Team* :
 -💎 *Baron* (Leitung)
@@ -969,19 +969,15 @@ m.reply(`  *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━
 -👮🏻‍♂ *(Name)* (Mod)
 
 *Support-Team* :
--💎 𝕬𝖈𝖍𝖎𝖗𝖆(Leitung)
--👷🏻‍♂️ *𝕾𝖆𝖒𝖚𝖗𝖆𝖎ᴳᵒᵈ*(Supporter)
+-💎 *𝕾𝖆𝖒𝖚𝖗𝖆𝖎ᴳᵒᵈ* (Leitung)
+-👷🏻‍♂️ *Daisuke* (Supporter)
 -👷🏻‍♂️ *(Name)* (Supporter)
 -👷🏻‍♂️ *(Name)* (Supporter)
-
-*Hoster-Team*:
--💎 *Ɛ×ͥΐզͣօͫή* (Leitung)
--💻 *⸸ℑꈤᥴꪊ𝕭ꪊᦓ⸸* (Hoster)
--💻 *(Name)* (Hoster)
--💻 *(Name)* (Hoster)
 
 \n* Um eine Supportanfrage zu stellen,* *benutzt bitte /support gefolgt von eurem Anliegen.*
+
 *📛 Wir bemühen uns, euch zeitnah zu antworten,* *und bitten höflich darum, kein Spam zu versenden.*
+
 *✨ Danke für eure Unterstützung,*
 *euer Phoenix-Bot Team.*`)
 break;
@@ -1091,7 +1087,7 @@ break;
 
 
       //
-      case 'restart':
+      case 'restartt':
         await Phoenix.sendMessage(from, { react: { text: "⚙", key: m.key } });
         if (!isCreator) return reply(mess.botowner)
 
@@ -1115,7 +1111,7 @@ break;
 
 
       //
-      case 'shutdown': case 'sleep':
+      case 'restart': case 'sleep':
         if (!isCreator) return reply(mess.owner)
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.owner)
@@ -1147,7 +1143,7 @@ break;
 
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         Phoenix.public = false
-        reply('Only Owner can use me now!')
+        reply('Mode : Self')
         Phoenix.setStatus(`Mode : Self`)
       }
         break;
@@ -6925,7 +6921,7 @@ _Click the button below to download_`
 │╰───────────···▸▸`)
         }
 
-
+break;
         
         case '1.9': case 'funmenu':
         if (isCmd) {
@@ -7058,23 +7054,29 @@ _Click the button below to download_`
         }
 
         break;
-        
+         case "gaycheck-samurai" :
+          if (isCmd) {
+            if (isBan) return reply(mess.banned);
+            if (isBanChat) return reply(mess.bangc);
+            Phoenix.sendMessage(from, { react: { text: "🕶", key: m.key } })
+            m.reply(`Hi *${pushname}*,  Ja Samurai ist Schwul aber sowas ist Völlig normal. :)`)
+          }
+
+         break;
         
         case 'ping':
-        if (isCmd) {
-          if (isBan) return reply(mess.banned);
-          if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🪀", key: m.key } })
+          if (isCmd) {
+            if (isBan) return reply(mess.banned);
+            if (isBanChat) return reply(mess.bangc);
+            Phoenix.sendMessage(from, { react: { text: "🪀", key: m.key } })
+  
+            reply(`*Hi ${pushname}*,  *Pong*  *${latensie.toFixed(4)}* *ms*`)
+          }
+  
+          break;
+                 
 
-          const startTime = new Date().getTime();
-          await Phoenix.sendText(m.from, 'Pong...');
-          const endTime = new Date().getTime();
-          const pingTime = endTime - startTime;
-          await Phoenix.sendText(m.from, `Pong ${pingTime} ms`);
-         
-        }
-     
-        break;
+
                
        
 
@@ -7155,7 +7157,7 @@ _Click the button below to download_`
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
           Phoenix.sendMessage(from, { react: { text: "❌", key: m.key } })
-          m.reply(`Hey ${pushname} *dieser Befehl ist nicht Vorhanden.. Nutze ${prefix}menu um weitere Befehle zu sehen.*`)
+          m.reply(`Hey ${pushname} *Dieser Befehl ist nicht Vorhanden... Nutze ${prefix}menu um weitere Befehle zu sehen.*`)
 
         }
 

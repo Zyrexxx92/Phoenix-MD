@@ -16,3 +16,4 @@ speedtest.getSpeed().then(s => {
 }).catch(e => {
     console.error(e.message);
 });
+
