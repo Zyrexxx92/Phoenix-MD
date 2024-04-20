@@ -21,9 +21,9 @@ global.prefa = ["/"];                                    //Default prefix here. 
 
 
 //
-global.Owner = ["49491741711168", "4915678394727", "4365022989060"];         //If you want singal number so global.Owner = ['916297175943'] Change into your number.
-global.OwnerNumber = ["49491741711168", "4915678394727", "4365022989060"];   //If you want singal number so global.Owner = ['916297175943'] Change into your number.
-global.ownertag = ["49491741711168", "4915678394727", "4365022989060"];
+global.Owner = ["49491741711168", "4365022989060"];         //If you want singal number so global.Owner = ['916297175943'] Change into your number.
+global.OwnerNumber = ["49491741711168", "4365022989060"];   //If you want singal number so global.Owner = ['916297175943'] Change into your number.
+global.ownertag = ["49491741711168", "4365022989060"];
 global.OwnerName = "Exiqon & Baron";
 global.BotName = "Phoenix-BOT";
 global.packname = "By Phoenix Bot";                             //Do not change.
@@ -37,7 +37,7 @@ global.sessionName = "session";                          //Do not change.
 
 
 //
-global.openAiAPI = "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";
+global.openAiAPI = "sk-proj-Ihfu78OcDHN8CRWSybsNT3BlbkFJtR6xkgquGZAK8qvnoRj6";
 
 
 //

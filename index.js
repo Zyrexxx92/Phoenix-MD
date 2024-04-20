@@ -12,6 +12,7 @@ const {
   makeInMemoryStore,
   jidDecode,
   proto,
+  MessageType
 } = require("@whiskeysockets/baileys");
 const pino = require("pino");
 const fs = require("fs");
@@ -331,7 +332,7 @@ async function startPhoenix() {
             Phoenixtext = `
 Hallo @${WAuserName.split("@")[0]},
 
-Ich bin *🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋*, Welcome to ${metadata.subject}.
+Ich bin * │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃*, Welcome to ${metadata.subject}.
 
 *Gruppenbeschreibung:*
 ${metadata.desc}

@@ -56,7 +56,21 @@ const manyemojis = ["😄", "👍", "👏", "👌", "🥇", "🌟", "🎉", "�
 const os = require('os');       // for os info
 
 const gis = require("g-i-s");
-const { MessageType } = require('@whiskeysockets/baileys');
+const {
+  default: PhoenixConnect,
+  useMultiFileAuthState,
+  DisconnectReason,
+  fetchLatestBaileysVersion,
+  generateForwardMessageContent,
+  prepareWAMessageMedia,
+  generateWAMessageFromContent,
+  generateMessageID,
+  downloadContentFromMessage,
+  makeInMemoryStore,
+  jidDecode,
+  proto,
+  MessageType
+} = require("@whiskeysockets/baileys");
 //"parse-ms": "^1.1.0",
 
 
@@ -448,7 +462,7 @@ if (AntiLinkAll) {
 
   if (linkRegex.test(budy)) { // Überprüfung, ob die Nachricht einen Link enthält
       if (!isBotAdmins) return;
-      const bvl = `\`\`\`「  Antilink System  」\`\`\`\n\nLink sent by Admin so no action will be taken!`;
+      const bvl = `\`\`\`「  Antilink System  」\`\`\`\n\nDu bist ein Admin, deshalb wirst du nicht gekickt, aber denk das nächstes Mal an die Regeln!`;
       if (isAdmins || m.key.fromMe || isCreator) return reply(bvl);
 
       const kice = m.sender;
@@ -464,7 +478,7 @@ if (AntiLinkAll) {
       });
 
       await Phoenix.sendMessage(from, {
-          text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Group link detected !*\n\n*🚫@${kice.split("@")[0]} You are not allowed to send any links in this group !*\n`,
+          text: `\`\`\`「  Antilink System  」\`\`\`\n\n*⚠️ Gruppenlink Erkannt!*\n\n*🚫@${kice.split("@")[0]} Mach keine Werbung du Schwuchtel!*\n`,
           contextInfo: {
               mentionedJid: [kice]
           }
@@ -736,7 +750,7 @@ Typed *surrender* to surrender and admited defeat`
       kai: `Mein Boss ist in einem anderen Multiversum verschollen, und ich habe die Verbindung zu ihm verloren...`,
       runtime: `🦋𝘏ey ${pushname}\n${nowtime}\n\n🦋𝘙𝘜𝘕𝘛𝘐𝘔𝘌:${runtime(process.uptime())}\n\n🦋𝘗𝘙𝘌𝘍𝘐𝘟: *${prefix}*\n\n🦋𝘛𝘐𝘔𝘌: ${kaitime}\n\n🦋𝘋𝘈𝘛𝘌: ${kaidate}\n\n🦋𝘛𝘰𝘥𝘢𝘺 𝘪𝘴 ${currentDay}`,
       konichiwa: `Konichiwa ${pushname}, Ich bin ${BotName}. Wie kann ich dir behilflich sein?`,
-      alive: '🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋',
+      alive: ' │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃 ',
       ping: `Aloha ${pushname}, Pong ${latensie.toFixed(4)} ms`,
       'good morning': `Good morning💞🦋.`,
       ohayo: `Good morning to you too ${pushname} ☺️. Have a great day 😇.`,
@@ -873,7 +887,6 @@ Typed *surrender* to surrender and admited defeat`
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
 
-        Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
         m.reply(`⚙ *Hey,hier ist der Link zur Supportgruppe:* https://chat.whatsapp.com/GXJA9IomUhaHyofAT4PlJQ`)
       }
         break;
@@ -894,8 +907,7 @@ Typed *surrender* to surrender and admited defeat`
           case 'mods': {
             if (isBan) return reply(mess.banned);
             if (isBanChat) return reply(mess.bangc);
-          
-            Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } });
+
           
             try {
               // Retrieve owner list
@@ -907,11 +919,11 @@ Typed *surrender* to surrender and admited defeat`
               // Initialize textM
               let textM = '';
           
-              textM += `\n〽️ *Owners* 〽️\n`;
+              textM += `\n *Owners* \n`;
           
               // Append owner names to the message
               ownerList.forEach((owner) => {
-                textM += `\n〄  @${owner}\n`;
+                textM += `\n👑  @${owner}\n`;
               });
           
               // Add footer message
@@ -942,7 +954,6 @@ Typed *surrender* to surrender and admited defeat`
           //////////
 
           case 'team': 
-          await Phoenix.sendMessage(from, { react: { text: "👀", key: m.key } });
 
 
 m.reply(`  *━━━〈 𝗣𝗵𝗼𝗲𝗻𝗶𝘅 Ƀøŧ Team🌃  〉━━━*
@@ -990,7 +1001,6 @@ break;
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
         if (!args[0]) return m.reply(`Use ${prefix + command} number\nBeispiel ${prefix + command} ${OwnerNumber}`)
         bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
@@ -1081,7 +1091,7 @@ break;
             return m.reply(`${pushname} Prefix erfolgreich geändert in "${newPrefix}"`);
           } catch (error) {
             console.error('Fehler beim Ändern des Prefix:', error);
-            return m.reply(`Beim Ändern des Präfix ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.`);
+            return m.reply(`Beim Ändern des Prefix ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.`);
           }
         }
 
@@ -1115,9 +1125,8 @@ break;
         if (!isCreator) return reply(mess.owner)
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.owner)
-        await Phoenix.sendMessage(from, { react: { text: "⚠️", key: m.key } })
 
-        m.reply(`Okay bye bye wird zeit schlafen zu gehen!`)
+        m.reply(`Neustart wird eingeleitet. Bitte warte einen Moment.`)
         await sleep(5000)
         process.exit()
         break;
@@ -1296,7 +1305,6 @@ break;
           if (isBanChat) return reply(mess.bangc);
           if (!isCreator) return reply(mess.botowner);
           
-          Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } });
         
           if (!args[0]) return m.reply(`Wähle 'add' oder 'del' aus (add zum Sperren, del zum Entsperren). Zum Beispiel: antworte *${prefix}ban add* auf den Benutzer, den du sperren möchtest.`);
         
@@ -1352,7 +1360,6 @@ break;
       case 'ttc': case 'ttt': case 'tictactoe': {
         if (isBan) return reply(mess.ban)
         if (isBanChat) return reply(mess.banChat)
-        Phoenix.sendMessage(from, { react: { text: "🎮", key: m.key } })
 
         let TicTacToe = require("./lib/tictactoe")
         this.game = this.game ? this.game : {}
@@ -1411,7 +1418,7 @@ break;
         if (!text) return m.reply(`Bitte gebe die Nachricht an, die du übermitteln möchtest.`)
         if (text.length > 300) return m.reply(`Are you trying to send virus!`)
         const txtmsg = `*📮 Support Anfrage* :\n\n*Sender ➛* wa.me/${m.sender.split("@")[0]}\n\n*Gruppenname ➛* ${groupName}\n\n*Nachricht ➛*  ${text}`
-        for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '4915678394727@s.whatsapp.net'))
+        for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '4917417111681@s.whatsapp.net'))
           await Phoenix.sendMessage(`${mod}`, { text: `${txtmsg}` }, { quoted: m })
         await Phoenix.sendMessage(`120363198299068646@g.us`, { text: `${txtmsg}`, mentions: groupAdmins }, { quoted: m })
         m.reply(`*✅ Deine Supportanfrage wurde erfolgreich weitergeleitet!*\n\n*Wir werden dir so schnell wie möglich antworten. ♥️*`);
@@ -1430,7 +1437,6 @@ break;
           if (isBanChat) return reply(mess.bangc);
           if (!m.isGroup) return reply(mess.grouponly)
 
-          Phoenix.sendMessage(from, { react: { text: "💰", key: m.key } })
           let user = m.sender
           const cara = "cara"
           const daily = await eco.daily(user, cara, 999); //give 999 for daily, can be changed
@@ -1446,8 +1452,6 @@ break;
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly)
-
-        Phoenix.sendMessage(from, { react: { text: "💳", key: m.key } })
 
         if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
 
@@ -2141,7 +2145,6 @@ break;
         if (isBanChat) return reply(mess.bangc);
 
         const randomEmoji = manyemojis[Math.floor(Math.random() * manyemojis.length)];
-        Phoenix.sendMessage(from, { react: { text: randomEmoji, key: m.key } });
 
         if (!q) return m.reply(`Bitte gebe einen Text ein. Beispiel: ${prefix + command} Hallo, *ChatGPT*`);
 
@@ -2416,7 +2419,7 @@ break;
 
         if (!args[0]) {
           return m.reply(`Please provide the GitHub repository link.\nBeispiel:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
-🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋
+ │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🌃
           `);
         }
 
@@ -2453,7 +2456,7 @@ break;
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
-        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
+        let teks = ` 「  │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
         for (let i of anu) {
           teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
@@ -2468,7 +2471,7 @@ break;
         Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-        let teks = ` 「  🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
+        let teks = ` 「   │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
         for (let i of anu) {
           let metadata = await Phoenix.groupMetadata(i)
           if (metadata.owner === "undefined") {
@@ -2484,7 +2487,6 @@ break;
 
         case 'speedtest':
 case 'speedcheck':
-  Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } });
   m.reply(`Bitte warten ${pushname} Teste Geschwindigkeit... ⚙️`);
 
   try {
@@ -3031,7 +3033,6 @@ case 'speedcheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
         let online = [...Object.keys(store.presences[id]), botNumber]
@@ -3108,7 +3109,6 @@ case 'speedcheck':
       case 'banchat': case 'bangroup': case 'banmode': {
         if (isBan) return reply(mess.banned);
         if (!isCreator) return reply(mess.botowner);
-        Phoenix.sendMessage(from, { react: { text: "⚠️", key: m.key } })
 
         if (args[0] === "on") {
           if (isBanChat) return reply('This Group is Already Banned from using me!');
@@ -3205,10 +3205,9 @@ case 'speedcheck':
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Phoenix.sendMessage(from, { react: { text: "😳", key: m.key } })
         let teks = `「 Attention 」
 
-*Message : ${args.join(" ") ? args.join(" ") : 'no message'}*\n\n`
+*Nachricht : ${args.join(" ") ? args.join(" ") : 'Keine Nachricht'}*\n\n`
         for (let mem of participants) {
           teks += `» @${mem.id.split('@')[0]}\n`
         }
@@ -3222,7 +3221,6 @@ case 'speedcheck':
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Phoenix.sendMessage(from, { react: { text: "💬", key: m.key } })
         Phoenix.sendMessage(m.chat, { text: args.join(" ") ? args.join(" ") : '', mentions: participants.map(a => a.id) }, { quoted: m })
       }
         break;
@@ -3232,13 +3230,11 @@ case 'speedcheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        Phoenix.sendMessage(from, { react: { text: "🗿", key: m.key } })
-        if (!text) return m.reply(`*🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋*`)
-        let teks = `*「 Tag Admins 」*
-
-*Message : ${text}*\n\n`
+        if (!text) return m.reply(`*│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃*`)
+        let teks = 
+      `          *「 Tag Admins 」*\n\n*Nachricht : ${text}*\n\n`
         for (let mem of groupAdmins) {
-          teks += `✅ @${mem.split('@')[0]}\n`
+          teks += `👑 @${mem.split('@')[0]}\n`
         }
         Phoenix.sendMessage(m.chat, { text: teks, mentions: groupAdmins }, { quoted: m })
       }
@@ -3425,7 +3421,6 @@ case 'speedcheck':
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
         await Phoenix.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       }
@@ -3438,7 +3433,6 @@ case 'speedcheck':
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
         await Phoenix.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
       }
@@ -3451,7 +3445,6 @@ case 'speedcheck':
         if (!m.isGroup) return reply(mess.grouponly);
         if (!isBotAdmins) return reply(mess.botadmin);
         if (!isAdmins && !isCreator) return reply(mess.useradmin)
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
         let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
         await Phoenix.groupParticipantsUpdate(m.chat, [users], 'remove')
       }
@@ -3553,7 +3546,6 @@ case 'speedcheck':
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner)
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
 
         if (!args[0]) return m.reply(`Select add or del (add to ban, del to unban), Beispiel: reply *${prefix}ban add* to the user you want to ban.`)
         if (args[1]) {
@@ -3587,7 +3579,7 @@ case 'speedcheck':
         if (args[0] === "on") {
           if (AntiLinkAll) return reply('Bereits aktiviert ')
           ntilinkall.push(from)
-          reply('Enabled all antilink !')
+          reply('Antilink Aktiviert!')
           var groupe = await Phoenix.groupMetadata(from)
           var members = groupe['participants']
           var mems = []
@@ -3599,7 +3591,7 @@ case 'speedcheck':
           if (!AntiLinkAll) return reply('Bereits deaktiviert')
           let off = ntilinkall.indexOf(from)
           ntilinkall.splice(off, 1)
-          reply('Disabled all antilink !')
+          reply('Antilink Dektiviert!')
         } else {
           let textmsg = 'Type ' + `${prefix}${command}` + ' on to turn on antilink feature or Type ' + `${prefix + command}` + ' off to turn off antilink feature'
           await Phoenix.sendMessage(m.chat, { text: `${textmsg}` }, `${global.BotName}`, m)
@@ -4720,7 +4712,7 @@ _Click the button below to download_`
           contextInfo: {
             mentionedJid: [m.sender],
             externalAdReply: {
-              title: "🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋",
+              title: "│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃",
               body: `Now playing: ${bname}`,
               thumbnailUrl: bimg,
               sourceUrl: burl,
@@ -6331,8 +6323,7 @@ _Click the button below to download_`
 
     case 'help': case 'h': case 'menu': case 'list':{
       if (isBan) return reply(mess.banned);	 			
-      if (isBanChat) return reply(mess.bangc);
-  Phoenix.sendMessage(from, { react: { text: "📲" , key: m.key }})      
+      if (isBanChat) return reply(mess.bangc);     
   const helpmenu = ` 
 ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ* 🎯 ••』──◈
 │╭────────────···▸▸
@@ -6341,7 +6332,7 @@ _Click the button below to download_`
   │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*
   │⊳  *Uhrzeit : ${kaitime}* ⌚
   │⊳  *Datum : ${kaidate}* 📆
-  │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 🙋
+  │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 👑
   │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
   │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
   │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Team-Phoenix* 
@@ -6377,8 +6368,7 @@ _Click the button below to download_`
 
         case '2.0': case 'allmenu': {
           if (isBan) return reply(mess.banned);	 			
-          if (isBanChat) return reply(mess.bangc);
-      Phoenix.sendMessage(from, { react: { text: "📲" , key: m.key }})      
+          if (isBanChat) return reply(mess.bangc);      
       const helpmenu = ` 
     ┌──『•• 🎯 *ᴀʟʟᴍᴇɴᴜ 2.0* 🎯 ••』──◈
     │╭────────────···▸▸
@@ -6387,7 +6377,7 @@ _Click the button below to download_`
       │⊳  *Nᴏᴡ-ᴛɪᴍᴇ : ${nowtime}*  
       │⊳  *Uhrzeit : ${kaitime}*⌚
       │⊳  *Datum : ${kaidate}*📆
-      │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}*🙋
+      │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}*👑
       │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』* 💡
       │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
       │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Team-Phoenix* 
@@ -6725,7 +6715,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🗓️", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *ᴀʟɪᴠᴇ* 🎯 ••』──◈
@@ -6751,7 +6740,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🗓️", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *Bᴏᴛ-Mᴇɴᴜ* 🎯 ••』──◈
@@ -6781,7 +6769,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🎩", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *Oᴡɴᴇʀ* 🎯 ••』───◈
@@ -6817,7 +6804,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🧊", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *Gʀᴏᴜᴘ* 🎯 ••』───◈
@@ -6849,7 +6835,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *Aɴᴛɪ-Lɪɴᴋ* 🎯 ••』───◈
@@ -6875,7 +6860,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🗒️", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *Eᴄᴏɴᴏᴍʏ* 🎯 ••』───◈
@@ -6902,9 +6886,8 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } })
 
-          m.reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋`)
+          m.reply(`│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃`)
         }
 
         break;
@@ -6914,7 +6897,6 @@ _Click the button below to download_`
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🧿", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *ɢᴀᴍᴇꜱ* 🎯 ••』───◈
@@ -6935,7 +6917,6 @@ break;
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🎈", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎈 *Fun-Menu* 🎈 ••』───◈
@@ -6963,7 +6944,6 @@ break;
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🥰", key: m.key } })
 
           m.reply(`
 ┌──『•• 🎯 *Cᴏɴᴠᴇʀᴛ* 🎯 ••』───◈
@@ -6988,7 +6968,6 @@ break;
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "📣", key: m.key } })
 
           m.reply(``)
         }
@@ -7000,9 +6979,8 @@ break;
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🔑", key: m.key } })
 
-          m.reply(`🦋 │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🦋`)
+          m.reply(`│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃`)
         }
 
         break;
@@ -7012,7 +6990,6 @@ break;
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🧊", key: m.key } })
 
           m.reply(`
 ┌─『•• 📥 *Dᴏᴡɴʟᴏᴀᴅᴇʀ* 📥 ••』─◈
@@ -7044,7 +7021,6 @@ break;
         if (isCmd) {
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
-          Phoenix.sendMessage(from, { react: { text: "🤪", key: m.key } })
 
           m.reply(`🥲🥲`)
         }
@@ -7076,7 +7052,6 @@ break;
           if (isCmd) {
             if (isBan) return reply(mess.banned);
             if (isBanChat) return reply(mess.bangc);
-            Phoenix.sendMessage(from, { react: { text: "🪀", key: m.key } })
   
             reply(`*Hi ${pushname}*,  *Pong*  *${latensie.toFixed(4)}* *ms*`)
           }
