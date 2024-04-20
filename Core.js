@@ -5050,24 +5050,32 @@ _Click the button below to download_`
         break;
 
 
-      case 'sgif': case 'sticker': case 's': {
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
-        if (/image/.test(mime)) {
-          let media = await quoted.download()
-          let encmedia = await Phoenix.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-          await fs.unlinkSync(encmedia)
-        } else if (/video/.test(mime)) {
-          if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
-          let media = await quoted.download()
-          let encmedia = await Phoenix.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-          await fs.unlinkSync(encmedia)
-        } else {
-          m.reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`)
-        }
-      }
-        break;
+
+
+        case 'sticker':
+            case 'sgif':
+            case 's': {
+                if (!quoted) return replygcxeon(`Reply to Video/Image With Caption ${prefix + command}`)
+                if (/image/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await Phoenix.sendImageAsSticker(m.chat, media, m, {
+                        packname: packname,
+                        author: author
+                    })
+                    await fs.unlinkSync(encmedia)
+                } else if (isVideo || /video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return replygcxeon('Maximum 10 seconds!')
+                    let media = await quoted.download()
+                    let encmedia = await Phoenix.sendVideoAsSticker(m.chat, media, m, {
+                        packname: packname,
+                        author: author
+                    })
+                    await fs.unlinkSync(encmedia)
+                } else {
+                    return replygcxeon(`Send Images/Videos With Captions ${prefix + command}\nVideo Duration 1-9 Seconds`)
+                }
+            }
+            break
 
 
 
