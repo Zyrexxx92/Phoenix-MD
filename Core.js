@@ -2513,9 +2513,9 @@ case 'speedcheck':
 
     // Ergebnisse an den Benutzer senden
     const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
-    await Phoenix.sendText(result);
+    await m.reply(result);
   } catch (error) {
-    await Phoenix.sendText('Error occurred:', error);
+    await m.reply('Error occurred:', error);
   }
   break;
 
@@ -2531,9 +2531,9 @@ case 'speedcheck':
 
     // Ergebnisse an den Benutzer senden
     const result = `Ping: ${pingResult.time} ms`;
-    await Phoenix.sendText(result);
+    await m.reply(result);
   } catch (error) {
-    await Phoenix.sendText('Error occurred:', error);
+    await m.reply('Error occurred:', error);
   }
  break;
 
@@ -4873,7 +4873,7 @@ _Click the button below to download_`
 
         let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json');
 
-        for (let i = 0; i < 3; i++) {  // the set of picures.
+        for (let i = 0; i < 1; i++) {  // the set of picures.
           let random = anu[Math.floor(Math.random() * anu.length)];
 
           // Sending the male picture
@@ -5408,13 +5408,7 @@ _Click the button below to download_`
 
 
 
-      case 'nsfwPhoenix':
-        if (isBan) return reply(mess.banned);
-        if (isBanChat) return reply(mess.bangc);
-        reply(mess.wait)
-        nye = `http://api.lolhuman.xyz/api/gimage?apikey=${lolkey}&query=${command}`
-        Phoenix.sendMessage(from, { image: { url: nye }, caption: "Master..." }, { quoted: m })
-        break;
+      
 
       case 'mediafire': case 'mediafiredl': {
         if (isBan) return reply(mess.banned);
@@ -6661,7 +6655,6 @@ _Click the button below to download_`
     ⬡│▸ ${prefix}charactercheck
     ⬡│▸ ${prefix}dare
     ⬡│▸ ${prefix}truth
-    ⬡│▸ ${prefix}nsfwPhoenix
     ⬡│▸ ${prefix}mediafire
     ⬡│▸ ${prefix}mediafiredl
     ⬡│▸ ${prefix}smug2
