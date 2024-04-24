@@ -1032,7 +1032,7 @@ break;
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.botowner);
-        Phoenix.sendMessage(from, { react: { text: "🛡️", key: m.key } })
+        
 
         try {
           const modData = fs.readFileSync('./database/mod.json', 'utf8');
@@ -1061,7 +1061,7 @@ break;
         if (!isCreator) return reply(mess.owner)
         if (isBanChat) return reply(mess.bangc);
         if (!isCreator) return reply(mess.owner)
-        Phoenix.sendMessage(from, { react: { text: "🫡", key: m.key } })
+        
 
         if (!quoted) return `*Send/reply Image With Caption* ${prefix + command}`
         if (!/image/.test(mime)) return `*Send/reply Image With Caption* ${prefix + command}`
@@ -2514,8 +2514,14 @@ case 'speedcheck':
     // Ergebnisse an den Benutzer senden
     const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
     await m.reply(result);
-  } catch (error) {
-    await m.reply('Error occurred:');
+  } catch (err) {
+    console.error(err);
+    // Send a message in case of internal error
+    return Phoenix.sendMessage(
+      m.from,
+      { text: `An internal error ` },
+      { quoted: m }
+    );
   }
   break;
 
@@ -2531,9 +2537,15 @@ case 'speedcheck':
 
     // Ergebnisse an den Benutzer senden
     const result = `Ping: ${pingResult.time} ms`;
-    await m.reply(result);
-  } catch (error) {
-    await m.reply('Error occurred:');
+    m.reply(result);
+  } catch (err) {
+    console.error(err);
+    // Send a message in case of internal error
+    return Phoenix.sendMessage(
+      m.from,
+      { text: `An internal error ` },
+      { quoted: m }
+    );
   }
  break;
 
