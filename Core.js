@@ -2504,7 +2504,7 @@ case 'speedcheck':
       unit: FastSpeedtest.UNITS.Mbps
     });
 
-
+    const speed = await speedtest.getSpeed();
 
     // Ergebnisse an den Benutzer senden
     const result = `Download Speed: ${speed} Mbps`;
