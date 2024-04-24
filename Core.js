@@ -2513,9 +2513,9 @@ case 'speedcheck':
 
     // Ergebnisse an den Benutzer senden
     const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
-    m.reply(result);
+    await Phoenix.sendMessage(result);
   } catch (error) {
-    m.reply('Error occurred:', error);
+    await Phoenix.sendMessage('Error occurred:', error);
   }
   break;
 
