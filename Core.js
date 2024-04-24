@@ -2515,7 +2515,7 @@ case 'speedcheck':
     const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
     await m.reply(result);
   } catch (error) {
-    await m.reply('Error occurred:', error);
+    await m.reply('Error occurred:');
   }
   break;
 
@@ -2533,7 +2533,7 @@ case 'speedcheck':
     const result = `Ping: ${pingResult.time} ms`;
     await m.reply(result);
   } catch (error) {
-    await m.reply('Error occurred:', error);
+    await m.reply('Error occurred:');
   }
  break;
 
