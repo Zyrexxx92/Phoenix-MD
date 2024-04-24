@@ -2524,13 +2524,12 @@ case 'speedcheck':
  */
 
 
-
 case "speed":
     m.reply(`Bitte warten, Ping wird berechnet...`);
     try {
         const { exec } = require('child_process');
 
-        // Ping-Befehl ausführen
+        // Ping-Befehl für Linux ausführen
         exec('ping -c 4 google.com', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Fehler beim Ausführen des Ping-Befehls: ${error.message}`);
@@ -2561,6 +2560,7 @@ case "speed":
         m.reply(`Bei der Geschwindigkeitsüberprüfung ist ein interner Fehler aufgetreten.`);
     }
     break;
+
 
 
 
