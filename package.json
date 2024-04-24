@@ -79,6 +79,7 @@
         "moment-timezone": "^0.5.34",
         "mongoose": "^6.2.1",
         "mumaker": "^2.0.0",
+        "net": "^1.0.2",
         "network-speed": "^2.1.1",
         "node-cron": "^3.0.0",
         "node-fetch": "^2.6.1",

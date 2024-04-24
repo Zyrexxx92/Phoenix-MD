@@ -2525,6 +2525,14 @@ case 'speedcheck':
   }
   break;
 
+/**
+ * Class::PromisePing
+ * @param {string} addr - Hostname or ip addres
+ * @param {PingConfig} config - Configuration for command ping
+ * @return {Promise}
+ */
+
+
 
   case "speed":
     m.reply(`Bitte warten, Ping wird berechnet...`);
