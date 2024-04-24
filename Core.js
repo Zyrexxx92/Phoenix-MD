@@ -2491,7 +2491,7 @@ case 'speedcheck':
 
   try {
     const FastSpeedtest = require('fast-speedtest-api');
-    const ping = require('ping');
+    
 
     // Geschwindigkeitstest
     const speedtest = new FastSpeedtest({
@@ -2504,24 +2504,15 @@ case 'speedcheck':
       unit: FastSpeedtest.UNITS.Mbps
     });
 
-    // Geschwindigkeit abrufen
-    const speed = await speedtest.getSpeed();
-    
-    // Ping-Test
-    const host = 'google.com'; // Zielhost für den Ping
-    const pingResult = await ping.promise.probe(host);
+
 
     // Ergebnisse an den Benutzer senden
-    const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
+    const result = `Download Speed: ${speed} Mbps`;
     await m.reply(result);
   } catch (err) {
     console.error(err);
-    // Send a message in case of internal error
-    return Phoenix.sendMessage(
-      m.from,
-      { text: `An internal error ` },
-      { quoted: m }
-    );
+    // Fehlerbehandlung: Eine Nachricht bei internem Fehler senden
+    m.reply(`Bei der ist ein interner Fehler aufgetreten.`);
   }
   break;
 
