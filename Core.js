@@ -2526,28 +2526,25 @@ case 'speedcheck':
   break;
 
 
- case "speed" : 
- m.reply(`Bitte warten Ping wird berechnet...`);
- try {
-  const ping = require('ping');
-
-    // Ping-Test
-    const host = 'google.com'; // Zielhost für den Ping
-    const pingResult = await ping.promise.probe(host);
-
-    // Ergebnisse an den Benutzer senden
-    const result = `Ping: ${pingResult.time} ms`;
-    m.reply(result);
-  } catch (err) {
-    console.error(err);
-    // Send a message in case of internal error
-    return Phoenix.sendMessage(
-      m.from,
-      { text: `An internal error ` },
-      { quoted: m }
-    );
-  }
- break;
+  case "speed":
+    m.reply(`Bitte warten, Ping wird berechnet...`);
+    try {
+      const ping = require('ping');
+  
+      // Ping-Test
+      const host = 'google.com'; // Zielhost für den Ping
+      const pingResult = await ping.promise.probe(host);
+  
+      // Ergebnisse an den Benutzer senden
+      const result = `Ping: ${pingResult.time} ms`;
+      m.reply(result);
+    } catch (err) {
+      console.error(err);
+      // Fehlerbehandlung: Eine Nachricht bei internem Fehler senden
+      m.reply(`Bei der Geschwindigkeitsüberprüfung ist ein interner Fehler aufgetreten.`);
+    }
+    break;
+  
 
 
 
