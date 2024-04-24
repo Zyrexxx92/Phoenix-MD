@@ -2513,12 +2513,29 @@ case 'speedcheck':
 
     // Ergebnisse an den Benutzer senden
     const result = `Download Speed: ${speed} Mbps\nPing: ${pingResult.time} ms`;
-    await Phoenix.sendMessage(result);
+    await Phoenix.sendText(result);
   } catch (error) {
-    await Phoenix.sendMessage('Error occurred:', error);
+    await Phoenix.sendText('Error occurred:', error);
   }
   break;
 
+
+ case "speed" : 
+ m.reply(`Bitte warten Ping wird berechnet...`);
+ try {
+  const ping = require('ping');
+
+    // Ping-Test
+    const host = 'google.com'; // Zielhost für den Ping
+    const pingResult = await ping.promise.probe(host);
+
+    // Ergebnisse an den Benutzer senden
+    const result = `Ping: ${pingResult.time} ms`;
+    await Phoenix.sendText(result);
+  } catch (error) {
+    await Phoenix.sendText('Error occurred:', error);
+  }
+ break;
 
 
 
