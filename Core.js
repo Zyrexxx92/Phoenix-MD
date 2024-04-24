@@ -2525,25 +2525,43 @@ case 'speedcheck':
 
 
 
-  case "speed":
-    m.reply(`Bitte warten, Ping wird berechnet...`);
-    try {
-      const ping = require('ping');
-  
-      // Ping-Test
-      const host = 'google.com'; // Zielhost für den Ping
-      const pingResult = await ping.promise.probe(host);
-  
-      // Ergebnisse an den Benutzer senden
-      const result = `Ping: ${pingResult.time} ms`;
-      m.reply(result);
-    } catch (err) {
+case "speed":
+  m.reply(`Bitte warten, Ping wird berechnet...`);
+  try {
+      const { exec } = require('child_process');
+
+      // Ping-Befehl ausführen
+      exec('ping -c 4 google.com', (error, stdout, stderr) => {
+          if (error) {
+              console.error(`Fehler beim Ausführen des Ping-Befehls: ${error.message}`);
+              m.reply(`Bei der Ping ist ein Fehler aufgetreten.`);
+              return;
+          }
+          if (stderr) {
+              console.error(`Fehlerausgabe des Ping-Befehls: ${stderr}`);
+              m.reply(`Bei der Ping ist ein Fehler aufgetreten.`);
+              return;
+          }
+
+          // Ping-Ergebnisse aus der Standardausgabe extrahieren
+          const pingOutputLines = stdout.split('\n');
+          const timeLine = pingOutputLines.find(line => line.includes('time='));
+          const timeMatch = /time=([\d.]+) ms/.exec(timeLine);
+          const pingTime = timeMatch ? parseFloat(timeMatch[1]) : null;
+
+          // Ergebnisse an den Benutzer senden
+          if (pingTime !== null) {
+              m.reply(`Ping: ${pingTime} ms`);
+          } else {
+              m.reply(`Ping-Ergebnisse konnten nicht analysiert werden.`);
+          }
+      });
+  } catch (err) {
       console.error(err);
-      // Fehlerbehandlung: Eine Nachricht bei internem Fehler senden
       m.reply(`Bei der Geschwindigkeitsüberprüfung ist ein interner Fehler aufgetreten.`);
-    }
-    break;
-  
+  }
+  break;
+
 
 
 
