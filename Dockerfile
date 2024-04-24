@@ -5,6 +5,7 @@ RUN apt-get update && \
     ffmpeg \
     imagemagick \
     webp && \
+    apt install iputils-ping -y && \
     apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 

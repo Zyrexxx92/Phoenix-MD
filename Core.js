@@ -2530,7 +2530,7 @@ case "speed":
         const { exec } = require('child_process');
 
         // Ping-Befehl für Linux ausführen
-        exec('ping -c 4 google.com', (error, stdout, stderr) => {
+        exec('/bin/ping -c 4 google.com', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Fehler beim Ausführen des Ping-Befehls: ${error.message}`);
                 m.reply(`Bei der Geschwindigkeitsüberprüfung ist ein Fehler aufgetreten.`);
