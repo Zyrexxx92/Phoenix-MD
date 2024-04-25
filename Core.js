@@ -5091,7 +5091,7 @@ _Click the button below to download_`
         case 'sticker':
             case 'sgif':
             case 's': {
-                if (!quoted) return reply(`Reply to Video/Image With Caption ${prefix + command}`)
+                if (!quoted) return m.reply(`Reply to Video/Image With Caption ${prefix + command}`)
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
                     let encmedia = await Phoenix.sendImageAsSticker(m.chat, media, m, {
@@ -5108,7 +5108,7 @@ _Click the button below to download_`
                     })
                     await fs.unlinkSync(encmedia)
                 } else {
-                    return reply(`Send Images/Videos With Captions ${prefix + command}\nVideo Duration 1-9 Seconds`)
+                    return m.reply(`Send Images/Videos With Captions ${prefix + command}\nVideo Duration 1-9 Seconds`)
                 }
             }
             break
