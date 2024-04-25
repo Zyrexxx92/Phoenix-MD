@@ -5099,7 +5099,7 @@ _Click the button below to download_`
                         author: author
                     })
                     await fs.unlinkSync(encmedia)
-                } else if (isVideo || /video/.test(mime)) {
+                } else if (isQuotedVideo|| /video/.test(mime)) {
                     if ((quoted.msg || quoted).seconds > 11) return replygcxeon('Maximum 10 seconds!')
                     let media = await quoted.download()
                     let encmedia = await Phoenix.sendVideoAsSticker(m.chat, media, m, {
