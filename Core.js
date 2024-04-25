@@ -5091,7 +5091,7 @@ _Click the button below to download_`
         case 'sticker':
             case 'sgif':
             case 's': {
-                if (!quoted) return replygcxeon(`Reply to Video/Image With Caption ${prefix + command}`)
+                if (!quoted) return reply(`Reply to Video/Image With Caption ${prefix + command}`)
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
                     let encmedia = await Phoenix.sendImageAsSticker(m.chat, media, m, {
@@ -5100,7 +5100,7 @@ _Click the button below to download_`
                     })
                     await fs.unlinkSync(encmedia)
                 } else if (isQuotedVideo|| /video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return replygcxeon('Maximum 10 seconds!')
+                    if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
                     let media = await quoted.download()
                     let encmedia = await Phoenix.sendVideoAsSticker(m.chat, media, m, {
                         packname: packname,
@@ -5108,7 +5108,7 @@ _Click the button below to download_`
                     })
                     await fs.unlinkSync(encmedia)
                 } else {
-                    return replygcxeon(`Send Images/Videos With Captions ${prefix + command}\nVideo Duration 1-9 Seconds`)
+                    return reply(`Send Images/Videos With Captions ${prefix + command}\nVideo Duration 1-9 Seconds`)
                 }
             }
             break
