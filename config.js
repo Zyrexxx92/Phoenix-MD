@@ -27,7 +27,7 @@ global.ownertag = ["49491741711168", "4365022989060"];
 global.OwnerName = "Exiqon & Baron";
 global.BotName = "Phoenix-BOT";
 global.packname = "By Phoenix Bot";                             //Do not change.
-global.author = "Phoenix MD";                               //Do not change.
+global.author = "ig: 6u.cg";                               //Do not change.
 global.BotSourceCode = "https://github.com/7ucg"; //Do not change.
 global.SupportGroupLink = "https://chat.whatsapp.com/GXJA9IomUhaHyofAT4PlJQ";
 
