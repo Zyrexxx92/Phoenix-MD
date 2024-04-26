@@ -780,7 +780,7 @@ Typed *surrender* to surrender and admited defeat`
       case 'sc': case 'script': case 'git': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        Phoenix.sendMessage(from, { react: { text: "✅", key: m.key } })
+      
 
         let { data } = await axios.get('https://github.com/7ucg/Phoenix-MD.git');
         teks = `
@@ -942,7 +942,7 @@ Typed *surrender* to surrender and admited defeat`
             } catch (err) {
               console.error(err);
               // Send a message in case of internal error
-              await Phoenix.sendMessage(from, { react: { text: "💫", key: m.key } });
+        
               return Phoenix.sendMessage(
                 m.from,
                 { text: `An internal error occurred while fetching the owner list.` },
@@ -4773,7 +4773,7 @@ _Click the button below to download_`
       case 'ytvd': case 'video': case 'ytvideo': case 'ytmp4': {
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
-        Phoenix.sendMessage(from, { react: { text: "🎬", key: m.key } })
+        
         const YT = require('./lib/ytdl-core')
         let yts = require("youtube-yts")
         let search = await yts(text)
@@ -7168,8 +7168,10 @@ break;
     
       ///////////////////////////////////////////////////
       ///////////////////////////////////////////////////
-
-
+      
+ 
+      
+     
 
       default:
 
