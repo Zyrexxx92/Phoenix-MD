@@ -2,7 +2,7 @@
     "name": "phoenix",
     "version": "1.0.0",
     "description": "Phoenix is a WhatsApp multiDevice Bot based on Miku and Baileys written in Javascript.",
-    "main": "index.js",
+    "main": "starter.js",
     "directories": {
         "lib": "lib"
     },
