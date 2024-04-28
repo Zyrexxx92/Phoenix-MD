@@ -75,7 +75,7 @@ function start(file) {
     }
   }
 }
-start('index.js');
+start('server.js');
 
 
 

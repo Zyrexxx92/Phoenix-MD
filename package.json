@@ -7,7 +7,7 @@
         "lib": "lib"
     },
     "scripts": {
-        "start": "node indexx.js",
+        "start": "node starter.js",
         "test": "node test.cjs"
     },
     "repository": {

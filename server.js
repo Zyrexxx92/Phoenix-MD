@@ -32,7 +32,7 @@ const {
   videoToWebp,
   writeExifImg,
   writeExifVid,
-} = require("./lib/exif");
+} = require("./lib/exif.js");
 const {
   smsg,
   isUrl,
@@ -42,9 +42,9 @@ const {
   fetchJson,
   await,
   sleep,
-} = require("./lib/myfunc");
+} = require("./lib/myfunc.js");
 const figlet = require("figlet");
-const { color } = require("./lib/color");
+const { color } = require("./lib/color.js");
 
 const store = makeInMemoryStore({
   logger: pino().child({ level: "silent", stream: "store" }),
@@ -173,7 +173,7 @@ async function startPhoenix() {
         }
     
         m = smsg(Phoenix, mek, store);
-        require("./Core")(Phoenix, m, chatUpdate, store);
+        require("./Core.js")(Phoenix, m, chatUpdate, store);
       } catch (err) {
         console.log(err);
       }
@@ -805,7 +805,7 @@ You'll be a noticeable absence!
       pathFile = filename;
     if (options.asDocument) type = "document";
     if (options.asSticker || /webp/.test(mime)) {
-      let { writeExif } = require("./lib/exif");
+      let { writeExif } = require("./lib/exif.js");
       let media = { mimetype: mime, data };
       pathFile = await writeExif(media, {
         packname: options.packname ? options.packname : global.packname,
