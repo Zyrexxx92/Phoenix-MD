@@ -108,7 +108,7 @@ app.listen(port, () => {
 async function startPhoenix() {
   console.log(
     color(
-      figlet.textSync("PHOENIX-Md", {
+      figlet.textSync("PHOENIX-BOT", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
