@@ -15,7 +15,7 @@ CFonts.say('Bot', {
   align: 'center',
   gradient: ['red', 'magenta']
 })
-CFonts.say("Bot Original von Baron", {
+CFonts.say("Bot Original von Exiqon&Baron", {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
