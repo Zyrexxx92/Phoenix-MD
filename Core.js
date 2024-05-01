@@ -2397,7 +2397,7 @@ break;
 
         if (!args[0]) {
           return m.reply(`Please provide the GitHub repository link.\nBeispiel:\n${prefix}${command} https://github.com/7ucg/Phoenix-MD
- │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐌𝐃│𝐕1️⃣ 🌃
+ │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃
           `);
         }
 
@@ -2433,7 +2433,7 @@ break;
         if (isBanChat) return reply(mess.bangc);
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v)
-        let teks = ` 「  │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
+        let teks = ` 「  │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃 user list  」\n\nTotal ${anu.length} users are using Phoenix in personal chat.`
         for (let i of anu) {
           teks += `\n\nProfile : @${i.id.split('@')[0]}\nChat : ${i.unreadCount}\nLastchat : ${moment(i.conversationTimestamp * 1000).tz("Europe/Berlin").format("DD/MM/YYYY HH:mm:ss")}`
         }
@@ -2447,7 +2447,7 @@ break;
         if (isBanChat) return reply(mess.bangc);
 
         let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-        let teks = ` 「   │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
+        let teks = ` 「   │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃 group user list  」\n\nTotal ${anu.length} users are using bot in Groups.`
         for (let i of anu) {
           let metadata = await Phoenix.groupMetadata(i)
           if (metadata.owner === "undefined") {
@@ -3240,7 +3240,7 @@ case "speed":
         if (isBan) return reply(mess.banned);
         if (isBanChat) return reply(mess.bangc);
         if (!m.isGroup) return reply(mess.grouponly);
-        if (!text) return m.reply(`*│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃*`)
+        if (!text) return m.reply(`*│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃*`)
         let teks = 
       `          *「 Tag Admins 」*\n\n*Nachricht : ${text}*\n\n`
         for (let mem of groupAdmins) {
@@ -4500,7 +4500,7 @@ _Click the button below to download_`
             Phoenix.sendMessage(
               from,
               {
-                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐌𝐃`,
+                caption: `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐁𝐎𝐓`,
                 video: { url: jsonxeon.result.url.nowm },
                 fileName: "video.mp4",
                 mimetype: "video/mp4",
@@ -4690,7 +4690,7 @@ _Click the button below to download_`
           contextInfo: {
             mentionedJid: [m.sender],
             externalAdReply: {
-              title: "│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃",
+              title: "│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃",
               body: `Now playing: ${bname}`,
               thumbnailUrl: bimg,
               sourceUrl: burl,
@@ -4774,7 +4774,7 @@ _Click the button below to download_`
         if (isBanChat) return reply(mess.bangc);
         const YT = require('./lib/ytdl-core')
         const ytmp4play2 = await YT.mp4(text)
-        Phoenix.sendMessage(from, { video: { url: ytmp4play2.videoUrl }, mimetype: "video/mp4", caption: '━━━❬❬🦋 *PHOENIX-Md* 🦋❭❭ ━━━*', }, { quoted: m })
+        Phoenix.sendMessage(from, { video: { url: ytmp4play2.videoUrl }, mimetype: "video/mp4", caption: '━━━❬❬🦋 *PHOENIX-BOT* 🦋❭❭ ━━━*', }, { quoted: m })
       }
         break;
 
@@ -6811,7 +6811,7 @@ _Click the button below to download_`
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
 
-          m.reply(`│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃`)
+          m.reply(`│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃`)
         }
 
         break;
@@ -6904,7 +6904,7 @@ break;
           if (isBan) return reply(mess.banned);
           if (isBanChat) return reply(mess.bangc);
 
-          m.reply(`│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃`)
+          m.reply(`│𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃`)
         }
 
         break;

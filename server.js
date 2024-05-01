@@ -343,7 +343,7 @@ async function startPhoenix() {
             Phoenixtext = `
 Hallo @${WAuserName.split("@")[0]},
 
-Ich bin * │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐕1️⃣ 🌃*, Welcome to ${metadata.subject}.
+Ich bin * │𝐏𝐇𝐎𝐄𝐍𝐈𝐗│𝐁𝐎𝐓│𝐕1️⃣ 🌃*, Welcome to ${metadata.subject}.
 
 *Gruppenbeschreibung:*
 ${metadata.desc}
