@@ -4493,7 +4493,7 @@ _Click the button below to download_`
             return m.reply(`Example : ${prefix + command} link`);
           
           let resxeon = await fetch(
-            `https://api.maher-zubair.tech/download/tiktok2?url=${args[0]}`
+            `https://api.maher-zubair.tech/download/tiktok?url=${args[0]}`
           );
           let jsonxeon = await resxeon.json();
           if (jsonxeon.status == "200" && jsonxeon.result.url.nowm) {
