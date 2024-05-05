@@ -10,6 +10,7 @@ const chalk = require("chalk");
 const axios = require('axios');
 const { spawn, exec, execSync } = require("child_process");
 const moment = require("moment-timezone");
+const { tiktokdl, tiktokdlv2, tiktokdlv3 } = require("@bochilteam/scraper");
 const { EmojiAPI } = require("emoji-api");
 const { addBalance } = require("./lib/limit.js");
 const { smsg, formatp, tanggal, GIFBufferToVideoBuffer, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, fetchBuffer } = require('./lib/myfunc')
@@ -4540,6 +4541,35 @@ _Click the button below to download_`
         break;
     
 ////
+
+
+async function getInfo(url) {
+  // url = (await fetch(url)).url
+  let id = url.split('?')[0].split('/')
+  let res = await (await fetch(`https://www.tiktok.com/node/share/video/${id[3]}/${id[5]}/`)).json().catch(_ => {})
+  return res?.seoProps?.metaParams
+}
+
+async function shortUrl(url) {
+  return await (await fetch(`https://tinyurl.com/api-create.php?url=${url}`)).text()
+}
+
+        case 'tiktok2':
+        case 'tt':
+            if (!args[1]) throw sprache.ttdl.url
+            await m.reply(wait)
+            if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(args[1])) throw sprache.ttdl.deadurl
+            let url = (await fetch(args[1])).url
+            let data = await tiktokdlv2(url)
+            Phoenix.sendMessage(m.chat, { video: { url: data.video.no_watermark }, caption: sprache.ttdl.username+`${nickname}` + `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐁𝐎𝐓`, footer: await shortUrl(data.video.no_watermark_hd ) || ' ' }, { quoted: m })
+            break;
+       
+
+
+
+
+
+////////
       
 
 
