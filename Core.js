@@ -4556,12 +4556,12 @@ async function shortUrl(url) {
 
         case 'tiktok2':
         case 'tt':
-            if (!args[1]) throw sprache.ttdl.url
+            if (!args[1]) throw ttdl.url
             await m.reply(wait)
-            if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(args[1])) throw sprache.ttdl.deadurl
+            if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(args[1])) throw ttdl.deadurl
             let url = (await fetch(args[1])).url
             let data = await tiktokdlv2(url)
-            Phoenix.sendMessage(m.chat, { video: { url: data.video.no_watermark }, caption: sprache.ttdl.username+`${nickname}` + `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐁𝐎𝐓`, footer: await shortUrl(data.video.no_watermark_hd ) || ' ' }, { quoted: m })
+            Phoenix.sendMessage(m.chat, { video: { url: data.video.no_watermark }, caption: ttdl.username+`${nickname}` + `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐁𝐎𝐓`, footer: await shortUrl(data.video.no_watermark_hd ) || ' ' }, { quoted: m })
             break;
        
 
