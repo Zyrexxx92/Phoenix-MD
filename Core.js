@@ -35,6 +35,7 @@ setInterval(updateCurrentTime, 1000);
 setInterval(() => {
     
 }, 1000); 
+const { checkSpam } = require('./antispam.js');
 
 const speed = require('performance-now');
 const eco = require('discord-mongoose-economy');
@@ -184,6 +185,7 @@ let imagi = JSON.parse(fs.readFileSync('./src/image.json'))
 let videox = JSON.parse(fs.readFileSync('./src/video.json'))
 global.db = JSON.parse(fs.readFileSync('./src/database.json'))
 let _sewa = require("./lib/sewa");
+
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'))
 const time = moment.tz('Europe/Berlin').format('DD/MM HH:mm:ss')
 const ucap = moment(Date.now()).tz('Europe/Berlin').locale('id').format('a')
@@ -220,6 +222,7 @@ module.exports = Phoenix = async (Phoenix, m, chatUpdate, store) => {
     var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectreply.selectedRowId : (m.mtype == 'templateButtonreplyMessage') ? m.message.templateButtonreplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectreply.selectedRowId || m.text) : ''
     var budy = (typeof m.text == 'string' ? m.text : '')
     const prefix = global.prefa
+    
     const isCmd = body.startsWith(prefix)
     const notCmd = body.startsWith('')
     const command = isCmd ? body.slice(1).trim().split(' ')[0].toLowerCase() : ''
@@ -265,8 +268,20 @@ module.exports = Phoenix = async (Phoenix, m, chatUpdate, store) => {
     const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
     const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
 
+    async function checkSpam(m) {
+      // Überprüfe, ob die Nachricht ein Befehl ist und daher nicht als Spam betrachtet werden sollte
+      if (m.startsWith("/")) {
+        return false;
+      }
+      
+      // Wenn die Nachricht kein Befehl ist, betrachte sie als Spam
+      return true;
+    }
+    
 
-
+    const isCommand = await checkSpam(m);
+    console.log("Ist Befehl:", !isCommand); // Gibt true aus, da es ein Befehl ist
+    
     autoreadsw = true;
     _sewa.expiredCheck(Phoenix, sewa);
 
@@ -775,8 +790,7 @@ Typed *surrender* to surrender and admited defeat`
 
     //
     switch (command) {
-
-
+      
       //
       case 'sc': case 'script': case 'git': {
         if (isBan) return reply(mess.banned);
@@ -4543,26 +4557,19 @@ _Click the button below to download_`
 ////
 
 
-async function getInfo(url) {
-  // url = (await fetch(url)).url
-  let id = url.split('?')[0].split('/')
-  let res = await (await fetch(`https://www.tiktok.com/node/share/video/${id[3]}/${id[5]}/`)).json().catch(_ => {})
-  return res?.seoProps?.metaParams
-}
 
-async function shortUrl(url) {
-  return await (await fetch(`https://tinyurl.com/api-create.php?url=${url}`)).text()
-}
+case 'tt': 
 
-        case 'tiktok2':
-        case 'tt':
-            if (!args[1]) throw ttdl.url
-            await m.reply(wait)
-            if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(args[1])) throw ttdl.deadurl
-            let url = (await fetch(args[1])).url
-            let data = await tiktokdlv2(url)
-            Phoenix.sendMessage(m.chat, { video: { url: data.video.no_watermark }, caption: ttdl.username+`${nickname}` + `➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐁𝐎𝐓`, footer: await shortUrl(data.video.no_watermark_hd ) || ' ' }, { quoted: m })
-            break;
+if (isBan) return reply(mess.banned);
+if (isBanChat) return reply(mess.bangc);
+if (!q) return m.reply(`Example : ${prefix + command} link`);
+if (!q.includes("tiktok")) return m.reply(`Link Invalid!!`);
+m.reply(wait)
+let url = (await fetch(args[1])).url
+let data = await tiktokdlv2(url)
+Phoenix.sendMessage(m.chat, { video: { url: data.video.no_watermark }, caption: "➫ 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 𝐏𝐇𝐎𝐄𝐍𝐈𝐗-𝐁𝐎𝐓"},  { quoted: m })
+     
+break
        
 
 
@@ -7086,8 +7093,8 @@ break;
  
       
      
-
       default:
+
 
         if (isCmd) {
           if (isBan) return reply(mess.banned);

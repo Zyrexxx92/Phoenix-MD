@@ -149,7 +149,6 @@ async function startPhoenix() {
   })
 
 
-
   const { checkSpam } = require('./antispam.js');
 
   Phoenix.ev.on("messages.upsert", async (chatUpdate) => {
@@ -165,19 +164,14 @@ async function startPhoenix() {
           return;
         if (mek.key.id.startsWith("BAE5") && mek.key.id.length === 16) return;
     
-        // Anti-Spam-Logik
-        const isSpam = await checkSpam(mek); // Direkter Aufruf von checkSpam
-        if (isSpam) {
-          console.log('Spam detected, ignoring message.');
-          return;
-        }
-    
+       
         m = smsg(Phoenix, mek, store);
         require("./Core.js")(Phoenix, m, chatUpdate, store);
       } catch (err) {
-        console.log(err);
+          console.log(err);
       }
   });
+  
   
 
   /* 
