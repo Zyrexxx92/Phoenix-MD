@@ -1,19 +1,17 @@
-// antispam.js
-
-// Hier definieren wir die Logik für das Anti-Spam-System
-
-// Eine Map, um die Zeitpunkte der letzten Nachrichten pro Nutzer zu speichern
 const lastMessageTimes = new Map();
-
-// Eine Map, um die Zeitpunkte der letzten ausgeführten Befehle pro Nutzer zu speichern
 const lastCommandTimes = new Map();
 
 // Funktion zur Überprüfung, ob eine Nachricht Spam ist
-async function checkSpam(message) {
-  const { key } = message;
-  const phoneNumber = key.remoteJid.split('@')[0]; // Extrahiere die Telefonnummer des Absenders
+async function checkSpam(m, prefix, isCmd) {
 
-  // Überprüfe, ob die Telefonnummer des Absenders bereits in der Map ist und ob die letzte Nachricht innerhalb der letzten X Sekunden gesendet wurde (Cooldown)
+    const phoneNumber = m;
+
+    console.log("Nachricht:");
+    console.log("Prefix:", isCmd);
+
+
+    
+  // Überprüfe, ob die Telefonnummer des Absenders bereits in der DB ist und ob die letzte Nachricht innerhalb der letzten X Sekunden gesendet wurde (Cooldown)
   if (lastMessageTimes.has(phoneNumber)) {
     const lastTime = lastMessageTimes.get(phoneNumber);
     const currentTime = Date.now();
@@ -21,7 +19,7 @@ async function checkSpam(message) {
     if (currentTime - lastTime < cooldown) {
       // Wenn die Nachricht zu schnell nach der letzten gesendet wurde, ist es Spam
       console.log('Message sent too quickly after the last one, ignoring message.');
-      return true;
+      return false; 
     }
   }
 
@@ -44,4 +42,9 @@ async function checkSpam(message) {
   return false;
 }
 
-module.exports = { checkSpam };
+
+// Exportiere die Funktion checkSpam
+
+checkSpam();
+
+module.exports = checkSpam;

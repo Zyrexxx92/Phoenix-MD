@@ -35,7 +35,7 @@ setInterval(updateCurrentTime, 1000);
 setInterval(() => {
     
 }, 1000); 
-const { checkSpam } = require('./antispam.js');
+
 
 const speed = require('performance-now');
 const eco = require('discord-mongoose-economy');
@@ -257,7 +257,7 @@ module.exports = Phoenix = async (Phoenix, m, chatUpdate, store) => {
     const AntiLinkTiktok = m.isGroup ? ntilinktt.includes(from) : false
     const AntiLinkTelegram = m.isGroup ? ntilinktg.includes(from) : false
     const AntiLinkTwitter = m.isGroup ? ntilinktwt.includes(from) : false
-    const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false
+    const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : true
     const antiWame = m.isGroup ? ntwame.includes(from) : false
     const antiVirtex = m.isGroup ? ntvirtex.includes(from) : false
     const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false
@@ -267,21 +267,18 @@ module.exports = Phoenix = async (Phoenix, m, chatUpdate, store) => {
 
     const isQuotedVideo = m.mtype === 'extendedTextMessage' && content.includes('videoMessage')
     const isQuotedAudio = m.mtype === 'extendedTextMessage' && content.includes('audioMessage')
+///////////////////////////
 
-    async function checkSpam(m) {
-      // Überprüfe, ob die Nachricht ein Befehl ist und daher nicht als Spam betrachtet werden sollte
-      if (m.startsWith("/")) {
-        return false;
-      }
-      
-      // Wenn die Nachricht kein Befehl ist, betrachte sie als Spam
-      return true;
-    }
-    
+const checkSpam = require ("./antispam.js");
 
-    const isCommand = await checkSpam(m);
-    console.log("Ist Befehl:", !isCommand); // Gibt true aus, da es ein Befehl ist
-    
+// Anti-Spam-Logik
+const isSpam = await checkSpam(isCmd); 
+if (isSpam) {
+  console.log('Spam detected, ignoring message.');
+  return;
+}
+
+    ////////////////////////////
     autoreadsw = true;
     _sewa.expiredCheck(Phoenix, sewa);
 
@@ -6296,7 +6293,7 @@ break
   │⊳  *Uhrzeit : ${kaitime}* ⌚
   │⊳  *Datum : ${kaidate}* 📆
   │⊳  *Oᴡɴᴇʀ : ${global.OwnerName}* 👑
-  │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  💡
+  │⊳  *Pʀᴇꜰɪx : 『  ${prefix} 』*  ⚙️
   │⊳  *Laufzeit : ${runtime(process.uptime())}* 💻
   │⊳  *Dᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ Team-Phoenix* 
 ┬│   
@@ -7164,3 +7161,4 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   require(file)
 })
+
