@@ -21,11 +21,11 @@ global.prefa = ["/"];                                    //Default prefix here. 
 
 
 //
-global.Owner = ["49491741711168", "4365022989060"];         //If you want singal number so global.Owner = ['916297175943'] Change into your number.
-global.OwnerNumber = ["49491741711168", "4365022989060"];   //If you want singal number so global.Owner = ['916297175943'] Change into your number.
-global.ownertag = ["49491741711168", "4365022989060"];
-global.OwnerName = "Exiqon & Baron";
-global.BotName = "Phoenix-BOT";
+global.Owner = ["628396065838"];         //If you want singal number so global.Owner = ['916297175943'] Change into your number.
+global.OwnerNumber = ["6285396065838"];   //If you want singal number so global.Owner = ['916297175943'] Change into your number.
+global.ownertag = ["628396065838"];
+global.OwnerName = "Zyrex";
+global.BotName = "Z V1";
 global.packname = "By Phoenix Bot";                             //Do not change.
 global.author = "ig: 6u.cg";                               //Do not change.
 global.BotSourceCode = "https://github.com/7ucg"; //Do not change.
@@ -41,11 +41,11 @@ global.openAiAPI = "sk-proj-Ihfu78OcDHN8CRWSybsNT3BlbkFJtR6xkgquGZAK8qvnoRj6";
 
 
 //
-global.location = "Deutschland, Unknown";
-global.reactmoji = "💞";
+global.location = "Indonesia, Unknown";
+global.reactmoji = "☠️";
 global.themeemoji = "😂";
 global.vidmenu = { url: 'https://tenor.com/en-CA/view/anonymous-hacker-smooth-gif-10171911193797826570%9D%90%95-12-14' };
-global.websitex = "https://github.com/7ucg/Phoenix-MD";
+global.websitex = "https://github.com/Zyrexxx92/Phoenix-MD";
 global.lolhuman = "Phoenix-BOT";
 
 
